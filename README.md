@@ -1,4 +1,6 @@
-#1 - Git branch and merge
+ayana-alejo
+# WMSUPayNet
+Git branch and merge
 pre-req:
 	install git on your dev
 	create GitHub account
@@ -24,4 +26,3 @@ pre-req:
 	member 3 committed h1 h3 into index
 when you merge this, the index should have both h1, h2, and h3.
 16. End of activity
-
