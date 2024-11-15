@@ -1,90 +1,65 @@
-$(document).ready(function(){
-    $('.nav-link').on('click', function(e){
-        e.preventDefault()
-        $('.nav-link').removeClass('link-active')
-        $(this).addClass('link-active')
-        
-        let url = $(this).attr('href')
-        window.history.pushState({path: url}, '', url)
-    })
+document.querySelectorAll('.sidebar-item a.nav-link').forEach(link => {
+    link.addEventListener('click', function(e) {
+        e.preventDefault(); 
 
-    $('#dashboard-link').on('click', function(e){
-        e.preventDefault()
-        viewAnalytics()
-    })
+        document.querySelectorAll('.sidebar-item a.nav-link').forEach(link => link.classList.remove('link-active'));
 
-    $('#student-link').on('click', function(e){
-        e.preventDefault()
-        viewStudents()
-    })
+        this.classList.add('link-active');
 
-    let url = window.location.href;
-    if (url.endsWith('dashboard')){
-        $('#dashboard-link').trigger('click')
-    }else if (url.endsWith('student')){
-        $('#student-link').trigger('click')
-    }else{
-        $('#dashboard-link').trigger('click')
-    }
+        if (this.id === 'dashboard-link') {
+            fetch('view-analytics.php')
+                .then(response => response.text())
+                .then(html => {
+                    document.querySelector('.content-page').innerHTML = html;
+                    loadChart()
+                })
+                
+        }else if (this.id === 'student-link') {
+            fetch('students/student-table.php')
+                .then(response => response.text())
+                .then(html => {
+                    document.querySelector('.content-page').innerHTML = html;
+                })
+                
+        }
+    });
+});
 
-     function viewAnalytics(){
-         $.ajax({
-             type: 'GET',
-             url: 'view-analytics.php',
-             dataType: 'html',
-             success: function(response){
-                 $('.content-page').html(response)
-                 loadChart()
-             }
-         })
-     }
+window.addEventListener('load', () => {
+    document.querySelector('.sidebar-item a#dashboard-link').click();
+});
 
-     function viewStudents(){
-        $.ajax({
-            type: 'GET',
-            url: 'students/student-table.php',
-            dataType: 'html',
-            success: function(response){
-                $('.content-page').html(response)
-               
-            }
-        })
-    }
-
-    function loadChart(){
-        const paymentChartCanvas = document.getElementById('paymentChart');
-        const paymentChart = new Chart(paymentChartCanvas, {
-            type: 'pie',
-            data: {
-                labels: ['Full', 'Partial', 'Unpaid', 'Due'],
-                datasets: [{
-                    label: 'Payment Status',
-                    data: [70, 20, 5, 5], 
-                    backgroundColor: [
-                        '#093909',
-                        '#84AE84',
-                        '#A0A0A0',
-                        '#EB1111'
-                    ],
-                    borderColor: [
-                        '#093909',
-                        '#84AE84',
-                        '#A0A0A0',
-                        '#EB1111'
-                    ],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                responsive: true,
-                plugins: {
-                    legend: {
-                        position: 'bottom'
-                    }
+function loadChart(){
+    const paymentChartCanvas = document.getElementById('paymentChart');
+    const paymentChart = new Chart(paymentChartCanvas, {
+        type: 'pie',
+        data: {
+            labels: ['Full', 'Partial', 'Unpaid', 'Due'],
+            datasets: [{
+                label: 'Payment Status',
+                data: [70, 20, 5, 5], 
+                backgroundColor: [
+                    '#093909',
+                    '#84AE84',
+                    '#A0A0A0',
+                    '#EB1111'
+                ],
+                borderColor: [
+                    '#093909',
+                    '#84AE84',
+                    '#A0A0A0',
+                    '#EB1111'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'bottom'
                 }
             }
-        });
-    }
-
-   
-});
+        }
+    });
+}
