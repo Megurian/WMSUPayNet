@@ -7,16 +7,16 @@
         </div>
 
         <div class="nav-item">
-            <a href="" id="manual-link" class="navi-link"> Manual</a>
+            <a href="manual" id="manual-link" class="navi-link"> Manual</a>
         </div>
 
         <div class="nav-item">
-            <a href="" id="unpaid-link" class="navi-link"> Unpaid
+            <a href="unpaid" id="unpaid-link" class="navi-link"> Unpaid
             </a>
         </div>
 
         <div class="nav-item">
-            <a href="" id="request-link" class="navi-link"> Request
+            <a href="request" id="request-link" class="navi-link"> Request
             </a>
         </div>
 
