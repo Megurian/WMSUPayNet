@@ -1,9 +1,9 @@
 <div class="container-fluid">
-
-            <div class="d-flex justify-content-end">
+            <div class="table-container">
+            <div class="d-flex mt-1">
                 <div class="dropdown text-end border-0">
                         <a href="#" class="box " data-bs-toggle="dropdown" aria-expanded="false">
-                            <button class="btn bgreen dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Course</button>
+                            <button class="btn bgreen btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Course</button>
                         </a>
                         <ul class="dropdown-menu text-small">
                             <a class="dropdown-item" href="#">Computer Science</a>
@@ -13,7 +13,7 @@
                 </div>
                 <div class="dropdown text-end border-0">
                         <a href="#" class="box " data-bs-toggle="dropdown" aria-expanded="false">
-                            <button class="btn bgreen dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Payment Method</button>
+                            <button class="btn bgreen btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Payment Method</button>
                         </a>
                         <ul class="dropdown-menu text-small">
                             <a class="dropdown-item" href="#">Gcash</a>
@@ -22,7 +22,7 @@
                 </div>
                 <div class="dropdown text-end border-0">
                         <a href="#" class="box " data-bs-toggle="dropdown" aria-expanded="false">
-                            <button class="btn bgreen dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Status</button>
+                            <button class="btn bgreen btn-sm  dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Status</button>
                         </a>
                         <ul class="dropdown-menu text-small">
                             <a class="dropdown-item" href="#">Paid</a>
@@ -31,13 +31,8 @@
                 </div>
             </div>
 
-
-
-            <div class="table-container">
-                <div class="d-flex justify-content-end">
-                
-                </div>
-                <table class="table table-striped">
+               
+                <table class="table table-striped mt-5">
                     <thead>
                         <tr>
                             <th class="sort-column" data-sort-by="name">Name <span class="sort-icon"></span></th>
