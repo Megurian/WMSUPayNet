@@ -20,15 +20,7 @@
                             <a class="dropdown-item" href="#">Paymaya</a>
                        </ul>
                 </div>
-                <div class="dropdown text-end border-0">
-                        <a href="#" class="box " data-bs-toggle="dropdown" aria-expanded="false">
-                            <button class="btn bgreen btn-sm  dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Status</button>
-                        </a>
-                        <ul class="dropdown-menu text-small">
-                            <a class="dropdown-item" href="#">Paid</a>
-                            <a class="dropdown-item" href="#">Unpaid</a>
-                       </ul>
-                </div>
+                
             </div>
 
                
@@ -39,7 +31,6 @@
                             <th >Course</span></th>
                             <th class="sort-column" data-sort-by="name">Year<span class="sort-icon"></th>
                             <th >Status</th>
-                            <th >Payment Method</th>
                             <th >Attachments</th>
                             <th class="sort-column" data-sort-by="name">Date<span class="sort-icon"></th>
                             <th >Action</th>
@@ -50,9 +41,8 @@
                             <td>John Doe</td>
                             <td>Computer Science</td>
                             <td>3rd Year</td>
-                            <td class="status-paid">Fully Paid</td>
-                            <td>GCash</td>
-                            <td>Receipt</td>
+                            <td class="status-unpaid">Unpaid</td>
+                            <td class="status-unpaid">Promissory Note</td>
                             <td>2023-12-15</td>
                             <td>
                                 <div class="dropdown text-end border-0 bgreen">
@@ -72,8 +62,7 @@
                             <td>Business Administration</td>
                             <td>2nd Year</td>
                             <td class="status-unpaid">Unpaid</td>
-                            <td>Manual</td>
-                            <td class="status-unpaid">Promissory Note</td>
+                            <td class="status-unpaid">Promissoy Note</td>
                             <td>-</td>
                             <td>
                                 <div class="dropdown text-end border-0">
@@ -93,7 +82,6 @@
                             <td>Engineering</td>
                             <td>1st Year</td>
                             <td class="status-unpaid">Unpaid</td>
-                            <td>GCash</td>
                             <td class="status-unpaid">Promissory Note</td>
                             <td>2023-12-01</td>
                             <td>
