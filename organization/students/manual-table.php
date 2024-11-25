@@ -1,6 +1,38 @@
 <div class="container-fluid">
         
             <div class="table-container">
+            <div class="d-flex mt-1">
+            
+                <div class="dropdown text-end border-0">
+                        <a href="#" class="box " data-bs-toggle="dropdown" aria-expanded="false">
+                            <button class="btn bgreen btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Course</button>
+                        </a>
+                        <ul class="dropdown-menu text-small">
+                            slec
+                            <a class="dropdown-item" href="#">Computer Science</a>
+                            <a class="dropdown-item" href="#">Information Technology</a>
+                            <a class="dropdown-item" href="#">Associate in computer Technology</a>
+                       </ul>
+                </div>
+                <div class="dropdown text-end border-0">
+                        <a href="#" class="box " data-bs-toggle="dropdown" aria-expanded="false">
+                            <button class="btn bgreen btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Payment Method</button>
+                        </a>
+                        <ul class="dropdown-menu text-small">
+                            <a class="dropdown-item" href="#">Gcash</a>
+                            <a class="dropdown-item" href="#">Paymaya</a>
+                       </ul>
+                </div>
+                <div class="dropdown text-end border-0">
+                        <a href="#" class="box " data-bs-toggle="dropdown" aria-expanded="false">
+                            <button class="btn bgreen btn-sm  dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Status</button>
+                        </a>
+                        <ul class="dropdown-menu text-small">
+                            <a class="dropdown-item" href="#">Paid</a>
+                            <a class="dropdown-item" href="#">Unpaid</a>
+                       </ul>
+                </div>
+            </div>
                 <div class="d-flex justify-content-end">
                 <div class="buttons mb-3 ">
                     <button type="button" class="btn btn bgreen btn-sm"> Manual Pay</button> 

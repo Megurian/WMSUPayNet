@@ -7,7 +7,7 @@ document.querySelectorAll('.sidebar-item a.nav-link').forEach(link => {
         this.classList.add('link-active');
 
         if (this.id === 'dashboard-link') {
-            fetch('view-analytics.php')
+            fetch('overview.php')
                 .then(response => response.text())
                 .then(html => {
                     document.querySelector('.content-page').innerHTML = html;

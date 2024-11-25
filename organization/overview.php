@@ -11,7 +11,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-2 mb-3">
+                    <div class="col-sm-2 mb-2">
                         <div class="card bg-white-green py-3">
                             <div class="card-body d-flex justify-content-between align-items-center">
                                 <h5 class="card-title">Total Revenue  </h5>
