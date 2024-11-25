@@ -261,3 +261,8 @@ body {
     .action-button:hover {
     background-color: #218838; /* Darker Green */
     }
+
+   table tr td.gray{
+    color: #655E5E;
+  }
+  

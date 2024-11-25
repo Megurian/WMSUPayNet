@@ -20,12 +20,14 @@ document.querySelectorAll('.sidebar-item a.nav-link').forEach(link => {
                 .then(html => {
                     document.querySelector('.content-page').innerHTML = html;
 
+                   
                     document.querySelectorAll('.nav-item a.navi-link').forEach(link => {
                         link.addEventListener('click', function(e) {
                             e.preventDefault(); 
                     
                             document.querySelectorAll('.nav-item a.navi-link').forEach(link => link.classList.remove('link-active'));
                             this.classList.add('link-active');
+
                             if (this.id === 'all-link') {
                                 fetch('students/all-table.php')
                                     .then(response => response.text())
@@ -39,26 +41,33 @@ document.querySelectorAll('.sidebar-item a.nav-link').forEach(link => {
                                     .then(html => {
                                         document.querySelector('.table-content').innerHTML = html;
                                         sort()
-                                    })
-                                    
+                                    })      
+                            }else if (this.id === 'unpaid-link') {
+                                fetch('students/unpaid-table.php')
+                                    .then(response => response.text())
+                                    .then(html => {
+                                        document.querySelector('.table-content').innerHTML = html;
+                                        sort()
+                                    })      
+                            }else if (this.id === 'request-link') {
+                                fetch('students/request.php')
+                                    .then(response => response.text())
+                                    .then(html => {
+                                        document.querySelector('.table-content').innerHTML = html;
+                                        sort()
+                                    })      
                             }
-
-
-                            
                         });
                     })
-                    
-                    
                 })
-                
         }
-
     });
 });
-
 window.addEventListener('load', () => {
     document.querySelector('.sidebar-item a#dashboard-link').click();
 });
+
+
 
 
 
