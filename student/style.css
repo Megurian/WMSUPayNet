@@ -371,3 +371,115 @@ color: #093909;
 }
 
 /* end of org */
+
+/* --------------------------------------------------- Start fee ---------------------------------------------------- */
+
+/* Card Container */
+.fee-container {
+  max-width: 700px;
+  width: 100%;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.fee-dashboard{
+  margin: 180px;
+}
+
+/* Card Header */
+.fee-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  color: #093909;
+  padding: 10px 15px;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.back-titles {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.back-bttn {
+  font-size: 20px;
+  color: #093909;
+  text-decoration: none;
+  margin-right: 10px;
+}
+
+.back-btn:hover {
+  opacity: 0.8;
+  color: black;
+}
+
+.back-titles h2 {
+  font-size: 20px;
+  color: #093909;
+  margin-bottom: 2px;
+}
+
+.fee-card-header .due-text {
+  font-size: 20px;
+  margin-top: 10px;
+}
+
+/* Card Body */
+.fee-card-body {
+  padding: 15px;
+  width: 95vh;
+}
+
+/* Table Styling */
+.fees-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 15px;
+}
+
+.fees-table th {
+  background-color: #093909;
+  color: white;
+  padding: 10px;
+  text-align: Center;
+
+}
+
+.fees-table td {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  text-align: center;
+}
+
+.fees-table .amount {
+  text-align: center;
+}
+
+/* Button Styling */
+.proceed-button {
+  text-align: right;
+}
+
+.proceed-button button {
+  background-color: #ffffff;
+  color: black;
+  border: 1px solid #093909;
+  border-radius: 3px;
+  padding: 8px 15px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.proceed-button button:hover {
+  background-color: #093909;
+  color: white;
+}
+
+ /* end of fee */
