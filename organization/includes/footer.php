@@ -1,5 +1,3 @@
-
-
 <script src="../vendor/bootstrap-5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="../vendor/jQuery-3.7.1/jquery-3.7.1.min.js"></script>
 <script src="../vendor/chartjs-4.4.5/chart.js"></script>
