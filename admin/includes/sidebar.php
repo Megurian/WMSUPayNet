@@ -1,7 +1,7 @@
 <div class="sidebar">
-        <div class="sidebar-heading d-flex align-items-center">
-            <img src="../images/ccs logo.jpg" alt="CCS PayNet Logo" width="50" height="50">
-            <h3><span class="green"> CCS </span> PayNet</h3>
+        <div class="sidebar-heading d-flex align-items-center justify-content-between">
+            <img src="../images/wmsu_logo.png" alt="CCS PayNet Logo" width="45">
+            <h4 class="ps-1"><span class="green"> WMSU </span> PayNet</h4>
         </div>
 
 
