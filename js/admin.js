@@ -32,5 +32,3 @@ document.querySelectorAll('.sidebar-item a.nav-link').forEach(link => {
 window.addEventListener('load', () => {
     document.querySelector('.sidebar-item a#dashboard-link').click();
 });
-
-
