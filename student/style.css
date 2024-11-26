@@ -24,7 +24,7 @@
     justify-content: space-between;
     align-items: center;
     background-color: #093909;
-    padding: 10px 20px;
+    padding: 8px 20px;
     color: #ffffff;
     position: fixed;
     top: 0;
@@ -57,7 +57,7 @@
   }
 
   .notification i, .profile i, .help i {
-    font-size: 28px;
+    font-size: 24px;
   }
 
   .main {
@@ -483,3 +483,100 @@ color: #093909;
 }
 
  /* end of fee */
+
+ /* -------------------------------------------- Start Payment Records ------------------------------------------------ */
+
+ .rec-container {
+  max-width: 100%;
+  width: 100%;
+  margin: 75px 0 10px 0;
+  padding: 20px;
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  height: 100vh;
+
+}
+ .back-title span {
+  font-weight: 600;
+  font-size: 1.4em;
+  color: #093909;
+  margin-right: 10px;
+ }
+
+ .student-info {
+  text-align: center;
+  margin: 20px;
+}
+ .student-info label {
+  font-weight: bold;
+}
+
+.student-info input {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.download-receipt {
+  text-align: right;
+  margin-right: 20px;
+}
+
+.download-button {
+  background-color: #ffffff;
+  color: #093909;
+  border: 1px solid #093909;
+  padding: 5px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.records-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  padding: 20px;
+} 
+
+
+.record-card {
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  overflow: hidden;
+  max-width: fit-content;
+}
+
+.rec-card-header {
+  background-color: #ffffff;
+  color: #093909;
+  padding: 10px;
+  font-weight: bold;
+}
+
+.record-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 15px;
+}
+
+.record-table th {
+  background-color: #093909;
+  color: white;
+  padding: 10px;
+  text-align: Center;
+}
+
+.record-table td {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  text-align: center;
+}
+
+.record-table .text-right {
+  text-align: right;
+}
+
+/* end of record */
