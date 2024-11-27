@@ -20,7 +20,6 @@ document.querySelectorAll('.sidebar-item a.nav-link').forEach(link => {
                 .then(html => {
                     document.querySelector('.content-page').innerHTML = html;
 
-                   
                     document.querySelectorAll('.nav-item a.navi-link').forEach(link => {
                         link.addEventListener('click', function(e) {
                             e.preventDefault(); 
@@ -34,6 +33,17 @@ document.querySelectorAll('.sidebar-item a.nav-link').forEach(link => {
                                     .then(html => {
                                         document.querySelector('.table-content').innerHTML = html;
                                         sort()
+                                        
+                                        var table = $('#table-all').DataTable({
+                                            dom: 'rtp',
+                                            pageLength: 10,
+                                            ordering: false,
+                                        });
+                                        
+                                        document.getElementById('transaction').addEventListener('click', function(e) {
+                                            e.preventDefault();
+                                            showTransaction();
+                                        });
                                     })
                             }else if (this.id === 'manual-link') {
                                 fetch('students/manual-table.php')
@@ -41,6 +51,28 @@ document.querySelectorAll('.sidebar-item a.nav-link').forEach(link => {
                                     .then(html => {
                                         document.querySelector('.table-content').innerHTML = html;
                                         sort()
+
+                                        var table = $('#table-all').DataTable({
+                                            dom: 'rtp',
+                                            pageLength: 10,
+                                            ordering: false,
+                                        });
+
+
+                                        document.getElementById('add-student').addEventListener('click', function(e) {
+                                            e.preventDefault();
+                                            addStudent();
+                                        });
+
+                                        document.getElementById('add-payment').addEventListener('click', function(e) {
+                                            e.preventDefault();
+                                            addPayment();
+                                        });
+
+                                        document.getElementById('transaction').addEventListener('click', function(e) {
+                                            e.preventDefault();
+                                            showTransaction();
+                                        });
                                     })      
                             }else if (this.id === 'unpaid-link') {
                                 fetch('students/unpaid-table.php')
@@ -48,6 +80,17 @@ document.querySelectorAll('.sidebar-item a.nav-link').forEach(link => {
                                     .then(html => {
                                         document.querySelector('.table-content').innerHTML = html;
                                         sort()
+
+                                        var table = $('#table-all').DataTable({
+                                            dom: 'rtp',
+                                            pageLength: 10,
+                                            ordering: false,
+                                        });
+
+                                        document.getElementById('transaction').addEventListener('click', function(e) {
+                                            e.preventDefault();
+                                            showTransaction();
+                                        });
                                     })      
                             }else if (this.id === 'request-link') {
                                 fetch('students/request.php')
@@ -55,10 +98,19 @@ document.querySelectorAll('.sidebar-item a.nav-link').forEach(link => {
                                     .then(html => {
                                         document.querySelector('.table-content').innerHTML = html;
                                         sort()
+                                        
+                                        var table = $('#table-all').DataTable({
+                                            dom: 'rtp',
+                                            pageLength: 10,
+                                            ordering: false,
+                                        });
+
                                     })      
                             }
                         });
                     })
+                    
+                    document.querySelector('.nav-item a#all-link').click();
                 })
         }
     });
@@ -68,7 +120,49 @@ window.addEventListener('load', () => {
 });
 
 
+function addStudent() {
+    fetch('students/add-student.html')
+      .then(response => response.text())
+      .then(html => {
+    
+        $('.modal-container').html(html);
+  
+    
+        $('#modal-add-student').modal('show');
+  
+    
+        $('#form-add-student').on('submit', function(e) {
+          e.preventDefault();
+        });
+      });
+  }
 
+  function addPayment() {
+  fetch('students/add-payment.html')
+    .then(response => response.text())
+    .then(html => {
+
+      $('.modal-container').html(html);
+
+    
+      $('#modal-add-payment').modal('show'); // Use the correct modal ID
+
+    
+      $('#form-add-payment').on('submit', function(e) {
+        e.preventDefault()
+      });
+    });
+}
+
+function showTransaction() {
+    fetch('students/transaction.html')
+      .then(response => response.text())
+      .then(html => {
+        $('.modal-container').html(html);
+        $('#modal-transaction').modal('show'); 
+      });
+  }
+  
 
 
 function loadChart(){
@@ -105,6 +199,10 @@ function loadChart(){
         }
     });
 }
+
+
+
+
 
 // sort
 function sort(){
@@ -143,3 +241,11 @@ function sort(){
                     }
 }
 
+function toggleDropdown(id) {
+    var dropdown = document.getElementById(id);
+    if (dropdown.style.display === 'none') {
+        dropdown.style.display = 'block';
+    } else {
+        dropdown.style.display = 'none';
+    }
+    }

@@ -1,11 +1,11 @@
 <div class="sidebar">
         <div class="sidebar-heading d-flex align-items-center">
-            <img src="../images/ccs logo.jpg" alt="CCS PayNet Logo" width="50" height="50">
+            <img src="../../images/ccs_logo.png" alt="CCS PayNet Logo" width="50" height="50">
             <h3><span class="green"> CCS </span> PayNet</h3>
         </div>
 
         <div class="sidebar-org border-bottom border-top" id="genderClub">
-            <img class="img-fluid" src="../images/CCS LOGO.jpg" alt="" width="50" height="50">
+            <img class="img-fluid" src="../../images/ccs_logo.png" alt="" width="50" height="50">
             <div class="org flex-column p-2">
             <strong>Gender Club</strong>
             <small class="text-muted">email@gmail.com</small>
