@@ -269,7 +269,9 @@ body {
   #email {
     width: 375px; /* Adjust the width as needed */
   }
-
+  #password {
+    width: 375px; /* Adjust the width as needed */
+  }
   #username {
     width: 375px; /* Adjust the width as needed */
   }
@@ -315,3 +317,6 @@ body {
     background-color: #0c220c; /* Darker green for active page */
 }
 
+#reason{
+    width: 400px;
+}

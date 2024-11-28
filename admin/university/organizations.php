@@ -4,13 +4,13 @@
 <style>
     .floating-btn {
       position: fixed;
-      bottom: 20px;
-      right: 20px;
+     top: 88px;
+      right: 28px;
       background-color: #004d00;
       color: white;
       border-radius: 50%;
-      width: 56px;
-      height: 56px;
+      width: 54px;
+      height: 54px;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -26,14 +26,22 @@
 
 
 <div class="container my-4">
-    <h3 class="mb-4">Colleges</h3>
+<div class="modal-container"></div>
+                <div class="d-flex align-items-center">
+                <i class="fas fa-arrow-left back-button m-2" ></i> 
+                <img src="../../images/ccs_logo.png" alt="Logo" width="40" height="40" class="rounded-circle m-2 ml-3" >
+                <div class="d-flex flex-column" >
+                      <h5 >Organizations</h5>
+                      <h6><span style="color: #004d00;">College of Computing Studies</span></h6>
+                </div>
+                </div>
     
     <!-- Card -->
-    <div class="card shadow-sm mb-4">
+    <div class="card shadow-sm mb-4 mt-4">
         <div class="card-body d-flex align-items-center">
-            <img src="../images/ccs_logo.png" alt="Institution Logo" width="100" class="rounded-circle me-3">
+            <img src="../images/gender_club.jpg" alt="Institution Logo" width="100" class="rounded-circle me-3">
             <div class="flex-grow-1">
-                <h5 class="mb-1">College of Computing Studies</h5>
+                <h5 class="mb-1">Gender Club</h5>
                 <p class="mb-1 text-muted">
                     <i class="bi bi-people-fill me-1"></i>
                     600,003
@@ -46,12 +54,13 @@
             <ul class="dropdown-menu dropdown-menu-end">
                 <li><a class="dropdown-item" href="#">Edit</a></li>
                 <li><a class="dropdown-item" href="#">Delete</a></li>
+                <li><a id="org-overview-link" class="dropdown-item" href="#">View</a></li>
             </ul>
         </div>
     </div>
     
     <!-- Floating Add Button -->
-    <a href="#" class="floating-btn">
+    <a id="add-organization" href="#" class="floating-btn">
       <i class="bi bi-plus"></i>
     </a>
   </div>
