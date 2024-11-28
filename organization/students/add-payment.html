@@ -1,0 +1,68 @@
+<!-- Modal -->
+<div class="modal fade" id="modal-add-payment" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel"> Manual Payment </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div> 
+        <form action="" method="post" id="form-add-payment" enctype="multipart/form-data">
+            <div class="modal-body">
+                
+                <!-- Student Information -->
+                <h5>Student Information</h5>
+                <d class="d-flex mb-2">
+                        
+                         <div class="d-flex flex-column">
+                            <label for="username" class="form-label">Username</label>
+                            <div class="mb-2 m-1">
+                                <input type="text" class="form-control" id="username" name="username" placeholder="First Name">
+                                <div class="invalid-feedback"></div>
+                            </div>
+                         </div>
+
+                         <div class="mb-2 m-1">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" name="email" placeholder="Email">
+                            <div class="invalid-feedback"></div>
+                        </div>
+                </d>
+                    
+                
+                
+                <h5>Fee Information</h5>
+                <div class="d-flex">
+                    <div class="mb-2 m-1">
+                        <label for="fee_type" class="form-label">Fee Type</label>
+                        <select class="form-select" id="fee_type" name="fee_type">
+                            <option value="">Membership Fee</option>
+                            </select>
+                        <div class="invalid-feedback"></div>
+                    </div>
+                    
+                    <div class="mb-2 m-1">
+                        <label for="amount" class="form-label">Amount</label>
+                        <input type="number" class="form-control" id="amount" name="amount">
+                        <div class="invalid-feedback"></div>
+                    </div>
+    
+                    <div class="mb-2 m-1">
+                        <label for="requirement_submitted" class="form-label">Requirement Submitted</label>
+                        <select class="form-select" id="requirement_submitted" name="requirement_submitted">
+                            <option value="">--Select--</option>
+                            <option value="yes">Cor</option>
+                            <option value="no">Valid ID</option>
+                        </select>
+                        <div class="invalid-feedback"></div>
+                    </div>
+                </div>
+    
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary brand-bg-color">Save Product</button>
+        </div>
+    </form>
+</div>
+</div>
+</div>
