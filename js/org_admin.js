@@ -105,6 +105,11 @@ document.querySelectorAll('.sidebar-item a.nav-link').forEach(link => {
                                             ordering: false,
                                         });
 
+                                        document.getElementById('refund').addEventListener('click', function(e) {
+                                            e.preventDefault();
+                                            showRefund();
+                                        });
+
                                     })      
                             }
                         });
@@ -162,6 +167,15 @@ function showTransaction() {
         $('#modal-transaction').modal('show'); 
       });
   }
+
+function showRefund() {
+    fetch('students/refund_request.html')
+      .then(response => response.text())
+      .then(html => {
+        $('.modal-container').html(html);
+        $('#modal-refund').modal('show'); 
+      });
+}
   
 
 

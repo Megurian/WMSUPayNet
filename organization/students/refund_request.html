@@ -1,0 +1,140 @@
+<!-- Modal -->
+<div class="modal fade" id="modal-refund" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">Payment Refund Request </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div> 
+        <form action="" method="post" id="form-add-payment" enctype="multipart/form-data">
+            <div class="modal-body">
+                
+                <div class="container ">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4>Student Details</h4>
+                                </div>
+                                <div class="card-body">
+                                    <div class="list-group">
+                                        <div class="form-group">
+                                            <label for="reason">Name</label>
+                                            <input type="text" class="form-control" id="name" value="Alfaith Mae Luzon" readonly>
+                                        </div>
+                                        <div class="d-flex mt-3">
+                                            <div class="form-group m-1">
+                                                <label for="reason">Course</label>
+                                                <input type="text" class="form-control" id="course" value="Computer Science" readonly>
+                                            </div>
+                                            <div class="form-group m-1">
+                                                <label for="reason"> ID</label>
+                                                <input type="text" class="form-control" id="course" value="20202020" readonly>
+                                            </div>
+                                            <div class="form-group m-1">
+                                                <label for="reason"> Year</label>
+                                                <input type="text" class="form-control" id="year" value="3" readonly>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4>Payment Details</h4>
+                                </div>
+                                <div class="card-body">
+                                    <div class="list-group">
+                                        <div class="d-flex justify-content-evenly">
+                                            <div class="form-group">
+                                                <label for="reason">Amount Paid</label>
+                                                <input type="text" class="form-control" id="amount" value="500.00" readonly>
+                                            </div>
+                                            <div class="form-group ">
+                                                <label for="reason">Payment Method</label>
+                                                <input type="text" class="form-control" id="payment_method" value="Gcash" readonly>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex mt-4 justify-content-evenly">
+                                            <div class="form-group ">
+                                                <label for="reason"> GCash Name</label>
+                                                <input type="text" class="form-control" id="gcash_name" value="Alfaith Mae Luzon" readonly>
+                                            </div>
+                                            <div class="form-group ">
+                                                <label for="reason"> Gcash Number</label>
+                                                <input type="text" class="form-control" id="gcash_number" value="0927337272" readonly>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mt-3">
+                            <div class="col-md-6">
+                                <div class="card ">
+                                    <div class="card-header">
+                                        <h4>Refund Details</h4>
+                                    </div>
+                                    <div class="card-body mb-3">
+                                        <div class="form-group">
+                                            <label for="reason">Reason for Refund:</label>
+                                            <input type="text" class="form-control" id="reason" value="Incorrect Payment" readonly>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h4>Attachments</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <ul class="list-group">
+                                            <li class="list-group-item">
+                                                <a href="#" target="_blank">Screenshot 1</a>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <a href="#" target="_blank">Screenshot 2</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                 
+                     
+                     
+                
+                   <div class="row mt-4">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4>Admin Notes</h4>
+                            </div>
+                            <div class="card-body">
+                                <textarea class="form-control" rows="3"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                    <div class="row mt-4">
+                        <div class="col-md-12">
+                            <button type="button" class="btn btn-success mr-2">Approve</button>
+                            <button type="button" class="btn btn-danger">Reject</button>
+                        </div>
+                    </div>
+                </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary brand-bg-color">Save</button>
+        </div>
+    </form>
+</div>
+</div>
+</div>
