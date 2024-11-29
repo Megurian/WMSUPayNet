@@ -5,7 +5,7 @@
                   <input type="text" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="basic-addon2">
                   <span class="input-group-text" id="basic-addon2"><i class="bi bi-search"></i></span>
         </div>
-        <span class="bell rounded-square py-1 px-2 " style="display: inline-block;">
+        <span class="bell rounded-square py-1 px-2 m-3" style="display: inline-block;">
                <i class="bi bi-bell-fill fs-5 text-white"></i>
          </span>
         </div>
