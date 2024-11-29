@@ -22,6 +22,12 @@
       height: 50px;
       object-fit: cover;
     }
+
+    .card:hover {
+        border-color: #093909;
+        cursor: pointer;
+    }
+
 </style>
 
 
