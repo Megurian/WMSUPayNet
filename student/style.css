@@ -168,10 +168,9 @@
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin: 0 auto;
+    margin-top: auto;
     width: 80%;
     max-width: 900px;
-    padding: 100px 20px 20px; /* Adjusted padding to account for fixed header */
     }
 
     .settings-container .back-title h2 {
@@ -187,9 +186,26 @@
     .account-section, .support-section {
     margin-bottom: 16px;
     }
-    .support-section h2 .account-section h2 {
-    font-size: 18px;
-    color: #555;
+    
+    .account-section a{
+    color: #333;
+    text-decoration: none;
+    }
+    
+    .support-section a{
+    color: #333;
+    text-decoration: none;
+    }
+
+    .account-section h2{
+    font-size: 20px;
+    color: #093909;
+    margin-bottom: 12px;
+    }
+
+    .support-section h2  {
+    font-size: 20px;
+    color: #093909;
     margin-bottom: 12px;
     }
 
@@ -239,6 +255,99 @@
     .logout i{
     font-size: 20px;
     margin-right: 8px;
+    }
+    
+     /* report-problem */
+
+    .report-form-container {
+        background: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        width: 600px;
+        margin-top: auto;
+        border: 1px solid #093909;
+    }
+    
+    .report-form-container h2 {
+        margin-bottom: 20px;
+        font-size: 20px;
+        text-align: center;
+    }
+    
+    form {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .checkbox-group {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        margin-bottom: 20px;
+    }
+    
+    .checkbox-group label {
+        font-size: 14px;
+    }
+    
+    .textarea-group {
+        margin-bottom: 20px;
+    }
+    
+    textarea {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        resize: none;
+    }
+    
+    .attachment-group {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+    
+    .attachment-group label {
+        margin-right: 10px;
+        font-size: 14px;
+    }
+    
+    .attachment-input {
+        display: flex;
+        align-items: center;
+        position: relative;
+    }
+    
+    .attachment-input input[type="file"] {
+        width: 100%;
+        padding: 5px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 14px;
+    }
+    
+    .attachment-input .fas {
+        position: absolute;
+        right: 10px;
+        color: #888;
+    }
+    
+    .submit-btn {
+        background-color: #093909;
+        color: #fff;
+        border: 1px solid #093909;
+        padding: 10px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 14px;
+        text-align: center;
+    }
+    
+    .submit-btn:hover {
+        background-color: #ffffff;
+        color: #093909;
     }
 
     /* -------------------------------------------------- Start Org -------------------------------------------------------- */
