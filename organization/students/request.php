@@ -1,4 +1,6 @@
 <div class="container-fluid">
+<div class="modal-container"></div>
+
             <div class="table-container">
             
                 <table class="table table-striped mt-4">
@@ -21,7 +23,7 @@
                                       </button>
                                    </a>
                                     <ul class="dropdown-menu text-small">
-                                       <a class="dropdown-item" href="#">View Details</a> 
+                                       <a id="refund" class="dropdown-item" href="#">View Details</a> 
                                     </ul>
                                 </div>
                             </td>
@@ -41,7 +43,7 @@
                                       </button>
                                    </a>
                                     <ul class="dropdown-menu text-small">
-                                       <a class="dropdown-item" href="#">View Details</a> 
+                                       <a  class="dropdown-item" href="#">View Details</a> 
                                     </ul>
                                 </div>
                             </td>
