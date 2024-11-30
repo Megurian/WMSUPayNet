@@ -881,7 +881,9 @@
 
     .due-button a{
     color: #CC0001;
+    text-decoration: none;
     }
+
     .due-button a button:hover {
     background-color: #CC0001;
     color: white;
