@@ -1,5 +1,4 @@
 <div class="container-fluid">
-    <h4>Dashboard</h4>
         <div class="row">
             <!-- Top Section -->
             <div class="cards col-12 d-flex justify-content-evenly align-items-center">

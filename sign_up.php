@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="vendor/bootstrap-5.3.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="vendor//bootstrap-icons-1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="vendor/datatable-2.1.8/datatables.min.css" >
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/login.css">
 </head>
 <body>
     <div class="header d-flex align-items-center">
