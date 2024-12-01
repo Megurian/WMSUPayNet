@@ -90,6 +90,23 @@ document.querySelectorAll('.sidebar-item a.nav-link').forEach(link => {
                     document.querySelector('.nav-item a#student-list-link').click();
                 })
                 
+        }else  if (this.id === 'fees-link') {
+            fetch('fees/fees.php')
+                .then(response => response.text())
+                .then(html => {
+                    document.querySelector('.content-page').innerHTML = html;
+                    document.querySelector('.topnav-title').textContent = 'Fee Management';
+
+                    document.getElementById('view-fees').addEventListener('click', function(e) {
+                        e.preventDefault();
+                        fetch('fees/view-fees.php')
+                        .then(response => response.text())
+                        .then(html => {
+                            document.querySelector('.content-page').innerHTML = html;
+                        })
+                    });
+                })
+                
         }
         
         else {
@@ -165,5 +182,16 @@ function addStudent() {
             logoPreview.style.display = 'none';
             document.querySelector('.plus-icon').style.display = 'block';
         }
+    });
+  }
+
+  function viewFees(){
+    document.getElementById('org-overview-link').addEventListener('click', function(e) {
+        e.preventDefault();
+        fetch('fees/view-fees.php')
+        .then(response => response.text())
+        .then(html => {
+            document.querySelector('.content-page').innerHTML = html;
+        })
     });
   }
