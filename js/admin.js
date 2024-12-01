@@ -26,7 +26,7 @@ document.querySelectorAll('.sidebar-item a.nav-link').forEach(link => {
                       
                     });
 
-                    document.getElementById('organization-link').addEventListener('click', function(e) {
+                    document.getElementById('1').addEventListener('click', function(e) {
                         e.preventDefault();
                         fetch('university/organizations.php')
                         .then(response => response.text())
@@ -54,13 +54,6 @@ document.querySelectorAll('.sidebar-item a.nav-link').forEach(link => {
                             });
                         })
                     });
-
-                    
-
-                    
-
-                    
-
                     
                 })
                 

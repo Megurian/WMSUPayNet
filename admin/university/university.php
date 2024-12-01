@@ -36,7 +36,7 @@
     <h3 class="mb-4">Colleges</h3>
     
     <!-- Card -->
-    <div class="card shadow-sm mb-4">
+    <div class="card shadow-sm mb-4" id="1">
         <div class="card-body d-flex align-items-center">
             <img src="../images/ccs_logo.png" alt="Institution Logo" width="100" class="rounded-circle me-3">
             <div class="flex-grow-1">
