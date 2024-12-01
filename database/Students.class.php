@@ -4,7 +4,7 @@ require_once 'Database.php';
 class Students extends Database {
     private $table = "students";
 
-    public $user_id = '';
+    public $id = '';
     public $school_id = '';
     public $first_name = '';
     public $last_name = '';
