@@ -21,6 +21,11 @@ $religionsObj = new Religions();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registration Form</title>
+    <title>WMSU PayNet Registration</title>
+    <link rel="stylesheet" href="vendor/bootstrap-5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="vendor//bootstrap-icons-1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="vendor/datatable-2.1.8/datatables.min.css" >
+    <link rel="stylesheet" href="css/login.css">
 </head>
 <body>
     <div class="form-container">

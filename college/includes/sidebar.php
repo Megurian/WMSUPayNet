@@ -13,7 +13,7 @@
         </div>
 
         <div class="sidebar-item">
-            <a href="" id="organization-link" class="nav-link">
+            <a href="organizations" id="organizations-link" class="nav-link">
                 <i class="fa-solid fa-tent-arrow-left-right"></i>
                 Organization
             </a>
