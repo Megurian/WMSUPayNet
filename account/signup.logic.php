@@ -5,6 +5,8 @@ require_once '../database/autoload_classes.php';
 session_start();
 
 $studentObj = new Students();
+$accountObj = new Accounts();
+
 
 $StudentInfo = $_SESSION['StudentInfo'] ?? [];
 $Errors = $_SESSION['Errors'] ?? [];
@@ -99,10 +101,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     } elseif (strlen($StudentInfo['password']) < 8) {
         $Errors['password'] = 'Enter atleast 8 characters password';
     } elseif (
-        !preg_match('/[0-9]/', $password) ||
-        !preg_match('/[A-Z]/', $password) ||
-        !preg_match('/[a-z]/', $password) ||
-        !preg_match('/[^a-zA-Z\d]/', $password)
+        !preg_match('/[0-9]/', $StudentInfo['password']) ||
+        !preg_match('/[A-Z]/', $StudentInfo['password']) ||
+        !preg_match('/[a-z]/', $StudentInfo['password']) ||
+        !preg_match('/[^a-zA-Z\d]/', $StudentInfo['password'])
     ) {
         $Errors['password'] = 'Password must contain at least 1 number, 1 uppercase, 1 lowercase, 1 special';
     } elseif (
@@ -113,18 +115,28 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         strpos($StudentInfo['password'], $StudentInfo['school_id']) !== false
     ) {
         $Errors['password'] = 'Weak password, please try a different password';
-    } elseif (empty($StudentInfo['confirm-password'])) {
+    } elseif (empty($StudentInfo['confirm_password'])) {
         $Errors['confirm_password'] = 'Please confirm your password';
-    } elseif ($StudentInfo['confirm-password'] != $StudentInfo['password']) {
+    } elseif ($StudentInfo['confirm_password'] != $StudentInfo['password']) {
         $Errors['confirm_password'] = 'Password does not match!';
     }
 
     if (empty($Errors)) {
         if($studentObj->verifyStudent($StudentInfo['school_id'], $StudentInfo['first_name'], $StudentInfo['last_name'], $StudentInfo['college'], $StudentInfo['course'])){
-            echo "<script type='text/javascript'>alert('Student Exist');</script>";
-            header('location: ..\sign_up.php');
+
+            $encrytedPassword = password_hash($StudentInfo['confirm_password'], PASSWORD_ARGON2ID,['memory_cost' => 2048, 'time_cost' => 4, 'threads' => 2]);
+            $username = extractUsername($StudentInfo['email']);
+            $role = 'Student';
+            try{
+                $accountObj->createAccount($StudentInfo['school_id'], $username, $StudentInfo['email'], $encrytedPassword, $role, $StudentInfo['college']);
+                header('location: ..\login.php');
+            }catch(PDOException){
+                echo 'Caught exception: ', $e->getMessage(), "\n";
+            }
+            /* echo "<script type='text/javascript'>alert('Student Exist');</script>";
+            print_r($StudentInfo); */
         }else{
-            echo "<script type='text/javascript'>alert('More To Go');</script>";
+            echo "<script type='text/javascript'>alert('Unable to signup, not an enrolled student.');</script>";
             header('location: ..\sign_up.php');
         }
     } else {
