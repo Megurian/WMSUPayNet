@@ -115,6 +115,32 @@ function addStudent() {
       });
   }
 
+  function addOrg() {
+    fetch('organization/add-organization.html')
+      .then(response => response.text())
+      .then(html => {
+    
+        $('.modal-container').html(html);
+        $('#modal-add-organization').modal('show');
+        $('#form-add-organization').on('submit', function(e) {
+          e.preventDefault();
+        });
+      });
+  }
+
+  function createAdmin() {
+    fetch('organization/add-admin.html')
+      .then(response => response.text())
+      .then(html => {
+    
+        $('.modal-container').html(html);
+        $('#modal-create-admin').modal('show');
+        $('#form-create-admin').on('submit', function(e) {
+          e.preventDefault();
+        });
+      });
+  }
+
   function goBack() {
     window.history.back();
   }
