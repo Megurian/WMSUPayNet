@@ -6,6 +6,32 @@ function clean_input($input) {
     return $input; //return the now sanitize input
 }
 
+function sentenceCase($input){
+    if(strpos($input, ' ') !== false){
+        $string = implode(' ', array_map('ucfirst', explode(' ', $input)));
+        return $string;
+    }else{
+        return ucfirst($input);
+    }
+}
+
+function removeDashChar($input){
+    if(strpos($input, '-') !== false){
+        $string = str_replace('-', '', $input);
+        return $string;
+    }else{
+        return $input;
+    }
+}
+
+function detectNumber($string) {
+    if (preg_match_all('/\d+/', $string, $matches) > 0) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
 function extractUsername($email) {
     // Use explode to split the email at the '@' character
     $parts = explode('@', $email);
@@ -18,17 +44,5 @@ function extractUsername($email) {
 
     // Return the capitalized username
     return $capitalizedUsername;
-}
-
-function modifiedPasswordHashing($password, $salt) {
-    $pepper = 'SaltnPaperGoesWell';
-    $options = [
-        'cost' => 15    //this set the computational expense
-    ];
-
-    $encrypted = hash('sha256', $password . $salt . $pepper);
-    $encrypted = password_hash($encrypted, PASSWORD_DEFAULT, $options);
-    
-    return $encrypted;
 }
 
