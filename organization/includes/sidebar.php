@@ -27,28 +27,28 @@
         </div>
 
         <div class="sidebar-item">
-           <a href="" id="fees" class="nav-link">
+           <a href="" id="fees-link" class="nav-link">
                <i class="bi bi-credit-card-2-front"></i>
                Fees
            </a>
         </div>
 
         <div class="sidebar-item" >
-            <a href="" id="logs" class="nav-link">
+            <a href="" id="logs-link" class="nav-link">
                 <i class="bi bi-clock"></i>
                 Logs
             </a>
         </div>
 
         <div class="sidebar-item">
-            <a href="" id="report" class="nav-link">
+            <a href="" id="report-link" class="nav-link">
                 <i class="bi bi-flag-fill"></i>
                  Report
             </a>
         </div>
 
         <div class="sidebar-item" >
-            <a href="" id="settings" class="nav-link">
+            <a href="" id="settings-link" class="nav-link">
             <i class="bi bi-gear-fill"></i>
             Settings
             </a>
