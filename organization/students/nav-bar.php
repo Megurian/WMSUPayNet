@@ -1,5 +1,5 @@
 <div class="container-fluid">
-    <h4> Student Payments</h4>
+   
     <div class="nav">
 
         <div class="nav-item">

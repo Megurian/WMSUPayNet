@@ -12,6 +12,7 @@ document.querySelectorAll('.sidebar-item a.nav-link').forEach(link => {
                 .then(html => {
                     document.querySelector('.content-page').innerHTML = html;
                     loadChart()
+                    document.querySelector('.topnav-title').textContent = 'Dashboard';
                 })
                 
         }else if (this.id === 'student-link') {
@@ -19,6 +20,7 @@ document.querySelectorAll('.sidebar-item a.nav-link').forEach(link => {
                 .then(response => response.text())
                 .then(html => {
                     document.querySelector('.content-page').innerHTML = html;
+                    document.querySelector('.topnav-title').textContent = 'Student Payments';
 
                     document.querySelectorAll('.nav-item a.navi-link').forEach(link => {
                         link.addEventListener('click', function(e) {

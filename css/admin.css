@@ -275,3 +275,30 @@ textarea {
 #password {
   width: 375px; /* Adjust the width as needed */
 }
+
+/* Target the pagination container */
+.dt-container div.dt-paging ul.pagination {
+  /* ... your existing styles ... */
+  margin-top: 10px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.dt-container div.dt-paging ul.pagination li a {
+  background-color: #093909; /* Your desired background color */
+  color: white; /* Your desired text color */
+  border: none; /* Remove default border */
+  padding: 8px 12px; /* Adjust padding as needed */
+  border-radius: 5px; /* Add rounded corners if desired */
+  text-decoration: none; /* Remove underline */
+}
+
+/* Hover effect (optional) */
+.dt-container div.dt-paging ul.pagination li a:hover {
+  background-color: #0c220c; /* Darker green on hover */
+}
+
+/* Active page (optional) */
+.dt-container div.dt-paging ul.pagination li.active a {
+  background-color: #0c220c; /* Darker green for active page */
+}

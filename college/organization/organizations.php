@@ -28,7 +28,6 @@
 <div class="container my-4">
 <div class="modal-container"></div>
                 <div class="d-flex align-items-center">
-                <i class="fas fa-arrow-left back-button m-2"></i> 
                 <img src="../../images/ccs_logo.png" alt="Logo" width="40" height="40" class="rounded-circle m-2 ml-3" >
                 <div class="d-flex flex-column" >
                       <h5 >Organizations</h5>
