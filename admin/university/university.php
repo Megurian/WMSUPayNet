@@ -36,10 +36,10 @@
     <h3 class="mb-4">Colleges</h3>
     
     <!-- Card -->
-    <div class="card shadow-sm mb-4" id="1">
+    <div class="card shadow-sm mb-4">
         <div class="card-body d-flex align-items-center">
             <img src="../images/ccs_logo.png" alt="Institution Logo" width="100" class="rounded-circle me-3">
-            <div class="flex-grow-1">
+            <div class="flex-grow-1" id="1">
                 <h5 class="mb-1">College of Computing Studies</h5>
                 <p class="mb-1 text-muted">
                     <i class="bi bi-people-fill me-1"></i>
@@ -53,7 +53,6 @@
             <ul class="dropdown-menu dropdown-menu-end">
                 <li><a class="dropdown-item" href="#">Edit</a></li>
                 <li><a class="dropdown-item" href="#">Delete</a></li>
-                <li><a id="organization-link" class="dropdown-item" href="#">View</a></li>
             </ul>
         </div>
     </div>
