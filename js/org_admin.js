@@ -147,6 +147,11 @@ document.querySelectorAll('.sidebar-item a.nav-link').forEach(link => {
                 .then(html => {
                     document.querySelector('.content-page').innerHTML = html;
                     document.querySelector('.topnav-title').textContent = 'Report';
+                    var table = $('#table-all').DataTable({
+                        dom: 'rtp',
+                        pageLength: 10,
+                        ordering: false,
+                    });
 
                     document.getElementById('report-form').addEventListener('click', function(e) {
                         e.preventDefault();
@@ -213,7 +218,22 @@ document.querySelectorAll('.sidebar-item a.nav-link').forEach(link => {
                                             e.preventDefault();
                                             addOrg()
                                         });
+
+                                        document.getElementById('bug-report').addEventListener('click', function(e) {
+                                            e.preventDefault();
+                                            bugReport()
+                                        });
                                         
+                                    })
+                            }else if (this.id === 'roles-link') {
+                                fetch('settings/roles.php')
+                                    .then(response => response.text())
+                                    .then(html => {
+                                        document.querySelector('.settings-content').innerHTML = html;
+                                        document.getElementById('create-admin').addEventListener('click', function(e) {
+                                            e.preventDefault();
+                                            createAdmin();
+                                        });
                                     })
                             }
                         });
@@ -239,6 +259,20 @@ function addOrg() {
         });
       });
   }
+
+  function bugReport() {
+    fetch('settings/setting_modals.html')
+      .then(response => response.text())
+      .then(html => {
+    
+        $('.modal-container').html(html);
+        $('#modal-bug-report').modal('show');
+        $('#form-bug-report').on('submit', function(e) {
+          e.preventDefault();
+        });
+      });
+  }
+
 function editAdmin(){
     fetch('settings/setting_modals.html')
     .then(response => response.text())
@@ -454,6 +488,11 @@ function toggleDropdown(id) {
             .then(html => {
                 document.querySelector('.content-page').innerHTML = html;
                 document.querySelector('.topnav-title').textContent = 'Report';
+                var table = $('#table-all').DataTable({
+                    dom: 'rtp',
+                    pageLength: 10,
+                    ordering: false,
+                });
             })
         });
       }
@@ -479,5 +518,17 @@ function toggleDropdown(id) {
         
             $('.modal-container').html(html);
             $('#modal-download-report').modal('show');
+          });
+      }
+      function createAdmin() {
+        fetch('settings/setting_modals.html')
+          .then(response => response.text())
+          .then(html => {
+        
+            $('.modal-container').html(html);
+            $('#modal-create-admin').modal('show');
+            $('#form-create-admin').on('submit', function(e) {
+              e.preventDefault();
+            });
           });
       }
