@@ -35,7 +35,6 @@ document.querySelectorAll('.sidebar-item a.nav-link').forEach(link => {
                                     .then(html => {
                                         document.querySelector('.table-content').innerHTML = html;
                                         sort()
-                                        
                                         var table = $('#table-all').DataTable({
                                             dom: 'rtp',
                                             pageLength: 10,
@@ -45,6 +44,10 @@ document.querySelectorAll('.sidebar-item a.nav-link').forEach(link => {
                                         document.getElementById('transaction').addEventListener('click', function(e) {
                                             e.preventDefault();
                                             showTransaction();
+                                        });
+                                        document.getElementById('attachment-link').addEventListener('click', function(e) {
+                                            e.preventDefault();
+                                            viewAttachment()
                                         });
                                     })
                             }else if (this.id === 'manual-link') {
@@ -257,6 +260,16 @@ function addOrg() {
         $('#form-add-organization').on('submit', function(e) {
           e.preventDefault();
         });
+      });
+  }
+  function viewAttachment() {
+    fetch('students/attachment.html')
+      .then(response => response.text())
+      .then(html => {
+    
+        $('.modal-container').html(html);
+        $('#modal-attachment').modal('show');
+       
       });
   }
 

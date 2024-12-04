@@ -1,5 +1,5 @@
 <div class="container-fluid">
-    <div class="row justify-content-evenly mt-3">
+    <div class="row mt-4">
         <div class="col-md-3">
             <div class="card bg-white-green ">
                 <div class="card-body p-4 ">
@@ -29,14 +29,34 @@
                 </div>
             </div>
         </div>
+
+        <div class="col-md-3">
+            <div class="card bg-dark-green ">
+                <div class="card-body  p-3  ">
+                    <div class="d-flex justify-content-between align-items-center px-2">
+                        <small class="text-white"> Failed Transaction</small>
+                        <small class="text-white"> 0</small>
+                    </div>
+                </div>
+            </div>
+            <div class="card bg-dark-green mt-3">
+                <div class="card-body  p-3  ">
+                    <div class="d-flex justify-content-between align-items-center px-2">
+                        <small class="text-white"> Pending Transaction</small>
+                        <small class="text-white"> 0</small>
+                    </div>
+                </div>
+            </div>
+        </div>
         
-        <div class="col-md-4">
+        <div class="col-md-3">
             <div class="card bg-white-green text-white">
-                <div class="card-body p-3">
+                <div class="card-body p-2">
                     <div class="d-flex justify-content-between align-items-center">
                         <h5 class="card-title text-black">Recent</h5>
                         <i class="bi bi-bell-fill fs-5 text-black"></i>
                     </div>
+                    <div class="col-md-14">
                     <ul class="list-group list-group-flush ">
                         <li class="list-group-item border py-1 pb-0">
                             <div class="d-flex justify-content-between align-items-center px-0">
@@ -53,6 +73,7 @@
                             </div>
                         </li>
                     </ul>
+                    </div>
                 </div>
             </div>
         </div>

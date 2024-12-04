@@ -74,7 +74,7 @@
                             <td>2nd Year</td>
                             <td class="status-unpaid">Unpaid</td>
                             <td>Manual</td>
-                            <td class="status-unpaid">Promissory Note</td>
+                            <td class="status-unpaid" id="attachment-link">Promissory Note</td>
                             <td>-</td>
                             <td>
                                 <div class="dropdown text-end border-0 bgreen">

@@ -419,3 +419,7 @@ h4{
     border-radius: 50%;
     cursor: pointer;
 }
+#attachment-link{
+    text-decoration: underline;
+    cursor: pointer;
+}
