@@ -19,7 +19,7 @@
             <div class="logo">
                 <img src="/images/wmsu_logo.png" alt="WMSU Logo">
             </div>
-            <form class="login-form" action="/student/dashboard.html">
+            <form class="login-form" action="account/login.logic.php" method="post">
                 <div class="form-group">
                     <label for="email">Email / Username</label>
                     <input type="text" id="email" name="email" required>
