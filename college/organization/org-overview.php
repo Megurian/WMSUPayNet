@@ -15,7 +15,7 @@
             <div class="table-container">
                
                 <div class="table-responsive">
-                    <div class="d-flex justify-content-between align-items-center mb-2 ">
+                    <div class="d-flex justify-content-between align-items-center mt-4 mb-2 ">
                             <h5> Admin </h5>
                             <button id="create-admin" class="btn bgreen btn-sm"> Create Admin</button>
                     </div>

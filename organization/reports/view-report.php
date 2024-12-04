@@ -1,6 +1,6 @@
 <div class="container-fluid mt-3 mb-2">
     <div class="modal-container"></div>
-        <div class="row mb-3 border py-2 align-items-center">
+        <div class="row mb-3 border rounded py-2 align-items-center">
             <div class="col-md-1">
                 <a href="#" class="text-dark"><i class="fa fa-arrow-left"></i></a>
             </div>
@@ -41,8 +41,8 @@
                 </div>
 
         </div>
-        <div class="row border border-success">
-            <div class="col-md-12">
+        <div class="row border border-success rounded">
+            <div class="col-md-12 p-0 ">
                 <table class="table border table-striped">
                     <thead>
                         <tr>

@@ -1,5 +1,5 @@
 <div class="container-fluid mt-3 mb-2">
-        <div class="row mb-3 border py-2 align-items-center">
+        <div class="row mb-3 border rounded py-2 align-items-center">
             <div class="col-md-1">
                 <a href="#" class="text-dark"><i class="fa fa-arrow-left"></i></a>
             </div>
@@ -40,9 +40,9 @@
                 </div>
 
         </div>
-        <div class="row border border-success">
-            <div class="col-md-12">
-                <table class="table border table-striped">
+        <div class="row border border-success rounded">
+            <div class="table-container p-0">
+                <table id="table-all" class="table border table-striped">
                 <thead>
                         <tr>
                             <th scope="col">Date</th>
