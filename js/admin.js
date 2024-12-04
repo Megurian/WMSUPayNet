@@ -94,15 +94,3 @@ function addCollege() {
       });
   }
 
-  function createAdmin() {
-    fetch('university/add-admin.html')
-      .then(response => response.text())
-      .then(html => {
-    
-        $('.modal-container').html(html);
-        $('#modal-create-admin').modal('show');
-        $('#form-create-admin').on('submit', function(e) {
-          e.preventDefault();
-        });
-      });
-  }

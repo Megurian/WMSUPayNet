@@ -2,8 +2,8 @@
 .topnav {
     position: fixed;
     top: 0;
-    left: 250px; /* Adjust for sidebar width */
-    width: calc(100% - 200px); /* Adjust for sidebar width */
+    left: 230px; /* Adjust for sidebar width */
+    width: calc(100% - 200px); 
     height: 60px;
     background-color: #fff;
     display: flex;
@@ -14,8 +14,8 @@
 }
 
 .content-page {
-    margin-left: 235px; /* Adjust for sidebar width */
-    margin-top: 50px; /* Adjust for topnav height */
+    margin-left: 230px; 
+    margin-top: 50px;
     padding: 20px;
 }
 
@@ -23,13 +23,14 @@
 .sidebar {
     background-color: #f8f9fa;
     height: 100vh;
-    width: 250px;
+    width: 230px;
     position: fixed;
     top: 0;
     left: 0;
     padding: 20px;
     z-index: 1;
 }
+
 
 .nav{
     display: flex;
@@ -101,11 +102,11 @@
     cursor: pointer;
 }
 .card-small.bg-dark-green {
-    background-color: #093909; /* Dark Green */
+    background-color: #093909;
 }
 
 .card.bg-dark-green {
-    background-color: #093909; /* Dark Green */
+    background-color: #093909; 
 }
 
 .card.bg-white-green{
@@ -204,7 +205,7 @@ body {
     height: 0;
     border-left: 5px solid transparent;
     border-right: 5px solid transparent;
-    border-bottom: 5px solid black; /* Default arrow direction */
+    border-bottom: 5px solid black; 
   }
   
   .sort-icon.asc {
@@ -229,14 +230,14 @@ body {
     border-bottom: 1px solid #ddd;
     }
     .table-container th {
-    background-color: #28a745; /* Green */
+    background-color: #28a745;
     color: white;
     }
     .table-container td {
     font-size: 14px;
     }
     .table-container .status-paid {
-    color: #28a745; /* Green */
+    color: #28a745; 
     }
     .table-container .status-unpaid {
     color: red;
@@ -251,7 +252,7 @@ body {
     margin-bottom: 20px;
     }
     .action-button {
-    background-color: #28a745; /* Green */
+    background-color: #28a745; 
     color: white;
     border: none;
     padding: 8px 12px;
@@ -259,7 +260,7 @@ body {
     cursor: pointer;
     }
     .action-button:hover {
-    background-color: #218838; /* Darker Green */
+    background-color: #218838; 
     }
 
    table tr td.gray{
@@ -267,13 +268,13 @@ body {
   }
   
   #email {
-    width: 375px; /* Adjust the width as needed */
+    width: 375px; 
   }
   #password {
-    width: 375px; /* Adjust the width as needed */
+    width: 375px;
   }
   #username {
-    width: 375px; /* Adjust the width as needed */
+    width: 375px; 
   }
 
   #course {
@@ -285,38 +286,140 @@ body {
   }
 
   #fee_type {
-    width: 360px; /* Adjust the width as needed */
+    width: 360px; 
   }
 
  
 
- /* Target the pagination container */
 .dt-container div.dt-paging ul.pagination {
-    /* ... your existing styles ... */
+  
     margin-top: 10px;
     display: flex;
     justify-content: flex-end;
 }
 
 .dt-container div.dt-paging ul.pagination li a {
-    background-color: #093909; /* Your desired background color */
-    color: white; /* Your desired text color */
-    border: none; /* Remove default border */
-    padding: 8px 12px; /* Adjust padding as needed */
-    border-radius: 5px; /* Add rounded corners if desired */
-    text-decoration: none; /* Remove underline */
+    background-color: #093909; 
+    color: white; 
+    border: none;
+    padding: 8px 12px; 
+    border-radius: 5px; 
+    text-decoration: none; 
 }
 
-/* Hover effect (optional) */
+
 .dt-container div.dt-paging ul.pagination li a:hover {
-    background-color: #0c220c; /* Darker green on hover */
+    background-color: #0c220c; 
 }
 
-/* Active page (optional) */
+
 .dt-container div.dt-paging ul.pagination li.active a {
-    background-color: #0c220c; /* Darker green for active page */
+    background-color: #0c220c; 
 }
 
 #reason{
     width: 400px;
+}
+
+table thead.nohead{
+    display: none;
+}
+
+.text-black{
+    color: black;
+}
+
+#course{
+    width: 200px;
+}
+
+.card-header.bg-green{
+    background-color: #093909;
+    color: white;
+    border: 1px solid;
+}
+
+.card-body.br-green{
+    border:1px solid  #093909 ;
+}
+
+.card.br-green{
+    border:1px solid  #093909 ;
+}
+h4{
+    width: 100%;
+}
+.table-container.brd-green{
+    border:1px solid  #093909 ;
+}
+
+.row.brd-green{
+    border:1px solid  #093909 ;
+}
+
+.subnav{
+    display: flex;
+
+    border-bottom: #e7e7e7 1px solid;
+}
+.subnav .subnav-item{
+    padding: 10px 25px;
+}
+.subnav .subnav-item a{
+    text-decoration: none;
+    color: #0c220c;
+}
+.subnav-item > a.link-active, .subnav-item> a:focus {
+    color: #0c220c; 
+    width: 100%;
+    font-weight: bold;
+    padding-bottom: 10px;
+    border-bottom: #093909 1px solid;
+}
+
+.logo-container {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 auto;
+    border: 2px dashed #ccc;
+}
+
+.logo-container input[type="file"] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.logo-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.logo-container .plus-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 3em;
+    color: #ccc;
+}
+
+.color-swatch {
+    width: 30px;
+    height: 30px;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    cursor: pointer;
+}
+#attachment-link{
+    text-decoration: underline;
+    cursor: pointer;
 }

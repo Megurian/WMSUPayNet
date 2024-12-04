@@ -2,8 +2,8 @@
 .topnav {
     position: fixed;
     top: 0;
-    left: 250px; /* Adjust for sidebar width */
-    width: calc(100% - 200px); /* Adjust for sidebar width */
+    left: 230px; 
+    width: calc(100% - 200px); 
     height: 60px;
     background-color: #fff;
     display: flex;
@@ -14,8 +14,8 @@
 }
 
 .content-page {
-    margin-left: 235px; /* Adjust for sidebar width */
-    margin-top: 50px; /* Adjust for topnav height */
+    margin-left: 230px; 
+    margin-top: 50px; 
     padding: 20px;
 }
 
@@ -23,7 +23,7 @@
 .sidebar {
     background-color: #f8f9fa;
     height: 100vh;
-    width: 250px;
+    width: 230px;
     position: fixed;
     top: 0;
     left: 0;
@@ -101,11 +101,11 @@
     cursor: pointer;
 }
 .card-small.bg-dark-green {
-    background-color: #093909; /* Dark Green */
+    background-color: #093909;
 }
 
 .card.bg-dark-green {
-    background-color: #093909; /* Dark Green */
+    background-color: #093909; 
 }
 
 .card.bg-white-green{
@@ -162,4 +162,107 @@ body {
 }
 .header span{
     font-size: 30px;
+}
+
+.back-button{
+    cursor: pointer;
+}
+
+.logo-container {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 auto;
+    border: 2px dashed #ccc;
+}
+
+.logo-container input[type="file"] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.logo-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.logo-container .plus-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 3em;
+    color: #ccc;
+}
+
+.dt-container div.dt-paging ul.pagination {
+
+    margin-top: 10px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.dt-container div.dt-paging ul.pagination li a {
+    background-color: #093909; 
+    color: white; 
+    border: none;
+    padding: 8px 12px; 
+    border-radius: 5px; 
+    text-decoration: none; 
+}
+
+
+.dt-container div.dt-paging ul.pagination li a:hover {
+    background-color: #0c220c; 
+}
+
+.dt-container div.dt-paging ul.pagination li.active a {
+    background-color: #0c220c; 
+}
+h4.topnav-title{
+    width: 100%;
+}
+
+table thead.nohead{
+    display: none;
+}
+
+.text-black{
+    color: black;
+}
+
+#course{
+    width: 200px;
+}
+
+.card-header.bg-green{
+    background-color: #093909;
+    color: white;
+    border: 1px solid;
+}
+
+.card-body.br-green{
+    border:1px solid  #093909 ;
+}
+
+.card.br-green{
+    border:1px solid  #093909 ;
+}
+h4{
+    width: 100%;
+}
+.table-container.brd-green{
+    border:1px solid  #093909 ;
+}
+
+.row.brd-green{
+    border:1px solid  #093909 ;
 }

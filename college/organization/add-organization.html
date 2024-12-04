@@ -1,0 +1,77 @@
+<!-- Modal -->
+<div class="modal fade" id="modal-add-organization" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel"> Organization Details</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div> 
+        <form action="" method="post" id="form-add-organization" enctype="multipart/form-data">
+            <div class="modal-body">
+
+                    <div class="card-body">
+                            
+                        <div class="d-flex">
+                            <div class="col-md-5">
+                                <div class="form-group">
+                                    <label for="logo">Upload Logo</label>
+                                    <div class="logo-container mt-2" id="upload">
+                                        <input type="file" id="logo-input" accept="image/*">
+                                        <img id="logo-preview" src="#" alt="Logo Preview" style="display: none;" >
+                                        <i class="fas fa-plus plus-icon"></i>
+                                    </div>
+                                </div>
+                            </div>
+
+                        <div class="col-md-12 mb-2">
+                            <div class="col-md-6 mb-2">
+                                <div class="form-group">
+                                    <label for="collegeName">Organization Name:</label>
+                                    <input type="text" class="form-control" id="collegeName" placeholder="Enter Organization Name">
+                                </div>
+                            </div>
+                                <div class="col-md-6 mb-2">
+                                    <div class="form-group">
+                                        <label for="contactNo">Contact No.:</label>
+                                        <input type="tel" class="form-control" id="contactNo" placeholder="Enter Contact Number">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-2">
+                                    <div class="form-group">
+                                        <label for="email">Email Address:</label>
+                                        <input type="email" class="form-control" id="email" placeholder="Enter Email Address">
+                                    </div>
+                                </div>
+                            
+                        </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="contactNo">Description</label>
+                                    <textarea type="text" class="form-control" id="description" placeholder="Description"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                       
+                    </div>
+             
+
+        </div>
+        <div class="modal-footer">
+            <!-- <div class="form-group d-flex align-items-center ">
+                <label for="insert">Insert:</label>
+                <div class="input-group ">
+                    <input type="number" class="form-control" id="insert" value="2" min="2">
+                </div>
+            </div> -->
+            <div class="buttons">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="" class="btn bgreen">Next</button>
+            </div>
+        </div>
+    </form>
+</div>
+</div>
+</div>
