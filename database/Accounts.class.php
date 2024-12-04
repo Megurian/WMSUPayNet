@@ -30,6 +30,57 @@ class Accounts extends Database {
         }
     }
 
+    function userLogin($email, $username, $password) {
+        $sql = "SELECT * FROM $this->table WHERE ";
+
+        //decide whether username/email to use
+        if(!is_null($email)) {
+            $sql .= "email = :email LIMIT 1;";
+            $prepQuery = $this->pdo->prepare($sql);
+            $prepQuery->bindParam(':email', $email);
+        } elseif (!is_null($username)) {
+            $sql .= "username = :username LIMIT 1;";
+            $prepQuery = $this->pdo->prepare($sql);
+            $prepQuery->bindParam(':username', $username);
+        } else {
+            return false;
+        }
+
+        if($prepQuery->execute()) {
+            $data = $prepQuery->fetch();
+            if($data && password_verify($password, $data['password'])) {
+                
+                return true;
+            }
+        }
+
+        return false; 
+    }
+
+    function fetchUser($email, $username){
+        $sql = "SELECT * FROM $this->table WHERE ";
+
+        if(!is_null($email)) {
+            $sql .= "email = :email LIMIT 1;";
+            $prepQuery = $this->pdo->prepare($sql);
+            $prepQuery->bindParam(':email', $email);
+        } elseif (!is_null($username)) {
+            $sql .= "username = :username LIMIT 1;";
+            $prepQuery = $this->pdo->prepare($sql);
+            $prepQuery->bindParam(':username', $username);
+        } else {
+            return false;
+        }
+
+
+        $data = null;
+        if($prepQuery->execute()){
+            $data = $prepQuery->fetch();
+        }
+
+        return $data;
+    }
+
 }
 
 $obj = new Students();
