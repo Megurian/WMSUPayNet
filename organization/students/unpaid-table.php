@@ -22,7 +22,7 @@
             </div>
 
                
-                <table id="table-all" class="table table-striped mt-5">
+                <table id="table-all" class="table table-striped ">
                     <thead>
                         <tr>
                             <th class="sort-column" data-sort-by="name">Name <span class="sort-icon"></span></th>

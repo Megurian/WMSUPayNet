@@ -2,7 +2,7 @@
 .topnav {
     position: fixed;
     top: 0;
-    left: 250px; /* Adjust for sidebar width */
+    left: 230px; /* Adjust for sidebar width */
     width: calc(100% - 200px); /* Adjust for sidebar width */
     height: 60px;
     background-color: #fff;
@@ -14,7 +14,7 @@
 }
 
 .content-page {
-    margin-left: 235px; /* Adjust for sidebar width */
+    margin-left: 230px; /* Adjust for sidebar width */
     margin-top: 50px; /* Adjust for topnav height */
     padding: 20px;
 }
@@ -23,7 +23,7 @@
 .sidebar {
     background-color: #f8f9fa;
     height: 100vh;
-    width: 250px;
+    width: 230px;
     position: fixed;
     top: 0;
     left: 0;
@@ -242,4 +242,28 @@ table thead.nohead{
 
 #course{
     width: 200px;
+}
+
+.card-header.bg-green{
+    background-color: #093909;
+    color: white;
+    border: 1px solid;
+}
+
+.card-body.br-green{
+    border:1px solid  #093909 ;
+}
+
+.card.br-green{
+    border:1px solid  #093909 ;
+}
+h4{
+    width: 100%;
+}
+.table-container.brd-green{
+    border:1px solid  #093909 ;
+}
+
+.row.brd-green{
+    border:1px solid  #093909 ;
 }
