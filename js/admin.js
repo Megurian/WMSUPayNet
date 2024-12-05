@@ -22,7 +22,13 @@ document.querySelectorAll('.sidebar-item a.nav-link').forEach(link => {
                 
                 document.getElementById('add-college').addEventListener('click', function(e) {
                     e.preventDefault();
-                    addCollege();
+                    fetch('university/add-college.html')
+                    .then(response => response.text())
+                    .then(html => {
+                        $('.modal-container').html(html);
+                        $('#addCollegeModal').modal('show');
+                        addCollege();
+                    });
                 });
 
                 document.getElementById('1').addEventListener('click', function(e) {
@@ -35,7 +41,7 @@ document.querySelectorAll('.sidebar-item a.nav-link').forEach(link => {
                         
                         document.getElementById('create-admin').addEventListener('click', function(e) {
                             e.preventDefault();
-                            createAdmin();
+                            
                         });
 
                         document.getElementById('org-overview-link').addEventListener('click', function(e) {
@@ -66,27 +72,49 @@ window.addEventListener('load', () => {
 });
 
 function addCollege() {
-    fetch('university/add-college.html')
-      .then(response => response.text())
-      .then(html => {
     
-        $('.modal-container').html(html);
-        $('#modal-add-college').modal('show');
-        $('#form-add-college').on('submit', function(e) {
-          e.preventDefault();
-        });
-      });
   }
 
-  function createAdmin() {
-    fetch('university/add-college.html')
-        .then(response => response.text())
-        .then(html => {
+function createAdmin() {
+fetch('university/add-college.html')
+    .then(response => response.text())
+    .then(html => {
+
+    $('.modal-container').html(html);
+    $('#modal-create-admin').modal('show');
+    $('#form-create-admin').on('submit', function(e) {
+        e.preventDefault();
+    });
+    });
+}
+
+function addCollege() {
+    $('#form-add-college').submit(function(e) {
+        e.preventDefault();
+
+        // Create FormData object to handle form data and file upload
+        const formData = new FormData(this);
+        
+        $.ajax({
+            url: 'university/addCollege.php',
+            type: 'post',
+            data: formData,
+            processData: false, // Prevent jQuery from automatically transforming data into a query string
+            contentType: false, // Prevent jQuery from setting content type
+            success: function(response) {
+                const res = JSON.parse(response);
     
-        $('.modal-container').html(html);
-        $('#modal-create-admin').modal('show');
-        $('#form-create-admin').on('submit', function(e) {
-            e.preventDefault();
+                if (res.status === 'error') {
+                    alert(res.message);
+                } else {
+                    alert(res.message);
+                    $('#form-add-college')[0].reset(); // Reset form fields
+                    $('#modal-add-college').modal('hide'); // Close modal
+                }
+            },
+            error: function() {
+                alert('An error occurred while processing the request.');
+            }
         });
-        });
-    }
+    });
+}
