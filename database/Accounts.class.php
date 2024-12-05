@@ -13,8 +13,10 @@ class Accounts extends Database {
 
 
     public function createAccount($student_id = null, $username, $email, $password, $role, $college_id) {
-        $sql = "INSERT INTO $this->table (student_id, username, email, password, role, college_id) VALUES (:student_id, :username, :email, :password, :role, :college_id)";
+        $sql = "INSERT INTO $this->table (student_id, username, email, password, role, college_id) 
+                VALUES (:student_id, :username, :email, :password, :role, :college_id)";
         $stmt = $this->pdo->prepare($sql);
+
         try {
             $stmt->execute([
                 ':student_id' => $student_id,
@@ -24,8 +26,17 @@ class Accounts extends Database {
                 ':role' => $role,
                 ':college_id' => $college_id
             ]);
+
+            $lastInsertId = $this->pdo->lastInsertId();
+
+            $updateSql  = "UPDATE $this->table SET is_registered = 1 WHERE id = :lastInsertId";
+            $updateStmt  = $this->pdo->prepare($updateSql );
+            $updateStmt->execute([
+                ':lastInsertId' => $lastInsertId]);
+
             return true; // Return true if the insert was successful
         } catch (PDOException $e) {
+            error_log("Database error: " . $e->getMessage());
             return false; // Return false if there was an error
         }
     }

@@ -46,3 +46,21 @@ function extractUsername($email) {
     return $capitalizedUsername;
 }
 
+function getAbbreviation($string) {
+    // Words to ignore
+    $ignoreWords = ['of', 'and'];
+
+    // Split the string into words
+    $words = explode(' ', $string);
+
+    // Extract the first letter of each word, ignoring specific words
+    $abbreviation = '';
+    foreach ($words as $word) {
+        $word = trim($word); // Remove any extra spaces
+        if (!empty($word) && !in_array(strtolower($word), $ignoreWords)) { // Ignore "of" and "and"
+            $abbreviation .= strtoupper($word[0]); // Take the first letter and capitalize it
+        }
+    }
+
+    return $abbreviation;
+}

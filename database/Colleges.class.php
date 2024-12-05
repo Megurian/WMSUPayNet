@@ -5,11 +5,19 @@ class Colleges extends Database {
     private $table = "colleges";
 
     // Add a new college
-    public function addCollege($name) {
-        $sql = "INSERT INTO $this->table (name) VALUES (:name)";
+    public function addCollege($name, $logo_directory, $description) {
+        $sql = "INSERT INTO $this->table (college, logo_directory, description) VALUES (:name, :directory, :description)";
         $stmt = $this->pdo->prepare($sql);
-        $stmt->execute([':name' => $name]);
-        return $this->pdo->lastInsertId();
+        try {
+            $stmt->execute([
+                ':name' => $name,
+                ':directory' => $logo_directory,
+                ':description' => $description,
+            ]);
+            return true; // Return true if the insert was successful
+        } catch (PDOException $e) {
+            return false; // Return false if there was an error
+        }
     }
 
     // Get all colleges
