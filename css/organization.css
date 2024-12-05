@@ -302,7 +302,7 @@ body {
     width: 400px;
 }
 
-<<<<<<< HEAD
+
 h4.topnav-title{
  width: 100%;
 }
@@ -311,8 +311,7 @@ h4.topnav-title{
     width: 100%;
 }
 
-=======
->>>>>>> 89c08bf45f46e843f6885ffd02332c51edb9cc93
+
 table thead.nohead{
     display: none;
 }
@@ -402,8 +401,6 @@ h4{
     transform: translate(-50%, -50%);
     font-size: 3em;
     color: #ccc;
-<<<<<<< HEAD
-=======
 }
 
 .color-swatch {
@@ -416,5 +413,5 @@ h4{
 #attachment-link{
     text-decoration: underline;
     cursor: pointer;
->>>>>>> 89c08bf45f46e843f6885ffd02332c51edb9cc93
+
 }
