@@ -5,7 +5,7 @@
         </div>
 
         <div class="sidebar-org border-bottom border-top" id="genderClub">
-            <img class="img-fluid" src="../../images/ccs_logo.png" alt="" width="50" height="50">
+            <img class="img-fluid rounded-circle" src="../../images/gender_club.jpg" alt="" width="50" height="50">
             <div class="org flex-column p-2">
             <strong>Gender Club</strong>
             <small class="text-muted">email@gmail.com</small>

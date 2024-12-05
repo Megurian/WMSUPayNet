@@ -96,6 +96,10 @@ document.querySelectorAll('.sidebar-item a.nav-link').forEach(link => {
                                             e.preventDefault();
                                             showTransaction();
                                         });
+                                        document.getElementById('attachment-link').addEventListener('click', function(e) {
+                                            e.preventDefault();
+                                            viewAttachment()
+                                        });
                                     })      
                             }else if (this.id === 'request-link') {
                                 fetch('students/request.php')

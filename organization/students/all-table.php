@@ -97,7 +97,7 @@
                             <td>1st Year</td>
                             <td class="status-unpaid">Unpaid</td>
                             <td>GCash</td>
-                            <td class="status-unpaid">Promissory Note</td>
+                            <td class="status-unpaid" id="attachment-link">Promissory Note</td>
                             <td>2023-12-01</td>
                             <td>
                                 <div class="dropdown text-end border-0 bgreen">

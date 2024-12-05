@@ -162,10 +162,16 @@ document.querySelectorAll('.sidebar-item a.nav-link').forEach(link => {
                 .then(html => {
                     document.querySelector('.content-page').innerHTML = html;
                     document.querySelector('.topnav-title').textContent = 'Report';
+                    
 
                     document.getElementById('report-form').addEventListener('click', function(e) {
                         e.preventDefault();
                         generateReport();
+                    });
+
+                    document.getElementById('download-report').addEventListener('click', function(e) {
+                        e.preventDefault();
+                        downloadReport()
                     });
 
                     document.getElementById('view-report').addEventListener('click', function(e) {
@@ -177,6 +183,10 @@ document.querySelectorAll('.sidebar-item a.nav-link').forEach(link => {
                             document.querySelector('.topnav-title').textContent = 'Report';
                             loadChart()
                             viewDetails()
+                            document.getElementById('download-report').addEventListener('click', function(e) {
+                                e.preventDefault();
+                                downloadReport()
+                            });
                         })
                     });
                     
@@ -374,3 +384,13 @@ function addStudent() {
         }
     });
 }
+
+function downloadReport() {
+    fetch('reports/generate_report.html')
+      .then(response => response.text())
+      .then(html => {
+    
+        $('.modal-container').html(html);
+        $('#modal-download-report').modal('show');
+      });
+  }

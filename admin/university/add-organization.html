@@ -11,15 +11,17 @@
 
                     <div class="card-body">
                         <div class="row mb-3">
-                            <div class="col-md-6">
+                            <div class="col-md-5">
                                 <div class="form-group">
-                                    <label for="logo">Logo:</label>
-                                    <div class="input-group">
-                                        <input type="file" class="form-control" id="logo" aria-describedby="logo-addon">
-                                        
+                                    <label for="logo">Upload Logo</label>
+                                    <div class="logo-container mt-2" id="upload">
+                                        <input type="file" id="logo-input" accept="image/*">
+                                        <img id="logo-preview" src="#" alt="Logo Preview" style="display: none;" >
+                                        <i class="fas fa-plus plus-icon"></i>
                                     </div>
                                 </div>
                             </div>
+
 
                             <div class="col-md-6">
                                 <div class="form-group">
