@@ -32,12 +32,23 @@ document.querySelectorAll('.sidebar-item a.nav-link').forEach(link => {
                     .then(html => {
                         document.querySelector('.content-page').innerHTML = html;
 
+                        
+                        document.getElementById('create-admin').addEventListener('click', function(e) {
+                            e.preventDefault();
+                            createAdmin();
+                        });
+
                         document.getElementById('org-overview-link').addEventListener('click', function(e) {
                             e.preventDefault();
                             fetch('university/org-overview.php')
                             .then(response => response.text())
                             .then(html => {
                                 document.querySelector('.content-page').innerHTML = html;
+
+                                document.getElementById('create-admin').addEventListener('click', function(e) {
+                                    e.preventDefault();
+                                    createAdmin();
+                                });
                             })
                         });
                     })
@@ -67,3 +78,15 @@ function addCollege() {
       });
   }
 
+  function createAdmin() {
+    fetch('university/add-college.html')
+        .then(response => response.text())
+        .then(html => {
+    
+        $('.modal-container').html(html);
+        $('#modal-create-admin').modal('show');
+        $('#form-create-admin').on('submit', function(e) {
+            e.preventDefault();
+        });
+        });
+    }

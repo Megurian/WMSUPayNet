@@ -26,16 +26,30 @@
 
 
 <div class="container my-4">
-  <div class="modal-container">
-    <div class="d-flex align-items-center">
-      <i class="fas fa-arrow-left back-button m-2"></i> 
-      <img src="../../images/ccs_logo.png" alt="Logo" width="40" height="40" class="rounded-circle m-2 ml-3" >
-      <div class="d-flex flex-column">
-        <h5>College of Computing Studies</h5>
-        <h6><span style="color: #004d00;">Organizations</span></h6>
-      </div>
-    </div>
-  </div>
+  <div class="modal-container"> </div>
+    
+
+       <div class="row justify-content-between">
+           <div class="col-md-12">
+              <div class="d-flex justify-content-between">
+              <div class="d-flex align-items-center col-md-5 justify-content-between ">
+                <i class="fas fa-arrow-left back-button"></i> 
+                <img src="../../images/ccs_logo.png" alt="Logo" width="40" height="40" class="rounded-circle" >
+                <div class="col-md-10 flex-column">
+                  <h5>College of Computing Studies</h5>
+                  <h6><span style="color: #004d00;">Organizations</span></h6>
+                </div>
+              </div>
+
+              <div class="button">
+               <button id="create-admin" class="btn bgreen"> Create College Admin</button>
+            </div> 
+              </div>
+           </div>
+                         
+       </div>
+
+
     <!-- Card -->
   <div class="card shadow-sm mb-4 mt-4">
     <div class="card-body d-flex align-items-center">
