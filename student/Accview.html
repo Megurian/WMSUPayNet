@@ -8,24 +8,25 @@
     <link rel="stylesheet" href="style.css">
     <style>
         .account-header {
-            padding: 20px;
+            padding: 40px 20px 20px 20px;
             background: #fff;
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            max-width: 1000px;
-            margin: auto;
+            width: 100%;
+            height: 48vh;
         }
 
         .account-section {
-            background-color: #fff;
+            background: #fff;
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            margin-top: 20px;
-            max-width: 1000px;
-            margin: auto;
+            padding: 30px 20px 20px 30px;
+            max-width: 1250px;
+            margin: 0 auto;
+            position: relative;
+            height: 60vh;
         }
-
+         
         .form-row {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -67,8 +68,8 @@
             font-size: 14px;
             transition: background-color 0.3s;
             position: fixed;
-            bottom: 110px;
-            right: 185px;
+            bottom: 185px;
+            right: 220px;
         }
 
         .edit-btn:hover {
@@ -91,7 +92,7 @@
 
         .modal-content {
             background-color: #fff;
-            margin: 50px auto;
+            margin: 150px auto;
             padding: 20px;
             border-radius: 8px;
             width: 90%;
@@ -114,7 +115,7 @@
 
         .modal-title {
             color: #093909;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
             font-size: 1.5em;
             padding-right: 30px;
         }
@@ -174,12 +175,13 @@
         .breadcrumb {
             display: flex;
             align-items: center;
-            padding: 10px;
+            padding: 10px 0 0 50px;
             font-size: 16px;
             font-weight: 600;
             color: #093909;
+            margin-top: 120px;
             margin-bottom: 20px;
-            margin-left: 25px;
+            margin-left: 60px;
         }
 
         .breadcrumb a {
@@ -221,32 +223,56 @@
             outline: none;
             border-color: #093909;
         }
+
+        .select-group {
+            margin-bottom: 15px;
+        }
+
+        .select-group select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+            color: #333;
+        }
+
+        .select-group select:focus {
+            outline: none;
+            border-color: #093909;
+        }
+
+        .select-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #666;
+            font-size: 14px;
+        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header class="header">
-            <div class="logo">
-                <img src="../images/ccs_logo.png" alt="Logo">
-                <h1>CCS PayNet</h1>
+    <header class="header">
+        <div class="logo">
+            <img src="../images/ccs_logo.png" alt="Logo">
+            <h1>CCS PayNet</h1>
+          </div>
+          <div class="icons">
+              <div class="notification">
+                  <a href="./notif.html" class="notif-button">
+                      <i class="fas fa-bell"></i>
+                  </a>
               </div>
-              <div class="icons">
-                  <div class="notification">
-                      <a href="./notif.html" class="notif-button">
-                          <i class="fas fa-bell"></i>
-                      </a>
-                  </div>
-              </div>
-        </header>
+          </div>
+    </header>
 
         <section class="settings">
             <div class="breadcrumb">
                 <a href="setting.html"><i class="fas fa-arrow-left"></i> SETTINGS </a> <span>| Account</span>
-            </div>
+            </div> <br>
 
             <div class="account-section">
+                <h2>Account Information</h2>
                 <div class="account-header">
-                    <h2>Account Information</h2>
                     <form action="#" class="account-form">
                         <div class="form-row">
                             <div class="input-group">
@@ -282,7 +308,6 @@
                 </div>
             </div>
         </section>
-    </div>
 
     <!-- Edit Modal -->
     <div id="editModal" class="modal">
@@ -292,7 +317,7 @@
             <div class="modal-body">
                 <form id="editForm">
                     <div class="input-group">
-                        <label>Name</label>
+                        <label style="padding-bottom: 10px;">Name</label>
                         <div class="name-inputs">
                             <div class="input-group">
                                 <label>First Name</label>
@@ -320,14 +345,26 @@
                         </div>
                     </div>
 
-                    <div class="input-group">
-                        <label>College</label>
-                        <input type="text" id="editCollege" placeholder="Enter College" required>
+                    <div class="select-group">
+                        <label for="editCollege">College:</label>
+                        <select id="editCollege" name="editCollege" required>
+                            <option value="">Select College</option>
+                            <option value="CCS">College of Computing Studies</option>
+                            <option value="CBA">College of Business Administration</option>
+                            <option value="COE">College of Engineering</option>
+                            <option value="CED">College of Education</option>
+                            <option value="CLA">College of Liberal Arts</option>
+                        </select>
                     </div>
 
-                    <div class="input-group">
-                        <label>Course</label>
-                        <input type="text" id="editCourse" placeholder="Enter Course" required>
+                    <div class="select-group">
+                        <label for="editCourse">Course:</label>
+                        <select id="editCourse" name="editCourse" required>
+                            <option value="">Select Course</option>
+                            <option value="BSCS">Bachelor of Science in Computer Science</option>
+                            <option value="BSIT">Bachelor of Science in Information Technology</option>
+                            <option value="BSIS">Bachelor of Science in Information Systems</option>
+                        </select>
                     </div>
 
                     <div class="btn-group">

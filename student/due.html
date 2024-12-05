@@ -22,7 +22,7 @@
 
         .modal-content {
             background-color: #fff;
-            margin: 70px auto;
+            margin: 150px auto;
             padding: 20px;
             border-radius: 10px;
             width: 70%;
@@ -228,10 +228,12 @@
         }
 
         function submitForm() {
+            // Add your form submission logic here
             alert("Promissory note submitted successfully!");
             closeModal();
         }
 
+        // Close modal when clicking outside
         window.onclick = function(event) {
             var modal = document.getElementById("promissoryModal");
             if (event.target == modal) {
