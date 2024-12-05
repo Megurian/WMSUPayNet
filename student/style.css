@@ -413,7 +413,7 @@
     justify-content: space-between;
     }
 
-    .Box-1 {
+    .Due {
     background-color: white;
     border: 1px solid #CC0001;
     border-radius: 10px;
@@ -428,10 +428,7 @@
 
     .Box:hover {
     transform: translateY(-5px);
-    }
-
-    .Box-1:hover {
-    transform: translateY(-5px);
+    box-shadow: 0 10px 10px #093909;
     }
 
     .Box-title {

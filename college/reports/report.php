@@ -55,7 +55,7 @@
                         </div>
                         <div class="d-flex justify-content-center">
                             <button id="view-report" class="btn btn-dark mx-2">View Report</button>
-                            <button  class="btn bgreen">Download Report</button>
+                            <button id="download-report"  class="btn bgreen">Download Report</button>
                         </div>
                     </div>
                 </div>

@@ -13,7 +13,7 @@
                 <span class="mx-5">
                     <i class="fa fa-university"></i> 1st Semester
                 </span>
-                <button class="btn bgreen btn-sm">Download Report</button>
+                <button id="download-report"  class="btn bgreen btn-sm">Download Report</button>
             </div>
         </div>
 

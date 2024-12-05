@@ -40,7 +40,7 @@
                             <td>Computer Science</td>
                             <td>3rd Year</td>
                             <td class="status-unpaid">Unpaid</td>
-                            <td class="status-unpaid">Promissory Note</td>
+                            <td class="status-unpaid" id="attachment-link">Promissory Note</td>
                             <td>2023-12-15</td>
                             <td>
                                 <div class="dropdown text-end border-0 bgreen">
@@ -62,7 +62,7 @@
                             <td>Business Administration</td>
                             <td>2nd Year</td>
                             <td class="status-unpaid">Unpaid</td>
-                            <td class="status-unpaid">Promissoy Note</td>
+                            <td class="status-unpaid" id="attachment-link">Promissoy Note</td>
                             <td>-</td>
                             <td>
                                 <div class="dropdown text-end border-0 bgreen">
@@ -84,7 +84,7 @@
                             <td>Engineering</td>
                             <td>1st Year</td>
                             <td class="status-unpaid">Unpaid</td>
-                            <td class="status-unpaid">Promissory Note</td>
+                            <td class="status-unpaid" id="attachment-link">Promissory Note</td>
                             <td>2023-12-01</td>
                             <td>
                                 <div class="dropdown text-end border-0 bgreen">

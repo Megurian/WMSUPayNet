@@ -24,7 +24,7 @@
     <div class="card mt-3">
         <div class="card-body d-flex justify-content-between align-items-center">
                 <h6> Bug Report</h6>
-                <button class="btn btn-dark btn-sm px-4"> Get Started </button>
+                <button id="bug-report" class="btn btn-dark btn-sm px-4"> Get Started </button>
         </div>
     </div>
 </div>

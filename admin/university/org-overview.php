@@ -12,15 +12,10 @@
             </div>
     </div>
 </div>
-            <div class="table-container">
-               
-                <div class="table-responsive">
-                    <div class="d-flex justify-content-between align-items-center mb-2 ">
-                            <h5> Admin </h5>
-                            <button id="create-admin" class="btn bgreen btn-sm"> Create Admin</button>
-                    </div>
-                <table id="table-all" class="table table-striped table-bordered mb-0">
-                        <thead>
+    <div class="table-container">
+        <div class="table-responsive">
+            <table id="table-all" class="table table-striped table-bordered mb-0">
+                <thead>
                     <tr>
                         <th>Admin Name</th>
                         <th>Email</th>
@@ -36,33 +31,31 @@
                         <td>All</td>
                     </tr>
                 </tbody>
-                </table>
-                </div>
-
-                <div class="table-responsive mt-5 border-top">
-                            <h5 class="mt-3"> Fee </h5>
-                <table id="table-all" class="table table-striped table-bordered mb-0">
-                <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Amount</th>
-                    <th>Semester</th>
-                    <th>Required</th>
-                    <th>School Year</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Gender Club</td>
-                    <td>50.00</td>
-                    <td>1</td>
-                    <td>Required</td>
-                    <td>2023-2024</td>
-                </tr>
-            </tbody>
-                </table>
-                </div>
-               
-                
-            </div>
+            </table>
         </div>
+
+        <div class="table-responsive mt-5 border-top">
+            <h5 class="mt-3"> Fees </h5>
+            <table id="table-all" class="table table-striped table-bordered mb-0">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Amount</th>
+                        <th>Semester</th>
+                        <th>Required</th>
+                        <th>School Year</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Gender Club</td>
+                        <td>50.00</td>
+                        <td>1</td>
+                        <td>Required</td>
+                        <td>2023-2024</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>   
+    </div>
+</div>
