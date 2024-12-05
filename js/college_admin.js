@@ -180,13 +180,6 @@ document.querySelectorAll('.sidebar-item a.nav-link').forEach(link => {
                         .then(response => response.text())
                         .then(html => {
                             document.querySelector('.content-page').innerHTML = html;
-                            document.querySelector('.topnav-title').textContent = 'Report';
-                            loadChart()
-                            viewDetails()
-                            document.getElementById('download-report').addEventListener('click', function(e) {
-                                e.preventDefault();
-                                downloadReport()
-                            });
                         })
                     });
                     
@@ -304,93 +297,4 @@ function addStudent() {
             document.querySelector('.content-page').innerHTML = html;
         })
     });
-  }
-
-  function loadChart(){
-    const chartData = {
-        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-        datasets: [{
-            label: 'Dataset 1',
-            data: [-500, -200, 600, 400, 700, 100, -100],
-            backgroundColor: 'rgba(9, 57, 9, 1)',
-            borderColor: 'rgba(9, 57, 9, 1)',
-            borderWidth: 1
-        }, {
-            label: 'Dataset 2',
-            data: [-1200, 100, 700, 600, -200, -100, -100],
-            backgroundColor: 'rgba(160, 160, 160, 1)',
-            borderColor: 'rgba(160, 160, 160, 1)',
-            borderWidth: 1
-        }]
-    };
-
-    const paymentChart = document.getElementById('paymentChart').getContext('2d');
-    const myChart = new Chart(paymentChart, {
-        type: 'line',
-        data: chartData,
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
-            }
-        }
-    });
-  }
-
-  function viewDetails(){
-    document.getElementById('view-details').addEventListener('click', function(e) {
-        e.preventDefault();
-        fetch('reports/view-details.php')
-        .then(response => response.text())
-        .then(html => {
-            document.querySelector('.content-page').innerHTML = html;
-            document.querySelector('.topnav-title').textContent = 'Report';
-        })
-    });
-  }
-
-  function loadPie(){
-    const paymentChartCanvas = document.getElementById('paymentChart');
-    const paymentChart = new Chart(paymentChartCanvas, {
-        type: 'pie',
-        data: {
-            labels: ['Full', 'Partial', 'Unpaid', 'Due'],
-            datasets: [{
-                label: 'Payment Status',
-                data: [70, 20, 5, 5], 
-                backgroundColor: [
-                    '#093909',
-                    '#84AE84',
-                    '#A0A0A0',
-                    '#EB1111'
-                ],
-                borderColor: [
-                    '#093909',
-                    '#84AE84',
-                    '#A0A0A0',
-                    '#EB1111'
-                ],
-                borderWidth: 1
-            }]
-        },
-        options: {
-            responsive: true,
-            plugins: {
-                legend: {
-                    position: 'bottom'
-                }
-            }
-        }
-    });
-}
-
-function downloadReport() {
-    fetch('reports/generate_report.html')
-      .then(response => response.text())
-      .then(html => {
-    
-        $('.modal-container').html(html);
-        $('#modal-download-report').modal('show');
-      });
   }

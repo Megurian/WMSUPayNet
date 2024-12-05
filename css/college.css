@@ -2,8 +2,13 @@
 .topnav {
     position: fixed;
     top: 0;
+<<<<<<< HEAD
+    left: 230px; /* Adjust for sidebar width */
+    width: calc(100% - 200px); /* Adjust for sidebar width */
+=======
     left: 230px; 
     width: calc(100% - 200px); 
+>>>>>>> 89c08bf45f46e843f6885ffd02332c51edb9cc93
     height: 60px;
     background-color: #fff;
     display: flex;
@@ -14,8 +19,13 @@
 }
 
 .content-page {
+<<<<<<< HEAD
+    margin-left: 230px; /* Adjust for sidebar width */
+    margin-top: 50px; /* Adjust for topnav height */
+=======
     margin-left: 230px; 
     margin-top: 50px; 
+>>>>>>> 89c08bf45f46e843f6885ffd02332c51edb9cc93
     padding: 20px;
 }
 

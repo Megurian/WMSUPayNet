@@ -1,4 +1,4 @@
-    * {
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -168,7 +168,7 @@
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-top: auto;
+   margin: auto;
     width: 80%;
     max-width: 900px;
     }
@@ -265,7 +265,7 @@
         border-radius: 8px;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         width: 600px;
-        margin-top: auto;
+        margin-top: 150px;
         border: 1px solid #093909;
     }
     
@@ -354,9 +354,10 @@
 
     /* Container */
     .container {
-    margin: 100px auto 20px;
-    max-width: 1200px;
+    margin: 100px 0 0 75px;
+    max-width: 90%;
     padding: 15px 20px;
+
     }
 
     /* Back Button and Title */
@@ -406,6 +407,10 @@
     text-align: center;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: transform 0.2s;
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     }
 
     .Due {
@@ -416,6 +421,9 @@
     text-align: center;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: transform 0.2s;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     }
 
     .Box:hover {
@@ -424,36 +432,44 @@
     }
 
     .Box-title {
-    font-size: 36px;
     font-weight: bold;
     text-align: left;
     }
 
     .Box-count {
-    font-size: 40px;
+    font-size: 50px;
     font-weight: bold;
     text-align: right;
     color: #093909;
     }
 
     .Box h5 {
-    font-size: 1.2em;
+    font-size: 32px;
     margin-bottom: 10px;
     }
 
-    .Box-1 h5 {
-    font-size: 1.2em;
+    .Box h6 {
+    font-size: 26px;
+    margin-bottom: 10px;
+    }
+
+    .Box-1 h6 {
+    font-size: 26px;
     margin-bottom: 10px;
     }
 
     .Box-count-1 {
     color: #CC0001;
+    font-size: 50px;
+    font-weight: bold;
+    text-align: right;
     }
 
     .Box-footer-left {
-    font-size: 14px;
+    font-size: 20px;
     text-align: left;
-    margin-top: 10px;
+    margin-top: 5px;
+    margin-bottom: 10px;
     }
 
     .Box-footer-left a {
@@ -461,6 +477,7 @@
     text-decoration: none;
     float: right;
     font-weight: bold;
+    font-size: 20px;
     }
 
     .Box-footer-left a:hover {
@@ -468,7 +485,7 @@
     }
 
     .status {
-    font-size: 1em;
+    font-size: 20px;
     }
 
     .status.pending {
@@ -485,7 +502,7 @@
 
     /* Card Container */
     .fee-container {
-    max-width: 700px;
+    max-width: 800px;
     width: 100%;
     background-color: white;
     border: 1px solid #ccc;
@@ -495,7 +512,8 @@
     }
 
     .fee-dashboard{
-    margin: 180px;
+    margin: auto;
+    width: 800px;
     }
 
     /* Card Header */
@@ -505,7 +523,7 @@
     align-items: center;
     background-color: white;
     color: #093909;
-    padding: 10px 15px;
+    padding: 10px 15px 10px 25px;
     font-size: 1rem;
     font-weight: bold;
     }
@@ -648,7 +666,6 @@
     gap: 30px;
     padding: 20px;
     } 
-
 
     .record-card {
     background-color: white;
@@ -854,12 +871,13 @@
     .due-button {
     text-align: right;
     display: flex;
+    justify-content: space-between;
     }
 
     .due-button p {
     display: flex;
     text-align: left;
-    font-size: 0.6em;
+    font-size: 12px;
     padding-top: 3px;
     color: #CC0001;
     padding-right: 80px;
