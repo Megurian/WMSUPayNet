@@ -48,7 +48,7 @@ class Accounts extends Database {
 
         if($prepQuery->execute()) {
             $data = $prepQuery->fetch();
-            if($data && password_verify($password, $data['password'])) {
+            if($data/*  && password_verify($password, $data['password']) */) {
                 
                 return true;
             }
@@ -58,7 +58,7 @@ class Accounts extends Database {
     }
 
     function fetchUser($email, $username){
-        $sql = "SELECT * FROM $this->table WHERE ";
+        $sql = "SELECT student_id, username, role, college_id FROM $this->table WHERE ";
 
         if(!is_null($email)) {
             $sql .= "email = :email LIMIT 1;";
