@@ -21,7 +21,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $LoginInfo['password'] = clean_input($_POST['password']);
 
     if($accountObj->userLogin($LoginInfo['email'], $LoginInfo['username'], $LoginInfo['password'])) {
-        $data = $accountObj->fetchUser($LoginInfo['email'], $LoginInfo['password']);
+        $data = $accountObj->fetchUser($LoginInfo['email'], $LoginInfo['username']);
         $_SESSION['account'] = $data;
         header("Location: ../tools/authorization.php");
         

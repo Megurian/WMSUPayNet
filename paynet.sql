@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 01, 2024 at 05:57 PM
+-- Generation Time: Dec 05, 2024 at 02:32 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -45,7 +45,10 @@ CREATE TABLE `accounts` (
 --
 
 INSERT INTO `accounts` (`id`, `student_id`, `username`, `email`, `password`, `role`, `college_id`, `created_at`) VALUES
-(2, 202201078, 'EH202201078', 'eh202201078@wmsu.edu.ph', '$argon2id$v=19$m=2048,t=4,p=2$ejQuN3dvVkZJSm91RFp6Lg$x2uPsge+VtkJ4Zl4+CfX+wHTvUagtvaemeKyXeyf+Fg', 'Student', 1, '2024-12-01 16:06:13');
+(2, 202201078, 'EH202201078', 'eh202201078@wmsu.edu.ph', '$argon2id$v=19$m=2048,t=4,p=2$ejQuN3dvVkZJSm91RFp6Lg$x2uPsge+VtkJ4Zl4+CfX+wHTvUagtvaemeKyXeyf+Fg', 'Student', 1, '2024-12-01 16:06:13'),
+(3, NULL, 'COLLEGEADMIN', 'admin@gmail.com', 'admin', 'CollegeAdmin', 1, '2024-12-05 13:15:18'),
+(4, NULL, 'ORGADMIN', 'orgadmin@gmail.com', 'admin', 'OrganizationAdmin', 1, '2024-12-05 13:15:50'),
+(5, NULL, 'SUPERADMIN', 'superadmin@gmail.com', 'admin', 'SuperAdmin', NULL, '2024-12-05 13:16:22');
 
 -- --------------------------------------------------------
 
@@ -212,7 +215,7 @@ ALTER TABLE `suffixes`
 -- AUTO_INCREMENT for table `accounts`
 --
 ALTER TABLE `accounts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `colleges`

@@ -50,7 +50,7 @@ unset($_SESSION['LoginInfo']);
                 </div>
                 <button type="submit">Login</button><br>
                 <p>
-                    Don’t have an account? <a href="#"><u>Register Here</u></a>
+                    Don’t have an account? <a href="sign_up.php"><u>Register Here</u></a>
                 </p>
             </form>
         </div>
