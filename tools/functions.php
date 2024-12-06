@@ -7,10 +7,13 @@ function clean_input($input) {
 }
 
 function sentenceCase($input){
+    // Convert the entire string to lowercase first
+    $input = strtolower($input);
+
     if(strpos($input, ' ') !== false){
         $string = implode(' ', array_map('ucfirst', explode(' ', $input)));
         return $string;
-    }else{
+    } else {
         return ucfirst($input);
     }
 }
