@@ -1,11 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>6-Digit Code Verification</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <?php
+        require_once '../student/includes/head.php';
+    ?>
     <style>
         .verification-section {
             background-color: #fff;
@@ -260,26 +255,16 @@
             color: #333;
         }
     </style>
-</head>
+
 <body>
     <div class="container">
-        <header class="header">
-            <div class="logo">
-                <img src="../images/ccs_logo.png" alt="Logo">
-                <h1>CCS PayNet</h1>
-            </div>
-            <div class="icons">
-                <div class="notification">
-                    <a href="./notif.html" class="notif-button">
-                        <i class="fas fa-bell"></i>
-                    </a>
-                </div>
-            </div>
-        </header>
+    <?php 
+       require_once '../student/includes/topnav.php';
+       ?>
 
         <section class="settings">
             <div class="breadcrumb">
-                <a href="setting.html"><i class="fas fa-arrow-left"></i> SETTINGS </a> <span>| Password</span>
+                <a href="setting.php"><i class="fas fa-arrow-left"></i> SETTINGS </a> <span>| Password</span>
             </div>
 
             <div class="verification-section">

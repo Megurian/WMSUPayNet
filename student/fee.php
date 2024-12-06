@@ -1,13 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="../student/style.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
-
-    <style>
+ <?php
+      require_once '../student/includes/head.php';
+ ?>
+<style>
         .modal {
             display: none;
             margin-top: 25px;
@@ -153,35 +147,18 @@
             background: #072907;
         }
     </style>
-</head>
-
 <body>
     <div class="body">
-        <header>
-          <div class="logo">
-            <img src="../images/ccs_logo.png" alt="Logo">
-            <h1>CCS PayNet</h1>
-          </div>
-          <div class="icons">
-            <div class="notification">
-                <a href="./notif.html" class="notif-button">
-                    <i class="fas fa-bell"></i>
-                </a>
-            </div>
-            <div class="profile">
-                <a href="./setting.html" class="profile-button">
-                  <i class="fas fa-user-circle"></i>
-                </a>
-              </div>
-          </div>
-        </header>
+       <?php 
+       require_once '../student/includes/topnav.php';
+       ?>
         
         <div class="fee-dashboard">
             <div class="fee-container">
             <div class="fee-card">
             <div class="fee-card-header">
                 <div class="back-titles">
-                    <a href="./org.html" class="back-bttn">
+                    <a href="./org.php" class="back-bttn">
                         <i class="fa-solid fa-arrow-left"></i>
                     </a>
                     <h2>CCS-CSC</h2>
