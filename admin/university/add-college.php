@@ -1,3 +1,12 @@
+<?php
+require_once '../../database/autoload_classes.php';
+
+$collegeId = isset($_GET['college_id']) ? intval($_GET['college_id']) : 0;
+
+$suffixesObj = new Suffixes();
+
+?>
+
 <!-- Modal -->
 <div class="modal fade" id="addCollegeModal" tabindex="-1" aria-labelledby="addCollegeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg">
@@ -54,26 +63,22 @@
 </div>
 
 <!-- Modal -->
-<div class="modal fade" id="modal-create-admin" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal fade" id="modal-create-admin" tabindex="-1" aria-labelledby="modal-create-adminLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered ">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="staticBackdropLabel"> Admin Information </h5>
+                <h5 class="modal-title" id="modal-create-adminLabel"> Admin Information </h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div> 
-            <form action="" method="post" id="form-create-admin" enctype="multipart/form-data">
+            <form id="form-create-admin" enctype="multipart/form-data">
                 <div class="modal-body">
+                    
+                    <input type="hidden" name="college" value="<?= $collegeId ?>">
 
                     <!-- Admin Information -->
                     <div class="col-md-12 mb-2">
                         <label for="name" class="form-label">First Name</label>
-                        <input type="text" class="form-control" id="first_name" name="first_name" placeholder="First Name">
-                        <div class="invalid-feedback"></div>
-                    </div>
-
-                    <div class="col-md-12 mb-2">
-                        <label for="name" class="form-label">Last Name</label>
-                        <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Last Name">
+                        <input type="text" class="form-control" id="first_name" name="first_name" placeholder="First Name" required>
                         <div class="invalid-feedback"></div>
                     </div>
 
@@ -84,28 +89,42 @@
                         <div class="col-md-4 align-items-center d-flex mt-2">
                             <label class="col-md-10"> No Middle Name</label> 
                             <input type="checkbox" id="no-middle-name" name="no-middle-name"> 
-                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 mb-2">
+                        <label for="name" class="form-label">Last Name</label>
+                        <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Last Name" required>
+                        <div class="invalid-feedback"></div>
                     </div>
 
                     <div class="col-md-12 mb-2">
                         <label for="suffix">Suffix:</label>
                         <select id="suffix" name="suffix" class="form-select">
                             <option value="">N/A</option>
-                            <option value="Jr.">Jr.</option>
-                            <option value="Sr.">Sr.</option>
-                            <option value="III">III</option>
+                            <?php foreach ($suffixesObj->getAllSuffix() as $suffix): ?>
+                                <option value="<?= $suffix['id'] ?>" <?php echo ($StudentInfo['suffix'] ?? '') == $suffix['id'] ? 'selected' : ''; ?>>
+                                    <?= htmlspecialchars($suffix['extension']) ?>
+                                </option>
+                            <?php endforeach; ?>
                         </select>
                     </div>
 
                     <div class="col-md-12 mb-2">
                         <label for="email" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="email" name="email" placeholder="Email">
+                        <input type="email" class="form-control" id="email" name="email" placeholder="Email" required>
                         <div class="invalid-feedback"></div>
                     </div>
 
                     <div class="col-md-12 mb-2">
                         <label for="password" class="form-label">Password <span class="text-danger">*</span></label>
-                        <input type="password" class="form-control" id="password" placeholder="Password">
+                        <input type="password" class="form-control" id="password" name="password" required>
+                        <div class="invalid-feedback"></div>
+                    </div>
+
+                    <div class="col-md-12 mb-2">
+                        <label for="confirm-password" class="form-label">Confirm Password <span class="text-danger">*</span></label>
+                        <input type="password" class="form-control" id="confirm-password" name="confirm-password" required>
                         <div class="invalid-feedback"></div>
                     </div>
 
@@ -113,7 +132,7 @@
                 <div class="modal-footer">
                     <div class="buttons">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn bgreen" > Submit</button>
+                        <button type="submit" class="btn bgreen" > Submit</button>
                     </div>
                 </div>
             </form>

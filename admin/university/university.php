@@ -3,6 +3,7 @@ require_once "../../tools/functions.php";
 require_once "../../database/autoload_classes.php";
 
 $collegeObj = new Colleges();
+$studentObj = new Students();
 ?>
 
 <style>
@@ -50,15 +51,15 @@ $collegeObj = new Colleges();
             <div class="card shadow-sm mb-4">
                 <div class="card-body d-flex align-items-center">
 
-                    <img src="<?= htmlspecialchars($college['logo_directory']) ?>" alt="Institution Logo" width="100" class="rounded-circle me-3">
+                    <img src="<?= htmlspecialchars($college['logo_directory']) ?>" alt="College Logo" width="100" class="rounded-circle me-3">
 
                     <div class="flex-grow-1 college" data-college-id="<?= htmlspecialchars($college['id']) ?>">
                         <h5 class="mb-1"><?= htmlspecialchars($college['college']) ?></h5>
                         <p class="mb-1 text-muted">
                             <i class="bi bi-people-fill me-1"></i>
-                            600,003
+                            <?= htmlspecialchars($studentObj->countStudents($college['id'])) ?>
                         </p>
-                        <small class="text-muted">Updated October 01, 2024</small>
+                        <small class="text-muted">Updated <?= htmlspecialchars($college['created_at']) ?></small>
                     </div>
 
                     <button class="btn btn-outline-secondary btn-sm" data-bs-toggle="dropdown">

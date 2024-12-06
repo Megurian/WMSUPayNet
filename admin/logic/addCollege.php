@@ -2,10 +2,7 @@
 require_once '../../tools/functions.php';
 require_once '../../database/autoload_classes.php';
 
-session_start();
-
 $collegeObj = new Colleges();
-
 
 // Get and sanitize input
 $name = clean_input($_POST['collegeName'] ?? '');
@@ -69,7 +66,7 @@ if(empty($_FILES['logo']['name'])) {
 }
 
 if (!empty($errors)) {
-    echo json_encode(['status' => 'error', 'message' => $errors]);
+    echo json_encode(['status' => 'error', 'message' => implode("\n", $errors)]);
     exit;
 }
 

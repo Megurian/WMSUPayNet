@@ -1,6 +1,6 @@
 <div class="container my-4">
 
-    <h2 class="mb-4">Welcome, Admin! <span id="current-date">mm/dd/yyyy</span></h2>
+    <h2 class="mb-4">Welcome, Admin! <span id="current-date"><?= date('Y-m-d') ?></span></h2>
     
     <!-- Stats Section -->
     <div class="row mb-4">
