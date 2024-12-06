@@ -34,7 +34,7 @@
         </div>
 
         <div class="sidebar-item">
-            <a href="" id="backup-link" class="nav-link">
+            <a href="" id="backup-data-link" class="nav-link">
                 <i class="fa-solid fa-table"></i>
                 Backup & Data
             </a>

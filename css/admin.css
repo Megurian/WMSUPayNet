@@ -311,32 +311,6 @@ textarea {
   color: #ccc;
 }
 
-/* Target the pagination container */
-.dt-container div.dt-paging ul.pagination {
-  /* ... your existing styles ... */
-  margin-top: 10px;
-  display: flex;
-  justify-content: flex-end;
-}
-
-.dt-container div.dt-paging ul.pagination li a {
-  background-color: #093909; /* Your desired background color */
-  color: white; /* Your desired text color */
-  border: none; /* Remove default border */
-  padding: 8px 12px; /* Adjust padding as needed */
-  border-radius: 5px; /* Add rounded corners if desired */
-  text-decoration: none; /* Remove underline */
-}
-
-/* Hover effect (optional) */
-.dt-container div.dt-paging ul.pagination li a:hover {
-  background-color: #0c220c; /* Darker green on hover */
-}
-
-/* Active page (optional) */
-.dt-container div.dt-paging ul.pagination li.active a {
-  background-color: #0c220c; /* Darker green for active page */
-}
 
 #attachment-link{
   text-decoration: underline;
@@ -346,4 +320,43 @@ textarea {
 
 textarea{
   resize: none;
+}
+
+.subnav{
+  display: flex;
+
+  border-bottom: #e7e7e7 1px solid;
+}
+.subnav .subnav-item{
+  padding: 10px 25px;
+}
+.subnav .subnav-item a{
+  text-decoration: none;
+  color: #0c220c;
+}
+.subnav-item > a.link-active, .subnav-item> a:focus {
+  color: #0c220c; 
+  width: 100%;
+  font-weight: bold;
+  padding-bottom: 10px;
+  border-bottom: #093909 1px solid;
+}
+.dot {
+  height: 8px;
+  width: 8px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 5px;
+}
+
+.purple {
+  background-color: rgba(153, 102, 255, 1);
+}
+
+.blue {
+  background-color: rgba(54, 162, 235, 1);
+}
+
+.red {
+  background-color: rgba(255, 99, 132, 1);
 }
