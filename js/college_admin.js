@@ -23,30 +23,41 @@ document.querySelectorAll('.sidebar-item a.nav-link').forEach(link => {
                     document.querySelector('.topnav-title').textContent = 'Organizations';
                     document.getElementById('add-organization').addEventListener('click', function(e) {
                         e.preventDefault();
-                        addOrg();
-                    });
-
-                    document.getElementById('org-overview-link').addEventListener('click', function(e) {
-                        e.preventDefault();
-                        fetch('organization/org-overview.php')
+                        fetch('organization/add-organization.php')
                         .then(response => response.text())
                         .then(html => {
-                            document.querySelector('.content-page').innerHTML = html;
+                            $('.modal-container').html(html);
+                            $('#modal-add-organization').modal('show');
+                            addOrg();
+                        });
+                    });
 
-                            document.getElementById('create-admin').addEventListener('click', function(e) {
-                                e.preventDefault();
-                                createAdmin();
-                            });
+                    document.querySelectorAll('.organization').forEach(function(organization) {
+                        organization.addEventListener('click', function() {
+                            // Get the organization ID from the data attribute
+                            const organizationId = this.dataset.organizationId;
 
-                            document.getElementById('upload').addEventListener('click', function(e) {
-                                e.preventDefault();
-                                upload();
-                            });
-                        })
+                            e.preventDefault();
+                            fetch(`organization/org-overview.php?organization_id=${organizationId}`)
+                            .then(response => response.text())
+                            .then(html => {
+                                document.querySelector('.content-page').innerHTML = html;
+
+                                document.getElementById('create-admin').addEventListener('click', function(e) {
+                                    e.preventDefault();
+                                    createAdmin();
+                                });
+
+                                document.getElementById('upload').addEventListener('click', function(e) {
+                                    e.preventDefault();
+                                    upload();
+                                });
+                            })
+                        });
                     });
                 })
 
-        }else if (this.id === 'student-link') {
+        } else if (this.id === 'student-link') {
             fetch('student/nav.php')
                 .then(response => response.text())
                 .then(html => {
@@ -207,16 +218,34 @@ function addStudent() {
   }
 
 function addOrg() {
-    fetch('organization/add-organization.html')
-        .then(response => response.text())
-        .then(html => {
+    $('#form-add-organization').submit(function(e) {
+        e.preventDefault();
 
-        $('.modal-container').html(html);
-        $('#modal-add-organization').modal('show');
-        $('#form-add-organization').on('submit', function(e) {
-            e.preventDefault();
+        // Create FormData object to handle form data and file upload
+        const formData = new FormData(this);
+        
+        $.ajax({
+            url: 'logic/addOrg.php',
+            type: 'post',
+            data: formData,
+            processData: false, // Prevent jQuery from automatically transforming data into a query string
+            contentType: false, // Prevent jQuery from setting content type
+            success: function(response) {
+                const res = JSON.parse(response);
+    
+                if (res.status === 'error') {
+                    alert(res.message);
+                } else {
+                    alert(res.message);
+                    $('#form-add-organization')[0].reset(); // Reset form fields
+                    $('#modal-add-organization').modal('hide'); // Close modal
+                }
+            },
+            error: function() {
+                alert('An error occurred while processing the request.');
+            }
         });
-        });
+    });
 }
 
 function addFee() {

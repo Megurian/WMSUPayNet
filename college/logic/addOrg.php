@@ -2,10 +2,11 @@
 require_once '../../tools/functions.php';
 require_once '../../database/autoload_classes.php';
 
-$collegeObj = new Colleges();
+$organizationObj = new Organizations();
 
 // Get and sanitize input
-$name = clean_input($_POST['collegeName'] ?? '');
+$college_id = clean_input($_POST['college_id']);
+$name = clean_input($_POST['organizationName'] ?? '');
 $description = clean_input($_POST['description'] ?? '');
 $logo_directory = '';
 
@@ -13,9 +14,9 @@ $logo_directory = '';
 $errors = [];
 
 if (empty($name) || strlen($name) < 2 || strlen($name) > 50) {
-    $errors[] = 'College name must be between 2 and 50 characters.';
+    $errors[] = 'Organization name must be between 2 and 50 characters.';
 } elseif (detectNumber($name) ){
-    $errors[] = 'College name must not have number.';
+    $errors[] = 'Organization name must not have number.';
 }
 
 if (strlen($description) > 255) {
@@ -30,7 +31,7 @@ $maxFileSize = 5 * 1024 * 1024; // 5MB
 
 //image validation
 if(empty($_FILES['logo']['name'])) {
-    $errors[] = "Logo is required to create a college.";
+    $errors[] = "Logo is required to create an organization.";
 } else {
     // Ensure the upload directory exists
     if (!is_dir($uploadDir)) {
@@ -71,8 +72,8 @@ if (!empty($errors)) {
 }
 
 // Insert into database
-if ($collegeObj->addCollege($name, $logo_directory, $description)) {
-    echo json_encode(['status' => 'success', 'message' => 'College added successfully.']);
+if ($organizationObj->addOrganization($college_id, $name, $logo_directory, $description)) {
+    echo json_encode(['status' => 'success', 'message' => 'Organization added successfully.']);
 } else {
-    echo json_encode(['status' => 'error', 'message' => 'Failed to add college.']);
+    echo json_encode(['status' => 'error', 'message' => 'Failed to add organization.']);
 }
