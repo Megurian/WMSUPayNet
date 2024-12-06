@@ -1,27 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="../student/style.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+<?php
+        require_once '../student/includes/head.php';
+    ?>
 
 <body>
     <div class="body">
-        <header>
-          <div class="logo">
-            <img src="../images/ccs_logo.png" alt="Logo">
-            <h1>CCS PayNet</h1>
-          </div>
-          <div class="icons">
-            <div class="notification">
-                <a href="./notif.html" class="notif-button">
-                    <i class="fas fa-bell"></i>
-                </a>
-            </div>
-          </div>
-        </header>
+
+    <?php 
+       require_once '../student/includes/topnav.php';
+       ?>
+
     <div class="report-form-container">
         <h2>Report a Problem</h2>
         <form>
