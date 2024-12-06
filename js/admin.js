@@ -34,7 +34,6 @@ document.querySelectorAll('.sidebar-item a.nav-link').forEach(link => {
                     });
                 });
 
-<<<<<<< HEAD
                 document.getElementById('1').addEventListener('click', function(e) {
                     e.preventDefault();
                     fetch('university/organizations.php')
@@ -51,40 +50,17 @@ document.querySelectorAll('.sidebar-item a.nav-link').forEach(link => {
                         document.getElementById('org-overview-link').addEventListener('click', function(e) {
                             e.preventDefault();
                             fetch('university/org-overview.php')
-=======
-                document.querySelectorAll('.college').forEach(function(college) {
-                    college.addEventListener('click', function() {
-                        // Get the college ID from the data attribute
-                        const collegeId = this.dataset.collegeId;
-                
-                        // Send the college ID to organizations.php
-                        fetch(`university/organizations.php?college_id=${collegeId}`)
->>>>>>> 1be72ca1167fbf60eaa0833e3135756cdc791d4a
                             .then(response => response.text())
                             .then(html => {
                                 document.querySelector('.content-page').innerHTML = html;
-                
-                                // Example: Bind further event listeners if needed
+
                                 document.getElementById('create-admin').addEventListener('click', function(e) {
                                     e.preventDefault();
                                     createAdmin();
                                 });
-                
-                                document.getElementById('org-1').addEventListener('click', function(e) {
-                                    e.preventDefault();
-                                    fetch('university/org-overview.php')
-                                        .then(response => response.text())
-                                        .then(html => {
-                                            document.querySelector('.content-page').innerHTML = html;
-                
-                                            document.getElementById('back-button').addEventListener('click', function(e) {
-                                                e.preventDefault();
-                                            });
-                                        });
-                                });
                             })
-                            .catch(error => console.error('Error loading organizations:', error));
-                    });
+                        });
+                    })
                 }); 
             })    
         }else if (this.id === 'feedback-link') {
@@ -111,7 +87,6 @@ window.addEventListener('load', () => {
     document.querySelector('.sidebar-item a#dashboard-link').click();
 });
 
-<<<<<<< HEAD
 
 function view_userReport() {
     fetch('user_feedback/modals.html')
@@ -127,8 +102,6 @@ function view_userReport() {
 function addCollege() {
     
   }
-=======
->>>>>>> 1be72ca1167fbf60eaa0833e3135756cdc791d4a
 
 function createAdmin() {
 fetch('university/add-college.html')
