@@ -68,6 +68,78 @@ document.querySelectorAll('.sidebar-item a.nav-link').forEach(link => {
                     });
                 }); 
             })    
+        }else if (this.id === 'statistic-link') {
+            fetch('statistics/nav.php')
+                .then(response => response.text())
+                .then(html => {
+                    document.querySelector('.content-page').innerHTML = html;
+                    document.querySelector('.topnav-title').textContent = 'Statistics';
+                    
+                    document.querySelectorAll('.nav-item a.navi-link').forEach(link => {
+                        link.addEventListener('click', function(e) {
+                            e.preventDefault(); 
+                    
+                            document.querySelectorAll('.nav-item a.navi-link').forEach(link => link.classList.remove('link-active'));
+                            this.classList.add('link-active');
+
+                            if (this.id === 'total-amount') {
+                                fetch('statistics/total-amount.php')
+                                    .then(response => response.text())
+                                    .then(html => {
+                                        document.querySelector('.statistic-content').innerHTML = html;
+                                        var table = $('#table-all').DataTable({
+                                            dom: 'rtp',
+                                            pageLength: 10,
+                                            ordering: false,
+                                        });
+                                    })
+                            }else if (this.id === 'total-registered') {
+                                fetch('statistics/total-registered.php')
+                                    .then(response => response.text())
+                                    .then(html => {
+                                        document.querySelector('.statistic-content').innerHTML = html;
+                                        var table = $('#table-all').DataTable({
+                                            dom: 'rtp',
+                                            pageLength: 10,
+                                            ordering: false,
+                                        });
+                                    })
+                            }
+                            else if (this.id === 'total-active') {
+                                fetch('statistics/total-active.php')
+                                    .then(response => response.text())
+                                    .then(html => {
+                                        document.querySelector('.statistic-content').innerHTML = html;
+                                        var table = $('#table-all').DataTable({
+                                            dom: 'rtp',
+                                            pageLength: 10,
+                                            ordering: false,
+                                        });
+                                    })
+                            }
+                        });
+                    })
+                    document.querySelector('.nav-item a#total-amount').click();
+                })
+                
+        }else if (this.id === 'audit-log-link') {
+            fetch('audit-and-system/audit-logs.php')
+                .then(response => response.text())
+                .then(html => {
+                    document.querySelector('.content-page').innerHTML = html;
+                    document.querySelector('.topnav-title').textContent = 'Audit Logs and System Monitoring';
+
+                })
+                
+        }else if (this.id === 'backup-link') {
+            fetch('backup-and-data/backup.php')
+                .then(response => response.text())
+                .then(html => {
+                    document.querySelector('.content-page').innerHTML = html;
+                    document.querySelector('.topnav-title').textContent = 'Backup and Data Integrity';
+
+                })
+                
         }else if (this.id === 'feedback-link') {
             fetch('user_feedback/feedback.php')
                 .then(response => response.text())
@@ -86,7 +158,16 @@ document.querySelectorAll('.sidebar-item a.nav-link').forEach(link => {
                     });
                 })
                 
-        }  else {
+        }else if (this.id === 'maintenance-link') {
+            fetch('system-maintenance/maintenance.php')
+                .then(response => response.text())
+                .then(html => {
+                    document.querySelector('.content-page').innerHTML = html;
+                    document.querySelector('.topnav-title').textContent = 'System Maintenance and Updates';
+
+                })
+                
+        } else {
             e.preventDefault(); 
         }
 
