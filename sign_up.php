@@ -31,6 +31,7 @@ unset($_SESSION['StudentInfo']);
 $coursesObj = new Courses();
 $collegesObj = new Colleges();
 $religionsObj = new Religions();
+$suffixesObj = new Suffixes();
 
 ?>
 <!DOCTYPE html>
@@ -91,9 +92,11 @@ $religionsObj = new Religions();
                 <label for="suffix">Suffix:</label>
                 <select id="suffix" name="suffix">
                     <option value="">N/A</option>
-                    <option value="Jr." <?php echo ($StudentInfo['suffix'] ?? '') === 'Jr.' ? 'selected' : ''; ?>>Jr.</option>
-                    <option value="Sr." <?php echo ($StudentInfo['suffix'] ?? '') === 'Sr.' ? 'selected' : ''; ?>>Sr.</option>
-                    <option value="III" <?php echo ($StudentInfo['suffix'] ?? '') === 'III' ? 'selected' : ''; ?>>III</option>
+                    <?php foreach ($suffixesObj->getAllSuffix() as $suffix): ?>
+                        <option value="<?= $suffix['id'] ?>" <?php echo ($StudentInfo['suffix'] ?? '') == $suffix['id'] ? 'selected' : ''; ?>>
+                            <?= htmlspecialchars($suffix['extension']) ?>
+                        </option>
+                    <?php endforeach; ?>
                 </select>
             </div>
 
