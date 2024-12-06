@@ -44,7 +44,7 @@ document.querySelectorAll('.sidebar-item a.nav-link').forEach(link => {
                         
                         document.getElementById('create-admin').addEventListener('click', function(e) {
                             e.preventDefault();
-                            createAdmin();
+                             createAdmin();
                         });
 
                         document.getElementById('org-overview-link').addEventListener('click', function(e) {
