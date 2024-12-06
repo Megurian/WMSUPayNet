@@ -25,11 +25,12 @@ $religionsObj = new Religions();
     <link rel="stylesheet" href="vendor/bootstrap-5.3.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="vendor//bootstrap-icons-1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="vendor/datatable-2.1.8/datatables.min.css" >
-    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/signup.css">
 </head>
 <body>
-    <div class="form-container">
-        <img src="your-logo.png" alt="Logo">
+   <div class="background">
+   <div class="form-container ">
+        <img src="images/wmsu_logo.png" alt="Logo" width="60" height="60" class="img-fluid logo mb-3">
         <form action="account/signup.logic.php" method="post">
 
             <div class="form-group">
@@ -51,10 +52,10 @@ $religionsObj = new Religions();
             <div class="form-group"> 
                 <label for="middle-name">Middle Name:</label> 
                 <input type="text" id="middle-name" name="middle-name" value="<?php echo htmlspecialchars($StudentInfo['middle_name'] ?? ''); ?>"> 
-                <label> 
-                    <input type="checkbox" id="no-middle-name" name="no-middle-name" <?php echo !empty($StudentInfo['no_middle_name']) ? 'checked' : ''; ?>> 
-                    No Middle Name 
-                </label> 
+                <div class="col-md-4 align-items-center d-flex mt-2">
+                <label class="col-md-10"> No Middle Name</label> 
+                <input type="checkbox" id="no-middle-name" name="no-middle-name" <?php echo !empty($StudentInfo['no_middle_name']) ? 'checked' : ''; ?>> 
+                </div>
                 <?php if (!empty($Errors['middle_name'])): ?> 
                     <span class="error" style="color: red;"><?= htmlspecialchars($Errors['middle_name']) ?></span><br> 
                 <?php endif; ?> 
@@ -143,9 +144,10 @@ $religionsObj = new Religions();
                 <?php endif; ?>
             </div>
 
-            <button type="submit">Register</button>
+            <button class="register-btn" type="submit">Register</button>
         </form>
     </div>
+   </div>
     <script src="../vendor/jQuery-3.7.1/jquery-3.7.1.min.js"></script>
     <script>
     $(document).ready(function () {
