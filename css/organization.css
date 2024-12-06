@@ -413,5 +413,5 @@ h4{
 #attachment-link{
     text-decoration: underline;
     cursor: pointer;
-
+    color: red;
 }

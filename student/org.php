@@ -1,39 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CCS PayNet - Organizations</title>
-    <!-- FontAwesome CSS -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="style.css">
-</head>
+  <?php
+        require_once '../student/includes/head.php';
+  ?>
 <body>
     <!-- Header -->
-    <header>
-        <div class="logo">
-          <img src="../images/ccs_logo.png" alt="Logo">
-          <h1>CCS PayNet</h1>
-        </div>
-        <div class="icons">
-            <div class="notification">
-                <a href="./notif.html" class="notif-button">
-                    <i class="fas fa-bell"></i>
-                </a>
-            </div>
-            <div class="profile">
-                <a href="./setting.html" class="profile-button">
-                  <i class="fas fa-user-circle"></i>
-                </a>
-              </div>
-        </div>
-      </header>
+    <?php 
+       require_once '../student/includes/topnav.php';
+       ?>
 
     <!-- Back Button and Page Title -->
     <div class="container">
         <div class="back-title">
-            <a href="./dashboard.html" class="back-btn">
+            <a href="./dashboard.php" class="back-btn">
                 <i class="fa-solid fa-arrow-left"></i>
             </a>
             <h2>Organizations</h2>
@@ -56,7 +33,7 @@
                 <h5 class="Box-title">CCS-CSC </h5>
                 <h1 class="Box-count">2</h1>
             </div>
-             <div class="Box-footer-left status pending">Pending <a href="./fee.html">view</a></div>
+             <div class="Box-footer-left status pending">Pending <a href="./fee.php">view</a></div>
             </div>
 
             <!-- Box 3 -->
@@ -65,7 +42,7 @@
                 <h5 class="Box-title">PHICS </h5>
                 <h1 class="Box-count">1</h1>
             </div>
-            <div class="Box-footer-left status pending">Success <a href="./refund.html">view</a></div>
+            <div class="Box-footer-left status pending">Success <a href="./refund.php">view</a></div>
             </div>
 
             <!-- Box 4 -->
@@ -74,7 +51,7 @@
                 <h6 class="Box-title">VENOM <br> PUBLICATION</h6>
                 <h1 class="Box-count-1">1</h1>
             </div>
-             <div class="Box-footer-left status due">Due <a href="./due.html">view</a></div>
+             <div class="Box-footer-left status due">Due <a href="./due.php">view</a></div>
             </div>
         </div>
     </div>

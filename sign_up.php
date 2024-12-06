@@ -174,6 +174,12 @@ $religionsObj = new Religions();
                 });
             }
         }
+        
+        //Error display when not failed signup
+        var not_enrolled = '<?php echo htmlspecialchars($Errors['not_enrolled'] ?? '', ENT_QUOTES, 'UTF-8'); ?>'; 
+        if (not_enrolled){ 
+            alert(not_enrolled);
+        }
 
         // Event listener for college dropdown change
         $('#college').change(function () {

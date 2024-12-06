@@ -11,6 +11,8 @@ document.querySelectorAll('.sidebar-item a.nav-link').forEach(link => {
                 .then(response => response.text())
                 .then(html => {
                     document.querySelector('.content-page').innerHTML = html;
+                    
+                    document.querySelector('.topnav-title').textContent = 'Dashboard';
                     loadChart()
                 })
                 
@@ -20,6 +22,7 @@ document.querySelectorAll('.sidebar-item a.nav-link').forEach(link => {
             .then(html => {
                 document.querySelector('.content-page').innerHTML = html;
                 
+                document.querySelector('.topnav-title').textContent = 'University';
                 document.getElementById('add-college').addEventListener('click', function(e) {
                     e.preventDefault();
                     fetch('university/add-college.html')
@@ -60,6 +63,14 @@ document.querySelectorAll('.sidebar-item a.nav-link').forEach(link => {
                     })
                 }); 
             })    
+        }else if (this.id === 'feedback-link') {
+            fetch('user_feedback/feedback.php')
+                .then(response => response.text())
+                .then(html => {
+                    document.querySelector('.content-page').innerHTML = html;
+                    document.querySelector('.topnav-title').textContent = 'User Feedback';
+                })
+                
         } else {
             e.preventDefault(); 
         }
