@@ -560,7 +560,6 @@
     /* Card Body */
     .fee-card-body {
     padding: 15px;
-    width: 95vh;
     }
 
     /* Table Styling */
@@ -660,8 +659,8 @@
     }
 
     .records-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+    justify-content: space-evenly;
     gap: 30px;
     padding: 20px;
     } 
