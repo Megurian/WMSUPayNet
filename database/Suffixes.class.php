@@ -11,4 +11,14 @@ class Suffixes extends Database {
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    // Get suffix name by suffix id
+    public function getSuffixName($id) {
+        $sql = "SELECT extension FROM $this->table WHERE id = :id LIMIT 1";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([':id' => $id]);
+        
+        $extension = $stmt->fetch(PDO::FETCH_ASSOC); 
+        return $extension ? $extension['extension'] : null;
+    }
 }

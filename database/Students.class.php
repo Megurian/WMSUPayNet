@@ -35,6 +35,23 @@ class Students extends Database {
         }
         return false;
     }
+
+    //count student per college
+    public function countStudents($college_id) {
+        $sql = "SELECT COUNT(*) as student_count FROM $this->table WHERE college_id = :college_id";
+        $stmt = $this->pdo->prepare($sql);
+        try {
+            $stmt->execute([
+                ':college_id' => $college_id,
+            ]);
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $result['student_count'];
+        } catch (PDOException $e) {
+            error_log("Database error: " . $e->getMessage()); // Log the error for debugging
+            return false;
+        }
+    }
+    
 }
 
 $obj = new Students();

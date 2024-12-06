@@ -25,7 +25,7 @@ document.querySelectorAll('.sidebar-item a.nav-link').forEach(link => {
                 document.querySelector('.topnav-title').textContent = 'University';
                 document.getElementById('add-college').addEventListener('click', function(e) {
                     e.preventDefault();
-                    fetch('university/add-college.html')
+                    fetch('university/add-college.php')
                     .then(response => response.text())
                     .then(html => {
                         $('.modal-container').html(html);
@@ -41,30 +41,37 @@ document.querySelectorAll('.sidebar-item a.nav-link').forEach(link => {
                 
                         // Send the college ID to organizations.php
                         fetch(`university/organizations.php?college_id=${collegeId}`)
-                            .then(response => response.text())
-                            .then(html => {
-                                document.querySelector('.content-page').innerHTML = html;
-                
-                                // Example: Bind further event listeners if needed
-                                document.getElementById('create-admin').addEventListener('click', function(e) {
-                                    e.preventDefault();
+                        .then(response => response.text())
+                        .then(html => {
+                            document.querySelector('.content-page').innerHTML = html;
+            
+                            // Example: Bind further event listeners if needed
+                            document.getElementById('create-admin').addEventListener('click', function(e) {
+                                e.preventDefault();
+                                
+                                fetch(`university/add-college.php?college_id=${collegeId}`)
+                                .then(response => response.text())
+                                .then(html => {
+                                    $('.modal-container').html(html);
+                                    $('#modal-create-admin').modal('show');
                                     createAdmin();
                                 });
-                
-                                document.getElementById('org-1').addEventListener('click', function(e) {
-                                    e.preventDefault();
-                                    fetch('university/org-overview.php')
-                                        .then(response => response.text())
-                                        .then(html => {
-                                            document.querySelector('.content-page').innerHTML = html;
-                
-                                            document.getElementById('back-button').addEventListener('click', function(e) {
-                                                e.preventDefault();
-                                            });
+                            });
+            
+                            document.getElementById('org-1').addEventListener('click', function(e) {
+                                e.preventDefault();
+                                fetch('university/org-overview.php')
+                                    .then(response => response.text())
+                                    .then(html => {
+                                        document.querySelector('.content-page').innerHTML = html;
+            
+                                        document.getElementById('back-button').addEventListener('click', function(e) {
+                                            e.preventDefault();
                                         });
+                                    });
                                 });
                             })
-                            .catch(error => console.error('Error loading organizations:', error));
+                        .catch(error => console.error('Error loading organizations:', error));
                     });
                 }); 
             })    
@@ -105,15 +112,35 @@ function view_userReport() {
     }
 
 function createAdmin() {
-fetch('university/add-college.html')
-    .then(response => response.text())
-    .then(html => {
-
-    $('.modal-container').html(html);
-    $('#modal-create-admin').modal('show');
-    $('#form-create-admin').on('submit', function(e) {
+    $('#form-create-admin').submit(function(e) {
         e.preventDefault();
-    });
+
+        // Create FormData object to handle form data and file upload
+        const formData = new FormData(this);
+        
+        $.ajax({
+            url: 'logic/addCollegeAdmin.php',
+            type: 'post',
+            data: formData,
+            processData: false, // Prevent jQuery from automatically transforming data into a query string
+            contentType: false, // Prevent jQuery from setting content type
+            success: function(response) {
+                const res = JSON.parse(response);
+    
+                if (res.status === 'error') {
+                    alert(res.message);
+                } else {
+                    alert(res.message);
+                    $('#form-create-admin')[0].reset(); // Reset form fields
+                    $('#modal-create-admin').modal('hide'); // Close modal
+                    $('.modal-container').html(html);
+
+                }
+            },
+            error: function() {
+                alert('An error occurred while processing the request.');
+            }
+        });
     });
 }
 
@@ -125,7 +152,7 @@ function addCollege() {
         const formData = new FormData(this);
         
         $.ajax({
-            url: 'university/addCollege.php',
+            url: 'logic/addCollege.php',
             type: 'post',
             data: formData,
             processData: false, // Prevent jQuery from automatically transforming data into a query string

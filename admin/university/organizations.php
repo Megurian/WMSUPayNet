@@ -1,4 +1,11 @@
 <?php
+  require_once "../../tools/functions.php";
+  require_once "../../database/autoload_classes.php";
+
+  $organizationObj = new Organizations();
+  $adminObj = new Admins();
+  $suffixObj = new Suffixes();
+  $collegeId = isset($_GET['college_id']) ? intval($_GET['college_id']) : 0;
 ?>
 
 <style>
@@ -50,34 +57,66 @@
                 </div>
             </div>
         </div>
-    
+
+        <!-- College's Admin Table -->
+        <div class="table-container">
+            <div class="table-responsive">
+                <table id="table-all" class="table table-striped table-bordered mb-0">
+                    <thead>
+                        <tr>
+                            <th>Admin Name</th>
+                            <th>Email</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    
+                    <tbody>
+                        <?php foreach ($adminObj->getAllCollegeAdminById($collegeId) as $admin): ?>
+                            <tr>
+                                <td><?= htmlspecialchars($admin['first_name'] . " " . $admin['middle_name'] . " " . $admin['last_name'] . " " . htmlspecialchars($suffixObj->getSuffixName($admin['suffix_id']))) ?></td>
+                                <td><?= htmlspecialchars($admin['email'])?></td>
+                                <td>All</td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
 
 
         <!-- Card -->
-        <div class="card shadow-sm mb-4 mt-4">
-            <div class="card-body d-flex align-items-center">
-                <img src="../images/gender_club.jpg" alt="Institution Logo" width="100" class="rounded-circle me-3">
+        <?php
+          $organizations = $organizationObj->getAllOrganizationById($collegeId);
+          if (empty($organizations)): ?>
+              <div style="text-align:center; margin-top:20px;">No Organizations</div>
+          <?php else: ?>
+              <?php foreach ($organizations as $organization): ?>
+                  <div class="card shadow-sm mb-4 mt-4">
+                      <div class="card-body d-flex align-items-center">
+                          <img src="<?= htmlspecialchars($organization['logo_directory']) ?>" alt="Organization Logo" width="100" class="rounded-circle me-3">
 
-                <div class="flex-grow-1" id="org-1">
-                  <h5 class="mb-1">Gender Club</h5>
-                  <p class="mb-1 text-muted">
-                    <i class="bi bi-people-fill me-1"></i>
-                    600,003
-                  </p>
-                  <small class="text-muted">Updated October 01, 2024</small>
-                </div>
+                          <div class="flex-grow-1" id="org-1">
+                              <h5 class="mb-1"><?= htmlspecialchars($organization['name']) ?></h5>
+                              <p class="mb-1 text-muted">
+                                  <i class="bi bi-people-fill me-1"></i>
+                                  600,003
+                              </p>
+                              <small class="text-muted">Updated October 01, 2024</small>
+                          </div>
 
-                <button class="btn btn-outline-secondary btn-sm" data-bs-toggle="dropdown">
-                  <i class="bi bi-three-dots"></i>
-                </button>
+                          <button class="btn btn-outline-secondary btn-sm" data-bs-toggle="dropdown">
+                              <i class="bi bi-three-dots"></i>
+                          </button>
 
-                <ul class="dropdown-menu dropdown-menu-end">
-                    <li><a class="dropdown-item" href="#">Edit</a></li>
-                    <li><a class="dropdown-item" href="#">Delete</a></li>
-                </ul>
+                          <ul class="dropdown-menu dropdown-menu-end">
+                              <li><a class="dropdown-item" href="#">Edit</a></li>
+                              <li><a class="dropdown-item" href="#">Delete</a></li>
+                          </ul>
+                      </div>
+                  </div>
+          <?php endforeach; ?>
+        <?php endif; ?>
 
-            </div>
-        </div>
 
 </div>
     

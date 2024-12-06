@@ -12,32 +12,64 @@ class Accounts extends Database {
     public $created_at = '';
 
 
-    public function createAccount($student_id = null, $username, $email, $password, $role, $college_id) {
-        $sql = "INSERT INTO $this->table (student_id, username, email, password, role, college_id) 
-                VALUES (:student_id, :username, :email, :password, :role, :college_id)";
+    public function createAccount($student_id = null, $admin_id = null, $username, $email, $password, $role, $college_id) {
+        $encryptedPassword = password_hash($password, PASSWORD_ARGON2ID, ['memory_cost' => 2048, 'time_cost' => 4, 'threads' => 2]);
+    
+        // Determine whether the account is for a student or admin
+        $columns = $student_id !== null ? 'student_id, username, email, password, role, college_id' : 'admin_id, username, email, password, role, college_id';
+        $values = $student_id !== null ? ':student_id, :username, :email, :password, :role, :college_id' : ':admin_id, :username, :email, :password, :role, :college_id';
+        
+        $sql = "INSERT INTO $this->table ($columns) VALUES ($values)";
         $stmt = $this->pdo->prepare($sql);
-
+    
         try {
-            $stmt->execute([
-                ':student_id' => $student_id,
+            $params = [
                 ':username' => $username,
                 ':email' => $email,
-                ':password' => $password,
+                ':password' => $encryptedPassword,
                 ':role' => $role,
                 ':college_id' => $college_id
-            ]);
-
+            ];
+    
+            if ($student_id !== null) {
+                $params[':student_id'] = $student_id;
+            } else {
+                $params[':admin_id'] = $admin_id;
+            }
+    
+            $stmt->execute($params);
             $lastInsertId = $this->pdo->lastInsertId();
-
-            $updateSql  = "UPDATE $this->table SET is_registered = 1 WHERE id = :lastInsertId";
-            $updateStmt  = $this->pdo->prepare($updateSql );
-            $updateStmt->execute([
-                ':lastInsertId' => $lastInsertId]);
-
+    
+            if ($student_id !== null) {
+                $updateSql = "UPDATE $this->table SET is_registered = 1 WHERE id = :lastInsertId";
+                $updateStmt = $this->pdo->prepare($updateSql);
+                $updateStmt->execute([':lastInsertId' => $lastInsertId]);
+            }
+    
             return true; // Return true if the insert was successful
         } catch (PDOException $e) {
             error_log("Database error: " . $e->getMessage());
             return false; // Return false if there was an error
+        }
+    }
+    
+
+    public function checkDuplicateEmail($email){
+        $sql = "SELECT COUNT(*) as count FROM $this->table WHERE email = :email";
+        $stmt = $this->pdo->prepare($sql);
+        try {
+            $stmt->execute([
+                ':email' => $email
+            ]);
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            if($result['count'] > 0) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (PDOException $e) {
+            error_log("Database error: " . $e->getMessage()); // Log the error for debugging
+            return false;
         }
     }
 
