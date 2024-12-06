@@ -322,4 +322,41 @@ textarea{
   resize: none;
 }
 
+.subnav{
+  display: flex;
 
+  border-bottom: #e7e7e7 1px solid;
+}
+.subnav .subnav-item{
+  padding: 10px 25px;
+}
+.subnav .subnav-item a{
+  text-decoration: none;
+  color: #0c220c;
+}
+.subnav-item > a.link-active, .subnav-item> a:focus {
+  color: #0c220c; 
+  width: 100%;
+  font-weight: bold;
+  padding-bottom: 10px;
+  border-bottom: #093909 1px solid;
+}
+.dot {
+  height: 8px;
+  width: 8px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 5px;
+}
+
+.purple {
+  background-color: rgba(153, 102, 255, 1);
+}
+
+.blue {
+  background-color: rgba(54, 162, 235, 1);
+}
+
+.red {
+  background-color: rgba(255, 99, 132, 1);
+}

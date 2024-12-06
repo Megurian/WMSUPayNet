@@ -131,13 +131,40 @@ document.querySelectorAll('.sidebar-item a.nav-link').forEach(link => {
 
                 })
                 
-        }else if (this.id === 'backup-link') {
-            fetch('backup-and-data/backup.php')
+        }else if (this.id === 'backup-data-link') {
+            fetch('backup-data/nav.php')
                 .then(response => response.text())
                 .then(html => {
                     document.querySelector('.content-page').innerHTML = html;
                     document.querySelector('.topnav-title').textContent = 'Backup and Data Integrity';
 
+                    document.querySelectorAll('.subnav-item a.subnav-link').forEach(link => {
+                        link.addEventListener('click', function(e) {
+                            e.preventDefault(); 
+                    
+                            document.querySelectorAll('.subnav-item a.subnav-link').forEach(link => link.classList.remove('link-active'));
+                            this.classList.add('link-active');
+
+                            if (this.id === 'backup-link') {
+                                fetch('backup-data/backup.php')
+                                    .then(response => response.text())
+                                    .then(html => {
+                                        document.querySelector('.backup-data-content').innerHTML = html;
+                                        
+                                    })
+                            }else if (this.id === 'schedule-link') {
+                                fetch('backup-data/schedule-backup.php')
+                                    .then(response => response.text())
+                                    .then(html => {
+                                        document.querySelector('.backup-data-content').innerHTML = html;
+                                       
+                                        
+                                    })
+                            }
+                        });
+                    })
+                    
+                    document.querySelector('.subnav-item a#backup-link').click();
                 })
                 
         }else if (this.id === 'feedback-link') {
@@ -159,12 +186,39 @@ document.querySelectorAll('.sidebar-item a.nav-link').forEach(link => {
                 })
                 
         }else if (this.id === 'maintenance-link') {
-            fetch('system-maintenance/maintenance.php')
+            fetch('system-maintenance/nav.php')
                 .then(response => response.text())
                 .then(html => {
                     document.querySelector('.content-page').innerHTML = html;
                     document.querySelector('.topnav-title').textContent = 'System Maintenance and Updates';
 
+                    document.querySelectorAll('.subnav-item a.subnav-link').forEach(link => {
+                        link.addEventListener('click', function(e) {
+                            e.preventDefault(); 
+                    
+                            document.querySelectorAll('.subnav-item a.subnav-link').forEach(link => link.classList.remove('link-active'));
+                            this.classList.add('link-active');
+
+                            if (this.id === 'system-maintenance-link') {
+                                fetch('system-maintenance/maintenance.php')
+                                    .then(response => response.text())
+                                    .then(html => {
+                                        document.querySelector('.system-maintenance-content').innerHTML = html;
+                                        monitoring()
+                                    })
+                            }else if (this.id === 'updates-link') {
+                                fetch('system-maintenance/updates.php')
+                                    .then(response => response.text())
+                                    .then(html => {
+                                        document.querySelector('.system-maintenance-content').innerHTML = html;
+                                       
+                                        
+                                    })
+                            }
+                        });
+                    })
+                    
+                    document.querySelector('.subnav-item a#system-maintenance-link').click();
                 })
                 
         } else {
@@ -241,5 +295,65 @@ function addCollege() {
                 alert('An error occurred while processing the request.');
             }
         });
+    });
+}
+
+function monitoring(){
+    const monitoringData = {
+        labels: ['00', '00', '00'],
+        datasets: [{
+            label: 'category 1',
+            data: [0, 20, 0],
+            backgroundColor: 'rgba(153, 102, 255, 0.2)',
+            borderColor: 'rgba(153, 102, 255, 1)',
+            borderWidth: 1
+        }, {
+            label: 'Category 2',
+            data: [0, 0, 50],
+            backgroundColor: 'rgba(54, 162, 235, 0.2)',
+            borderColor: 'rgba(54, 162, 235, 1)',
+            borderWidth: 1
+        }]
+    };
+
+    const errorTrackingData = {
+        labels: ['00', '00', '00', '00', '00', '00', '00', '00', '00', '00', '00', '00', '00', '00', '00', '00', '00', '00', '00', '00'],
+        datasets: [{
+            label: 'Key title goes here',
+            data: [10, 9, 8, 9, 10, 9, 8, 7, 8, 9, 10, 11, 12, 11, 10, 9, 8, 9, 10, 9],
+            backgroundColor: 'rgba(255, 99, 132, 0.2)',
+            borderColor: 'rgba(255, 99, 132, 1)',
+            borderWidth: 1
+        }, {
+            label: 'Key title goes here',
+            data: [5, 6, 7, 6, 5, 6, 7, 8, 9, 10, 11, 12, 13, 12, 11, 10, 9, 8, 9, 10],
+            backgroundColor: 'rgba(54, 162, 235, 0.2)',
+            borderColor: 'rgba(54, 162, 235, 1)',
+            borderWidth: 1
+        }]
+    };
+
+    const monitoringChart = new Chart(document.getElementById('monitoringChart'), {
+        type: 'bar',
+        data: monitoringData,
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+    const errorTrackingChart = new Chart(document.getElementById('errorTrackingChart'), {
+        type: 'line',
+        data: errorTrackingData,
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
     });
 }
