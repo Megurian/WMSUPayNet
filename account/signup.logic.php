@@ -93,6 +93,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $Errors['email'] = 'Email is required to signup';
     } elseif (!filter_var($StudentInfo['email'], FILTER_VALIDATE_EMAIL)) {
         $Errors['email'] = 'Please enter a valid email';
+    } elseif ($accountObj->checkDuplicateEmail($StudentInfo['email'])) {
+        $errors[] = 'Email entered is already in use.';
     }
 
     //Validation Password
@@ -123,11 +125,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (empty($Errors)) {
         if($studentObj->verifyStudent($StudentInfo['school_id'], $StudentInfo['first_name'], $StudentInfo['last_name'], $StudentInfo['college'], $StudentInfo['course'])){
 
-            $encrytedPassword = password_hash($StudentInfo['confirm_password'], PASSWORD_ARGON2ID,['memory_cost' => 2048, 'time_cost' => 4, 'threads' => 2]);
             $username = extractUsername($StudentInfo['email']);
             $role = 'Student';
             try{
-                $accountObj->createAccount($StudentInfo['school_id'], $username, $StudentInfo['email'], $encrytedPassword, $role, $StudentInfo['college']);
+                $accountObj->createAccount($StudentInfo['school_id'], $username, $StudentInfo['email'], $StudentInfo['confirm_password'], $role, $StudentInfo['college']);
                 header('location: ..\login.php');
             }catch(PDOException){
                 echo 'Caught exception: ', $e->getMessage(), "\n";
