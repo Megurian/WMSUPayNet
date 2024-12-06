@@ -75,13 +75,18 @@ document.querySelectorAll('.sidebar-item a.nav-link').forEach(link => {
                     document.querySelector('.content-page').innerHTML = html;
                     document.querySelector('.topnav-title').textContent = 'User Feedback';
 
+                    document.getElementById('attachment-link').addEventListener('click', function(e) {
+                        e.preventDefault();
+                        viewAttachments()
+                    });
+
                     document.getElementById('view-userReport').addEventListener('click', function(e) {
                         e.preventDefault();
                         view_userReport()
                     });
                 })
                 
-        } else {
+        }  else {
             e.preventDefault(); 
         }
 
@@ -92,6 +97,16 @@ window.addEventListener('load', () => {
     document.querySelector('.sidebar-item a#dashboard-link').click();
 });
 
+function viewAttachments() {
+    fetch('user_feedback/modals.html')
+        .then(response => response.text())
+        .then(html => {
+    
+        $('.modal-container').html(html);
+        $('#modal-view-attachments').modal('show');
+      
+        });
+    }
 
 function view_userReport() {
     fetch('user_feedback/modals.html')
