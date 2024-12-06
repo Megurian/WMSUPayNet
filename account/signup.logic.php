@@ -109,7 +109,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $Errors['password'] = 'Password must contain at least 1 number, 1 uppercase, 1 lowercase, 1 special';
     } elseif (
         strpos($StudentInfo['password'], $StudentInfo['first_name']) !== false ||
-        strpos($StudentInfo['password'], $StudentInfo['middle_name']) !== false ||
         strpos($StudentInfo['password'], $StudentInfo['last_name']) !== false ||
         strpos($StudentInfo['password'], $StudentInfo['email']) !== false ||
         strpos($StudentInfo['password'], $StudentInfo['school_id']) !== false
@@ -136,7 +135,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             /* echo "<script type='text/javascript'>alert('Student Exist');</script>";
             print_r($StudentInfo); */
         }else{
-            echo "<script type='text/javascript'>alert('Unable to signup, not an enrolled student.');</script>";
+            $Errors['not_enrolled'] = 'Unable to signup, not an enrolled student.';
+            $_SESSION['Errors'] = $Errors;
+            $_SESSION['StudentInfo'] = $StudentInfo;
             header('location: ..\sign_up.php');
         }
     } else {
