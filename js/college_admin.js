@@ -15,35 +15,37 @@ document.querySelectorAll('.sidebar-item a.nav-link').forEach(link => {
                     loadPie()
                 })
                 
-        }else if (this.id === 'organizations-link') {
+        } else if (this.id === 'organizations-link') {
             fetch('organization/organizations.php')
                 .then(response => response.text())
                 .then(html => {
                     document.querySelector('.content-page').innerHTML = html;
                     document.querySelector('.topnav-title').textContent = 'Organizations';
-                            document.getElementById('add-organization').addEventListener('click', function(e) {
+                    document.getElementById('add-organization').addEventListener('click', function(e) {
+                        e.preventDefault();
+                        addOrg();
+                    });
+
+                    document.getElementById('org-overview-link').addEventListener('click', function(e) {
+                        e.preventDefault();
+                        fetch('organization/org-overview.php')
+                        .then(response => response.text())
+                        .then(html => {
+                            document.querySelector('.content-page').innerHTML = html;
+
+                            document.getElementById('create-admin').addEventListener('click', function(e) {
                                 e.preventDefault();
-                                addOrg();
+                                createAdmin();
                             });
-                            document.getElementById('org-overview-link').addEventListener('click', function(e) {
+
+                            document.getElementById('upload').addEventListener('click', function(e) {
                                 e.preventDefault();
-                                fetch('organization/org-overview.php')
-                                .then(response => response.text())
-                                .then(html => {
-                                    document.querySelector('.content-page').innerHTML = html;
-                                    goBack();
-                                    document.getElementById('create-admin').addEventListener('click', function(e) {
-                                        e.preventDefault();
-                                        createAdmin();
-                                    });
-                                    document.getElementById('upload').addEventListener('click', function(e) {
-                                        e.preventDefault();
-                                        upload();
-                                    });
-                                    
-                                })
+                                upload();
                             });
+                        })
+                    });
                 })
+
         }else if (this.id === 'student-link') {
             fetch('student/nav.php')
                 .then(response => response.text())
@@ -64,7 +66,6 @@ document.querySelectorAll('.sidebar-item a.nav-link').forEach(link => {
                                     .then(html => {
                                         document.querySelector('.table-content').innerHTML = html;
                                        
-                                        
                                         var table = $('#table-all').DataTable({
                                             dom: 'rtp',
                                             pageLength: 10,
@@ -76,22 +77,21 @@ document.querySelectorAll('.sidebar-item a.nav-link').forEach(link => {
                                             addStudent();
                                         });
                                     })
-                            }else if (this.id === 'course-link') {
+
+                            } else if (this.id === 'course-link') {
                                 fetch('student/course.php')
                                     .then(response => response.text())
                                     .then(html => {
                                         document.querySelector('.table-content').innerHTML = html;
                                         sort()
-                                        
                                     })
                             }
                         });
                     })
-                    
                     document.querySelector('.nav-item a#student-list-link').click();
                 })
                 
-        }else  if (this.id === 'fees-link') {
+        } else if (this.id === 'fees-link') {
             fetch('fees/nav.php')
                 .then(response => response.text())
                 .then(html => {
@@ -111,22 +111,19 @@ document.querySelectorAll('.sidebar-item a.nav-link').forEach(link => {
                                     .then(html => {
                                         document.querySelector('.table-content').innerHTML = html;
                                        
-                                        
                                         var table = $('#table-all').DataTable({
                                             dom: 'rtp',
                                             pageLength: 10,
                                             ordering: false,
                                         });
-                                        
-                                        
                                     })
-                            }else if (this.id === 'college-link') {
+
+                            } else if (this.id === 'college-link') {
                                 fetch('fees/college_fees.php')
                                     .then(response => response.text())
                                     .then(html => {
                                         document.querySelector('.table-content').innerHTML = html;
                                        
-                                        
                                         var table = $('#table-all').DataTable({
                                             dom: 'rtp',
                                             pageLength: 10,
@@ -137,7 +134,6 @@ document.querySelectorAll('.sidebar-item a.nav-link').forEach(link => {
                                             e.preventDefault();
                                             addFee();
                                         });
-                                        
                                     })
                             }
                         });
@@ -146,24 +142,21 @@ document.querySelectorAll('.sidebar-item a.nav-link').forEach(link => {
                     document.querySelector('.nav-item a#organization-list-link').click();
                 })
                 
-        }else  if (this.id === 'logs-link') {
+        } else if (this.id === 'logs-link') {
             fetch('logs/logs.php')
                 .then(response => response.text())
                 .then(html => {
                     document.querySelector('.content-page').innerHTML = html;
-                    document.querySelector('.topnav-title').textContent = 'Activity Logs';
-
-                    
+                    document.querySelector('.topnav-title').textContent = 'Activity Logs';  
                 })
                 
-        }else  if (this.id === 'report-link') {
+        } else if (this.id === 'report-link') {
             fetch('reports/report.php')
                 .then(response => response.text())
                 .then(html => {
                     document.querySelector('.content-page').innerHTML = html;
                     document.querySelector('.topnav-title').textContent = 'Report';
                     
-
                     document.getElementById('report-form').addEventListener('click', function(e) {
                         e.preventDefault();
                         generateReport();
@@ -183,21 +176,17 @@ document.querySelectorAll('.sidebar-item a.nav-link').forEach(link => {
                             document.querySelector('.topnav-title').textContent = 'Report';
                             loadChart()
                             viewDetails()
+
                             document.getElementById('download-report').addEventListener('click', function(e) {
                                 e.preventDefault();
                                 downloadReport()
                             });
                         })
                     });
-                    
-                })
-                
-        }
-        
-        else {
+                }) 
+        } else {
             e.preventDefault(); 
         }
-
     });
 });
 
@@ -207,103 +196,98 @@ window.addEventListener('load', () => {
 
 function addStudent() {
     fetch('student/add-student.html')
-      .then(response => response.text())
-      .then(html => {
+        .then(response => response.text())
+        .then(html => {
         $('.modal-container').html(html);
         $('#modal-add-student').modal('show');
         $('#form-add-student').on('submit', function(e) {
-          e.preventDefault();
+            e.preventDefault();
         });
-      });
+        });
   }
 
 function addOrg() {
-fetch('organization/add-organization.html')
-    .then(response => response.text())
-    .then(html => {
+    fetch('organization/add-organization.html')
+        .then(response => response.text())
+        .then(html => {
 
-    $('.modal-container').html(html);
-    $('#modal-add-organization').modal('show');
-    $('#form-add-organization').on('submit', function(e) {
-        e.preventDefault();
-    });
-    });
+        $('.modal-container').html(html);
+        $('#modal-add-organization').modal('show');
+        $('#form-add-organization').on('submit', function(e) {
+            e.preventDefault();
+        });
+        });
 }
 
 function addFee() {
-fetch('fees/add-fee.html')
-    .then(response => response.text())
-    .then(html => {
+    fetch('fees/add-fee.html')
+        .then(response => response.text())
+        .then(html => {
 
-    $('.modal-container').html(html);
-    $('#modal-add-fee').modal('show');
-    $('#form-add-fee').on('submit', function(e) {
-        e.preventDefault();
-    });
-    });
+        $('.modal-container').html(html);
+        $('#modal-add-fee').modal('show');
+        $('#form-add-fee').on('submit', function(e) {
+            e.preventDefault();
+        });
+        });
 }
 
 function createAdmin() {
-fetch('organization/add-admin.html')
-    .then(response => response.text())
-    .then(html => {
+    fetch('organization/add-admin.html')
+        .then(response => response.text())
+        .then(html => {
 
-    $('.modal-container').html(html);
-    $('#modal-create-admin').modal('show');
-    $('#form-create-admin').on('submit', function(e) {
-        e.preventDefault();
-    });
-    });
+        $('.modal-container').html(html);
+        $('#modal-create-admin').modal('show');
+        $('#form-create-admin').on('submit', function(e) {
+            e.preventDefault();
+        });
+        });
 }
 function generateReport() {
-fetch('reports/generate_report.html')
-    .then(response => response.text())
-    .then(html => {
+    fetch('reports/generate_report.html')
+        .then(response => response.text())
+        .then(html => {
 
-    $('.modal-container').html(html);
-    $('#modal-generate-report').modal('show');
-    $('#form-generate-report').on('submit', function(e) {
-        e.preventDefault();
-    });
-    });
-}
-
-function goBack() {
-window.history.back();
+        $('.modal-container').html(html);
+        $('#modal-generate-report').modal('show');
+        $('#form-generate-report').on('submit', function(e) {
+            e.preventDefault();
+        });
+        });
 }
 
 function upload(){
+    const logoInput = document.getElementById('logo-input');
+    const logoPreview = document.getElementById('logo-preview');
 
-const logoInput = document.getElementById('logo-input');
-const logoPreview = document.getElementById('logo-preview');
-
-logoInput.addEventListener('change', (event) => {
-    const file = event.target.files[0];
-    if (file) {
-        const reader = new FileReader();
-        reader.onload = (e) => {
-            logoPreview.src = e.target.result;
-            logoPreview.style.display = 'block';
-            document.querySelector('.plus-icon').style.display = 'none';
+    logoInput.addEventListener('change', (event) => {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                logoPreview.src = e.target.result;
+                logoPreview.style.display = 'block';
+                document.querySelector('.plus-icon').style.display = 'none';
+            }
+            reader.readAsDataURL(file);
+        } else {
+            logoPreview.src = '#';
+            logoPreview.style.display = 'none';
+            document.querySelector('.plus-icon').style.display = 'block';
         }
-        reader.readAsDataURL(file);
-    } else {
-        logoPreview.src = '#';
-        logoPreview.style.display = 'none';
-        document.querySelector('.plus-icon').style.display = 'block';
-    }
-});
+    });
 }
 
 function viewFees(){
-document.getElementById('org-overview-link').addEventListener('click', function(e) {
-    e.preventDefault();
-    fetch('fees/view-fees.php')
-    .then(response => response.text())
-    .then(html => {
-        document.querySelector('.content-page').innerHTML = html;
-    })
-});
+    document.getElementById('org-overview-link').addEventListener('click', function(e) {
+        e.preventDefault();
+        fetch('fees/view-fees.php')
+        .then(response => response.text())
+        .then(html => {
+            document.querySelector('.content-page').innerHTML = html;
+        })
+    });
 }
 
 function loadChart(){
@@ -336,6 +320,7 @@ function loadChart(){
       }
   });
 }
+
 function viewDetails(){
   document.getElementById('view-details').addEventListener('click', function(e) {
       e.preventDefault();
@@ -347,6 +332,7 @@ function viewDetails(){
       })
   });
 }
+
 function loadPie(){
   const paymentChartCanvas = document.getElementById('paymentChart');
   const paymentChart = new Chart(paymentChartCanvas, {
@@ -381,6 +367,7 @@ function loadPie(){
       }
   });
 }
+
 function downloadReport() {
   fetch('reports/generate_report.html')
     .then(response => response.text())
