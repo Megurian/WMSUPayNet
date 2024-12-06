@@ -44,7 +44,7 @@ document.querySelectorAll('.sidebar-item a.nav-link').forEach(link => {
                         
                         document.getElementById('create-admin').addEventListener('click', function(e) {
                             e.preventDefault();
-                            
+                            createAdmin();
                         });
 
                         document.getElementById('org-overview-link').addEventListener('click', function(e) {
@@ -69,6 +69,11 @@ document.querySelectorAll('.sidebar-item a.nav-link').forEach(link => {
                 .then(html => {
                     document.querySelector('.content-page').innerHTML = html;
                     document.querySelector('.topnav-title').textContent = 'User Feedback';
+
+                    document.getElementById('view-userReport').addEventListener('click', function(e) {
+                        e.preventDefault();
+                        view_userReport()
+                    });
                 })
                 
         } else {
@@ -81,6 +86,18 @@ document.querySelectorAll('.sidebar-item a.nav-link').forEach(link => {
 window.addEventListener('load', () => {
     document.querySelector('.sidebar-item a#dashboard-link').click();
 });
+
+
+function view_userReport() {
+    fetch('user_feedback/modals.html')
+        .then(response => response.text())
+        .then(html => {
+    
+        $('.modal-container').html(html);
+        $('#modal-view-userReport').modal('show');
+      
+        });
+    }
 
 function addCollege() {
     

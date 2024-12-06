@@ -52,7 +52,7 @@
                                    </a>
                                     <ul class="dropdown-menu text-small">
                                        <a id="" class="dropdown-item" href="#">Delete</a> 
-                                       <a id="transaction" class="dropdown-item" href="#">View Details</a> 
+                                       <a id="view-userReport" class="dropdown-item" href="#">View Details</a> 
                                     </ul>
                                 </div>
                             </td>

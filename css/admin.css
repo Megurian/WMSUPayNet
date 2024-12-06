@@ -343,3 +343,7 @@ textarea {
   cursor: pointer;
   color: red;
 }
+
+textarea{
+  resize: none;
+}
