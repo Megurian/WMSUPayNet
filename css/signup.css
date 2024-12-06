@@ -51,14 +51,21 @@
 
   .form-container {
     background-color: #ffffff;
-    width: 400px;
+    width: 550px;
     max-height: 85%; /* Allow vertical scrolling within the container */
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     padding: 20px;
     position: relative;
     overflow-y: auto; /* Enable vertical scrolling */
-    margin-top: 50px;
+    margin-top: 10px;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+  }
+
+  form{
+    width: 400px;
   }
   
   .back-button {
@@ -82,9 +89,10 @@
   .registration-form {
     display: flex;
     flex-direction: column;
+    align-items: center;
   }
   
-  .signup-form-group {
+  .form-group {
     margin-bottom: 15px;
   }
   
@@ -98,14 +106,14 @@
     flex: 1;
   }
 
-  .signup-form-group label {
+  .form-group label {
     display: block;
     font-size: 14px;
     margin-bottom: 5px;
   }
   
-  .signup-form-group input,
-  .signup-form-group select {
+  .form-group input,
+  .form-group select {
     width: 100%;
     padding: 8px;
     font-size: 14px;

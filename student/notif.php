@@ -1,36 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Notifications | CCS PayNet</title>
-  <link rel="stylesheet" href="../student/style.css">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" >
-
-</head>
+  <?php
+        require_once '../student/includes/head.php';
+  ?>
 <body>
-  
     <div class="body">
-        <header>
-          <div class="logo">
-            <img src="../images/ccs_logo.png" alt="Logo">
-            <h1>CCS PayNet</h1>
-          </div>
-          <div class="icons">
-            <div class="profile">
-                <a href="./setting.html" class="profile-button">
-                  <i class="fas fa-user-circle"></i>
-                </a>
-              </div>
-          </div>
-        </header>
+    <?php 
+       require_once '../student/includes/topnav.php';
+       ?>
 
     <div class="notif-container">
     <!-- Notifications Section -->
     <main class="notifications">
       <div class="notifications-header">
         <div class="notif-back-title">
-            <a href="./dashboard.html" class="back-btn">
+            <a href="./dashboard.php" class="back-btn">
                 <i class="fa-solid fa-arrow-left"></i>
             </a>
             <h2>Notifications</h2>

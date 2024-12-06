@@ -337,3 +337,13 @@ textarea {
 .dt-container div.dt-paging ul.pagination li.active a {
   background-color: #0c220c; /* Darker green for active page */
 }
+
+#attachment-link{
+  text-decoration: underline;
+  cursor: pointer;
+  color: red;
+}
+
+textarea{
+  resize: none;
+}

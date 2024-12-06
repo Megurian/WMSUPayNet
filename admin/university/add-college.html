@@ -81,12 +81,20 @@
                         <label for="name" class="form-label">Middle Name</label>
                         <input type="text" class="form-control" id="middle_name" name="middle_name" placeholder="Middle Name">
                         <div class="invalid-feedback"></div>
+                        <div class="col-md-4 align-items-center d-flex mt-2">
+                            <label class="col-md-10"> No Middle Name</label> 
+                            <input type="checkbox" id="no-middle-name" name="no-middle-name"> 
+                            </div>
                     </div>
 
                     <div class="col-md-12 mb-2">
-                        <label for="suffix" class="form-label">Suffix</label>
-                        <input type="text" class="form-control" id="suffix" name="suffix" placeholder="Suffix">
-                        <div class="invalid-feedback"></div>
+                        <label for="suffix">Suffix:</label>
+                        <select id="suffix" name="suffix" class="form-select">
+                            <option value="">N/A</option>
+                            <option value="Jr.">Jr.</option>
+                            <option value="Sr.">Sr.</option>
+                            <option value="III">III</option>
+                        </select>
                     </div>
 
                     <div class="col-md-12 mb-2">
