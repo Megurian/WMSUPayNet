@@ -36,6 +36,21 @@ class Organizations extends Database {
             return false;
         }
     }
+
+    // get all organization by organization id
+    public function getAllOrganizationInfoById($id) {
+        $sql = "SELECT * FROM $this->table WHERE id = :id";
+        $stmt = $this->pdo->prepare($sql);
+        try {
+            $stmt->execute([
+                ':id' => $id
+            ]);
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch(PDOException $e) {
+            error_log("Database error: " . $e->getMessage()); // Log the error message
+            return false;
+        }
+    }
 }
 
 //$obj = new Organizations();

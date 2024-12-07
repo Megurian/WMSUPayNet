@@ -16,7 +16,8 @@
 
                 <div class="d-flex justify-content-end">
                 <div class="buttons mb-3 ">
-                   <button  class="btn btn bgreen btn-sm" id="upload-button">Upload</button>
+                    <input type="file" class="btn btn bgreen btn-sm" id="upload-button">
+                   <button>Upload</button>
                     <a id="add-student" href="#" class="btn btn bgreen btn-sm"> Add Student</a>
                 </div>
                 </div>

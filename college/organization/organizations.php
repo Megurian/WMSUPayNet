@@ -61,8 +61,8 @@
                         <div class="flex-grow-1 organization" data-organization-id="<?= htmlspecialchars($organization['id']) ?>">
                             <h5 class="mb-1"><?= htmlspecialchars($organization['name']) ?></h5>
                             <p class="mb-1 text-muted">
-                                <i class="bi bi-people-fill me-1"></i>
-                                600,003
+                              <i class="fa-solid fa-table"></i>
+                                unknown
                             </p>
                             <small class="text-muted">Updated <?= htmlspecialchars($organization['created_at']) ?></small>
                         </div>

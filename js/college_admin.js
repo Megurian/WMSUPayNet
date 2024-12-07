@@ -85,7 +85,13 @@ document.querySelectorAll('.sidebar-item a.nav-link').forEach(link => {
                                         
                                         document.getElementById('add-student').addEventListener('click', function(e) {
                                             e.preventDefault();
-                                            addStudent();
+                                            fetch('student/add-student.php')
+                                            .then(response => response.text())
+                                            .then(html => {
+                                                $('.modal-container').html(html);
+                                                $('#modal-add-student').modal('show');
+                                                addStudent();
+                                            })
                                         });
                                     })
 
@@ -206,16 +212,35 @@ window.addEventListener('load', () => {
 });
 
 function addStudent() {
-    fetch('student/add-student.html')
-        .then(response => response.text())
-        .then(html => {
-        $('.modal-container').html(html);
-        $('#modal-add-student').modal('show');
-        $('#form-add-student').on('submit', function(e) {
-            e.preventDefault();
+    $('#form-add-student').submit(function(e) {
+        e.preventDefault();
+
+        // Create FormData object to handle form data and file upload
+        const formData = new FormData(this);
+        
+        $.ajax({
+            url: 'logic/addStudent.php',
+            type: 'post',
+            data: formData,
+            processData: false, // Prevent jQuery from automatically transforming data into a query string
+            contentType: false, // Prevent jQuery from setting content type
+            success: function(response) {
+                const res = JSON.parse(response);
+
+                if (res.status === 'error') {
+                    alert(res.message);
+                } else {
+                    alert(res.message);
+                    $('#form-add-student')[0].reset(); // Reset form fields
+                    $('#modal-add-student').modal('hide'); // Close modal
+                }
+            },
+            error: function() {
+                alert('An error occurred while processing the request.');
+            }
         });
-        });
-  }
+    });
+}
 
 function addOrg() {
     $('#form-add-organization').submit(function(e) {
