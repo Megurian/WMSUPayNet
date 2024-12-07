@@ -384,3 +384,34 @@ function monitoring(){
         }
     });
 }
+
+function loadChart(){
+    const chartData = {
+        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+        datasets: [{
+            label: 'Dataset 1',
+            data: [-500, -200, 600, 400, 700, 100, -100],
+            backgroundColor: 'rgba(9, 57, 9, 1)',
+            borderColor: 'rgba(9, 57, 9, 1)',
+            borderWidth: 1
+        }, {
+            label: 'Dataset 2',
+            data: [-1200, 100, 700, 600, -200, -100, -100],
+            backgroundColor: 'rgba(160, 160, 160, 1)',
+            borderColor: 'rgba(160, 160, 160, 1)',
+            borderWidth: 1
+        }]
+    };
+    const paymentChart = document.getElementById('paymentChart').getContext('2d');
+    const myChart = new Chart(paymentChart, {
+        type: 'line',
+        data: chartData,
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+  }
