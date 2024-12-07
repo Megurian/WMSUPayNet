@@ -14,6 +14,32 @@ class Students extends Database {
     public $college_id = '';
     public $course_id = '';
 
+    // add student
+    public function addStudent($school_id, $first_name, $middle_name, $last_name, $suffix, $year_level, $religion, $college, $course) {
+        $sql = "INSERT INTO $this->table (school_id, first_name, middle_name, last_name, suffix_id, year_level, religion_id, college_id, course_id) 
+                VALUES (:school_id, :first_name, :middle_name, :last_name, :suffix, :year_level, :religion_id, :college_id, :course_id)";
+        $stmt = $this->pdo->prepare($sql);
+        try {
+            $stmt->execute([
+                ':school_id' => $school_id,
+                ':first_name' => $first_name,
+                ':middle_name' => $middle_name,
+                ':last_name' => $last_name,
+                ':suffix' => $suffix,
+                ':year_level' => $year_level,
+                ':religion_id' => $religion,
+                ':college_id' => $college,
+                ':course_id' => $course
+            ]);
+
+            return true;
+        } catch (PDOException $e) {
+            error_log("Database error: " . $e->getMessage()); // Log the error for debugging
+            return false; // Return false if there was an error
+        }
+    }
+
+
     // verify student
     public function verifyStudent($school_id, $first_name, $last_name, $college_id, $course_id) {
         $sql = "SELECT * FROM $this->table WHERE school_id = :school_id 
@@ -55,4 +81,4 @@ class Students extends Database {
 }
 
 $obj = new Students();
-//var_dump($obj->verifyStudent(202201078, 'Meg Ryan', 'Gomez', 1, 1));
+//$obj->addStudent(101, 'Test', 'Test', 'Test', 3, 2, 1, 1, 1);

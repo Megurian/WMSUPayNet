@@ -128,7 +128,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $username = extractUsername($StudentInfo['email']);
             $role = 'Student';
             try{
-                $accountObj->createAccount($StudentInfo['school_id'], $username, $StudentInfo['email'], $StudentInfo['confirm_password'], $role, $StudentInfo['college']);
+                $accountObj->createAccount($StudentInfo['school_id'], null, $username, $StudentInfo['email'], $StudentInfo['confirm_password'], $role, $StudentInfo['college']);
                 header('location: ..\login.php');
             }catch(PDOException){
                 echo 'Caught exception: ', $e->getMessage(), "\n";

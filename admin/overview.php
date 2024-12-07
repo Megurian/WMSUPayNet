@@ -48,7 +48,7 @@
               <button class="btn btn-outline-secondary btn-sm">1Y</button>
               <button class="btn btn-outline-secondary btn-sm mx-1">Max</button>
             </div>
-            <div id="chart-placeholder" style="height: 250px;">Chart placeholder</div>
+            <canvas id="paymentChart" style="height: 220px;"></canvas>
           </div>
         </div>
       </div>

@@ -58,19 +58,31 @@ document.querySelectorAll('.sidebar-item a.nav-link').forEach(link => {
                                 });
                             });
             
-                            document.getElementById('org-1').addEventListener('click', function(e) {
-                                e.preventDefault();
-                                fetch('university/org-overview.php')
+                            document.querySelectorAll('.organization').forEach(function(organization) {
+                                organization.addEventListener('click', function() {
+                                    // Get the organization ID from the data attribute
+                                    const organizationId = this.dataset.organizationId;
+        
+                                    e.preventDefault();
+                                    fetch(`university/org-overview.php?organization_id=${organizationId}`)
                                     .then(response => response.text())
                                     .then(html => {
                                         document.querySelector('.content-page').innerHTML = html;
-            
-                                        document.getElementById('back-button').addEventListener('click', function(e) {
+        
+                                        document.getElementById('create-admin').addEventListener('click', function(e) {
                                             e.preventDefault();
+                                            createAdmin();
                                         });
-                                    });
+        
+                                        document.getElementById('upload').addEventListener('click', function(e) {
+                                            e.preventDefault();
+                                            upload();
+                                        });
+                                    })
+                                    .catch(error => console.error('Error loading organizations:', error));
                                 });
-                            })
+                            });
+                        })
                         .catch(error => console.error('Error loading organizations:', error));
                     });
                 }); 
@@ -384,3 +396,34 @@ function monitoring(){
         }
     });
 }
+
+function loadChart(){
+    const chartData = {
+        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+        datasets: [{
+            label: 'Dataset 1',
+            data: [-500, -200, 600, 400, 700, 100, -100],
+            backgroundColor: 'rgba(9, 57, 9, 1)',
+            borderColor: 'rgba(9, 57, 9, 1)',
+            borderWidth: 1
+        }, {
+            label: 'Dataset 2',
+            data: [-1200, 100, 700, 600, -200, -100, -100],
+            backgroundColor: 'rgba(160, 160, 160, 1)',
+            borderColor: 'rgba(160, 160, 160, 1)',
+            borderWidth: 1
+        }]
+    };
+    const paymentChart = document.getElementById('paymentChart').getContext('2d');
+    const myChart = new Chart(paymentChart, {
+        type: 'line',
+        data: chartData,
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+  }
