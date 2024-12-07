@@ -1,39 +1,41 @@
 <!-- Modal -->
 <div class="modal fade" id="modal-create-admin" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered ">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="staticBackdropLabel"> Admin Information </h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div> 
-            <form action="" method="post" id="form-create-admin" enctype="multipart/form-data">
-                <div class="modal-body">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel"> Admin Details </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div> 
+        <form action="" method="post" id="form-create-admin" enctype="multipart/form-data">
+            <div class="modal-body">
 
-                    <!-- Admin Information -->
-                    <div class="col-md-12 mb-2">
-                        <label for="name" class="form-label">First Name</label>
-                        <input type="text" class="form-control" id="first_name" name="first_name" placeholder="First Name">
-                        <div class="invalid-feedback"></div>
-                    </div>
-
-                    <div class="col-md-12 mb-2">
-                        <label for="name" class="form-label">Last Name</label>
-                        <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Last Name">
-                        <div class="invalid-feedback"></div>
-                    </div>
-
-                    <div class="col-md-12 mb-2">
-                        <label for="name" class="form-label">Middle Name</label>
-                        <input type="text" class="form-control" id="middle_name" name="middle_name" placeholder="Middle Name">
-                        <div class="invalid-feedback"></div>
-                        <div class="col-md-4 align-items-center d-flex mt-2">
-                            <label class="col-md-10"> No Middle Name</label> 
-                            <input type="checkbox" id="no-middle-name" name="no-middle-name"> 
-                            </div>
-                    </div>
-
-                    <div class="col-md-12 mb-2">
-                        <label for="suffix">Suffix:</label>
+                 <!-- Student Information -->
+                 <div class="d-flex mb-3">
+                     <div class="d-flex flex-column">
+                         <label for="name" class="form-label">Name</label>
+                          <div class="d-flex">
+                             <div class="mb-2 m-1">
+                                 <input type="text" class="form-control" id="first_name" name="first_name" placeholder="First Name">
+                                 <div class="invalid-feedback"></div>
+                             </div>
+             
+                             <div class="mb-2 m-1">
+                                 <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Last Name">
+                                 <div class="invalid-feedback"></div>
+                             </div>
+             
+                             <div class="mb-2 m-1">
+                                 <input type="text" class="form-control" id="middle_name" name="middle_name" placeholder="Middle Name">
+                                 <div class="invalid-feedback"></div>
+                                 <div class=" align-items-center d-flex mt-2">
+                                    <label class="mx-12"> No Middle Name</label> 
+                                    <input type="checkbox" id="no-middle-name" name="no-middle-name"> 
+                                </div>
+                             </div>
+                          </div>
+                     </div>
+                     <div class="col-md-3 mt-1 mx-2">
+                        <label for="suffix" class="mb-2">Suffix:</label>
                         <select id="suffix" name="suffix" class="form-select">
                             <option value="">N/A</option>
                             <option value="Jr.">Jr.</option>
@@ -41,27 +43,90 @@
                             <option value="III">III</option>
                         </select>
                     </div>
+     
+                 </div>
+                  <div class="d-flex">
+                    <div class="d-flex mb-3">
+                        <div class="mb-2 m-1">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" name="email" placeholder="Email">
+                            <div class="invalid-feedback"></div>
+                        </div>
+                   </div>
+   
+                   <div class="d-flex mb-3">
+                       <div class="mb-2 m-1">
+                               <label for="password" class="form-label">Password <span class="text-danger">*</span></label>
+                               <input type="password" class="form-control" id="password" placeholder="Password">
+                           <div class="invalid-feedback"></div>
+                       </div>
+                  </div>
 
-                    <div class="col-md-12 mb-2">
-                        <label for="email" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="email" name="email" placeholder="Email">
-                        <div class="invalid-feedback"></div>
+                    <div class="col-md-3 mt-1 mx-2">
+                        <label for="suffix" class="mb-2"> Position</label>
+                        <select id="suffix" name="suffix" class="form-select">
+                            <option value="president">President</option>
+                            <option value="vice-p">Vice P.</option>
+                            <option value="treasurer">Treasurer</option>
+                        </select>
                     </div>
-
-                    <div class="col-md-12 mb-2">
-                        <label for="password" class="form-label">Password <span class="text-danger">*</span></label>
-                        <input type="password" class="form-control" id="password" placeholder="Password">
-                        <div class="invalid-feedback"></div>
-                    </div>
-
+                  </div>
+                
+                  <div class="form-group border p-3 ">
+                    <h6 class="mb-3">Permissions</h6>
+                      <div class="d-flex justify-content-evenly">
+                        <div class="d-flex flex-column">
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="accessLogs">
+                                <label class="form-check-label" for="accessLogs">Access Logs</label>
+                            </div>
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="updateFees">
+                                <label class="form-check-label" for="updateFees">Update Fees</label>
+                            </div>
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="manageStudents">
+                                <label class="form-check-label" for="manageStudents">Add/Modify/Delete Students</label>
+                            </div>
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="manageFees">
+                                <label class="form-check-label" for="manageFees">Add/Modify/Delete Fees</label>
+                            </div>
+                        </div>
+                        <div class="d-flex flex-column">
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="processRefunds">
+                                <label class="form-check-label" for="processRefunds">Process Refunds</label>
+                            </div>
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="viewReports">
+                                <label class="form-check-label" for="viewReports">View Reports</label>
+                            </div>
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="manageUsers">
+                                <label class="form-check-label" for="manageUsers">Manage Users</label>
+                            </div>
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="selectAll">
+                                <label class="form-check-label" for="selectAll">Select All</label>
+                            </div>
+                        </div>
+                      </div>
                 </div>
-                <div class="modal-footer">
-                    <div class="buttons">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn bgreen" > Submit</button>
-                    </div>
-                </div>
-            </form>
+                
+                     
+                 
+                 
+     
+
         </div>
-    </div>
+        <div class="modal-footer">
+            <div class="buttons">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn bgreen" >Save</button>
+            </div>
+        </div>
+    </form>
+</div>
+</div>
 </div>
