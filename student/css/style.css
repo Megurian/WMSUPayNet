@@ -168,7 +168,7 @@
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-   margin: auto;
+    margin: auto;
     width: 80%;
     max-width: 900px;
     }
@@ -560,7 +560,7 @@
     /* Card Body */
     .fee-card-body {
     padding: 15px;
-    width: 95vh;
+    width: 100%;
     }
 
     /* Table Styling */

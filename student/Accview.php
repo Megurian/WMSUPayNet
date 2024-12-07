@@ -59,12 +59,9 @@
             border: 1px solid #093909;
             border-radius: 4px;
             cursor: pointer;
-            float: right;
             font-size: 14px;
             transition: background-color 0.3s;
-            position: fixed;
-            bottom: 185px;
-            right: 220px;
+            
         }
 
         .edit-btn:hover {
@@ -287,9 +284,8 @@
                                 <input type="text" id="course" placeholder="Enter Course" disabled>
                             </div>
                         </div>
-
-                        <button type="button" class="edit-btn" onclick="openModal()">Edit</button>
                     </form>
+                    <button type="button" class="edit-btn" onclick="openModal()">Edit</button>
                 </div>
             </div>
         </section>

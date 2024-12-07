@@ -5,12 +5,12 @@
         </div>
         <div class="icons">
             <div class="notification">
-                <a href="../notif.php" class="notif-button">
+                <a href="./notif.php" class="notif-button">
                     <i class="fas fa-bell"></i>
                 </a>
             </div>
             <div class="profile">
-                <a href="../setting.php" class="profile-button">
+                <a href="./setting.php" class="profile-button">
                   <i class="fas fa-user-circle"></i>
                 </a>
               </div>
