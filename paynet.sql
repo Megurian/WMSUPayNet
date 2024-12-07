@@ -1,37 +1,18 @@
--- phpMyAdmin SQL Dump
--- version 5.2.1
--- https://www.phpmyadmin.net/
---
--- Host: 127.0.0.1
--- Generation Time: Dec 05, 2024 at 02:32 PM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
-
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
-SET time_zone = "+00:00";
-
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
 
---
--- Database: `paynet`
---
 CREATE DATABASE IF NOT EXISTS `paynet` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 USE `paynet`;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `accounts`
---
 
 CREATE TABLE `accounts` (
   `id` int(11) NOT NULL,
   `student_id` int(11) DEFAULT NULL,
+  `admin_id` int(11) DEFAULT NULL,
   `username` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
@@ -40,39 +21,43 @@ CREATE TABLE `accounts` (
   `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `accounts`
---
+TRUNCATE TABLE `accounts`;
+INSERT INTO `accounts` (`id`, `student_id`, `admin_id`, `username`, `email`, `password`, `role`, `college_id`, `created_at`) VALUES
+(2, 202201078, NULL, 'EH202201078', 'eh202201078@wmsu.edu.ph', '$argon2id$v=19$m=2048,t=4,p=2$ejQuN3dvVkZJSm91RFp6Lg$x2uPsge+VtkJ4Zl4+CfX+wHTvUagtvaemeKyXeyf+Fg', 'Student', 1, '2024-12-02 00:06:13'),
+(3, NULL, NULL, 'COLLEGEADMIN', 'admin@gmail.com', 'admin', 'CollegeAdmin', 1, '2024-12-05 21:15:18'),
+(4, NULL, NULL, 'ORGADMIN', 'orgadmin@gmail.com', 'admin', 'OrganizationAdmin', 1, '2024-12-05 21:15:50'),
+(5, NULL, NULL, 'SUPERADMIN', 'superadmin@gmail.com', 'admin', 'SuperAdmin', NULL, '2024-12-05 21:16:22'),
+(7, NULL, 7, 'CHILLADMIN', 'chilladmin@gmail.com', '$argon2id$v=19$m=2048,t=4,p=2$UDY5UTI2d05QNWVJLkEybA$yRtO6ISLtFbrZAPa86t87ssfaR2qrr4Rzr7A2yfhp5o', 'CollegeAdmin', 1, '2024-12-07 00:47:34');
 
-INSERT INTO `accounts` (`id`, `student_id`, `username`, `email`, `password`, `role`, `college_id`, `created_at`) VALUES
-(2, 202201078, 'EH202201078', 'eh202201078@wmsu.edu.ph', '$argon2id$v=19$m=2048,t=4,p=2$ejQuN3dvVkZJSm91RFp6Lg$x2uPsge+VtkJ4Zl4+CfX+wHTvUagtvaemeKyXeyf+Fg', 'Student', 1, '2024-12-01 16:06:13'),
-(3, NULL, 'COLLEGEADMIN', 'admin@gmail.com', 'admin', 'CollegeAdmin', 1, '2024-12-05 13:15:18'),
-(4, NULL, 'ORGADMIN', 'orgadmin@gmail.com', 'admin', 'OrganizationAdmin', 1, '2024-12-05 13:15:50'),
-(5, NULL, 'SUPERADMIN', 'superadmin@gmail.com', 'admin', 'SuperAdmin', NULL, '2024-12-05 13:16:22');
+CREATE TABLE `admins` (
+  `admin_id` int(11) NOT NULL,
+  `first_name` varchar(50) NOT NULL,
+  `middle_name` varchar(20) DEFAULT NULL,
+  `last_name` varchar(20) NOT NULL,
+  `suffix_id` int(11) DEFAULT NULL,
+  `email` varchar(50) NOT NULL,
+  `college_id` int(11) NOT NULL,
+  `organization_id` int(11) DEFAULT NULL,
+  `org_position` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- --------------------------------------------------------
-
---
--- Table structure for table `colleges`
---
+TRUNCATE TABLE `admins`;
+INSERT INTO `admins` (`admin_id`, `first_name`, `middle_name`, `last_name`, `suffix_id`, `email`, `college_id`, `organization_id`, `org_position`) VALUES
+(2, 'MEG RYAN', 'VEGA', 'GOMEZ', NULL, 'okiller244@gmail.com', 1, NULL, ''),
+(3, 'Meg Ryan', 'Vega', 'Gomez', NULL, 'eh202201078@wmsu.edu.ph', 1, NULL, ''),
+(7, 'Fritzie', 'Dela Cruz', 'Balagosa', 5, 'chilladmin@gmail.com', 1, NULL, '');
 
 CREATE TABLE `colleges` (
   `id` int(11) NOT NULL,
-  `college` varchar(255) NOT NULL
+  `college` varchar(255) NOT NULL,
+  `logo_directory` text NOT NULL,
+  `description` text DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `colleges`
---
-
-INSERT INTO `colleges` (`id`, `college`) VALUES
-(1, 'College of Computing Studies');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `courses`
---
+TRUNCATE TABLE `colleges`;
+INSERT INTO `colleges` (`id`, `college`, `logo_directory`, `description`, `created_at`) VALUES
+(1, 'College of Computing Studies', '../../images/uploads/CCS_Logo.png', '', '2024-12-06 17:18:37');
 
 CREATE TABLE `courses` (
   `id` int(11) NOT NULL,
@@ -80,40 +65,36 @@ CREATE TABLE `courses` (
   `course` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `courses`
---
-
+TRUNCATE TABLE `courses`;
 INSERT INTO `courses` (`id`, `college_id`, `course`) VALUES
 (1, 1, 'Computer Science'),
 (2, 1, 'Information Technology'),
 (3, 1, 'Computer Technology');
 
--- --------------------------------------------------------
+CREATE TABLE `organizations` (
+  `id` int(11) NOT NULL,
+  `college_id` int(11) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `logo_directory` text NOT NULL,
+  `description` text NOT NULL,
+  `status` tinyint(1) NOT NULL DEFAULT 1,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Table structure for table `religions`
---
+TRUNCATE TABLE `organizations`;
+INSERT INTO `organizations` (`id`, `college_id`, `name`, `logo_directory`, `description`, `status`, `created_at`) VALUES
+(2, 1, 'Venom Publication', '../../images/uploads/VP_Logo.jpg', 'dsa', 1, '2024-12-07 04:24:45');
 
 CREATE TABLE `religions` (
   `id` int(11) NOT NULL,
   `religion` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `religions`
---
-
+TRUNCATE TABLE `religions`;
 INSERT INTO `religions` (`id`, `religion`) VALUES
 (1, 'Roman Catholic'),
 (2, 'Islam'),
 (3, 'Iglesia ni Cristo');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `students`
---
 
 CREATE TABLE `students` (
   `id` int(11) NOT NULL,
@@ -122,77 +103,59 @@ CREATE TABLE `students` (
   `middle_name` varchar(50) DEFAULT NULL,
   `last_name` varchar(50) NOT NULL,
   `suffix_id` int(11) DEFAULT NULL,
+  `year_level` int(11) NOT NULL,
   `religion_id` int(11) NOT NULL,
   `college_id` int(11) NOT NULL,
   `course_id` int(11) NOT NULL,
-  `is_registered` tinyint(1) NOT NULL
+  `is_registered` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `students`
---
-
-INSERT INTO `students` (`id`, `school_id`, `first_name`, `middle_name`, `last_name`, `suffix_id`, `religion_id`, `college_id`, `course_id`, `is_registered`) VALUES
-(1, 202201078, 'Meg Ryan', 'Vega', 'Gomez', NULL, 1, 1, 1, 0);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `suffixes`
---
+TRUNCATE TABLE `students`;
+INSERT INTO `students` (`id`, `school_id`, `first_name`, `middle_name`, `last_name`, `suffix_id`, `year_level`, `religion_id`, `college_id`, `course_id`, `is_registered`) VALUES
+(1, 202201078, 'Meg Ryan', 'Vega', 'Gomez', NULL, 3, 1, 1, 1, 1),
+(6, 202201076, 'Fritzie', 'Dela Cruz', 'Balagosa', NULL, 3, 1, 1, 1, 0);
 
 CREATE TABLE `suffixes` (
   `id` int(11) NOT NULL,
   `extension` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `suffixes`
---
-
+TRUNCATE TABLE `suffixes`;
 INSERT INTO `suffixes` (`id`, `extension`) VALUES
-(1, 'N/A'),
 (2, 'Sr.'),
 (3, 'III'),
 (4, 'IV'),
 (5, 'Jr.');
 
---
--- Indexes for dumped tables
---
 
---
--- Indexes for table `accounts`
---
 ALTER TABLE `accounts`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `username` (`username`),
   ADD UNIQUE KEY `email` (`email`),
   ADD UNIQUE KEY `student_id` (`student_id`),
-  ADD KEY `college_id` (`college_id`);
+  ADD KEY `college_id` (`college_id`),
+  ADD KEY `admin_id` (`admin_id`);
 
---
--- Indexes for table `colleges`
---
+ALTER TABLE `admins`
+  ADD PRIMARY KEY (`admin_id`),
+  ADD UNIQUE KEY `email` (`email`),
+  ADD KEY `college_id` (`college_id`),
+  ADD KEY `organization_id` (`organization_id`);
+
 ALTER TABLE `colleges`
   ADD PRIMARY KEY (`id`);
 
---
--- Indexes for table `courses`
---
 ALTER TABLE `courses`
   ADD PRIMARY KEY (`id`),
   ADD KEY `college_id` (`college_id`);
 
---
--- Indexes for table `religions`
---
+ALTER TABLE `organizations`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `college_id` (`college_id`);
+
 ALTER TABLE `religions`
   ADD PRIMARY KEY (`id`);
 
---
--- Indexes for table `students`
---
 ALTER TABLE `students`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `school_id` (`school_id`),
@@ -201,72 +164,50 @@ ALTER TABLE `students`
   ADD KEY `college_id` (`college_id`),
   ADD KEY `course_id` (`course_id`);
 
---
--- Indexes for table `suffixes`
---
 ALTER TABLE `suffixes`
   ADD PRIMARY KEY (`id`);
 
---
--- AUTO_INCREMENT for dumped tables
---
 
---
--- AUTO_INCREMENT for table `accounts`
---
 ALTER TABLE `accounts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
---
--- AUTO_INCREMENT for table `colleges`
---
+ALTER TABLE `admins`
+  MODIFY `admin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
 ALTER TABLE `colleges`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
---
--- AUTO_INCREMENT for table `courses`
---
 ALTER TABLE `courses`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
---
--- AUTO_INCREMENT for table `religions`
---
+ALTER TABLE `organizations`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
 ALTER TABLE `religions`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
---
--- AUTO_INCREMENT for table `students`
---
 ALTER TABLE `students`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
---
--- AUTO_INCREMENT for table `suffixes`
---
 ALTER TABLE `suffixes`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
---
--- Constraints for dumped tables
---
 
---
--- Constraints for table `accounts`
---
 ALTER TABLE `accounts`
   ADD CONSTRAINT `accounts_ibfk_1` FOREIGN KEY (`student_id`) REFERENCES `students` (`school_id`),
-  ADD CONSTRAINT `accounts_ibfk_2` FOREIGN KEY (`college_id`) REFERENCES `colleges` (`id`);
+  ADD CONSTRAINT `accounts_ibfk_2` FOREIGN KEY (`college_id`) REFERENCES `colleges` (`id`),
+  ADD CONSTRAINT `accounts_ibfk_3` FOREIGN KEY (`admin_id`) REFERENCES `admins` (`admin_id`);
 
---
--- Constraints for table `courses`
---
+ALTER TABLE `admins`
+  ADD CONSTRAINT `admins_ibfk_1` FOREIGN KEY (`college_id`) REFERENCES `colleges` (`id`),
+  ADD CONSTRAINT `admins_ibfk_2` FOREIGN KEY (`organization_id`) REFERENCES `organizations` (`id`);
+
 ALTER TABLE `courses`
   ADD CONSTRAINT `courses_ibfk_1` FOREIGN KEY (`college_id`) REFERENCES `colleges` (`id`);
 
---
--- Constraints for table `students`
---
+ALTER TABLE `organizations`
+  ADD CONSTRAINT `organizations_ibfk_1` FOREIGN KEY (`college_id`) REFERENCES `colleges` (`id`);
+
 ALTER TABLE `students`
   ADD CONSTRAINT `students_ibfk_2` FOREIGN KEY (`suffix_id`) REFERENCES `suffixes` (`id`),
   ADD CONSTRAINT `students_ibfk_3` FOREIGN KEY (`religion_id`) REFERENCES `religions` (`id`),
