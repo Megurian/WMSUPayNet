@@ -58,19 +58,31 @@ document.querySelectorAll('.sidebar-item a.nav-link').forEach(link => {
                                 });
                             });
             
-                            document.getElementById('org-1').addEventListener('click', function(e) {
-                                e.preventDefault();
-                                fetch('university/org-overview.php')
+                            document.querySelectorAll('.organization').forEach(function(organization) {
+                                organization.addEventListener('click', function() {
+                                    // Get the organization ID from the data attribute
+                                    const organizationId = this.dataset.organizationId;
+        
+                                    e.preventDefault();
+                                    fetch(`university/org-overview.php?organization_id=${organizationId}`)
                                     .then(response => response.text())
                                     .then(html => {
                                         document.querySelector('.content-page').innerHTML = html;
-            
-                                        document.getElementById('back-button').addEventListener('click', function(e) {
+        
+                                        document.getElementById('create-admin').addEventListener('click', function(e) {
                                             e.preventDefault();
+                                            createAdmin();
                                         });
-                                    });
+        
+                                        document.getElementById('upload').addEventListener('click', function(e) {
+                                            e.preventDefault();
+                                            upload();
+                                        });
+                                    })
+                                    .catch(error => console.error('Error loading organizations:', error));
                                 });
-                            })
+                            });
+                        })
                         .catch(error => console.error('Error loading organizations:', error));
                     });
                 }); 

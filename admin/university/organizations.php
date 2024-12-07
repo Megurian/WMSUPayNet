@@ -95,7 +95,7 @@
                       <div class="card-body d-flex align-items-center">
                           <img src="<?= htmlspecialchars($organization['logo_directory']) ?>" alt="Organization Logo" width="100" class="rounded-circle me-3">
 
-                          <div class="flex-grow-1" id="org-1">
+                          <div class="flex-grow-1 organization" data-organization-id="<?= htmlspecialchars($organization['id']) ?>">
                               <h5 class="mb-1"><?= htmlspecialchars($organization['name']) ?></h5>
                               <p class="mb-1 text-muted">
                                   <i class="bi bi-people-fill me-1"></i>

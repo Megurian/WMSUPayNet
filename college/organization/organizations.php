@@ -1,4 +1,9 @@
 <?php
+    require_once "../../tools/functions.php";
+    require_once "../../database/autoload_classes.php";
+
+    session_start();
+    $organizationObj = new Organizations();
 ?>
 
 <style>
@@ -22,6 +27,12 @@
       height: 50px;
       object-fit: cover;
     }
+
+    .card:hover {
+        border-color: #093909;
+        cursor: pointer;
+    }
+
 </style>
 
 
@@ -30,33 +41,44 @@
                 <div class="d-flex align-items-center">
                 <img src="../../images/ccs_logo.png" alt="Logo" width="40" height="40" class="rounded-circle m-2 ml-3" >
                 <div class="d-flex flex-column" >
-                      <h5 >Organizations</h5>
-                      <h6><span style="color: #004d00;">College of Computing Studies</span></h6>
+                    <h6><span style="color: #004d00;">College of Computing Studies</span></h6>
+                    <h5 >Organizations</h5>
                 </div>
                 </div>
     
     <!-- Card -->
-    <div class="card shadow-sm mb-4 mt-4">
-        <div class="card-body d-flex align-items-center">
-            <img src="../images/gender_club.jpg" alt="Institution Logo" width="100" class="rounded-circle me-3">
-            <div class="flex-grow-1">
-                <h5 class="mb-1">Gender Club</h5>
-                <p class="mb-1 text-muted">
-                    <i class="bi bi-people-fill me-1"></i>
-                    600,003
-                </p>
-                <small class="text-muted">Updated October 01, 2024</small>
-            </div>
-            <button class="btn btn-outline-secondary btn-sm" data-bs-toggle="dropdown">
-                <i class="bi bi-three-dots"></i>
-            </button>
-            <ul class="dropdown-menu dropdown-menu-end">
-                <li><a class="dropdown-item" href="#">Edit</a></li>
-                <li><a class="dropdown-item" href="#">Delete</a></li>
-                <li><a id="org-overview-link" class="dropdown-item" href="#">View</a></li>
-            </ul>
-        </div>
-    </div>
+    <?php
+        $organizations = $organizationObj->getAllOrganizationById($_SESSION['account']['college_id']);
+        if (empty($organizations)): ?>
+            <div style="text-align:center; margin-top:20px;">No Organizations</div>
+        <?php else: ?>
+            <?php foreach ($organizations as $organization): ?>
+                <div class="card shadow-sm mb-4 mt-4">
+                    <div class="card-body d-flex align-items-center">
+
+                        <img src="<?= htmlspecialchars($organization['logo_directory']) ?>" alt="Organization Logo" width="100" class="rounded-circle me-3">
+
+                        <div class="flex-grow-1 organization" data-organization-id="<?= htmlspecialchars($organization['id']) ?>">
+                            <h5 class="mb-1"><?= htmlspecialchars($organization['name']) ?></h5>
+                            <p class="mb-1 text-muted">
+                              <i class="fa-solid fa-table"></i>
+                                unknown
+                            </p>
+                            <small class="text-muted">Updated <?= htmlspecialchars($organization['created_at']) ?></small>
+                        </div>
+
+                        <button class="btn btn-outline-secondary btn-sm" data-bs-toggle="dropdown">
+                            <i class="bi bi-three-dots"></i>
+                        </button>
+
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="#">Edit</a></li>
+                            <li><a class="dropdown-item" href="#">Delete</a></li>
+                        </ul>
+                    </div>
+                </div>
+        <?php endforeach; ?>
+    <?php endif; ?>
     
     <!-- Floating Add Button -->
     <a id="add-organization" href="#" class="floating-btn">

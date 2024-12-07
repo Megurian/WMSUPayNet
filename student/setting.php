@@ -33,7 +33,7 @@
         </div>
 
         <footer class="logout">
-            <a href="../login.php" class="back-bttn"><i class="fas fa-sign-out-alt"></i></a> Log Out
+            <a href="../account/logout.php" class="back-bttn"><i class="fas fa-sign-out-alt"></i>Log Out</a> 
         </footer>
     </div>
 </div>

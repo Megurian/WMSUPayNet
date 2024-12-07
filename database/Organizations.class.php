@@ -4,18 +4,20 @@ require_once 'Database.php';
 class Organizations extends Database {
     private $table = "organizations";
 
-    // Add a new college
-    public function addCollege($name, $logo_directory, $description) {
-        $sql = "INSERT INTO $this->table (college, logo_directory, description) VALUES (:name, :directory, :description)";
+    // Add a new organization
+    public function addOrganization($college_id, $name, $logo_directory, $description) {
+        $sql = "INSERT INTO $this->table (college_id, name, logo_directory, description) VALUES (:college_id, :name, :directory, :description)";
         $stmt = $this->pdo->prepare($sql);
         try {
             $stmt->execute([
+                ':college_id' => $college_id,
                 ':name' => $name,
                 ':directory' => $logo_directory,
-                ':description' => $description,
+                ':description' => $description
             ]);
             return true; // Return true if the insert was successful
         } catch (PDOException $e) {
+            error_log("Database error: " . $e->getMessage());
             return false; // Return false if there was an error
         }
     }
@@ -34,4 +36,21 @@ class Organizations extends Database {
             return false;
         }
     }
+
+    // get all organization by organization id
+    public function getAllOrganizationInfoById($id) {
+        $sql = "SELECT * FROM $this->table WHERE id = :id";
+        $stmt = $this->pdo->prepare($sql);
+        try {
+            $stmt->execute([
+                ':id' => $id
+            ]);
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch(PDOException $e) {
+            error_log("Database error: " . $e->getMessage()); // Log the error message
+            return false;
+        }
+    }
 }
+
+//$obj = new Organizations();

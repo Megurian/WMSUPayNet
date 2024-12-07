@@ -1,3 +1,12 @@
+<?php
+    require_once "../../tools/functions.php";
+    require_once "../../database/autoload_classes.php";
+
+    $organizationObj = new Organizations();
+
+    $organizationId = isset($_GET['organization_id']) ? intval($_GET['organization_id']) : 0;
+?>
+
 <style>
     .back-button:hover {
         cursor: pointer;
@@ -9,12 +18,17 @@
 
         <div class="top-section border-bottom">
             <div class="d-flex align-items-center">
+
                 <i class="fas fa-arrow-left back-button mx-4" id="back-button"></i>
-                <img src="../../images/ccs_logo.png" alt="Logo" width="40" height="40" class="float-right mx-2">
-                <div class="d-flex flex-column mx-2 mt-3">
-                    <h5 class="club-title">Gender Club</h5>
-                    <h6><span style="color: #004d00;">College of Computing Studies</span></h6>
-                </div>
+                <?php foreach ($organizationObj->getAllOrganizationInfoById($organizationId) as $organization): ?>
+                    <img src="<?= htmlspecialchars($organization['logo_directory']) ?>" alt="Logo" width="40" height="40"  class="rounded-circle me-3">
+
+                    <div class="d-flex flex-column mx-2 mt-3">
+                        <h5 class="club-title"><?= htmlspecialchars($organization['name']) ?></h5>
+                        <h6><span style="color: #004d00;">College of Computing Studies</span></h6>
+                    </div>
+                <?php endforeach; ?>
+                
             </div>
         </div>
 
