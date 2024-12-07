@@ -65,7 +65,7 @@ unset($_SESSION['LoginInfo']);
                 <div class="form-options">
                     <input type="checkbox" id="terms">
                     <label for="terms">Terms and Conditions</label>
-                    <a href="#">Forgot Password</a>
+                    <a href="forgot.php">Forgot Password</a>
                 </div>
                 <button type="submit">Login</button><br>
                 <p>

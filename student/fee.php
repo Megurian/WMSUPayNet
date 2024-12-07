@@ -1,7 +1,8 @@
- <?php
-      require_once '../student/includes/head.php';
- ?>
-<style>
+    <?php
+        require_once '../student/includes/head.php';
+    ?>
+
+    <style>
         .modal {
             display: none;
             margin-top: 25px;
@@ -146,7 +147,49 @@
         .modal-content::-webkit-scrollbar-thumb:hover {
             background: #072907;
         }
+        .profile-image-container {
+            width: 60px;
+            height: 60px;
+            margin: 5px 0;
+            border-radius: 4px;
+            overflow: hidden;
+            border: 1px solid #ddd;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .profile-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .payment-boxes {
+            display: flex;
+            gap: 15px;
+        }
+
+        .payment-box {
+            width: 60px;
+            height: 60px;
+            border-radius: 4px;
+            overflow: hidden;
+            border: 1px solid #ddd;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: border-color 0.2s ease;
+        }
+
+        .payment-box:hover {
+            border-color: #093909;
+        }
+
+        .payment-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
     </style>
+
 <body>
     <div class="body">
        <?php 
@@ -155,43 +198,43 @@
         
         <div class="fee-dashboard">
             <div class="fee-container">
-            <div class="fee-card">
-            <div class="fee-card-header">
-                <div class="back-titles">
-                    <a href="./org.php" class="back-bttn">
-                        <i class="fa-solid fa-arrow-left"></i>
-                    </a>
-                    <h2>CCS-CSC</h2>
+                <div class="fee-card">
+                    <div class="fee-card-header">
+                        <div class="back-titles">
+                            <a href="./org.php" class="back-bttn">
+                                <i class="fa-solid fa-arrow-left"></i>
+                            </a>
+                            <h2>CCS-CSC</h2>
+                        </div>
+                    <span class="due-text">Due:</span>
                 </div>
-            <span class="due-text">Due:</span>
-            </div>
             <div class="fee-card-body">
-            <table class="fees-table">
-            <thead>
-            <tr>
-            <th>Fee</th>
-            <th>Status</th>
-            <th>Amount</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-            <td>CSC</td>
-            <td>Unpaid</td>
-            <td class="amount">200.00</td>
-            </tr>
-            <tr>
-            <td>Palaro</td>
-            <td>Unpaid</td>
-            <td class="amount">150.00</td>
-            </tr>
-            </tbody>
-            </table><br>
-            <div class="proceed-button">
-            <button onclick="openModal()">Proceed</button>
-            </div>
-            </div>
-            </div>
+                <table class="fees-table">
+                    <thead>
+                        <tr>
+                            <th>Fee</th>
+                            <th>Status</th>
+                            <th>Amount</th>
+                        </tr>
+                    </thead>
+                        <tbody>
+                            <tr>
+                                <td>CSC</td>
+                                <td>Unpaid</td>
+                                <td class="amount">200.00</td>
+                            </tr>
+                            <tr>
+                                <td>Palaro</td>
+                                <td>Unpaid</td>
+                                <td class="amount">150.00</td>
+                            </tr>
+                        </tbody>
+                    </table><br>
+                        <div class="proceed-button">
+                            <button onclick="openModal()">Proceed</button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -234,6 +277,18 @@
                     <input type="text" id="schoolYear" value="2023-2024" readonly>
                 </div>
                 <div class="form-group">
+                    <label>Payment Method</label>
+                    <div class="payment-boxes">
+                        <div class="payment-box">
+                            <img src="../images/GCash_Logo.png" alt="GCash Payment" class="payment-image">
+                        </div>
+                        <div class="payment-box">
+                            <img src="../images/PayPal_logo.png" alt="Maya Payment" class="payment-image">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
                     <label>Fees</label>
                     <div id="selectedFees" class="selected-fees">
                         <div class="fee-item">CSC - ₱200.00</div>
@@ -246,7 +301,7 @@
                 </div>
                 <div class="modal-buttons">
                     <button class="close-btn" onclick="closeModal()">Close</button>
-                    <button class="pay-btn" onclick="window.location.href='payment.html'">Proceed</button>
+                    <button class="pay-btn" onclick="window.location.href='payment.php'">Proceed</button>
                 </div>
             </div>
         </div>
