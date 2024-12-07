@@ -1,6 +1,6 @@
 <div class="container-fluid mt-3">
 <div class="modal-container"></div>
-            <div class="table-container">
+        <div class="table-container">
             <h5> Student List </h5>
             <div class="d-flex mt-1 justify-content-between align-items-center ">
                 
@@ -15,17 +15,18 @@
                 </div>
 
                 <div class="d-flex justify-content-end">
-                <div class="buttons mb-3 ">
-                    <input type="file" class="btn btn bgreen btn-sm" id="upload-button">
-                   <button>Upload</button>
-                    <a id="add-student" href="#" class="btn btn bgreen btn-sm"> Add Student</a>
+                    <div class="buttons mb-3 ">
+                        <input type="file" class="btn btn bgreen btn-sm" id="upload-button">
+                    <button>Upload</button>
+                        <a id="add-student" href="#" class="btn btn bgreen btn-sm"> Add Student</a>
+                    </div>
                 </div>
-                </div>
-                
+
             </div>
-           
+        
             <div class="table-responsive border-bottom mt-3 mb-1">
-            <table id="table-all" class="table table-striped table-nowrap table-bordered mb-4">
+
+                <table id="table-all" class="table table-striped table-nowrap table-bordered mb-4">
                     <thead>
                         <tr>
                             <th>Student ID</th>
@@ -47,68 +48,24 @@
                             <td>093-4556-7890</td>
                             <td>
                                 <div class="dropdown text-end border-0 bgreen">
-                                   <a href="#" class="box " data-bs-toggle="dropdown" aria-expanded="false">
-                                      <button class="btn bgreen dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                           <i class="fas fa-ellipsis-v"></i>
-                                      </button>
-                                   </a>
+                                    <a href="#" class="box " data-bs-toggle="dropdown" aria-expanded="false">
+                                        <button class="btn bgreen dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="fas fa-ellipsis-v"></i>
+                                        </button>
+                                    </a>
                                     <ul class="dropdown-menu text-small">
-                                       <a id="" class="dropdown-item" href="#">Edit</a> 
-                                       <a id="" class="dropdown-item" href="#">Delete</a> 
-                                       <a id="transaction" class="dropdown-item" href="#">View Details</a> 
-                                    </ul>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>eh12345</td>
-                            <td>ALejo, Ayana Jade F. </td>
-                            <td>Information Technology</td>
-                            <td>2rd Year</td>
-                            <td>Alfaith@example.com</td>
-                            <td>093-4556-7890</td>
-                            <td>
-                                <div class="dropdown text-end border-0 bgreen">
-                                   <a href="#" class="box " data-bs-toggle="dropdown" aria-expanded="false">
-                                      <button class="btn bgreen dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                           <i class="fas fa-ellipsis-v"></i>
-                                      </button>
-                                   </a>
-                                    <ul class="dropdown-menu text-small">
-                                       <a id="" class="dropdown-item" href="#">Edit</a> 
-                                       <a id="" class="dropdown-item" href="#">Delete</a> 
-                                       <a id="transaction" class="dropdown-item" href="#">View Details</a> 
-                                    </ul>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>eh12345</td>
-                            <td>ALejo, Ayana Jade F. </td>
-                            <td>Information Technology</td>
-                            <td>2rd Year</td>
-                            <td>Alfaith@example.com</td>
-                            <td>093-4556-7890</td>
-                            <td>
-                                <div class="dropdown text-end border-0 bgreen">
-                                   <a href="#" class="box " data-bs-toggle="dropdown" aria-expanded="false">
-                                      <button class="btn bgreen dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                           <i class="fas fa-ellipsis-v"></i>
-                                      </button>
-                                   </a>
-                                    <ul class="dropdown-menu text-small">
-                                       <a id="" class="dropdown-item" href="#">Edit</a> 
-                                       <a id="" class="dropdown-item" href="#">Delete</a> 
-                                       <a id="transaction" class="dropdown-item" href="#">View Details</a> 
+                                        <a id="" class="dropdown-item" href="#">Edit</a> 
+                                        <a id="" class="dropdown-item" href="#">Delete</a> 
+                                        <a id="transaction" class="dropdown-item" href="#">View Details</a> 
                                     </ul>
                                 </div>
                             </td>
                         </tr>
                     </tbody>
                 </table>
+
             </div>
-               
-           
-                
-            </div>
+
         </div>
+        
+</div>
