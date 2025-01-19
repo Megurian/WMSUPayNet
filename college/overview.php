@@ -1,7 +1,7 @@
 <div class="container-fluid">
     <div class="row mt-4">
     <div class="col-md-4">
-            <div class="card bg-secondary text-white border border-light ">
+            <div class="card bg-dark text-white border border-light ">
                 <div class="card-body p-4">
                     <h5> Hello, Admin Name</h5>
                     <div class="col-md-6 mt-3">
