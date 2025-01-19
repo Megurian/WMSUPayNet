@@ -1,55 +1,24 @@
 <div class="container-fluid">
     <div class="row mt-4">
-        <div class="col-md-3">
-            <div class="card bg-white-green ">
-                <div class="card-body p-4 ">
-                    <div class="d-flex justify-content-between align-items-center px-2">
-                        <h6 class="card-title"> Total Transactions </h6>
-                         <p class="display-6">0</p>
-                    </div>
-                    <div class="d-flex justify-content-between align-items-center px-2">
-                        <small class="text-muted"> This Week</small>
-                         <small><a href="" class="text-success"> view </a></small>
+    <div class="col-md-4">
+            <div class="card bg-secondary text-white border border-light ">
+                <div class="card-body p-4">
+                    <h5> Hello, Admin Name</h5>
+                    <div class="col-md-6 mt-3">
+                    <h6> school-year</h6>  <!-- Dropdown for school year -->
+                        <select id="schoolYearSelect" class="form-select form-select-sm">
+                            <option value="2023-2024">2023-2024</option>
+                            <option value="2024-2025">2024-2025</option>
+                            <option value="2025-2026">2025-2026</option>
+                            <!-- Add more years as needed -->
+                        </select>
                     </div>
                 </div>
                 
             </div>
         </div>
-        <div class="col-md-3">
-            <div class="card bg-white-green ">
-                <div class="card-body  p-4  ">
-                    <div class="d-flex justify-content-between align-items-center px-2">
-                        <h6> Total Revenue </h6>
-                            <p class="display-6"><span class="text-Success">₱</span>0</p>
-                    </div>
-                    <div class="d-flex justify-content-between align-items-center px-2">
-                        <small class="text-muted"> This Week</small>
-                            <small><a href="" class="text-success"> view </a></small>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-3">
-            <div class="card bg-dark-green ">
-                <div class="card-body  p-3  ">
-                    <div class="d-flex justify-content-between align-items-center px-2">
-                        <small class="text-white"> Failed Transaction</small>
-                        <small class="text-white"> 0</small>
-                    </div>
-                </div>
-            </div>
-            <div class="card bg-dark-green mt-3">
-                <div class="card-body  p-3  ">
-                    <div class="d-flex justify-content-between align-items-center px-2">
-                        <small class="text-white"> Pending Transaction</small>
-                        <small class="text-white"> 0</small>
-                    </div>
-                </div>
-            </div>
-        </div>
         
-        <div class="col-md-3">
+        <div class="col-md-5">
             <div class="card bg-white-green text-white">
                 <div class="card-body p-2">
                     <div class="d-flex justify-content-between align-items-center">
@@ -59,14 +28,14 @@
                     <div class="col-md-14">
                     <ul class="list-group list-group-flush ">
                         <li class="list-group-item border py-1 pb-0">
-                            <div class="d-flex justify-content-between align-items-center px-0">
+                            <div class="d-flex justify-content-between align-items-center p-1">
                                 <span class="badge bg-danger">!</span>
                                 <h6 class="green mt-1">Payment Due</h6>
                                 <small> Just Now</small>
                             </div>
                         </li>
                         <li class="list-group-item border py-1 pb-0 mt-1">
-                            <div class="d-flex justify-content-between align-items-center px-0">
+                            <div class="d-flex justify-content-between align-items-center p-1">
                                 <span class="badge bg-danger">!</span>
                                 <h6 class="green mt-1">Payment Due</h6>
                                 <small> Just Now</small>
