@@ -26,5 +26,16 @@ class Colleges extends Database {
         $stmt = $this->pdo->query($sql);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    public function getCollegeById($id) {
+        $sql = "SELECT * FROM $this->table WHERE id = :id";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([':id' => $id]);
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        if ($result === false) {
+            throw new Exception("College not found");
+        }
+        return $result;
+    }
 }
 ?>
