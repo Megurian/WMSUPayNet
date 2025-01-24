@@ -22,7 +22,7 @@
 
     <main class="hero">
         <div class="hero-text">
-            <h1>WMSUPayNet : An Integrated Web Platform for Payment Processing and Record Management</h1>
+            <h1>PayNet: An Integrated Web Platform for Payment Processing and Record Management</h1>
             <p>Our System solves problems by providing better and efficient payment and management system lessening the workload for student organization. </p>
             <a href="#start" class="start-project-btn">Avail our System</a>
         </div>
