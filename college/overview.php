@@ -4,14 +4,12 @@
             <div class="card bg-dark text-white border border-light ">
                 <div class="card-body p-4">
                     <h5> Hello, Admin Name</h5>
-                    <div class="col-md-6 mt-3">
+                    <div class="col-md-8 mt-3">
                     <h6> school-year</h6>  
-                        <select id="schoolYearSelect" class="form-select form-select-sm">
-                            <option value="2023-2024">2023-2024</option>
-                            <option value="2024-2025">2024-2025</option>
-                            <option value="2025-2026">2025-2026</option>
-                            
-                        </select>
+                        <div class="col-md-7 d-flex mt-2">
+                              <h5 class="col-md-12"> 2021-2022</h5>
+                              <i class="bi bi-pen"></i>
+                        </div>
                     </div>
                 </div>
                 
