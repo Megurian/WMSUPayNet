@@ -5,12 +5,12 @@
                 <div class="card-body p-4">
                     <h5> Hello, Admin Name</h5>
                     <div class="col-md-6 mt-3">
-                    <h6> school-year</h6>  <!-- Dropdown for school year -->
+                    <h6> school-year</h6>  
                         <select id="schoolYearSelect" class="form-select form-select-sm">
                             <option value="2023-2024">2023-2024</option>
                             <option value="2024-2025">2024-2025</option>
                             <option value="2025-2026">2025-2026</option>
-                            <!-- Add more years as needed -->
+                            
                         </select>
                     </div>
                 </div>

@@ -1,0 +1,30 @@
+to copy a repository to your local machine:
+git clone <repository-url>
+
+to create a branch:
+git checkout -b <branch-name>
+git push origin <branch-name>  #to create the branch in the repository
+
+to open an existing branch:
+git checkout <branch-name>
+
+to stage or prepare your changes to a branch/repo:
+git add .
+
+to unstage your changes:
+git reset HEAD .       #for all files
+git reset HEAD <file>  #for specific file
+
+to commit your changes to the branch/repo:
+git commit -m "Descriptive commit title"
+
+to push your changes in the branch to the repository:
+git push origin <branch-name>
+
+
+## After pushing you need to create a Pull Request (PR) to the owner of repository to merge your branch to the main branch
+
+after merging or to update your branch when you're behind:
+git checkout <branch-name>
+git pull origin main
+git rebase
