@@ -4,8 +4,11 @@
 
   $organizationObj = new Organizations();
   $adminObj = new Admins();
+  $collegeObj = new Colleges();
   $suffixObj = new Suffixes();
+
   $collegeId = isset($_GET['college_id']) ? intval($_GET['college_id']) : 0;
+  $college = $collegeObj->getCollegeById($collegeId);
 ?>
 
 <style>
@@ -47,7 +50,7 @@
                         <i class="fas fa-arrow-left back-button"></i>
                         <img src="../../images/ccs_logo.png" alt="Logo" width="40" height="40" class="rounded-circle">
                         <div class="col-md-10 d-flex flex-column">
-                          <h5>College of Computing Studies</h5>
+                          <h5><?= htmlspecialchars($college['college']) ?></h5>
                           <h6><span style="color: #004d00;">Organizations</span></h6>
                         </div>
                     </div>
