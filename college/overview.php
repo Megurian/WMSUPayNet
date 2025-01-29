@@ -8,7 +8,6 @@
                     <h6> school-year</h6>  
                         <div class="col-md-7 d-flex mt-2">
                               <h5 class="col-md-12"> 2021-2022</h5>
-                              <i class="bi bi-pen"></i>
                         </div>
                     </div>
                 </div>
