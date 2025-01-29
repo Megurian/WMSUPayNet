@@ -1,30 +1,58 @@
+# SE Project Title:
+**PayNet: A Centralized Records and Payment Processing System**
 
-# WMSUPayNet
-Git branch and merge
+## Proposed Solution:
+A system that centralizes all the payment processing and record management for Student Organizations. It allows the University to streamline the processing of payments and handle record management automatically.
 
-pre-req:
-	install git on your dev
-	create GitHub account
-	install GitHub desktop
-1. Create a repo of your project with readme
-2. Add all of your members as collaborator
-3. create a personal branch for every member of the team using the format firstname-lastname
-4. clone and checkout your branch
-5. in your project, create an html page using your name as file name and display a text <your name>
-6. commit and push your changes to your personal branch only
-7. merge your personal branch into the main/master branch - pull request if needed, to be approved by the repo creator
-8. do step 7 for all branches
-9. pull the changes from main to your personal branch, merge and rebase if needed
-10. double check if the code changes applied to the other branches are now reflected in your personal branch - git checkout
-11. check commit history, the number of commits is at least equal to the number of pull request made
-12. create a hot fix branch from the 2 commits made in the main branch, if you have 5 commits, only the 1st-two branch/commit is present in this version
-13. checkout your personal branch then always pull from main, this is to ensure your branch is updated
-14. create an index page (all branches will create the same page) - add one line h1 … h6
-15. repeat step 7 to step 10, you should experience now a merge conflict, fix the merge manually - do not always accept changes
- example
-	member 1 committed h1 into index
-	member 2 committed h2 into index
-	member 3 committed h1 h3 into index
-when you merge this, the index should have both h1, h2, and h3.
-16. End of activity
+## Benefits of Proposed Solution:
+- Faster payment processing
+- Reduced transaction time
+- Enhanced data integrity
+- Transparency of payment and record
+- Faster record validation
+- Reduced manual labor
 
+## Describe your Solution:
+We offer a web-based digital transaction system. The details of our offering consist of:
+- Tracking of Payment Records
+- Processing and Report Generation
+- Transaction Concurrency
+
+## System Features
+
+### Features for Students:
+- Overview of organization fees and due dates.
+- Access to transaction/payment records for each semester and school year, serving as a replacement for traditional receipts.
+- Promissory note for due payments.
+- Refund request form including the fee to be refunded and reason for refund.
+- Report bugs and issues.
+
+### Features for Organization Administrators:
+- Displays payment summaries (e.g., paid, unpaid) and total revenue via visual representations like graphs.
+- Ability to modify or delete student records, with logging of all changes.
+- Manual payment entry and pre-registration of students.
+- Fee management capabilities, including creating, modifying, or deleting organization fees, with logs tracking all changes made.
+- Search and filtering. This includes college, course, regular/irregular, year level, religion, undergrad/graduate, semester, or summer.
+- Comprehensive logging of all activities; system activities are logged with timestamps and admin details to ensure accountability.
+- Custom report generation with built-in statistics and export options in various formats.
+- Admin page customization: Admins can customize the dashboard interface and manage user roles, assigning different access levels and permissions within the system.
+- Security features such as audit trails and session timeout.
+- Report bugs and issues.
+
+### Features for College Administrators:
+- Hybrid functionality like Organization Admin and System Admin.
+- Upload enrolled students to the system.
+- Dashboard that displays the total number of students and active organizations.
+- Create college-based fees.
+- Uploading and adding of enrolled students to the college.
+- Report bugs and issues.
+- Logging of system activities.
+
+### Features for System Administrator:
+- Displays the total amount collected per organization and college.
+- Status control: Ability to deactivate, activate, or reactivate an organization.
+- College organization management: Ability to create, modify, and delete organizations within the college.
+- Data Backup & Recovery: Can export database records manually and perform automatic data backups.
+- Audit Logs and system monitoring: Logs all activities from both students and organizations.
+- System Maintenance and updates: Ability to schedule downtime, automatic error logging.
+- Issue reporting: Both students and organizations can report bugs and issues.
