@@ -20,6 +20,17 @@ class Colleges extends Database {
         }
     }
 
+    public function deleteCollege($id) {
+        $sql = "DELETE FROM $this->table WHERE id = :id";
+        $stmt = $this->pdo->prepare($sql);
+        try {
+            $stmt->execute([':id' => $id]);
+            return true; // Return true if the delete was successful
+        } catch (PDOException $e) {
+            return false; // Return false if there was an error
+        }
+    }
+
     // Get all colleges
     public function getAllColleges() {
         $sql = "SELECT * FROM $this->table";
@@ -38,4 +49,6 @@ class Colleges extends Database {
         return $result;
     }
 }
-?>
+
+/* $Obj = new Colleges();
+$Obj->deleteCollege(9); */
