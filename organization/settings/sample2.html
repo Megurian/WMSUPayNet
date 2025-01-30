@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* Light Mode */
+.light-mode {
+  background-color: #fff;
+  color: #333;
+  /* Add more light mode styles here */
+}
+
+/* Dark Mode */
+.dark-mode {
+  background-color: #333;
+  color: #fff;
+  /* Add more dark mode styles here */
+}
+    </style>
+</head>
+<body>
+    page 2
+
+<a href="../settings/sample.html"> page 1</a>
+
+<script>
+
+const themeSelect = document.getElementById('themeSelect');
+    const body = document.body;
+    
+    // Load theme from local storage on page load
+    const storedTheme = localStorage.getItem('theme');
+    if (storedTheme) {
+        body.classList.remove('light-mode', 'dark-mode'); //remove existing theme classes
+        if (storedTheme === 'dark-mode') {
+            body.classList.add('dark-mode');
+            themeSelect.value = 'theme2'; // Set select to Dark option
+        } else {
+            body.classList.add('light-mode');
+            themeSelect.value = 'theme1'; // Set select to Light option
+        }
+    }
+    
+    
+    themeSelect.addEventListener('change', () => {
+        const selectedTheme = themeSelect.value;
+        body.classList.remove('light-mode', 'dark-mode'); //remove existing theme classes
+        if (selectedTheme === 'theme2') {
+            body.classList.add('dark-mode');
+            localStorage.setItem('theme', 'dark-mode');
+        } else {
+            body.classList.add('light-mode');
+            localStorage.setItem('theme', 'light-mode');
+        }
+    });
+    </script>
+</body>
+</html>

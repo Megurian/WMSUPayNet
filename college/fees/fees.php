@@ -47,6 +47,7 @@
                     <thead>
                         <tr>
                             <th >Name</th>
+                            <th >Collector</th>
                             <th >Amount</th>
                             <th >Course</th>
                             <th >Year</th>
@@ -59,6 +60,7 @@
                     <tbody>
                         <tr>
                             <td>Membership Fee</td>
+                            <td>Meg Ryan Gomez</td>
                             <td>$50.00</td>
                             <td>All</td>
                             <td>All</td>
@@ -69,6 +71,7 @@
                         </tr>
                         <tr>
                             <td>Miscellaneous</td>
+                            <td>Meg Ryan Gomez</td>
                             <td>$20.00</td>
                             <td>All</td>
                             <td>All</td>
@@ -93,6 +96,7 @@
                     <thead>
                         <tr>
                             <th >Name</th>
+                            <th >Collector</th>
                             <th >Amount</th>
                             <th >Course</th>
                             <th >Year</th>
@@ -105,6 +109,7 @@
                     <tbody>
                         <tr>
                             <td>Membership Fee</td>
+                            <td>Fritzie Mae Balagosa</td>
                             <td>$50.00</td>
                             <td>All</td>
                             <td>All</td>
@@ -115,6 +120,7 @@
                         </tr>
                         <tr>
                             <td>Miscellaneous</td>
+                            <td>Fritzie Mae Balagosa</td>
                             <td>$20.00</td>
                             <td>All</td>
                             <td>All</td>

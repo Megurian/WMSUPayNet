@@ -13,6 +13,7 @@ document.querySelectorAll('.sidebar-item a.nav-link').forEach(link => {
                     document.querySelector('.content-page').innerHTML = html;
                     loadPie()
                     document.querySelector('.topnav-title').textContent = 'Dashboard';
+                    themes();
                 })
                 
         }else if (this.id === 'student-link') {
@@ -208,7 +209,7 @@ document.querySelectorAll('.sidebar-item a.nav-link').forEach(link => {
                                     .then(response => response.text())
                                     .then(html => {
                                         document.querySelector('.settings-content').innerHTML = html;
-                                        
+                                        themes();
                                     })
                             }else if (this.id === 'account-link') {
                                 fetch('settings/account.php')
@@ -549,3 +550,30 @@ function toggleDropdown(id) {
             });
           });
       }
+
+function themes(){
+    const themeSelect = document.getElementById('themeSelect');
+const body = document.body;
+const storedTheme = localStorage.getItem('theme');
+if (storedTheme) {
+    body.classList.remove('light-mode', 'dark-mode'); 
+    if (storedTheme === 'dark-mode') {
+        body.classList.add('dark-mode');
+        themeSelect.value = 'theme2'; // Set select to Dark option
+    } else {
+        body.classList.add('light-mode');
+        themeSelect.value = 'theme1'; // Set select to Light option
+    }
+}
+themeSelect.addEventListener('change', () => {
+    const selectedTheme = themeSelect.value;
+    body.classList.remove('light-mode', 'dark-mode'); 
+    if (selectedTheme === 'theme2') {
+        body.classList.add('dark-mode');
+        localStorage.setItem('theme', 'dark-mode');
+    } else {
+        body.classList.add('light-mode');
+        localStorage.setItem('theme', 'light-mode');
+    }
+});
+}
