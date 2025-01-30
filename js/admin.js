@@ -34,6 +34,17 @@ document.querySelectorAll('.sidebar-item a.nav-link').forEach(link => {
                     });
                 });
 
+                document.getElementById('update-year').addEventListener('click', function(e) {
+                    e.preventDefault();
+                    fetch('university/school-year.html')
+                    .then(response => response.text())
+                    .then(html => {
+                        $('.modal-container').html(html);
+                        $('#modal-update-year').modal('show');
+                        UpdateYear();
+                    });
+                });
+
                 document.querySelectorAll('.college').forEach(function(college) {
                     college.addEventListener('click', function() {
                         // Get the college ID from the data attribute
@@ -314,6 +325,39 @@ function createAdmin() {
                     alert(res.message);
                     $('#form-create-admin')[0].reset(); // Reset form fields
                     $('#modal-create-admin').modal('hide'); // Close modal
+                    $('.modal-container').html(html);
+
+                }
+            },
+            error: function() {
+                alert('An error occurred while processing the request.');
+            }
+        });
+    });
+}
+
+function UpdateYear() {
+    $('#form-update-year').submit(function(e) {
+        e.preventDefault();
+
+        // Create FormData object to handle form data and file upload
+        const formData = new FormData(this);
+        
+        $.ajax({
+            url: 'logic/modal-update-year.html',
+            type: 'post',
+            data: formData,
+            processData: false, // Prevent jQuery from automatically transforming data into a query string
+            contentType: false, // Prevent jQuery from setting content type
+            success: function(response) {
+                const res = JSON.parse(response);
+    
+                if (res.status === 'error') {
+                    alert(res.message);
+                } else {
+                    alert(res.message);
+                    $('#form-update-year')[0].reset(); // Reset form fields
+                    $('#modal-update-year').modal('hide'); // Close modal
                     $('.modal-container').html(html);
 
                 }

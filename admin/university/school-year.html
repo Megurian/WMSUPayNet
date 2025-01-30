@@ -1,0 +1,29 @@
+<!-- Modal -->
+<div class="modal fade" id="modal-update-year" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">Update School Year</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form action="" method="post" id="form-update-year" enctype="multipart/form-data">
+            <div class="modal-body">
+                <p class="mb-3">Please select the start and end dates for the new school year.  Ensure the end date is after the start date.  After selecting the dates, click "Save" to update the school year.</p>
+                <div class="mb-3">
+                    <label for="startDate" class="form-label"><strong>Start Date:</strong></label>
+                    <input type="date" class="form-control" id="startDate" name="startDate" required>
+                </div>
+                <div class="mb-3">
+                    <label for="endDate" class="form-label"><strong> End Date:</strong></label>
+                    <input type="date" class="form-control" id="endDate" name="endDate" required>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="buttons">
+                    <button type="submit" class="btn bgreen">Save</button>
+                </div>
+            </div>
+        </form>
+      </div>
+    </div>
+</div>
