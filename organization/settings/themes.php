@@ -2,13 +2,12 @@
 
     <div class="d-flex">
           <div class="col-md-5 mt-5">
-                <div class="col-md-8 mb-2 p-2 rounded border">
+                 <div class="col-md-8 mb-2 p-2 rounded border">
                     <div class="form-group">
                         <label for="themeSelect"><h5>Choose a theme</h5></label>
                         <select class="form-select" id="themeSelect">
-                            <option value="theme1">Theme 1</option>
-                            <option value="theme2">Theme 2</option>
-                            <option value="theme3">Theme 3</option>
+                            <option value="theme1">Light</option>
+                            <option value="theme2">Dark</option>
                         </select>
                     </div>
                 </div>
