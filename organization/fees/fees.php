@@ -35,13 +35,13 @@
                 <div class="d-flex justify-content-between border-bottom mb-1">
                     <div class="d-flex align-items-center p-1" >
                         <img src="../../images/gender_club.jpg" alt="Logo" width="40" height="40" class="rounded-circle" >
-                        <h6 class="mr-2"><span style="color: #004d00; padding-left: 10px;"> Gender Club </span></h6>
+                        <h6 class="green"> Gender Club</h6>
                     </div>
                     <div class="button">
                         <button id="add-fee" class="btn bgreen btn-sm"> Create Fee</button>
                     </div>
                 </div>
-              <div class="table ">
+              <div class="table">
                 <table  class="table table-striped  mb-0">
                     <thead>
                         <tr>
@@ -53,6 +53,7 @@
                             <th >Required</th>
                             <th >Criteria</th>
                             <th >School Year</th>
+                            <th ></th>
 
                         </tr>
                     </thead>
