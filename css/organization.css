@@ -415,3 +415,71 @@ h4{
     cursor: pointer;
     color: red;
 }
+
+       /* Light Mode */
+       .light-mode {
+        background-color: #fff;
+        color: #333;
+      }
+      
+      /* Dark Mode */
+      .dark-mode {
+        background-color: #333;
+        color: #fff;
+      }
+
+.dark-mode .topnav{
+    background-color: #1b1b1b;
+        color: #fff;
+}
+
+.dark-mode .sidebar{
+    background-color: #1b1b1b;
+        color: #fff;
+}
+
+.dark-mode select{
+    background-color: #333;
+        color: #fff;
+}
+
+.dark-mode .form-control{
+    background-color: #333;
+     color: #fff;
+}
+
+.dark-mode .card{
+    background-color: #7a7a7a;
+     color: #fff;
+}
+
+.dark-mode .table-container{
+    background-color: #7a7a7a;
+     color: #fff;
+}
+.dark-mode .table-responsive{
+    background-color: #7a7a7a;
+     color: #fff;
+}
+.dark-mode .table td{
+    background-color: #525050;
+     color: #fff;
+}
+
+.dark-mode .table th{
+    background-color: #131212;
+     color: #fff;
+}
+
+.dark-mode table{
+    background-color: #7a7a7a;
+     color: #fff;
+}
+
+.dark-mode i{
+     color: #fff;
+}
+
+.dark-mode h5,h6{
+    color: #fff;
+}
