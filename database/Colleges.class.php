@@ -20,11 +20,35 @@ class Colleges extends Database {
         }
     }
 
+    public function deleteCollege($id) {
+        $sql = "DELETE FROM $this->table WHERE id = :id";
+        $stmt = $this->pdo->prepare($sql);
+        try {
+            $stmt->execute([':id' => $id]);
+            return true; // Return true if the delete was successful
+        } catch (PDOException $e) {
+            return false; // Return false if there was an error
+        }
+    }
+
     // Get all colleges
     public function getAllColleges() {
         $sql = "SELECT * FROM $this->table";
         $stmt = $this->pdo->query($sql);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    public function getCollegeById($id) {
+        $sql = "SELECT * FROM $this->table WHERE id = :id";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([':id' => $id]);
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        if ($result === false) {
+            throw new Exception("College not found");
+        }
+        return $result;
+    }
 }
-?>
+
+/* $Obj = new Colleges();
+$Obj->deleteCollege(9); */

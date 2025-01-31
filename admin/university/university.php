@@ -62,13 +62,13 @@ $studentObj = new Students();
                         <small class="text-muted">Updated <?= htmlspecialchars($college['created_at']) ?></small>
                     </div>
 
-                    <button class="btn btn-outline-secondary btn-sm" data-bs-toggle="dropdown">
+                    <button class="btn btn-outline-secondary btn-sm dropdown-btn" data-bs-toggle="dropdown">
                         <i class="bi bi-three-dots"></i>
                     </button>
 
-                    <ul class="dropdown-menu dropdown-menu-end">
-                        <li><a class="dropdown-item" href="#">Edit</a></li>
-                        <li><a class="dropdown-item" href="#">Delete</a></li>
+                    <ul class="dropdown-menu dropdown-menu-end" data-college-id="<?= htmlspecialchars($college['id']) ?>">
+                        <li><a class="dropdown-item edit-college" href="#">Edit</a></li>
+                        <li><a class="dropdown-item delete-college" href="#">Delete</a></li>
                     </ul>
 
                 </div>

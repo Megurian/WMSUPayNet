@@ -85,7 +85,26 @@ document.querySelectorAll('.sidebar-item a.nav-link').forEach(link => {
                         })
                         .catch(error => console.error('Error loading organizations:', error));
                     });
-                }); 
+                });
+
+                // Handle edit and delete button clicks dynamically
+                document.querySelectorAll('.dropdown-menu').forEach(function(dropdown) {
+                    dropdown.addEventListener('click', function(e) {
+                        let collegeId = this.dataset.collegeId;
+
+                        if (e.target.classList.contains('edit-college')) {
+                            e.preventDefault();
+                            editCollege(collegeId);
+                        }
+    
+                        if (e.target.classList.contains('delete-college')) {
+                            e.preventDefault();
+                            deleteCollege(collegeId);
+                        }
+                    });
+                });
+                
+
             })    
         }else if (this.id === 'statistic-link') {
             fetch('statistics/nav.php')
@@ -328,6 +347,23 @@ function addCollege() {
                     alert(res.message);
                     $('#form-add-college')[0].reset(); // Reset form fields
                     $('#modal-add-college').modal('hide'); // Close modal
+                    fetch('university/university.php')
+                    .then(response => response.text())
+                    .then(html => {
+                        document.querySelector('.content-page').innerHTML = html;
+                        
+                        document.querySelector('.topnav-title').textContent = 'University';
+                        document.getElementById('add-college').addEventListener('click', function(e) {
+                            e.preventDefault();
+                            fetch('university/add-college.php')
+                            .then(response => response.text())
+                            .then(html => {
+                                $('.modal-container').html(html);
+                                $('#addCollegeModal').modal('show');
+                                addCollege();
+                            });
+                        });
+                    })
                 }
             },
             error: function() {
@@ -335,6 +371,64 @@ function addCollege() {
             }
         });
     });
+}
+
+function editCollege(collegeId) {
+    /* fetch(`university/add-college.php?college_id=${collegeId}`)
+        .then(response => response.text())
+        .then(html => {
+            $('.modal-container').html(html);
+            $('#editCollegeModal').modal('show');
+            // Add event listener for form submission
+            $('#form-edit-college').submit(function(e) {
+                e.preventDefault();
+                const formData = new FormData(this);
+                $.ajax({
+                    url: 'logic/editCollege.php',
+                    type: 'post',
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function(response) {
+                        const res = JSON.parse(response);
+                        if (res.status === 'error') {
+                            alert(res.message);
+                        } else {
+                            alert(res.message);
+                            $('#form-edit-college')[0].reset();
+                            $('#editCollegeModal').modal('hide');
+                            // Optionally, refresh the college list
+                        }
+                    },
+                    error: function() {
+                        alert('An error occurred while processing the request.');
+                    }
+                });
+            });
+        })
+        .catch(error => console.error('Error loading edit college modal:', error)); */
+}
+
+function deleteCollege(collegeId) {
+    if (confirm('Are you sure you want to delete this college?')) {
+        $.ajax({
+            url: `logic/deleteCollege.php?collegeId=${collegeId}`,
+            type: 'post',
+            success: function(response) {
+                const res = JSON.parse(response);
+                if (res.status === 'error') {
+                    alert(res.message);
+                } else {
+                    alert(res.message);
+                    // Optionally, remove the college card from the DOM
+                    document.querySelector(`.college[data-college-id="${collegeId}"]`).closest('.card').remove();
+                }
+            },
+            error: function() {
+                alert('An error occurred while processing the request.');
+            }
+        });
+    }
 }
 
 function monitoring(){
