@@ -30,8 +30,8 @@
                 </div> -->
             </div>
 
-            <div class="table-responsive">
-            <table id="table-all" class="table table-striped table-nowrap mb-0">
+            <div class="table-container">
+            <table id="table-all" class=" table-all table table-striped table-nowrap mb-0">
                     <thead>
                         <tr>
                             <th class="sort-column" data-sort-by="name">Name <span class="sort-icon"></span></th>
