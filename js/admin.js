@@ -115,7 +115,6 @@ document.querySelectorAll('.sidebar-item a.nav-link').forEach(link => {
                     });
                 });
                 
-
             })    
         }else if (this.id === 'statistic-link') {
             fetch('statistics/nav.php')
@@ -391,23 +390,7 @@ function addCollege() {
                     alert(res.message);
                     $('#form-add-college')[0].reset(); // Reset form fields
                     $('#modal-add-college').modal('hide'); // Close modal
-                    fetch('university/university.php')
-                    .then(response => response.text())
-                    .then(html => {
-                        document.querySelector('.content-page').innerHTML = html;
-                        
-                        document.querySelector('.topnav-title').textContent = 'University';
-                        document.getElementById('add-college').addEventListener('click', function(e) {
-                            e.preventDefault();
-                            fetch('university/add-college.php')
-                            .then(response => response.text())
-                            .then(html => {
-                                $('.modal-container').html(html);
-                                $('#addCollegeModal').modal('show');
-                                addCollege();
-                            });
-                        });
-                    })
+                    refreshCollegeList(); //refresh the college list
                 }
             },
             error: function() {
@@ -418,11 +401,12 @@ function addCollege() {
 }
 
 function editCollege(collegeId) {
-    /* fetch(`university/add-college.php?college_id=${collegeId}`)
+    fetch(`university/edit-college.php?college_id=${collegeId}`)
         .then(response => response.text())
         .then(html => {
             $('.modal-container').html(html);
             $('#editCollegeModal').modal('show');
+
             // Add event listener for form submission
             $('#form-edit-college').submit(function(e) {
                 e.preventDefault();
@@ -441,7 +425,7 @@ function editCollege(collegeId) {
                             alert(res.message);
                             $('#form-edit-college')[0].reset();
                             $('#editCollegeModal').modal('hide');
-                            // Optionally, refresh the college list
+                            refreshCollegeList(); //refresh the college list
                         }
                     },
                     error: function() {
@@ -450,7 +434,7 @@ function editCollege(collegeId) {
                 });
             });
         })
-        .catch(error => console.error('Error loading edit college modal:', error)); */
+        .catch(error => console.error('Error loading edit college modal:', error));
 }
 
 function deleteCollege(collegeId) {
@@ -473,6 +457,108 @@ function deleteCollege(collegeId) {
             }
         });
     }
+}
+
+refreshCollegeList = () => {
+    fetch('university/university.php')
+    .then(response => response.text())
+    .then(html => {
+        document.querySelector('.content-page').innerHTML = html;
+        
+        document.querySelector('.topnav-title').textContent = 'University';
+        document.getElementById('add-college').addEventListener('click', function(e) {
+            e.preventDefault();
+            fetch('university/add-college.php')
+            .then(response => response.text())
+            .then(html => {
+                $('.modal-container').html(html);
+                $('#addCollegeModal').modal('show');
+                addCollege();
+            });
+        });
+
+        document.getElementById('update-year').addEventListener('click', function(e) {
+            e.preventDefault();
+            fetch('university/school-year.html')
+            .then(response => response.text())
+            .then(html => {
+                $('.modal-container').html(html);
+                $('#modal-update-year').modal('show');
+                UpdateYear();
+            });
+        });
+
+        document.querySelectorAll('.college').forEach(function(college) {
+            college.addEventListener('click', function() {
+                // Get the college ID from the data attribute
+                const collegeId = this.dataset.collegeId;
+        
+                // Send the college ID to organizations.php
+                fetch(`university/organizations.php?college_id=${collegeId}`)
+                .then(response => response.text())
+                .then(html => {
+                    document.querySelector('.content-page').innerHTML = html;
+    
+                    // Example: Bind further event listeners if needed
+                    document.getElementById('create-admin').addEventListener('click', function(e) {
+                        e.preventDefault();
+                        
+                        fetch(`university/add-college.php?college_id=${collegeId}`)
+                        .then(response => response.text())
+                        .then(html => {
+                            $('.modal-container').html(html);
+                            $('#modal-create-admin').modal('show');
+                            createAdmin();
+                        });
+                    });
+    
+                    document.querySelectorAll('.organization').forEach(function(organization) {
+                        organization.addEventListener('click', function() {
+                            // Get the organization ID from the data attribute
+                            const organizationId = this.dataset.organizationId;
+
+                            e.preventDefault();
+                            fetch(`university/org-overview.php?organization_id=${organizationId}`)
+                            .then(response => response.text())
+                            .then(html => {
+                                document.querySelector('.content-page').innerHTML = html;
+
+                                document.getElementById('create-admin').addEventListener('click', function(e) {
+                                    e.preventDefault();
+                                    createAdmin();
+                                });
+
+                                document.getElementById('upload').addEventListener('click', function(e) {
+                                    e.preventDefault();
+                                    upload();
+                                });
+                            })
+                            .catch(error => console.error('Error loading organizations:', error));
+                        });
+                    });
+                })
+                .catch(error => console.error('Error loading organizations:', error));
+            });
+        });
+
+        // Handle edit and delete button clicks dynamically
+        document.querySelectorAll('.dropdown-menu').forEach(function(dropdown) {
+            dropdown.addEventListener('click', function(e) {
+                let collegeId = this.dataset.collegeId;
+
+                if (e.target.classList.contains('edit-college')) {
+                    e.preventDefault();
+                    editCollege(collegeId);
+                }
+
+                if (e.target.classList.contains('delete-college')) {
+                    e.preventDefault();
+                    deleteCollege(collegeId);
+                }
+            });
+        });
+        
+    }) 
 }
 
 function monitoring(){

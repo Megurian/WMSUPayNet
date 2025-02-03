@@ -1,21 +1,38 @@
 <?php
 require_once '../../database/autoload_classes.php';
+require_once '../../tools/functions.php';
+
+$collegeObj = new Colleges();
 
 $collegeId = isset($_GET['college_id']) ? intval(clean_input($_GET['college_id'])) : 0;
+
+$collegeInfo = $collegeObj->getCollegeById($collegeId);
+
 
 $suffixesObj = new Suffixes();
 
 ?>
 
+<style>
+    #logo-preview {
+        display: <?= $collegeInfo["logo_directory"] ? 'block' : 'none' ?>;
+    }
+    .plus-icon {
+        display: <?= $collegeInfo["logo_directory"] ? 'none' : 'block' ?>;
+    }
+</style>
+
 <!-- Modal -->
-<div class="modal fade" id="addCollegeModal" tabindex="-1" aria-labelledby="addCollegeModalLabel" aria-hidden="true">
+<div class="modal fade" id="editCollegeModal" tabindex="-1" aria-labelledby="editCollegeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="addCollegeModalLabel"> College Details </h5>
+                <h5 class="modal-title" id="editCollegeModalLabel"> Edit College Details </h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div> 
-            <form id="form-add-college" enctype="multipart/form-data">
+            <form id="form-edit-college" enctype="multipart/form-data">
+                <input type="hidden" name="collegeId" value="<?= $collegeId ?>">
+                <input type="hidden" name="logoUpdated" id="logoUpdated" value="0">
                 <div class="modal-body">
                     <div class="card-body">
                         <div class="row mb-3">
@@ -24,8 +41,8 @@ $suffixesObj = new Suffixes();
                                 <div class="form-group">
                                     <label for="logo">Upload Logo</label>
                                     <div class="logo-container mt-2" id="upload">
-                                        <input type="file" name="logo" id="logo-input" accept="image/*">
-                                        <img id="logo-preview" src="#" alt="Logo Preview" style="display: none;" >
+                                        <input type="file" name="logo" id="logo-input" accept="image/*" value="<?= htmlspecialchars($collegeInfo["logo_directory"]) ?>">
+                                        <img id="logo-preview" src="<?= htmlspecialchars($collegeInfo["logo_directory"]) ?>" alt="Logo Preview" >
                                         <i class="fas fa-plus plus-icon"></i>
                                     </div>
                                 </div>
@@ -35,7 +52,7 @@ $suffixesObj = new Suffixes();
                                 <div class="col-md-9 mb-3">
                                     <div class="form-group">
                                         <label for="collegeName">College Name:</label>
-                                        <input type="text" class="form-control" id="collegeName" name="collegeName" placeholder="Enter College Name">
+                                        <input type="text" class="form-control" id="collegeName" name="collegeName" value="<?= htmlspecialchars($collegeInfo["college"]) ?>" placeholder="Enter College Name">
                                     </div>
                                 </div>
                             </div>
@@ -44,7 +61,7 @@ $suffixesObj = new Suffixes();
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="contactNo">Description</label>
-                                        <textarea type="text " rows="4" maxlength="255" class="form-control" id="description" name="description" placeholder="Description"></textarea>
+                                        <textarea type="text " rows="4" maxlength="255" class="form-control" id="description" name="description" placeholder="Description"><?= htmlspecialchars($collegeInfo["description"]) ?></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -54,7 +71,7 @@ $suffixesObj = new Suffixes();
                 </div>
                 <div class="modal-footer">
                     <div class="buttons">
-                        <button  type="submit" class="btn bgreen" data-bs-dismiss="modal" data-bs-toggle="modal"> Save </button>
+                        <button  type="submit" class="btn bgreen" data-bs-dismiss="modal" data-bs-toggle="modal"> Update </button>
                     </div>
                 </div>
             </form>
@@ -65,6 +82,9 @@ $suffixesObj = new Suffixes();
 <script>
     //Script to preview uploaded logo
     document.getElementById("logo-input").addEventListener("change", function(event) {
+
+        document.getElementById("logoUpdated").value = 1;
+
         const file = event.target.files[0]; // Get the selected file
         if (file) {
             const reader = new FileReader(); // Create a FileReader object

@@ -4,7 +4,7 @@
         
         <div class="d-flex align-items-center">
         <div class="input-group ">
-                  <input type="text" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="basic-addon2">
+                  <input type="text" class="form-control placeholder bg-light" placeholder="Search" aria-label="Search" aria-describedby="basic-addon2">
                   <span class="input-group-text" id="basic-addon2"><i class="bi bi-search"></i></span>
         </div>
         <span class="bell rounded-square py-1 px-2 m-3" style="display: inline-block;">

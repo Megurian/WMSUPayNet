@@ -8,7 +8,7 @@
                          <p class="display-6">0</p>
                     </div>
                     <div class="d-flex justify-content-between align-items-center px-2">
-                        <small class="text-muted"> This Week</small>
+                        <small class="text-secondary"> This Week</small>
                          <small><a href="" class="text-success"> view </a></small>
                     </div>
                 </div>
@@ -23,7 +23,7 @@
                             <p class="display-6"><span class="text-Success">₱</span>0</p>
                     </div>
                     <div class="d-flex justify-content-between align-items-center px-2">
-                        <small class="text-muted"> This Week</small>
+                        <small class="text-secondary"> This Week</small>
                             <small><a href="" class="text-success"> view </a></small>
                     </div>
                 </div>
@@ -53,8 +53,8 @@
             <div class="card bg-white-green text-white">
                 <div class="card-body p-2">
                     <div class="d-flex justify-content-between align-items-center">
-                        <h5 class="card-title text-black">Recent</h5>
-                        <i class="bi bi-bell-fill fs-5 text-black"></i>
+                        <h5 class="card-title">Recent</h5>
+                        <i class="bi bi-bell-fill fs-5 text-secondary"></i>
                     </div>
                     <div class="col-md-14">
                     <ul class="list-group list-group-flush ">
@@ -85,7 +85,7 @@
                     <div class="col-md-4 mb-3">
                         <div class="card bg-white-green text-white">
                             <div class="card-body ">
-                                <h5 class="card-title text-dark">Summary of Payments</h5>
+                              <h5 class="card-title "> Summary of Payments</h5>
                                 <canvas id="paymentChart" style="height: 220px;"></canvas>
                             </div>
                         </div>
@@ -93,65 +93,65 @@
                     <div class="col-md-7 mb-3">
                         <div class="card bg-white-green text-white">
                             <div class="card-body">
-                                <h5 class="card-title text-dark">Recent Payments</h5>
+                                <h5 class="card-title">Recent Payments</h5>
                                 <table class="table table-striped table-white pb-0 ">
                                    
                                     <tbody>
                                         <tr >
                                             <td>
-                                                <small class=" text-muted">Sep. 10, 2024</small>
-                                                <p class="small text-muted">10:40 AM</p>
+                                                <small class=" text-secondary">Sep. 10, 2024</small>
+                                                <p class="small text-secondary">10:40 AM</p>
                                              </td>
                                             <td>
                                                 <small > Alfaith Mae Luzon</small>
-                                                <p class="small text-muted">alfaiht@example.com</p>
+                                                <p class="small text-secondary">alfaiht@example.com</p>
                                             </td>
                                             <td>
                                                 <small class="violet"> Membership Fee</small>
-                                                <p class="small text-muted"> ₱50.00</p></td>
+                                                <p class="small text-secondary"> ₱50.00</p></td>
                                             </td>
                                         </tr>
 
                                         <tr >
                                             <td>
-                                                <small class=" text-muted">Sep. 10, 2024</small>
-                                                <p class="small text-muted">10:40 AM</p>
+                                                <small class=" text-secondary">Sep. 10, 2024</small>
+                                                <p class="small text-secondary">10:40 AM</p>
                                              </td>
                                             <td>
                                                 <small > Alfaith Mae Luzon</small>
-                                                <p class="small text-muted">alfaiht@example.com</p>
+                                                <p class="small text-secondary">alfaiht@example.com</p>
                                             </td>
                                             <td>
                                                 <small class="violet"> Membership Fee</small>
-                                                <p class="small text-muted"> ₱50.00</p></td>
+                                                <p class="small text-secondary"> ₱50.00</p></td>
                                             </td>
                                         </tr>
                                         <tr >
                                             <td>
-                                                <small class=" text-muted">Sep. 10, 2024</small>
-                                                <p class="small text-muted">10:40 AM</p>
+                                                <small class=" text-secondary">Sep. 10, 2024</small>
+                                                <p class="small text-secondary">10:40 AM</p>
                                              </td>
                                             <td>
                                                 <small > Alfaith Mae Luzon</small>
-                                                <p class="small text-muted">alfaiht@example.com</p>
+                                                <p class="small text-secondary">alfaiht@example.com</p>
                                             </td>
                                             <td>
                                                 <small class="violet"> Membership Fee</small>
-                                                <p class="small text-muted"> ₱50.00</p></td>
+                                                <p class="small text-secondary"> ₱50.00</p></td>
                                             </td>
                                         </tr>
                                         <tr >
                                             <td>
-                                                <small class=" text-muted">Sep. 10, 2024</small>
-                                                <p class="small text-muted">10:40 AM</p>
+                                                <small class=" text-secondary">Sep. 10, 2024</small>
+                                                <p class="small text-secondary">10:40 AM</p>
                                              </td>
                                             <td>
                                                 <small > Alfaith Mae Luzon</small>
-                                                <p class="small text-muted">alfaiht@example.com</p>
+                                                <p class="small text-secondary">alfaiht@example.com</p>
                                             </td>
                                             <td>
                                                 <small class="violet"> Membership Fee</small>
-                                                <p class="small text-muted"> ₱50.00</p></td>
+                                                <p class="small text-secondary"> ₱50.00</p></td>
                                             </td>
                                         </tr>
                                        

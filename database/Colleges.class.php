@@ -20,6 +20,22 @@ class Colleges extends Database {
         }
     }
 
+    public function editCollege($id, $name, $logo_directory, $description) {
+        $sql = "UPDATE $this->table SET college = :name, logo_directory = :directory, description = :description WHERE id = :id";
+        $stmt = $this->pdo->prepare($sql);
+        try {
+            $stmt->execute([
+                ':id' => $id,
+                ':name' => $name,
+                ':directory' => $logo_directory,
+                ':description' => $description,
+            ]);
+            return true; // Return true if the update was successful
+        } catch (PDOException $e) {
+            return false; // Return false if there was an error
+        }
+    }
+
     public function deleteCollege($id) {
         $sql = "DELETE FROM $this->table WHERE id = :id";
         $stmt = $this->pdo->prepare($sql);

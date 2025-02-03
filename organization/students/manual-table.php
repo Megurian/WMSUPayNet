@@ -33,8 +33,8 @@
             
                 <div class="d-flex justify-content-end">
                 <div class="buttons mb-3 ">
-                    <a id="add-payment" href="#" class="btn btn bgreen btn-sm"> Manual Pay</a> 
-                    <a id="add-student" href="#" class="btn btn bgreen btn-sm"> Add Student</a>
+                    <a id="add-payment" href="#" class="btn bgreen btn-sm"> Manual Pay</a> 
+                    <a id="add-student" href="#" class="btn bgreen btn-sm"> Add Student</a>
                 </div>
                 </div>
                 <table id="table-all" class="table table-striped">
