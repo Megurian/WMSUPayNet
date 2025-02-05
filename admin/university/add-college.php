@@ -1,6 +1,6 @@
 <?php
 require_once '../../database/autoload_classes.php';
-
+require_once '../../tools/functions.php';
 $collegeId = isset($_GET['college_id']) ? intval(clean_input($_GET['college_id'])) : 0;
 
 $suffixesObj = new Suffixes();
@@ -38,17 +38,7 @@ $suffixesObj = new Suffixes();
                                         <input type="text" class="form-control" id="collegeName" name="collegeName" placeholder="Enter College Name">
                                     </div>
                                 </div>
-
-                                <div class="col-md-9 mb-3">
-                                    <div class="form-group">
-                                        <label for="collegeCode">College Code:</label>
-                                        <input type="text" class="form-control" id="collegeCode" name="collegeCode" placeholder="Enter College Code">
-                                        <small class="text-muted">College code will be permanent and cannot be edited or changed.</small>
-                                    </div>
-                                </div>
                             </div>
-
-                            
 
                             <div class="row mb-2 mt-4">
                                 <div class="col-md-12">
