@@ -7,7 +7,7 @@
         </div>
 
         <div class="subnav-item">
-            <a href="fees" id="fees-link" class="subnav-link"> Fees</a>
+            <a href="fees" id="uni-orgs-link" class="subnav-link"> Organization</a>
         </div>
     </div>
 </div>

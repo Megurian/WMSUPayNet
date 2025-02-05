@@ -149,16 +149,19 @@ document.querySelectorAll('.sidebar-item a.nav-link').forEach(link => {
                                             });
                                         });
                                     })
-                            }else if (this.id === 'fees-link') {
-                                fetch('university/fees.php')
+                            }else if (this.id === 'uni-orgs-link') {
+                                fetch('university/uni-level-orgs.php')
                                     .then(response => response.text())
                                     .then(html => {
                                         document.querySelector('.university-content').innerHTML = html;
                                        
-                                        document.getElementById('add-fee').addEventListener('click', function(e) {
+                                        document.getElementById('add-organization-uni').addEventListener('click', function(e) {
                                             e.preventDefault();
-                                            addFee();
+                                            addOrg();
                                         });
+
+                                        uniOrg();
+                                        
                                         
                                     })
                             }
@@ -366,6 +369,73 @@ function view_userReport() {
       
         });
     }
+
+    function uniOrg(){
+        document.getElementById('uni-org').addEventListener('click', function(e) {
+            e.preventDefault();
+            fetch('university/uni-orgs-overview.php')
+            .then(response => response.text())
+            .then(html => {
+                document.querySelector('.content-page').innerHTML = html;
+                document.querySelector('.topnav-title').textContent = 'Report';
+                var table = $('#table-all').DataTable({
+                    dom: 'rtp',
+                    pageLength: 10,
+                    ordering: false,
+                });
+
+                document.getElementById('create-admin-uni').addEventListener('click', function(e) {
+                    e.preventDefault();
+                    createAdminUni();
+                });
+
+                document.getElementById('add-fee-uni').addEventListener('click', function(e) {
+                    e.preventDefault();
+                    addFee();
+                });
+
+                
+            })
+        });
+      }
+
+      function createAdminUni() {
+        fetch('university/add-admin.html')
+          .then(response => response.text())
+          .then(html => {
+        
+            $('.modal-container').html(html);
+            $('#modal-create-admin').modal('show');
+            $('#form-create-admin').on('submit', function(e) {
+              e.preventDefault();
+            });
+          });
+      }
+      function addOrg() {
+        fetch('university/add-organization.html')
+          .then(response => response.text())
+          .then(html => {
+        
+            $('.modal-container').html(html);
+            $('#modal-add-organization').modal('show');
+            $('#form-add-organization').on('submit', function(e) {
+              e.preventDefault();
+            });
+          });
+      }
+
+      function addFee() {
+        fetch('university/add-fee.html')
+          .then(response => response.text())
+          .then(html => {
+        
+            $('.modal-container').html(html);
+            $('#modal-add-fee').modal('show');
+            $('#form-add-fee').on('submit', function(e) {
+              e.preventDefault();
+            });
+          });
+      }
 
 function createAdmin() {
     $('#form-create-admin').submit(function(e) {
