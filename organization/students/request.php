@@ -11,9 +11,9 @@
                         <tr >
                             <td class="status-unpaid"> [New]</td>
                             <td>Alfaith Mae Luzon</td>
-                            <td style="color: #655E5E">Request ID : 12344</td>
-                            <td style="color: #655E5E">08:00 AM</td>
-                            <td style="color: #655E5E">Nov. 12, 2024</td>
+                            <td class="text-secondary">Request ID : 12344</td>
+                            <td class="text-secondary">08:00 AM</td>
+                            <td class="text-secondary">Nov. 12, 2024</td>
                             <td class="status-partial">Pending</td>
                             <td>
                                 <div class="dropdown text-end border-0 bgreen">
@@ -31,9 +31,9 @@
                        <tr>
                             <td class="status-unpaid"></td>
                             <td>Ayana Jade F. Alejo</td>
-                            <td style="color: #655E5E">Request ID : 12344</td>
-                            <td style="color: #655E5E">08:00 AM</td>
-                            <td style="color: #655E5E">Nov. 12, 2024</td>
+                            <td class="text-secondary">Request ID : 12344</td>
+                            <td class="text-secondary">08:00 AM</td>
+                            <td class="text-secondary">Nov. 12, 2024</td>
                             <td class="status-unpaid">Rejected </td>
                             <td>
                                 <div class="dropdown text-end border-0 bgreen">
@@ -51,9 +51,9 @@
                         <tr>
                             <td class="status-unpaid"></td>
                             <td>Clark Falcatan</td>
-                            <td style="color: #655E5E">Request ID : 12d344</td>
-                            <td style="color: #655E5E">07:40 AM</td>
-                            <td style="color: #655E5E">Nov. 12, 2024</td>
+                            <td class="text-secondary">Request ID : 12d344</td>
+                            <td class="text-secondary">07:40 AM</td>
+                            <td class="text-secondary">Nov. 12, 2024</td>
                             <td class="status-paid">Approved </td>
                             <td>
                                 <div class="dropdown text-end border-0 bgreen">

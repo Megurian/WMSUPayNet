@@ -29,6 +29,16 @@ class Courses extends Database {
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    //get course by id
+    public function getCourseById($id) {
+        $sql = "SELECT course FROM $this->table WHERE id = :id";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([':id' => $id]);
+
+        $course = $stmt->fetch(PDO::FETCH_ASSOC); 
+        return $course ? $course['course'] : null;
+    }
 }
 
 $obj = new Courses();

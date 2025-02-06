@@ -20,21 +20,21 @@
                         <option value="">Computer Techn</option>
                     </select>
                 </div>
-                <div class="d-flex align-items-center m-1">
+                <!-- <div class="d-flex align-items-center m-1">
                     <select id="category-filter" class="form-select">
                         <option value="choose">Payment Method</option>
                         <option value="">All</option>
                         <option value="">Gash</option>
                         <option value="">Paymaya</option>
                     </select>
-                </div>
+                </div> -->
             </div>
 
             
                 <div class="d-flex justify-content-end">
                 <div class="buttons mb-3 ">
-                    <a id="add-payment" href="#" class="btn btn bgreen btn-sm"> Manual Pay</a> 
-                    <a id="add-student" href="#" class="btn btn bgreen btn-sm"> Add Student</a>
+                    <a id="add-payment" href="#" class="btn bgreen btn-sm"> Manual Pay</a> 
+                    <a id="add-student" href="#" class="btn bgreen btn-sm"> Add Student</a>
                 </div>
                 </div>
                 <table id="table-all" class="table table-striped">

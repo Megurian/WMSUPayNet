@@ -20,25 +20,25 @@
                         <option value="">Computer Techn</option>
                     </select>
                 </div>
-                <div class="d-flex align-items-center m-1">
+                <!-- <div class="d-flex align-items-center m-1">
                     <select id="category-filter" class="form-select">
                         <option value="choose">Payment Method</option>
                         <option value="">All</option>
                         <option value="">Gash</option>
                         <option value="">Paymaya</option>
                     </select>
-                </div>
+                </div> -->
             </div>
 
-            <div class="table-responsive">
-            <table id="table-all" class="table table-striped table-nowrap mb-0">
+            <div class="table-container">
+            <table id="table-all" class=" table-all table table-striped table-nowrap mb-0">
                     <thead>
                         <tr>
                             <th class="sort-column" data-sort-by="name">Name <span class="sort-icon"></span></th>
                             <th >Course</span></th>
                             <th class="sort-column" data-sort-by="name">Year<span class="sort-icon"></th>
                             <th >Status</th>
-                            <th >Payment Method</th>
+                            <!-- <th >Payment Method</th> -->
                             <th >Attachments</th>
                             <th class="sort-column" data-sort-by="name">Date<span class="sort-icon"></th>
                             <th >Action</th>
@@ -50,7 +50,7 @@
                             <td>Computer Science</td>
                             <td>3rd Year</td>
                             <td class="status-paid">Fully Paid</td>
-                            <td>GCash</td>
+                            <!-- <td>GCash</td> -->
                             <td>Receipt</td>
                             <td>2023-12-15</td>
                             <td>
@@ -73,7 +73,7 @@
                             <td>Business Administration</td>
                             <td>2nd Year</td>
                             <td class="status-unpaid">Unpaid</td>
-                            <td>Manual</td>
+                            <!-- <td>Manual</td> -->
                             <td class="status-unpaid" id="attachment-link">Promissory Note</td>
                             <td>-</td>
                             <td>
@@ -96,7 +96,7 @@
                             <td>Engineering</td>
                             <td>1st Year</td>
                             <td class="status-unpaid">Unpaid</td>
-                            <td>GCash</td>
+                            <!-- <td>GCash</td> -->
                             <td class="status-unpaid" id="attachment-link">Promissory Note</td>
                             <td>2023-12-01</td>
                             <td>

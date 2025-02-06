@@ -431,3 +431,4 @@ function downloadReport() {
       $('#modal-download-report').modal('show');
     });
 }
+

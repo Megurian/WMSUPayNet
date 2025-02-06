@@ -11,14 +11,14 @@
                         <option value="">Computer Techn</option>
                     </select>
                 </div>
-                <div class="d-flex align-items-center m-1">
+                <!-- <div class="d-flex align-items-center m-1">
                     <select id="category-filter" class="form-select">
                         <option value="choose">Payment Method</option>
                         <option value="">All</option>
                         <option value="">Gash</option>
                         <option value="">Paymaya</option>
                     </select>
-                </div>
+                </div> -->
             </div>
 
                

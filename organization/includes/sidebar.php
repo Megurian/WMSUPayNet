@@ -8,7 +8,7 @@
             <img class="img-fluid rounded-circle" src="../../images/gender_club.jpg" alt="" width="50" height="50">
             <div class="org flex-column p-2">
             <strong>Gender Club</strong>
-            <small class="text-muted">email@gmail.com</small>
+            <small class="text-secondary">email@gmail.com</small>
             </div>
         </div>
 

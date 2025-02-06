@@ -77,8 +77,25 @@ class Students extends Database {
             return false;
         }
     }
+
+    //fetch student by college id
+    public function getStudentsbyCollegeId($college_id) {
+        $sql = "SELECT * FROM $this->table WHERE college_id = :college_id";
+        $stmt = $this->pdo->prepare($sql);
+        try {
+            $stmt->execute([
+                ':college_id' => $college_id,
+            ]);
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $result;
+        } catch (PDOException $e) {
+            error_log("Database error: " . $e->getMessage()); // Log the error for debugging
+            return false;
+        }
+    }
     
 }
 
 $obj = new Students();
 //$obj->addStudent(101, 'Test', 'Test', 'Test', 3, 2, 1, 1, 1);
+//var_dump($obj->getStudentsbyCollegeId(1));
