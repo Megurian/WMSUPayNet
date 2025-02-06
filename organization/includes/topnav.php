@@ -14,7 +14,7 @@
             
             <div class="dropdown text-end m-4">
                     <a href="#" class="box d-block d-flex align-items-center link-body-emphasis text-decoration-none dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false">
-                        <img src="https://avatars.githubusercontent.com/u/123749548?v=4" alt="mdo" width="32" height="32" class="rounded-square ">
+                        <img src="https://avatars.githubusercontent.com/u/123749548?v=4" alt="mdo" width="32" height="32" class="rounded-circle ">
                     
                     <div class="admin d-flex flex-column px-2 align-items-center">
                         <small class="bold">Name</small>
@@ -22,7 +22,7 @@
                     </div>
                     </a>
                     <ul class="dropdown-menu text-small">
-                        <li><a class="dropdown-item" href="#">Profile</a></li>
+                        <li><a class="dropdown-item" href="#">Settings</a></li>
                         <li><hr class="dropdown-divider"></li>
                         <li><a class="dropdown-item" href="../../account/logout.php">Sign out</a></li>
                     </ul>

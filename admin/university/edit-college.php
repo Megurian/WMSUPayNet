@@ -55,6 +55,14 @@ $suffixesObj = new Suffixes();
                                         <input type="text" class="form-control" id="collegeName" name="collegeName" value="<?= htmlspecialchars($collegeInfo["college"]) ?>" placeholder="Enter College Name">
                                     </div>
                                 </div>
+
+                                <div class="col-md-9 mb-3">
+                                    <div class="form-group">
+                                        <label for="collegeCode">College Code:</label>
+                                        <input type="text" class="form-control readonly-input" id="collegeCode" name="collegeCode" placeholder="College Code" readonly>
+                                        <small class="text-muted">College code will be permanent and cannot be edited or changed.</small>
+                                    </div>
+                                </div>
                             </div>
 
                             <div class="row mb-2 mt-4">

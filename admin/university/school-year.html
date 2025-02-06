@@ -1,29 +1,106 @@
-<!-- Modal -->
+<!-- School Year Modal -->
 <div class="modal fade" id="modal-update-year" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="staticBackdropLabel">Update School Year</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Update School Year</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="" method="post" id="form-update-year" enctype="multipart/form-data">
+                <div class="modal-body">
+                    <p class="mb-3">Please select the start and end dates for the school year. Ensure the end date is after the start date.</p>
+                    <div class="mb-3">
+                        <label for="schoolYearStartDate" class="form-label"><strong>Start Date:</strong></label>
+                        <input type="date" class="form-control" id="schoolYearStartDate" name="schoolYearStartDate" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="schoolYearEndDate" class="form-label"><strong>End Date:</strong></label>
+                        <input type="date" class="form-control" id="schoolYearEndDate" name="schoolYearEndDate" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn bgreen" id="next-schoolyear">Next</button>
+                </div>
+            </form>
         </div>
-        <form action="" method="post" id="form-update-year" enctype="multipart/form-data">
-            <div class="modal-body">
-                <p class="mb-3">Please select the start and end dates for the new school year.  Ensure the end date is after the start date.  After selecting the dates, click "Save" to update the school year.</p>
-                <div class="mb-3">
-                    <label for="startDate" class="form-label"><strong>Start Date:</strong></label>
-                    <input type="date" class="form-control" id="startDate" name="startDate" required>
-                </div>
-                <div class="mb-3">
-                    <label for="endDate" class="form-label"><strong> End Date:</strong></label>
-                    <input type="date" class="form-control" id="endDate" name="endDate" required>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <div class="buttons">
-                    <button type="submit" class="btn bgreen">Save</button>
-                </div>
-            </div>
-        </form>
-      </div>
     </div>
 </div>
+<!-- School Year Modal -->
+
+<!-- Semester Modal -->
+<div class="modal fade" id="modal-semester" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Update Semester</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="" method="post" id="form-semester" enctype="multipart/form-data">
+                <div class="modal-body">
+                    <p class="mb-3">Please select the start and end dates for the semester.</p>
+                    
+                    <h6 class="mb-3"> 1st Semester</h6>
+                    <div class="mb-2 d-flex flex-row justify-content-evenly">
+                      
+                            <div class="col-md-5 mb-3">
+                                <label for="semesterStartDate" class="form-label"><strong>Start Date:</strong></label>
+                                <input type="date" class="form-control" id="semesterStartDate" name="semesterStartDate" required>
+                            </div>
+                            <div class="col-md-5 mb-3">
+                                <label for="semesterEndDate" class="form-label"><strong>End Date:</strong></label>
+                                <input type="date" class="form-control" id="semesterEndDate" name="semesterEndDate" required>
+                            </div>
+                    </div>
+
+                    <h6 class="mb-3"> 2nd Semester</h6>
+                    <div class=" d-flex flex-row justify-content-evenly">
+                      
+                            <div class="col-md-5 mb-3">
+                                <label for="semesterStartDate" class="form-label"><strong>Start Date:</strong></label>
+                                <input type="date" class="form-control" id="semesterStartDate" name="semesterStartDate" required>
+                            </div>
+                            <div class="col-md-5 mb-3">
+                                <label for="semesterEndDate" class="form-label"><strong>End Date:</strong></label>
+                                <input type="date" class="form-control" id="semesterEndDate" name="semesterEndDate" required>
+                            </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class=" btn btn-secondary" id="back-semester">Back</button>
+                    <button type="button" class="btn bgreen" id="next-semester">Next</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- Semester Modal -->
+
+<!-- Enrollment Period Modal -->
+<div class="modal fade" id="modal-enrollement" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Update Enrollment Period</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="" method="post" id="form-enrollement" enctype="multipart/form-data">
+                <div class="modal-body">
+                    <p class="mb-3"><strong>To save the enrollment period:</strong> Select the start and end dates, ensuring the end date is later than the start date, and then click "Save".</p>
+                    <div class="mb-3">
+                        <label for="enrollmentStartDate" class="form-label"><strong>Start Date:</strong></label>
+                        <input type="date" class="form-control" id="enrollmentStartDate" name="enrollmentStartDate" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="enrollmentEndDate" class="form-label"><strong>End Date:</strong></label>
+                        <input type="date" class="form-control" id="enrollmentEndDate" name="enrollmentEndDate" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" id="back-enrollment">Back</button>
+                    <button type="submit" class="btn bgreen">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- Enrollment Period Modal -->
