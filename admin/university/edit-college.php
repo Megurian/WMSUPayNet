@@ -60,7 +60,7 @@ $suffixesObj = new Suffixes();
                                     <div class="form-group">
                                         <label for="collegeCode">College Code:</label>
                                         <input type="text" class="form-control readonly-input" id="collegeCode" name="collegeCode" placeholder="<?= htmlspecialchars($collegeInfo["college_code"]) ?>" readonly>
-                                        <small class="text-muted">College code will be permanent and cannot be edited or changed.</small>
+                                        <small class="text-muted">This college code is system-generated and unchangeable.</small>
                                     </div>
                                 </div>
                             </div>

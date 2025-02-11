@@ -43,7 +43,7 @@ $suffixesObj = new Suffixes();
                                     <div class="form-group">
                                         <label for="collegeCode">College Code:</label>
                                         <input type="text" class="form-control" id="collegeCode" name="collegeCode" placeholder="College Code" readonly>
-                                        <small class="text-muted">College code will be permanent and cannot be edited or changed.</small>
+                                        <small class="text-muted">College code is permanent and cannot be modified.</small>
                                     </div>
                                 </div>
                             </div>
