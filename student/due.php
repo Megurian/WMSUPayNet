@@ -1,5 +1,6 @@
 <?php
       require_once '../student/includes/head.php';
+      require_once '../student/includes/topnav.php';
  ?>
     <style>
         .modal-content {
@@ -27,9 +28,6 @@
 
 <body>
     <div class="body">
-        <?php 
-       require_once '../student/includes/topnav.php';
-       ?>
         
         <div class="fee-dashboard">
             <div class="fee-container" style="border: 1px solid #d9d9d9; box-shadow: 0 1px 3px rgba(0,0,0,0.1); border-radius: 4px;">

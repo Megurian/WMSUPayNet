@@ -83,6 +83,13 @@
  
 }
 
+.light-mode .subnav-item > a.link-active, .subnav-item> a:focus {
+    color: #093909; 
+    width: 100%;
+    font-weight: bold;
+    padding-bottom: 10px;
+    border-bottom: #093909 1px solid;
+}
 
 
 .sidebar-item i {
@@ -418,6 +425,33 @@ h4{
     color: red;
 }
 
+#color-picker ul li {
+    padding: 5px;
+    margin: 0 5px 5px 0; /* Adjust spacing for horizontal alignment */
+    cursor: pointer;
+    list-style-type: none;
+    display: inline-block; /* Makes list items arrange horizontally */
+}
+.color-selector {
+    display: block; /* Makes the color square take the full width of its parent */
+    width: 30px;
+    height: 30px;
+    border: 1px solid black;
+}
+
+#color-palette {
+    margin-bottom: 10px; /* Add some space below the color palette */
+    width: 250px;
+    flex-wrap: wrap;
+}
+
+#color-palette li.active { /*This is the new style for the active color*/
+    background-color: lightblue;
+}
+
+
+
+
        /* Light Mode */
        .light-mode {
         background-color: #fff;
@@ -552,17 +586,12 @@ h4{
   }
 
   .dark-mode .subnav-item > a.link-active, .subnav-item> a:focus {
-    color: #fff; 
-    width: 100%;
-    font-weight: bold;
-    padding-bottom: 10px;
     border-bottom: #fff 1px solid;
 }
 
 .dark-mode .nav-item > a.link-active, .nav-item> a:focus {
     background-color:#0e570e;
     color:   #fff; 
- 
 }
 
 .dark-mode .button .bgreen{

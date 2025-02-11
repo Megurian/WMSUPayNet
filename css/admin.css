@@ -364,3 +364,8 @@ textarea{
 .box-green{
   background-color: #093909;
 }
+
+.readonly-input {
+  background-color: #f8f9fa; /* Light gray background */
+  border-color: #ced4da; /* Slightly darker gray border */
+}

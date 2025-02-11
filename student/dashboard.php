@@ -19,6 +19,7 @@
 ?>
 <?php
       require_once '../student/includes/head.php';
+      require_once '../student/includes/topnav.php';
  ?>
  <style>
   .card {
@@ -78,37 +79,49 @@
     font-weight: bold;
     }
  </style>
+
 <body>
+    <div class="container-fluid mt-6 d-flex align-items-center justify-content-center" style="min-height: 100vh;">
+        <div class="row"> <!-- Start of the row for cards -->
+            <!-- Card 1 -->
+            <div class="col-md-6 mb-4"> 
+                <div class="card text-center shadow" style="background-color:#093909;">
+                    <div class="card-header">
+                        <div class="d-flex align-items-center" >
+                            <h6 class="card-title text-white" style="font-size: 2rem; font-weight: bold;">Organizations</h6>
+                            <h1 class="card-count ms-auto" style="font-size: 2rem; color: white;">4</h1>
+                        </div>
+                    </div>
+                    <div class="card-footer text-muted">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="status semester" style="font-size: 1rem; color: white;"> This Semester</span>
+                            <a href="#" class="btn btn-link" style="font-size: 1rem; text-decoration: none; color: white;">view</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-<div class="body">
-       
-       <?php 
-       require_once '../student/includes/topnav.php';
-       ?>
+            <!-- Card 2 -->
+            <div class="col-md-6 mb-4"> 
+                <div class="card text-center shadow" style="background-color:#093909">
+                    <div class="card-header">
+                        <div class="d-flex align-items-center" >
+                            <h6 class="card-title text-white" style="font-size: 2rem; font-weight: bold;">Organizations</h6>
+                            <h1 class="card-count ms-auto" style="font-size: 2rem; color: white;">4</h1>
+                        </div>
+                    </div>
+                    <div class="card-footer text-muted">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="status semester" style="font-size: 1rem; color: white;"> This Semester</span>
+                            <a href="#" class="btn btn-link" style="font-size: 1rem; text-decoration: none; color: white;">view</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div> <!-- End of the row for cards -->
+    </div>
 
-<div class="dashboard">
-  <div class="main">
-    <div class="card">
-      <div class="card-header">
-        <div class="card-title">Organization</div><br>
-        <div class="card-count">4</div>
-      </div>
-      <div class="card-footer">This week <a href="./org.php">view</a></div>
-    </div>
-  
-    <div class="card" style="background-color: #ffffff; color: #093909; border: 1px solid #093909;">
-      <div class="card-header">
-        <div class="card-title">Payment <br> Records</div>
-        <div class="card-count">0</div>
-      </div>
-      <div class="card-footer-left">This week <a href="./record.php">view</a></div>
-    </div>
-  </div>
-  
-  <div class="help">
-    <i class="fas fa-question-circle"></i>
-  </div>
-</div>
-</div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

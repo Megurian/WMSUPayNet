@@ -13,7 +13,7 @@
                             <a href="./org.php" class="back-bttn">
                                 <i class="fa-solid fa-arrow-left"></i>
                             </a>
-                            <h2 style="font-weight: bold;">CCS-CSC</h2>
+                            <h2 style="font-weight: bold;">PHICS</h2>
                         </div>
                     <span class="due-text">Due:</span>
                 </div>
@@ -30,13 +30,13 @@
                         <tbody>
                             <tr>
                                 <td class="text-center">1</td>
-                                <td class="text-center">CSC</td>
+                                <td class="text-center">Membership Fee</td>
                                 <td class="text-center">Unpaid</td>
-                                <td class="text-center amount">200.00</td>
+                                <td class="text-center amount">70.00</td>
                             </tr>
                             <tr>
                                 <td class="text-center">2</td>
-                                <td class="text-center">Palaro</td>
+                                <td class="text-center">Miscellanious</td>
                                 <td class="text-center">Unpaid</td>
                                 <td class="text-center amount">150.00</td>
                             </tr>

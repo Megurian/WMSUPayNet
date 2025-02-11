@@ -1,12 +1,13 @@
 <?php 
 require_once '../student/includes/head.php';
+require_once '../student/includes/topnav.php';
 ?>
 <body>
-    <!-- Header -->
-    <?php require_once '../student/includes/topnav.php'; ?>
+    <div class="body" style="margin-top: 100px;">
+    
 
     <!-- Back Button and Page Title -->
-    <section class="container">
+    <div class="container">
         <div class="breadcrumb">
             <div class="d-flex align-items-center mb-3">
                 <a href="dashboard.php" class="btn btn-link" style="padding-right:5px;"><i class="fas fa-arrow-left" style="color: #093909; font-size: 24px"></i></a> <h2 class="ms-2" style="padding-left: 5px;">Organizations</h2>
@@ -26,7 +27,7 @@ require_once '../student/includes/head.php';
                     </div>
                     <div class="card-footer text-muted">
                         <div class="d-flex justify-content-between align-items-center">
-                            <span class="status pending" style="font-size: 0.9rem;">Pending</span>
+                            <span class="status pending" style="font-size: 0.9rem; color: #093909;">Pending</span>
                             <a href="#" class="btn btn-link" style="font-size: 0.9rem; text-decoration: none; color: #093909;">view</a>
                         </div>
                     </div>
@@ -44,7 +45,7 @@ require_once '../student/includes/head.php';
                     </div>
                     <div class="card-footer text-muted">
                         <div class="d-flex justify-content-between align-items-center">
-                            <span class="status pending" style="font-size: 0.9rem;">Pending</span>
+                            <span class="status pending" style="font-size: 0.9rem; color: #093909" >Pending</span>
                             <a href="fee.php" class="btn btn-link" style="font-size: 0.9rem; text-decoration: none; color: #093909;">view</a>
                         </div>
                     </div>
@@ -62,7 +63,7 @@ require_once '../student/includes/head.php';
                     </div>
                     <div class="card-footer text-muted">
                         <div class="d-flex justify-content-between align-items-center">
-                            <span class="status success" style="font-size: 0.9rem;">Success</span>
+                            <span class="status success" style="font-size: 0.9rem; color: #093909;">Success</span>
                             <a href="#" class="btn btn-link" style="font-size: 0.9rem; text-decoration: none; color: #093909;">view</a>
                         </div>
                     </div>
