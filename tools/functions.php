@@ -67,3 +67,24 @@ function getAbbreviation($string) {
 
     return $abbreviation;
 }
+
+function formatCollegeName($string) {
+    // Words to ignore
+    $ignoreWords = ['of', 'and', 'the'];
+
+    // Split the string into words
+    $trimmedString = trim(preg_replace('/\s+/', ' ', $string));
+    $words = explode(' ', $trimmedString);
+
+    // Format each word
+    $formattedWords = array_map(function($word) use ($ignoreWords) {
+        $word = trim($word); // Remove any extra spaces
+        if (!empty($word) && !in_array(strtolower($word), $ignoreWords)) { // Ignore "of" and "and"
+            return ucfirst(strtolower($word)); // Capitalize the first letter and lowercase the rest
+        } else {
+            return strtolower($word); // Keep the word as is
+        }
+    }, $words);
+
+    return implode(' ', $formattedWords);
+}
