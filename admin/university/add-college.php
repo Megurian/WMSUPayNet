@@ -42,7 +42,7 @@ $suffixesObj = new Suffixes();
                                 <div class="col-md-9 mb-3">
                                     <div class="form-group">
                                         <label for="collegeCode">College Code:</label>
-                                        <input type="text" class="form-control" id="collegeCode" name="collegeCode" placeholder="College Code" >
+                                        <input type="text" class="form-control" id="collegeCode" name="collegeCode" placeholder="College Code" readonly>
                                         <small class="text-muted">College code will be permanent and cannot be edited or changed.</small>
                                     </div>
                                 </div>
@@ -85,6 +85,53 @@ $suffixesObj = new Suffixes();
             reader.readAsDataURL(file); // Read the file as a Data URL
         }
     });
+
+    //Real=time validation college name format and generate college code
+    document.getElementById("collegeName").addEventListener("input", function(event) {
+        const collegeName = document.getElementById("collegeName");
+        const ignoreWords = ["of", "and", "the", "at", "in", "on", "to", "a", "an", "for", "by", "with", "from"];
+
+        // split the college name into words
+        const words = collegeName.value.split(' ');
+
+        // Format each word
+        const formattedWords = words.map(word => {
+            word = word.trim(); // Remove any extra spaces
+            if (word && !ignoreWords.includes(word.toLowerCase())) { // Ignore "of", "and", and "the"
+                return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase(); // Capitalize the first letter and lowercase the rest
+            } else {
+                return word.toLowerCase(); // Keep the word as is
+            }
+        });
+        collegeName.value = formattedWords.join(' ');
+
+
+        const collegeCode = document.getElementById("collegeCode");
+        const collegeCodeValue = collegeName.value.split(' ')
+            .filter(word => !ignoreWords.includes(word.toLowerCase()))
+            .map(word => word[0].toUpperCase())
+            .join('');
+        collegeCode.value = collegeCodeValue;
+    });
+
+    //Remove extra spaces in college name and generate college code again
+    document.getElementById("collegeName").addEventListener("blur", function(event) {
+        const collegeName = document.getElementById("collegeName");
+        const ignoreWords = ["of", "and", "the", "at", "in", "on", "to", "a", "an", "for", "by", "with", "from"];
+
+        collegeName.value = removeExtraSpaces(collegeName.value);
+
+        const collegeCode = document.getElementById("collegeCode");
+        const collegeCodeValue = collegeName.value.split(' ')
+            .filter(word => !ignoreWords.includes(word.toLowerCase()))
+            .map(word => word[0].toUpperCase())
+            .join('');
+        collegeCode.value = collegeCodeValue;
+    });
+
+    function removeExtraSpaces(string) {
+        return string.trim().replace(/\s+/g, ' ');
+    }
 </script>
 
 <!-- Modal -->
