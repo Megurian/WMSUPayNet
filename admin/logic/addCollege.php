@@ -5,9 +5,11 @@ require_once '../../database/autoload_classes.php';
 $collegeObj = new Colleges();
 
 // Get and sanitize input
-$name = clean_input($_POST['collegeName'] ?? '');
+$name = clean_input(formatCollegeName($_POST['collegeName'] ?? ''));
 $description = clean_input($_POST['description'] ?? '');
 $logo_directory = '';
+
+$college_code = getAbbreviation($name);
 
 // Validate input
 $errors = [];
@@ -65,14 +67,15 @@ if(empty($_FILES['logo']['name'])) {
     }
 }
 
-if (!empty($errors)) {
+if (empty($errors)) {
+    // Insert into database
+    if ($collegeObj->addCollege($college_code, $name, $logo_directory, $description)) {
+        echo json_encode(['status' => 'success', 'message' => 'College added successfully.']);
+    } else {
+        echo json_encode(['status' => 'error', 'message' => 'Failed to add college.']);
+    }  
+} else {
+    //Return validation errors
     echo json_encode(['status' => 'error', 'message' => implode("\n", $errors)]);
     exit;
-}
-
-// Insert into database
-if ($collegeObj->addCollege($name, $logo_directory, $description)) {
-    echo json_encode(['status' => 'success', 'message' => 'College added successfully.']);
-} else {
-    echo json_encode(['status' => 'error', 'message' => 'Failed to add college.']);
 }
