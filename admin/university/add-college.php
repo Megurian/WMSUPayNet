@@ -1,8 +1,8 @@
 <?php
 require_once '../../database/autoload_classes.php';
 require_once '../../tools/functions.php';
-$collegeId = isset($_GET['college_id']) ? intval(clean_input($_GET['college_id'])) : 0;
 
+$collegeId = isset($_GET['college_id']) ? intval(clean_input($_GET['college_id'])) : 0;
 $suffixesObj = new Suffixes();
 
 ?>
