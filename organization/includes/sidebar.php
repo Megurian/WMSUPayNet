@@ -1,4 +1,4 @@
-<div class="sidebar">
+<div id="sidebar-content" class="sidebar">
         <div class="sidebar-heading d-flex align-items-center">
             <img src="../../images/ccs_logo.png" alt="CCS PayNet Logo" width="50" height="50">
             <h3><span class="green"> CCS </span> PayNet</h3>

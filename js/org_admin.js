@@ -160,7 +160,6 @@ document.querySelectorAll('.sidebar-item a.nav-link').forEach(link => {
                         pageLength: 10,
                         ordering: false,
                     });
-
                     document.getElementById('report-form').addEventListener('click', function(e) {
                         e.preventDefault();
                         generateReport();
@@ -204,6 +203,7 @@ document.querySelectorAll('.sidebar-item a.nav-link').forEach(link => {
                             document.querySelectorAll('.subnav-item a.subnav-link').forEach(link => link.classList.remove('link-active'));
                             this.classList.add('link-active');
 
+                            
                             if (this.id === 'themes-link') {
                                 fetch('settings/themes.php')
                                     .then(response => response.text())
@@ -250,10 +250,15 @@ document.querySelectorAll('.sidebar-item a.nav-link').forEach(link => {
                     document.querySelector('.subnav-item a#themes-link').click();
                 })
         }
+        
     });
 });
+
+
 window.addEventListener('load', () => {
     document.querySelector('.sidebar-item a#dashboard-link').click();
+
+    
 });
 function addOrg() {
     fetch('settings/setting_modals.html')
@@ -576,4 +581,6 @@ themeSelect.addEventListener('change', () => {
         localStorage.setItem('theme', 'light-mode');
     }
 });
+
 }
+

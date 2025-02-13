@@ -17,105 +17,159 @@ document.querySelectorAll('.sidebar-item a.nav-link').forEach(link => {
                 })
                 
         }else if (this.id === 'university-link') {
-            fetch('university/university.php')
-            .then(response => response.text())
-            .then(html => {
-                document.querySelector('.content-page').innerHTML = html;
-                
-                document.querySelector('.topnav-title').textContent = 'University';
-                document.getElementById('add-college').addEventListener('click', function(e) {
-                    e.preventDefault();
-                    fetch('university/add-college.php')
-                    .then(response => response.text())
-                    .then(html => {
-                        $('.modal-container').html(html);
-                        $('#addCollegeModal').modal('show');
-                        addCollege();
-                    });
-                });
+            fetch('university/nav.php')
+                .then(response => response.text())
+                .then(html => {
+                    document.querySelector('.content-page').innerHTML = html;
+                    document.querySelector('.topnav-title').textContent = 'University';
 
-                document.getElementById('update-year').addEventListener('click', function(e) {
-                    e.preventDefault();
-                    fetch('university/school-year.html')
-                    .then(response => response.text())
-                    .then(html => {
-                        $('.modal-container').html(html);
-                        $('#modal-update-year').modal('show');
-                        UpdateYear();
-                    });
-                });
+                    document.querySelectorAll('.subnav-item a.subnav-link').forEach(link => {
+                        link.addEventListener('click', function(e) {
+                            e.preventDefault(); 
+                    
+                            document.querySelectorAll('.subnav-item a.subnav-link').forEach(link => link.classList.remove('link-active'));
+                            this.classList.add('link-active');
 
-                document.querySelectorAll('.college').forEach(function(college) {
-                    college.addEventListener('click', function() {
-                        // Get the college ID from the data attribute
-                        const collegeId = this.dataset.collegeId;
-                
-                        // Send the college ID to organizations.php
-                        fetch(`university/organizations.php?college_id=${collegeId}`)
-                        .then(response => response.text())
-                        .then(html => {
-                            document.querySelector('.content-page').innerHTML = html;
-            
-                            // Example: Bind further event listeners if needed
-                            document.getElementById('create-admin').addEventListener('click', function(e) {
-                                e.preventDefault();
-                                
-                                fetch(`university/add-college.php?college_id=${collegeId}`)
-                                .then(response => response.text())
-                                .then(html => {
-                                    $('.modal-container').html(html);
-                                    $('#modal-create-admin').modal('show');
-                                    createAdmin();
-                                });
-                            });
-            
-                            document.querySelectorAll('.organization').forEach(function(organization) {
-                                organization.addEventListener('click', function() {
-                                    // Get the organization ID from the data attribute
-                                    const organizationId = this.dataset.organizationId;
-        
-                                    e.preventDefault();
-                                    fetch(`university/org-overview.php?organization_id=${organizationId}`)
+                            if (this.id === 'colleges-link') {
+                                fetch('university/university.php')
                                     .then(response => response.text())
                                     .then(html => {
-                                        document.querySelector('.content-page').innerHTML = html;
-        
-                                        document.getElementById('create-admin').addEventListener('click', function(e) {
+                                        document.querySelector('.university-content').innerHTML = html;
+                                        document.getElementById('add-college').addEventListener('click', function(e) {
                                             e.preventDefault();
-                                            createAdmin();
+                                            fetch('university/add-college.php')
+                                            .then(response => response.text())
+                                            .then(html => {
+                                                $('.modal-container').html(html);
+                                                $('#addCollegeModal').modal('show');
+                                                addCollege();
+                                            });
                                         });
-        
-                                        document.getElementById('upload').addEventListener('click', function(e) {
+
+                                        document.getElementById('update-year').addEventListener('click', function(e) {
                                             e.preventDefault();
-                                            upload();
+                                            fetch('university/school-year.html')
+                                                .then(response => response.text())
+                                                .then(html => {
+                                                    $('.modal-container').html(html);
+                                                    $('#modal-update-year').modal('show');
+                                        
+                                                    // Attach ALL modal event listeners inside this .then() block.
+                                                    $('#next-schoolyear').on('click', function() {
+                                                        $('#modal-update-year').modal('hide');
+                                                        $('#modal-semester').modal('show');
+                                                    });
+                                        
+                                                    $('#back-semester').on('click', function() {
+                                                        $('#modal-semester').modal('hide');
+                                                        $('#modal-update-year').modal('show');
+                                                    });
+                                        
+                                                    $('#back-enrollment').on('click', function() {
+                                                        $('#modal-enrollement').modal('hide');
+                                                        $('#modal-semester').modal('show');
+                                                    });
+                                        
+                                                    $('#next-semester').on('click', function() {
+                                                        $('#modal-semester').modal('hide');
+                                                        $('#modal-enrollement').modal('show');
+                                                    });
+                                                });
+                                        });
+
+                                        
+                        
+                                        document.querySelectorAll('.college').forEach(function(college) {
+                                            college.addEventListener('click', function() {
+                                                // Get the college ID from the data attribute
+                                                const collegeId = this.dataset.collegeId;
+                                        
+                                                // Send the college ID to organizations.php
+                                                fetch(`university/organizations.php?college_id=${collegeId}`)
+                                                .then(response => response.text())
+                                                .then(html => {
+                                                    document.querySelector('.content-page').innerHTML = html;
+                                    
+                                                    // Example: Bind further event listeners if needed
+                                                    document.getElementById('create-admin').addEventListener('click', function(e) {
+                                                        e.preventDefault();
+                                                        
+                                                        fetch(`university/add-college.php?college_id=${collegeId}`)
+                                                        .then(response => response.text())
+                                                        .then(html => {
+                                                            $('.modal-container').html(html);
+                                                            $('#modal-create-admin').modal('show');
+                                                            createAdmin();
+                                                        });
+                                                    });
+                                    
+                                                    document.querySelectorAll('.organization').forEach(function(organization) {
+                                                        organization.addEventListener('click', function() {
+                                                            // Get the organization ID from the data attribute
+                                                            const organizationId = this.dataset.organizationId;
+                                
+                                                            e.preventDefault();
+                                                            fetch(`university/org-overview.php?organization_id=${organizationId}`)
+                                                            .then(response => response.text())
+                                                            .then(html => {
+                                                                document.querySelector('.content-page').innerHTML = html;
+                                
+                                                                document.getElementById('create-admin').addEventListener('click', function(e) {
+                                                                    e.preventDefault();
+                                                                    createAdmin();
+                                                                });
+                                
+                                                                document.getElementById('upload').addEventListener('click', function(e) {
+                                                                    e.preventDefault();
+                                                                    upload();
+                                                                });
+                                                            })
+                                                            .catch(error => console.error('Error loading organizations:', error));
+                                                        });
+                                                    });
+                                                })
+                                                .catch(error => console.error('Error loading organizations:', error));
+                                            });
+                                        });
+                        
+                                        // Handle edit and delete button clicks dynamically
+                                        document.querySelectorAll('.dropdown-menu').forEach(function(dropdown) {
+                                            dropdown.addEventListener('click', function(e) {
+                                                let collegeId = this.dataset.collegeId;
+                        
+                                                if (e.target.classList.contains('edit-college')) {
+                                                    e.preventDefault();
+                                                    editCollege(collegeId);
+                                                }
+                            
+                                                if (e.target.classList.contains('delete-college')) {
+                                                    e.preventDefault();
+                                                    deleteCollege(collegeId);
+                                                }
+                                            });
                                         });
                                     })
-                                    .catch(error => console.error('Error loading organizations:', error));
-                                });
-                            });
-                        })
-                        .catch(error => console.error('Error loading organizations:', error));
-                    });
-                });
+                            }else if (this.id === 'uni-orgs-link') {
+                                fetch('university/uni-level-orgs.php')
+                                    .then(response => response.text())
+                                    .then(html => {
+                                        document.querySelector('.university-content').innerHTML = html;
+                                       
+                                        document.getElementById('add-organization-uni').addEventListener('click', function(e) {
+                                            e.preventDefault();
+                                            addOrg();
+                                        });
 
-                // Handle edit and delete button clicks dynamically
-                document.querySelectorAll('.dropdown-menu').forEach(function(dropdown) {
-                    dropdown.addEventListener('click', function(e) {
-                        let collegeId = this.dataset.collegeId;
-
-                        if (e.target.classList.contains('edit-college')) {
-                            e.preventDefault();
-                            editCollege(collegeId);
-                        }
-    
-                        if (e.target.classList.contains('delete-college')) {
-                            e.preventDefault();
-                            deleteCollege(collegeId);
-                        }
-                    });
-                });
-                
-            })    
+                                        uniOrg();
+                                        
+                                        
+                                    })
+                            }
+                        });
+                    })
+                    
+                    document.querySelector('.subnav-item a#colleges-link').click();
+                })
         }else if (this.id === 'statistic-link') {
             fetch('statistics/nav.php')
                 .then(response => response.text())
@@ -291,6 +345,20 @@ function viewAttachments() {
         });
     }
 
+
+    function addFee() {
+        fetch('university/add-fee.html')
+          .then(response => response.text())
+          .then(html => {
+        
+            $('.modal-container').html(html);
+            $('#modal-add-fee').modal('show');
+            $('#form-add-fee').on('submit', function(e) {
+              e.preventDefault();
+            });
+          });
+      }
+
 function view_userReport() {
     fetch('user_feedback/modals.html')
         .then(response => response.text())
@@ -301,6 +369,73 @@ function view_userReport() {
       
         });
     }
+
+    function uniOrg(){
+        document.getElementById('uni-org').addEventListener('click', function(e) {
+            e.preventDefault();
+            fetch('university/uni-orgs-overview.php')
+            .then(response => response.text())
+            .then(html => {
+                document.querySelector('.content-page').innerHTML = html;
+                document.querySelector('.topnav-title').textContent = 'Report';
+                var table = $('#table-all').DataTable({
+                    dom: 'rtp',
+                    pageLength: 10,
+                    ordering: false,
+                });
+
+                document.getElementById('create-admin-uni').addEventListener('click', function(e) {
+                    e.preventDefault();
+                    createAdminUni();
+                });
+
+                document.getElementById('add-fee-uni').addEventListener('click', function(e) {
+                    e.preventDefault();
+                    addFee();
+                });
+
+                
+            })
+        });
+      }
+
+      function createAdminUni() {
+        fetch('university/add-admin.html')
+          .then(response => response.text())
+          .then(html => {
+        
+            $('.modal-container').html(html);
+            $('#modal-create-admin').modal('show');
+            $('#form-create-admin').on('submit', function(e) {
+              e.preventDefault();
+            });
+          });
+      }
+      function addOrg() {
+        fetch('university/add-organization.html')
+          .then(response => response.text())
+          .then(html => {
+        
+            $('.modal-container').html(html);
+            $('#modal-add-organization').modal('show');
+            $('#form-add-organization').on('submit', function(e) {
+              e.preventDefault();
+            });
+          });
+      }
+
+      function addFee() {
+        fetch('university/add-fee.html')
+          .then(response => response.text())
+          .then(html => {
+        
+            $('.modal-container').html(html);
+            $('#modal-add-fee').modal('show');
+            $('#form-add-fee').on('submit', function(e) {
+              e.preventDefault();
+            });
+          });
+      }
 
 function createAdmin() {
     $('#form-create-admin').submit(function(e) {
@@ -463,7 +598,7 @@ refreshCollegeList = () => {
     fetch('university/university.php')
     .then(response => response.text())
     .then(html => {
-        document.querySelector('.content-page').innerHTML = html;
+        document.querySelector('.university-content').innerHTML = html;
         
         document.querySelector('.topnav-title').textContent = 'University';
         document.getElementById('add-college').addEventListener('click', function(e) {
