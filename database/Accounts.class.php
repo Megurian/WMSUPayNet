@@ -85,12 +85,12 @@ class Accounts extends Database {
                 $updateSql = "UPDATE students SET account_id = :lastInsertId, is_registered = 1 WHERE school_id = :student_id";
                 $updateStmt = $this->pdo->prepare($updateSql);
                 $updateStmt->execute([':lastInsertId' => $lastInsertId, 
-                                      ':student_id' => $student_id]);
+                                              ':student_id' => $student_id]);
             } else {
                 $updateSql = "UPDATE admins SET account_id = :lastInsertId WHERE admin_id = :admin_id";
                 $updateStmt = $this->pdo->prepare($updateSql);
                 $updateStmt->execute([':lastInsertId' => $lastInsertId, 
-                                      ':admin_id' => $admin_id]);
+                                              ':admin_id' => $admin_id]);
             }
             
             $this->pdo->commit(); // Commit the transaction
@@ -163,7 +163,6 @@ class Accounts extends Database {
         } else {
             return false;
         }
-
 
         $data = null;
         if($prepQuery->execute()){
