@@ -57,4 +57,20 @@ class Admins extends Database {
         }
     }
 
+    function fetchAdminEmail($account_id){
+        $sql = "SELECT a.email 
+                FROM accounts a
+                INNER JOIN admins ad ON a.id = ad.account_id
+                WHERE ad.account_id = :account_id;";
+        $stmt = $this->pdo->prepare($sql);
+        try {
+            $stmt->execute([
+                ':account_id' => $account_id
+            ]);
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        } catch(PDOException $e) {
+            error_log("Database error: " . $e->getMessage()); // Log the error message
+            return false;
+        }
+    }
 }

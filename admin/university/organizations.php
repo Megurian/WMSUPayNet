@@ -75,11 +75,12 @@
                     
                     <tbody>
                         <?php foreach ($adminObj->getAllCollegeAdminById($collegeId) as $admin): ?>
-                            <tr>
-                                <td><?= htmlspecialchars($admin['first_name'] . " " . $admin['middle_name'] . " " . $admin['last_name'] . " " . htmlspecialchars($suffixObj->getSuffixName($admin['suffix_id']))) ?></td>
-                                <td><?= htmlspecialchars($admin['email'])?></td>
-                                <td>All</td>
-                            </tr>
+                            <?php $email = $adminObj->fetchAdminEmail($admin['account_id']); ?>
+                                <tr>
+                                    <td><?= htmlspecialchars($admin['first_name']) . " " . htmlspecialchars($admin['middle_name']) . " " . htmlspecialchars($admin['last_name']) . " " . htmlspecialchars($suffixObj->getSuffixName($admin['suffix_id'])) ?></td>
+                                    <td><?= htmlspecialchars($email['email'])?></td>
+                                    <td>All</td>
+                                </tr>
                         <?php endforeach; ?>
                     </tbody>
                 </table>
