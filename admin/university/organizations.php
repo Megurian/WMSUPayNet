@@ -90,37 +90,78 @@
 
         <!-- Card -->
         <?php
-          $organizations = $organizationObj->getAllOrganizationById($collegeId);
-          if (empty($organizations)): ?>
-              <div style="text-align:center; margin-top:20px;">No Organizations</div>
-          <?php else: ?>
-              <?php foreach ($organizations as $organization): ?>
-                  <div class="card shadow-sm mb-4 mt-4">
-                      <div class="card-body d-flex align-items-center">
-                          <img src="<?= htmlspecialchars($organization['logo_directory']) ?>" alt="Organization Logo" width="100" class="rounded-circle me-3">
+            $organizations = $organizationObj->getAllOrganizationById($collegeId);
+            if (empty($organizations)): ?>
+                <div style="text-align:center; margin-top:20px;">No Organizations</div>
+            <?php else: ?>
+                <!-- Display Primary Organization First -->
+                <?php foreach ($organizations as $organization): ?>
+                    <?php if (htmlspecialchars($organization['isPrimary']) == 1): ?>
+                        <div class="card shadow-sm mb-4 mt-4">
+                            <div class="card-body d-flex align-items-center">
+                                <img src="<?= htmlspecialchars($organization['logo_directory']) ?>" alt="Organization Logo" width="100" class="rounded-circle me-3">
+                                <div class="flex-grow-1 organization" data-organization-id="<?= htmlspecialchars($organization['id']) ?>">
+                                    <h5 class="mb-1"><?= htmlspecialchars($organization['name']) ?> 
+                                        <span class="badge bg-primary-subtle border border-primary-subtle text-primary-emphasis rounded-pill" style="font-size: 0.50em;">Primary</span>
+                                    </h5>
+                                    <p class="mb-1 text-muted">
+                                        <i class="bi bi-people-fill me-1"></i>
+                                        600,003
+                                    </p>
+                                    <small class="text-muted">Updated October 01, 2024</small>
+                                </div>
+                                <!-- Dropdown button and menu -->
+                                <button class="btn btn-outline-secondary btn-sm" data-bs-toggle="dropdown">
+                                    <i class="bi bi-three-dots"></i>
+                                </button>
 
-                          <div class="flex-grow-1 organization" data-organization-id="<?= htmlspecialchars($organization['id']) ?>">
-                              <h5 class="mb-1"><?= htmlspecialchars($organization['name']) ?></h5>
-                              <p class="mb-1 text-muted">
-                                  <i class="bi bi-people-fill me-1"></i>
-                                  600,003
-                              </p>
-                              <small class="text-muted">Updated October 01, 2024</small>
-                          </div>
+                                <ul class="dropdown-menu dropdown-menu-end" 
+                                    data-college-id="<?= htmlspecialchars($collegeId) ?>" 
+                                    data-organization-id="<?= htmlspecialchars($organization['id']) ?>"
+                                    data-organization-name="<?= htmlspecialchars($organization['name']) ?>"
+                                >
+                                    <li><a class="dropdown-item setPrimary" href="#">Set as Primary Organization</a></li>
+                                    <li><a class="dropdown-item deactivate" href="#">Deactivate</a></li>
+                                    <li><a class="dropdown-item delete" href="#">Delete</a></li>
+                                </ul> 
+                            </div>
+                        </div>
+                    <?php endif; ?>
+                <?php endforeach; ?>
 
-                          <button class="btn btn-outline-secondary btn-sm" data-bs-toggle="dropdown">
-                              <i class="bi bi-three-dots"></i>
-                          </button>
+                <!-- Then Display Non-Primary Organizations -->
+                <?php foreach ($organizations as $organization): ?>
+                    <?php if (htmlspecialchars($organization['isPrimary']) != 1): ?>
+                        <div class="card shadow-sm mb-4 mt-4">
+                            <div class="card-body d-flex align-items-center">
+                                <img src="<?= htmlspecialchars($organization['logo_directory']) ?>" alt="Organization Logo" width="100" class="rounded-circle me-3">
+                                <div class="flex-grow-1 organization" data-organization-id="<?= htmlspecialchars($organization['id']) ?>">
+                                    <h5 class="mb-1"><?= htmlspecialchars($organization['name']) ?></h5>
+                                    <p class="mb-1 text-muted">
+                                        <i class="bi bi-people-fill me-1"></i>
+                                        600,003
+                                    </p>
+                                    <small class="text-muted">Updated October 01, 2024</small>
+                                </div>
+                                <!-- Dropdown button and menu -->
+                                <button class="btn btn-outline-secondary btn-sm" data-bs-toggle="dropdown">
+                                    <i class="bi bi-three-dots"></i>
+                                </button>
 
-                          <ul class="dropdown-menu dropdown-menu-end">
-                              <li><a class="dropdown-item" href="#">Edit</a></li>
-                              <li><a class="dropdown-item" href="#">Delete</a></li>
-                          </ul>
-                      </div>
-                  </div>
-          <?php endforeach; ?>
+                                <ul class="dropdown-menu dropdown-menu-end" 
+                                    data-college-id="<?= htmlspecialchars($collegeId) ?>" 
+                                    data-organization-id="<?= htmlspecialchars($organization['id']) ?>"
+                                    data-organization-name="<?= htmlspecialchars($organization['name']) ?>"
+                                >
+                                    <li><a class="dropdown-item setPrimary" href="#">Set as Primary Organization</a></li>
+                                    <li><a class="dropdown-item deactivate" href="#">Deactivate</a></li>
+                                    <li><a class="dropdown-item delete" href="#">Delete</a></li>
+                                </ul> 
+                            </div>
+                        </div>
+                    <?php endif; ?>
+                <?php endforeach; ?>
         <?php endif; ?>
-
 
 </div>
     

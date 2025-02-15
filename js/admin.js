@@ -6,13 +6,7 @@ document.querySelectorAll('.sidebar-item a.nav-link').forEach(link => {
         this.classList.add('link-active');
 
         if (this.id === 'dashboard-link') {
-            fetch('overview.php')
-                .then(response => response.text())
-                .then(html => {
-                    document.querySelector('.content-page').innerHTML = html;
-                    document.querySelector('.topnav-title').textContent = 'Dashboard';
-                    loadChart();
-                });
+            
         } else if (this.id === 'university-link') {
             fetch('university/nav.php')
                 .then(response => response.text())
@@ -122,12 +116,36 @@ document.querySelectorAll('.sidebar-item a.nav-link').forEach(link => {
                                                                     .catch(error => console.error('Error loading organizations:', error));
                                                             });
                                                         });
+
+                                                        // Handle dropdown clicks dynamically for organizations
+                                                        document.querySelectorAll('.dropdown-menu').forEach(function(dropdown) {
+                                                            dropdown.addEventListener('click', function(e) {
+                                                                let collegeId = this.dataset.collegeId;
+                                                                let orgId = this.dataset.organizationId;
+                                                                let orgName = this.dataset.organizationName;
+
+                                                                if (e.target.classList.contains('setPrimary')) {
+                                                                    e.preventDefault();
+                                                                    setPrimary(collegeId, orgId, orgName);
+                                                                }
+
+                                                                if (e.target.classList.contains('deactivate')) {
+                                                                    e.preventDefault();
+                                                                    alert('Organizatin Deactivated' + orgId + ' of ' + collegeId);
+                                                                }
+
+                                                                if (e.target.classList.contains('delete')) {
+                                                                    e.preventDefault();
+                                                                    alert('Organization Deleted' + orgId + ' of ' + collegeId);
+                                                                }
+                                                            });
+                                                        });
                                                     })
                                                     .catch(error => console.error('Error loading organizations:', error));
                                             });
                                         });
 
-                                        // Handle edit and delete button clicks dynamically
+                                        // Handle edit and delete button clicks dynamically for colleges
                                         document.querySelectorAll('.dropdown-menu').forEach(function(dropdown) {
                                             dropdown.addEventListener('click', function(e) {
                                                 let collegeId = this.dataset.collegeId;
@@ -323,18 +341,6 @@ function viewAttachments() {
         });
 }
 
-function addFee() {
-    fetch('university/add-fee.html')
-        .then(response => response.text())
-        .then(html => {
-            $('.modal-container').html(html);
-            $('#modal-add-fee').modal('show');
-            $('#form-add-fee').on('submit', function(e) {
-                e.preventDefault();
-            });
-        });
-}
-
 function view_userReport() {
     fetch('user_feedback/modals.html')
         .then(response => response.text())
@@ -421,6 +427,27 @@ function createAdmin() {
             }
         });
     });
+}
+
+function setPrimary(college_id, organization_id, organization_name) {
+    if (confirm('Confirm setting ' + organization_name + ' as the primary organization for this college?')) {
+        $.ajax({
+            url: `logic/setPrimaryOrg.php`,
+            type: 'post',
+            data: JSON.stringify({ college_id: college_id, organization_id: organization_id }),
+            success: function(response) {
+                const res = JSON.parse(response);
+                if (res.status === 'error') {
+                    alert(res.message);
+                } else {
+                    alert(res.message);
+                }
+            },
+            error: function() {
+                alert('An error occurred while processing the request.');
+            }
+        });
+    }
 }
 
 function UpdateYear() {

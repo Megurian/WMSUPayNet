@@ -51,6 +51,32 @@ class Organizations extends Database {
             return false;
         }
     }
+
+    function setPrimaryOrganization($college_id, $organization_id) {
+        try {
+            // Begin transaction
+            $this->pdo->beginTransaction();
+    
+            // Step 1: Reset all organizations in this college to isPrimary = 0
+            $stmt = $this->pdo->prepare("UPDATE $this->table SET isPrimary = 0 WHERE college_id = ?");
+            $stmt->execute([$college_id]);
+    
+            // Step 2: Set the selected organization to isPrimary = 1
+            $stmt = $this->pdo->prepare("UPDATE $this->table SET isPrimary = 1 WHERE id = :id AND college_id = :college_id");
+            $stmt->execute([
+                ':id' => $organization_id, 
+                ':college_id' => $college_id
+            ]);
+    
+            // Commit transaction
+            $this->pdo->commit();
+            return "Primary organization updated successfully.";
+        } catch (PDOException $e) {
+            $this->pdo->rollBack();
+            error_log("Database error: " . $e->getMessage()); // Log the error message
+            return false;
+        }
+    }
 }
 
 //$obj = new Organizations();
