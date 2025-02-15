@@ -61,6 +61,33 @@
             </div>
         </div>
 
+        <div class="row justify-content-evenly align-items-center pt-2">
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h6> Total of Enrolled Students</h6>
+                        <h4> 0 </h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h6> Total of Active Organizations</h6>
+                        <h4> 0 </h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h6> Total Collection of CSC</h6>
+                        <h4> 0 </h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- College's Admin Table -->
         <div class="table-container">
             <div class="table-responsive">
