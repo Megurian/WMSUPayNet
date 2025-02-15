@@ -152,7 +152,6 @@ function collegeOverview(collegeId) {
                     // Get the organization ID from the data attribute
                     const organizationId = this.dataset.organizationId;
 
-                    e.preventDefault();
                     fetch(`university/org-overview.php?organization_id=${organizationId}`)
                         .then(response => response.text())
                         .then(html => {
