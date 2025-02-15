@@ -133,6 +133,26 @@ class Organizations extends Database {
             return false;
         }
     }
+
+    function deleteOrganization($organization_id) {
+        try {
+            // Begin transaction
+            $this->pdo->beginTransaction();
+    
+            $stmt = $this->pdo->prepare("DELETE FROM $this->table WHERE id = :id;");
+            $stmt->execute([
+                ':id' => $organization_id, 
+            ]);
+    
+            // Commit transaction
+            $this->pdo->commit();
+            return "Organization deleted successfully.";
+        } catch (PDOException $e) {
+            $this->pdo->rollBack();
+            error_log("Database error: " . $e->getMessage()); // Log the error message
+            return "Unable to delete organization.";
+        }
+    }
 }
 
 //$obj = new Organizations();

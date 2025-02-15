@@ -147,7 +147,7 @@ document.querySelectorAll('.sidebar-item a.nav-link').forEach(link => {
 
                                                                 if (e.target.classList.contains('delete')) {
                                                                     e.preventDefault();
-                                                                    alert('Organization Deleted' + orgId + ' of ' + collegeId);
+                                                                    deleteOrg(orgId, orgName);
                                                                 }
                                                             });
                                                         });
@@ -507,6 +507,28 @@ function activateOrg(organization_id, organization_name){
     if (confirm('Are you sure you want to reactivate ' + organization_name + ' ?')) {
         $.ajax({
             url: `logic/reactivateOrg.php`,
+            type: 'post',
+            data: JSON.stringify({ organization_id: organization_id}),
+            success: function(response) {
+                const res = JSON.parse(response);
+                if (res.status === 'error') {
+                    alert(res.message);
+                } else {
+                    alert(res.message);
+                    
+                }
+            },
+            error: function() {
+                alert('An error occurred while processing the request.');
+            }
+        });
+    }
+}
+
+function deleteOrg(organization_id, organization_name) {
+    if (confirm('Are you sure you want to delete ' + organization_name + ' ?')) {
+        $.ajax({
+            url: `logic/deleteOrg.php`,
             type: 'post',
             data: JSON.stringify({ organization_id: organization_id}),
             success: function(response) {
