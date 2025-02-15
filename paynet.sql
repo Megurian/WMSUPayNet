@@ -1,5 +1,4 @@
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -24,7 +23,10 @@ INSERT INTO accounts (id, username, email, password, role, college_id, created_a
 (9, 'EH202201078', 'eh202201078@wmsu.edu.ph', '$argon2id$v=19$m=2048,t=4,p=2$bFE1TmtWMFlNMk1OMXl5Nw$P7q1qabuDU2DpVHjEtGuexWuKEY78uZVKMpywsWqrOA', 'Student', 1, '2025-02-03 23:36:32', '2025-02-03 23:36:32'),
 (10, 'SUPERADMIN', 'SuperAdmin@testing.com', 'admin', 'SuperAdmin', NULL, '2025-02-03 23:43:44', '2025-02-03 23:43:44'),
 (11, 'COLLEGEADMIN', 'CollegeAdmin@testing.com', 'admin', 'CollegeAdmin', 1, '2025-02-03 23:45:16', '2025-02-03 23:45:16'),
-(12, 'ORGADMIN', 'OrgAdmin@testing.com', 'admin', 'OrganizationAdmin', NULL, '2025-02-03 23:45:48', '2025-02-03 23:45:48');
+(12, 'ORGADMIN', 'OrgAdmin@testing.com', 'admin', 'OrganizationAdmin', NULL, '2025-02-03 23:45:48', '2025-02-03 23:45:48'),
+(14, 'OKILLER244', 'okiller244@gmail.com', '$argon2id$v=19$m=2048,t=4,p=2$eVNWcThvRGNoUHRZWWF4Yw$UxuQwC4OZoaB3634FJqnaJ26SbTsGYCNHW6uIMFmie8', 'CollegeAdmin', 1, '2025-02-14 01:32:05', '2025-02-14 01:32:05'),
+(15, 'CRISANTO', 'crisanto@gmail.com', '$argon2id$v=19$m=2048,t=4,p=2$blNsaTgvWVc2b0VjNjNGdA$AfeGOoO6MuG/gPDPZ7UkZnTW46yNixwmwUJSPO5x45o', 'CollegeAdmin', 16, '2025-02-15 14:25:28', '2025-02-15 14:25:28'),
+(16, 'MARJORIE.ROJAS', 'marjorie.rojas@email.com', '$argon2id$v=19$m=2048,t=4,p=2$YkM4Tmg1NC80SmF4VEFZMA$9Gc4L3zHBr156gVKU2z07w/M1e7dYs92fto9T7fqUO0', 'CollegeAdmin', 1, '2025-02-15 22:59:23', '2025-02-15 22:59:23');
 
 CREATE TABLE admins (
   admin_id int(11) NOT NULL,
@@ -38,6 +40,11 @@ CREATE TABLE admins (
   org_position varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+INSERT INTO admins (admin_id, account_id, first_name, middle_name, last_name, suffix_id, college_id, organization_id, org_position) VALUES
+(9, 14, 'Meg Ryan', 'Vega', 'Gomez', NULL, 1, NULL, ''),
+(10, 15, 'Crisanto', 'Angeles', 'Perez', NULL, 16, NULL, ''),
+(11, 16, 'Marjorie', NULL, 'Rojas', NULL, 1, NULL, '');
+
 CREATE TABLE colleges (
   id int(11) NOT NULL,
   college_code varchar(10) NOT NULL,
@@ -48,7 +55,10 @@ CREATE TABLE colleges (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 INSERT INTO colleges (id, college_code, college, logo_directory, description, created_at) VALUES
-(1, 'CCS', 'College of Computing Studies', '../../images/uploads/CCS_Logo.png', '', '2025-02-03 22:55:10');
+(1, 'CCS', 'College of Computing Studies', '../../images/uploads/CCS_Logo.png', '', '2025-02-03 22:55:10'),
+(16, 'CE', 'College of Engineering', '../../images/uploads/CE_Logo.jpg', '', '2025-02-12 03:10:30'),
+(17, 'CLA', 'College of Liberal Arts', '../../images/uploads/CLA_Logo.png', '', '2025-02-14 02:25:42'),
+(21, 'CTE', 'College of Teacher Education', '../../images/uploads/CTE_Logo.png', '', '2025-02-15 23:13:55');
 
 CREATE TABLE courses (
   id int(11) NOT NULL,
@@ -67,13 +77,15 @@ CREATE TABLE organizations (
   name varchar(100) NOT NULL,
   logo_directory text NOT NULL,
   description text NOT NULL,
-  status tinyint(1) NOT NULL DEFAULT 1,
+  isActive tinyint(1) NOT NULL DEFAULT 1,
+  isPrimary tinyint(1) NOT NULL DEFAULT 0,
+  deactivationReason text DEFAULT NULL,
   created_at timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-INSERT INTO organizations (id, college_id, name, logo_directory, description, status, created_at) VALUES
-(2, 1, 'Venom Publication', '../../images/uploads/VP_Logo.jpg', 'dsa', 1, '2024-12-07 04:24:45'),
-(4, 1, 'Gender', '../../images/uploads/G_Logo.jpg', '', 1, '2025-01-24 21:11:21');
+INSERT INTO organizations (id, college_id, name, logo_directory, description, isActive, isPrimary, deactivationReason, created_at) VALUES
+(2, 1, 'Venom Publication', '../../images/uploads/VP_Logo.jpg', 'dsa', 1, 0, NULL, '2025-02-15 23:17:11'),
+(5, 1, 'College Student Council', '../../images/uploads/CSC_Logo.jpg', '', 1, 1, NULL, '2025-02-15 23:17:11');
 
 CREATE TABLE religions (
   id int(11) NOT NULL,
@@ -156,19 +168,19 @@ ALTER TABLE suffixes
 
 
 ALTER TABLE accounts
-  MODIFY id int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY id int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 ALTER TABLE admins
-  MODIFY admin_id int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY admin_id int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 ALTER TABLE colleges
-  MODIFY id int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY id int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 ALTER TABLE courses
   MODIFY id int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 ALTER TABLE organizations
-  MODIFY id int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY id int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 ALTER TABLE religions
   MODIFY id int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
@@ -200,7 +212,6 @@ ALTER TABLE students
   ADD CONSTRAINT students_ibfk_5 FOREIGN KEY (course_id) REFERENCES courses (id),
   ADD CONSTRAINT students_ibfk_6 FOREIGN KEY (account_id) REFERENCES `accounts` (id),
   ADD CONSTRAINT students_ibfk_7 FOREIGN KEY (college_id) REFERENCES colleges (id);
-COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
