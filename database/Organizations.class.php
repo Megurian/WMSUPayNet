@@ -77,6 +77,63 @@ class Organizations extends Database {
             return false;
         }
     }
+
+    function confirmOrganizationName($organization_id){
+        $sql = "SELECT name FROM $this->table WHERE id = :id;";
+        try {
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->execute([
+                ':id' => $organization_id
+            ]);
+            return $stmt->fetch(PDO::FETCH_ASSOC)['name'];
+        } catch (PDOException $e) {
+            error_log("Database error: ". $e->getMessage()); // Log the error message
+            return false;
+        }
+    }
+
+    function deactivateOrganization($organization_id, $organization_name, $reason){
+        $sql = "UPDATE $this->table SET isActive = 0, deactivationReason = :reason WHERE id = :id AND name = :name;";
+        try {
+            // Begin transaction
+            $this->pdo->beginTransaction();
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->execute([
+                ':id' => $organization_id,
+                ':name' => $organization_name,
+                ':reason' => $reason
+            ]);
+            // Commit transaction
+            $this->pdo->commit();
+            return "Organization deactivated successfully.";
+        } catch (PDOException $e) {
+            $this->pdo->rollBack();
+            error_log("Database error: ". $e->getMessage()); // Log the error message
+            return false;
+
+        }
+    }
+
+    function reactivateOrganization($organization_id) {
+        try {
+            // Begin transaction
+            $this->pdo->beginTransaction();
+    
+            $stmt = $this->pdo->prepare("UPDATE $this->table SET isActive = 1, deactivationReason = NULL WHERE id = :id;");
+            $stmt->execute([
+                ':id' => $organization_id, 
+            ]);
+    
+            // Commit transaction
+            $this->pdo->commit();
+            return "Organization reactivated successfully.";
+        } catch (PDOException $e) {
+            $this->pdo->rollBack();
+            error_log("Database error: " . $e->getMessage()); // Log the error message
+            return false;
+        }
+    }
 }
 
 //$obj = new Organizations();
+//echo $obj->confirmOrganizationName(2);

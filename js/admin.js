@@ -6,7 +6,13 @@ document.querySelectorAll('.sidebar-item a.nav-link').forEach(link => {
         this.classList.add('link-active');
 
         if (this.id === 'dashboard-link') {
-            
+            fetch('overview.php')
+                .then(response => response.text())
+                .then(html => {
+                    document.querySelector('.content-page').innerHTML = html;
+                    document.querySelector('.topnav-title').textContent = 'Dashboard';
+                    loadChart();
+                });
         } else if (this.id === 'university-link') {
             fetch('university/nav.php')
                 .then(response => response.text())
@@ -131,7 +137,12 @@ document.querySelectorAll('.sidebar-item a.nav-link').forEach(link => {
 
                                                                 if (e.target.classList.contains('deactivate')) {
                                                                     e.preventDefault();
-                                                                    alert('Organizatin Deactivated' + orgId + ' of ' + collegeId);
+                                                                    deactivateOrg(orgId, orgName);
+                                                                }
+
+                                                                if (e.target.classList.contains('activate')) {
+                                                                    e.preventDefault();
+                                                                    activateOrg(orgId, orgName);
                                                                 }
 
                                                                 if (e.target.classList.contains('delete')) {
@@ -449,6 +460,71 @@ function setPrimary(college_id, organization_id, organization_name) {
         });
     }
 }
+
+function deactivateOrg(organization_id, organization_name) {
+    fetch(`university/deactivate-form.html`)
+        .then(response => response.text())
+        .then(html => {
+            $('.modal-container').html(html);
+            $('.modal-title').text(organization_name);
+            $('#modal-deactivate-organization').modal('show');
+            $('#form-deactivate-organization').off('submit').submit(function(e) {
+                e.preventDefault();
+                const formData = new FormData(this);
+                formData.append("organization_id", organization_id); // Append extra data
+                $.ajax({
+                    url: 'logic/deactivateOrg.php',
+                    type: 'post',
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function(response) {
+                        try {
+                            const res = JSON.parse(response);
+                            if (res.status === 'error') {
+                                alert(res.message);
+                            } else {
+                                alert(res.message);
+                                $('#form-deactivate-organization')[0].reset();
+                                $('#modal-deactivate-organization').modal('hide');
+                                $('.modal-container').empty();
+                            }
+                        } catch (error) {
+                            console.error("Error parsing response:", error, response);
+                            alert("Unexpected response from the server.");
+                        }
+                    }
+                });
+            });
+        })
+        .catch(error => {
+            console.error('Error fetching deactivate form:', error);
+            alert('An error occurred while loading the deactivation form.');
+        });
+}
+
+function activateOrg(organization_id, organization_name){
+    if (confirm('Are you sure you want to reactivate ' + organization_name + ' ?')) {
+        $.ajax({
+            url: `logic/reactivateOrg.php`,
+            type: 'post',
+            data: JSON.stringify({ organization_id: organization_id}),
+            success: function(response) {
+                const res = JSON.parse(response);
+                if (res.status === 'error') {
+                    alert(res.message);
+                } else {
+                    alert(res.message);
+                    
+                }
+            },
+            error: function() {
+                alert('An error occurred while processing the request.');
+            }
+        });
+    }
+}
+
 
 function UpdateYear() {
     $('#form-update-year').submit(function(e) {

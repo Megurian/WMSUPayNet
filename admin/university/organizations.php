@@ -37,6 +37,10 @@
         border-color: #093909;
         cursor: pointer;
     }
+
+    .saturate-low {
+    filter: saturate(0.01); /* 50% saturation */
+}
 </style>
 
 
@@ -99,10 +103,18 @@
                     <?php if (htmlspecialchars($organization['isPrimary']) == 1): ?>
                         <div class="card shadow-sm mb-4 mt-4">
                             <div class="card-body d-flex align-items-center">
-                                <img src="<?= htmlspecialchars($organization['logo_directory']) ?>" alt="Organization Logo" width="100" class="rounded-circle me-3">
+                            <img src="<?= htmlspecialchars($organization['logo_directory']) ?>" alt="Organization Logo" width="100" 
+                                    <?php if (htmlspecialchars($organization['isActive']) != 1): ?>
+                                        class="rounded-circle me-3 saturate-low">
+                                    <?php else: ?>
+                                        class="rounded-circle me-3">
+                                    <?php endif; ?>
                                 <div class="flex-grow-1 organization" data-organization-id="<?= htmlspecialchars($organization['id']) ?>">
                                     <h5 class="mb-1"><?= htmlspecialchars($organization['name']) ?> 
                                         <span class="badge bg-primary-subtle border border-primary-subtle text-primary-emphasis rounded-pill" style="font-size: 0.50em;">Primary</span>
+                                        <?php if (htmlspecialchars($organization['isActive']) != 1): ?>
+                                            <span class="badge bg-warning-subtle border border-warning-subtle text-warning-emphasis rounded-pill" style="font-size: 0.50em;">Deactivated</span>
+                                        <?php endif; ?>
                                     </h5>
                                     <p class="mb-1 text-muted">
                                         <i class="bi bi-people-fill me-1"></i>
@@ -121,8 +133,13 @@
                                     data-organization-name="<?= htmlspecialchars($organization['name']) ?>"
                                 >
                                     <li><a class="dropdown-item setPrimary" href="#">Set as Primary Organization</a></li>
-                                    <li><a class="dropdown-item deactivate" href="#">Deactivate</a></li>
-                                    <li><a class="dropdown-item delete" href="#">Delete</a></li>
+                                    <!-- Dynamic Activate & Deactivate  Dropdown-->
+                                    <li><a class="dropdown-item 
+                                        <?php if (htmlspecialchars($organization['isActive']) != 1): ?>
+                                            activate" href="#">Activate</a></li>
+                                        <?php else: ?>
+                                            deactivate" href="#">Deactivate</a></li>
+                                        <?php endif; ?>
                                 </ul> 
                             </div>
                         </div>
@@ -134,9 +151,18 @@
                     <?php if (htmlspecialchars($organization['isPrimary']) != 1): ?>
                         <div class="card shadow-sm mb-4 mt-4">
                             <div class="card-body d-flex align-items-center">
-                                <img src="<?= htmlspecialchars($organization['logo_directory']) ?>" alt="Organization Logo" width="100" class="rounded-circle me-3">
+                                <img src="<?= htmlspecialchars($organization['logo_directory']) ?>" alt="Organization Logo" width="100" 
+                                    <?php if (htmlspecialchars($organization['isActive']) != 1): ?>
+                                        class="rounded-circle me-3 saturate-low">
+                                    <?php else: ?>
+                                        class="rounded-circle me-3">
+                                    <?php endif; ?>
                                 <div class="flex-grow-1 organization" data-organization-id="<?= htmlspecialchars($organization['id']) ?>">
-                                    <h5 class="mb-1"><?= htmlspecialchars($organization['name']) ?></h5>
+                                    <h5 class="mb-1"><?= htmlspecialchars($organization['name']) ?>
+                                        <?php if (htmlspecialchars($organization['isActive']) != 1): ?>
+                                            <span class="badge bg-warning-subtle border border-warning-subtle text-warning-emphasis rounded-pill" style="font-size: 0.50em;">Deactivated</span>
+                                        <?php endif; ?>
+                                    </h5>
                                     <p class="mb-1 text-muted">
                                         <i class="bi bi-people-fill me-1"></i>
                                         600,003
@@ -154,7 +180,13 @@
                                     data-organization-name="<?= htmlspecialchars($organization['name']) ?>"
                                 >
                                     <li><a class="dropdown-item setPrimary" href="#">Set as Primary Organization</a></li>
-                                    <li><a class="dropdown-item deactivate" href="#">Deactivate</a></li>
+                                    <!-- Dynamic Activate & Deactivate  Dropdown-->
+                                    <li><a class="dropdown-item 
+                                        <?php if (htmlspecialchars($organization['isActive']) != 1): ?>
+                                            activate" href="#">Activate</a></li>
+                                        <?php else: ?>
+                                            deactivate" href="#">Deactivate</a></li>
+                                        <?php endif; ?>
                                     <li><a class="dropdown-item delete" href="#">Delete</a></li>
                                 </ul> 
                             </div>
@@ -164,5 +196,4 @@
         <?php endif; ?>
 
 </div>
-    
 
