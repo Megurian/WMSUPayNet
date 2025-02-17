@@ -4,6 +4,7 @@ require_once '../../database/autoload_classes.php';
 
 $adminObj = new Admins();
 $accountObj = new Accounts();
+$collegeObj = new Colleges();
 
 $errors = [];
 
@@ -62,6 +63,10 @@ if (empty($Data['suffix'])) {
 //Validation for college
 if (empty($Data['college'])) {
     $errors[] = 'College is required to signup.';
+} elseif (!is_numeric($Data['college'])) {
+    $errors[] = 'College ID modified.';
+} elseif (!$collegeObj->checkCollege($Data['college'])) {
+    $errors[] = 'College does not exist.';
 }
 
 //Validation Email
@@ -69,7 +74,7 @@ if (empty($Data['email'])) {
     $errors[] = 'Email is required to signup';
 } elseif (!filter_var($Data['email'], FILTER_VALIDATE_EMAIL)) {
     $errors[] = 'Please enter a valid email.';
-} elseif ($adminObj->checkDuplicateEmail($Data['email'])) {
+} elseif ($accountObj->checkDuplicateEmail($Data['email'])) {
     $errors[] = 'Email entered is already in use.';
 }
 
@@ -103,18 +108,17 @@ if (!empty($errors)) {
 }
 
 // Insert into database
+$username = extractUsername($Data['email']);
+$role = 'CollegeAdmin';
 
-if ($lastInsertedId = $adminObj->addCollegeAdmin($Data['first_name'], $Data['middle_name'], $Data['last_name'], $Data['suffix'], $Data['email'], $Data['college'], null)) {
+if ($lastInsertedAdminId = $adminObj->addCollegeAdmin($Data['first_name'], $Data['middle_name'], $Data['last_name'], $Data['suffix'], $Data['college'], null)) {
 
-    $username = extractUsername($Data['email']);
-    $role = 'CollegeAdmin';
-
-    if($accountObj->createAccount(null, $lastInsertedId, $username, $Data['email'], $Data['confirm_password'], $role, $Data['college'])) {
+    if($accountObj->createAccount(null, $lastInsertedAdminId, $username, $Data['email'], $Data['password'], $role, $Data['college'])) {
         echo json_encode(['status' => 'success', 'message' => 'College admin added successfully.']);
     } else {
-        echo json_encode(['status' => 'error', 'message' => 'Failed to register college admin.']);
+        echo json_encode(['status' => 'error', 'message' => 'Failed to register college admin. 2']);
     }
 
 } else {
-    echo json_encode(['status' => 'error', 'message' => 'Failed to add college admin.']);
+    echo json_encode(['status' => 'error', 'message' => 'Failed to add college admin. 1']);
 }

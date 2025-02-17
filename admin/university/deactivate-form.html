@@ -1,0 +1,32 @@
+<!-- Deactivate Modal -->
+<div class="modal fade" id="modal-deactivate-organization" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel"></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="" method="post" id="form-deactivate-organization">
+                <div class="modal-body">
+                    <p class="mb-3">Please provide the following information to deactivate the organization:</p>
+                    <div class="mb-3">
+                        <label for="organizationName" class="form-label"><strong>Organization Name:</strong></label>
+                        <input type="text" class="form-control" id="organizationName" name="organizationName" required>
+                        <small class="text-muted">Case Sensitive.</small>
+                    </div>
+                    <div class="mb-3">
+                        <label for="deactivationReason" class="form-label"><strong>Reason for Deactivation:</strong></label>
+                        <textarea class="form-control" id="deactivationReason" name="deactivationReason" rows="3" required></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-danger" id="deactivate-organization">Deactivate</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Reactivate Modal -->
+

@@ -65,6 +65,18 @@ class Colleges extends Database {
         }
         return $result;
     }
+
+    public function checkCollege($id) {
+        $sql = "SELECT COUNT(*) as count FROM $this->table WHERE id = :id LIMIT 1";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([':id' => $id]);
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        if ($result['count'] > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
 
 /* $Obj = new Colleges();
