@@ -2,8 +2,9 @@
 require_once '../../database/autoload_classes.php';
 require_once '../../tools/functions.php';
 
-$collegeId = isset($_GET['college_id']) ? intval(clean_input($_GET['college_id'])) : 0;
 $suffixesObj = new Suffixes();
+
+$collegeId = isset($_GET['college_id']) ? intval(clean_input($_GET['college_id'])) : 0;
 
 ?>
 
@@ -72,16 +73,17 @@ $suffixesObj = new Suffixes();
 
 <script src="../../js/UX.js"></script>
 <script>
+    var ignoreWords = ["of", "and", "the", "at", "in", "on", "to", "a", "an", "for", "by", "with", "from"];
+
     //Real=time validation college name format and generate college code
     document.getElementById("collegeName").addEventListener("input", function(event) {
-        const collegeName = document.getElementById("collegeName");
-        const ignoreWords = ["of", "and", "the", "at", "in", "on", "to", "a", "an", "for", "by", "with", "from"];
+        var collegeName = document.getElementById("collegeName");
 
         // split the college name into words
-        const words = collegeName.value.split(' ');
+        var words = collegeName.value.split(' ');
 
         // Format each word
-        const formattedWords = words.map(word => {
+        var formattedWords = words.map(word => {
             word = word.trim(); // Remove any extra spaces
             if (word && !ignoreWords.includes(word.toLowerCase())) { // Ignore "of", "and", and "the"
                 return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase(); // Capitalize the first letter and lowercase the rest
@@ -91,27 +93,60 @@ $suffixesObj = new Suffixes();
         });
         collegeName.value = formattedWords.join(' ');
 
+        var collegeCode = document.getElementById("collegeCode");
 
-        const collegeCode = document.getElementById("collegeCode");
-        const collegeCodeValue = collegeName.value.split(' ')
-            .filter(word => !ignoreWords.includes(word.toLowerCase()))
-            .map(word => word[0].toUpperCase())
-            .join('');
+        var significantWords = words.filter(word => 
+            !ignoreWords.includes(word.toLowerCase().trim())
+        );
+
+        // If exactly two significant words
+        if (significantWords.length >= 3) {
+            var collegeCodeValue = '';
+            significantWords.forEach(word => {
+                word = word.trim();
+                if (word) {
+                    collegeCodeValue += word.charAt(0).toUpperCase();
+                }
+            });
+        } else {
+            var firstWord = significantWords[0];
+            var secondWord = significantWords[1];
+            collegeCodeValue = firstWord.charAt(0) + secondWord.substring(0, 4);
+        }
+
+        //Return the College Code Value
         collegeCode.value = collegeCodeValue;
     });
 
     //Remove extra spaces in college name and generate college code again
     document.getElementById("collegeName").addEventListener("blur", function(event) {
-        const collegeName = document.getElementById("collegeName");
-        const ignoreWords = ["of", "and", "the", "at", "in", "on", "to", "a", "an", "for", "by", "with", "from"];
+        var collegeName = document.getElementById("collegeName");
 
         collegeName.value = removeExtraSpaces(collegeName.value);
+        var words = collegeName.value.split(' ');
 
-        const collegeCode = document.getElementById("collegeCode");
-        const collegeCodeValue = collegeName.value.split(' ')
-            .filter(word => !ignoreWords.includes(word.toLowerCase()))
-            .map(word => word[0].toUpperCase())
-            .join('');
+        var collegeCode = document.getElementById("collegeCode");
+
+        var significantWords = words.filter(word => 
+            !ignoreWords.includes(word.toLowerCase().trim())
+        );
+
+        // If exactly two significant words
+        if (significantWords.length >= 3) {
+            var collegeCodeValue = '';
+            significantWords.forEach(word => {
+                word = word.trim();
+                if (word) {
+                    collegeCodeValue += word.charAt(0).toUpperCase();
+                }
+            });
+        } else {
+            var firstWord = significantWords[0];
+            var secondWord = significantWords[1];
+            collegeCodeValue = firstWord.charAt(0) + secondWord.substring(0, 4);
+        }
+
+        //Return the College Code Value
         collegeCode.value = collegeCodeValue;
     });
 
