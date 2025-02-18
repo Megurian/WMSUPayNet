@@ -29,6 +29,29 @@ class Organizations extends Database {
         }
     }
 
+    public function editOrganization($id, $name, $logo_directory, $description) {
+        $sql = "UPDATE $this->table SET name = :name, logo_directory = :directory, description = :description WHERE id = :id";
+        try {
+            $this->pdo->beginTransaction();
+
+            $stmt = $this->pdo->prepare($sql);
+
+            $stmt->execute([
+                ':id' => $id,
+                ':name' => $name,
+                ':directory' => $logo_directory,
+                ':description' => $description
+            ]);
+
+            $this->pdo->commit(); // Commit the transaction if successful
+            return true; // Return true if the insert was successful
+        } catch (PDOException $e) {
+            $this->pdo->rollBack(); // Rollback in case of error
+            error_log("Database error: " . $e->getMessage());
+            return false; // Return false if there was an error
+        }
+    }
+
     // get all organization by college_id
     public function getAllOrganizationById($college_id) {
         $sql = "SELECT * FROM $this->table WHERE college_id = :college_id";
@@ -44,15 +67,15 @@ class Organizations extends Database {
         }
     }
 
-    // get all organization by organization id
+    // get all organization info by organization id
     public function getAllOrganizationInfoById($id) {
-        $sql = "SELECT * FROM $this->table WHERE id = :id";
+        $sql = "SELECT * FROM $this->table WHERE id = :id LIMIT 1";
         $stmt = $this->pdo->prepare($sql);
         try {
             $stmt->execute([
                 ':id' => $id
             ]);
-            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $stmt->fetch(PDO::FETCH_ASSOC);
         } catch(PDOException $e) {
             error_log("Database error: " . $e->getMessage()); // Log the error message
             return false;
