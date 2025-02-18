@@ -32,7 +32,7 @@ $suffixesObj = new Suffixes();
             </div> 
             <form id="form-edit-college" enctype="multipart/form-data">
                 <input type="hidden" name="collegeId" value="<?= $collegeId ?>">
-                <input type="hidden" name="logoUpdated" id="logoUpdated" value="0">
+                <input type="hidden" name="logoUpdated" id="logoUpdated" value="false">
                 <div class="modal-body">
                     <div class="card-body">
                         <div class="row mb-3">

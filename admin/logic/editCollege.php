@@ -8,7 +8,7 @@ $collegeObj = new Colleges();
 $collegeId = clean_input($_POST['collegeId'] ?? null);
 $name = clean_input($_POST['collegeName'] ?? '');
 $description = clean_input($_POST['description'] ?? '');
-$logoUpdatedBool = clean_input($_POST['logoUpdated'] ?? 0);
+$logoUpdatedBool = clean_input($_POST['logoUpdated'] ?? false);
 $logo_directory = '';
 
 
