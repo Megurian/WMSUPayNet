@@ -50,18 +50,41 @@ function extractUsername($email) {
 }
 
 function getAbbreviation($string) {
-    // Words to ignore
-    $ignoreWords = ['of', 'and'];
+    $ignoreWords = ["of", "and", "the", "at", "in", "on", "to", "a", "an", "for", "by", "with", "from"];
 
     // Split the string into words
     $words = explode(' ', $string);
 
-    // Extract the first letter of each word, ignoring specific words
+    // Filter out ignored words
+    $significantWords = array_filter($words, function($word) use ($ignoreWords) {
+        return !in_array(strtolower(trim($word)), $ignoreWords);
+    });
+
+    // If exactly two significant words
+    if (count($significantWords) == 2) {
+        $firstWord = $significantWords[0];
+        $secondWord = end($significantWords);
+        return substr($firstWord, 0,1) . substr($secondWord, 0, 4); // Take first 4 letters of second word
+    }
+    
+    // If three or more significant words
+    if (count($significantWords) >= 3) {
+        $abbreviation = '';
+        foreach ($significantWords as $word) {
+            $word = trim($word);
+            if (!empty($word)) {
+                $abbreviation .= strtoupper($word[0]);
+            }
+        }
+        return $abbreviation;
+    }
+
+    // Default behavior for other cases (original logic)
     $abbreviation = '';
     foreach ($words as $word) {
-        $word = trim($word); // Remove any extra spaces
-        if (!empty($word) && !in_array(strtolower($word), $ignoreWords)) { // Ignore "of" and "and"
-            $abbreviation .= strtoupper($word[0]); // Take the first letter and capitalize it
+        $word = trim($word);
+        if (!empty($word) && !in_array(strtolower($word), $ignoreWords)) {
+            $abbreviation .= strtoupper($word[0]);
         }
     }
 

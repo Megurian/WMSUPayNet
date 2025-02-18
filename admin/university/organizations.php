@@ -38,9 +38,9 @@
         cursor: pointer;
     }
 
-    .saturate-low {
-    filter: saturate(0.01); /* 50% saturation */
-}
+    .card-bg {
+        filter: saturate(0.01);
+    }
 </style>
 
 
@@ -129,13 +129,17 @@
                 <?php foreach ($organizations as $organization): ?>
                     <?php if (htmlspecialchars($organization['isPrimary']) == 1): ?>
                         <div class="card shadow-sm mb-4 mt-4">
-                            <div class="card-body d-flex align-items-center">
-                            <img src="<?= htmlspecialchars($organization['logo_directory']) ?>" alt="Organization Logo" width="100" 
-                                    <?php if (htmlspecialchars($organization['isActive']) != 1): ?>
-                                        class="rounded-circle me-3 saturate-low">
-                                    <?php else: ?>
-                                        class="rounded-circle me-3">
-                                    <?php endif; ?>
+                            <div class="card-body d-flex align-items-center
+                                <?php if (htmlspecialchars($organization['isActive']) != 1): ?>
+                                    card-bg">
+                                <?php else: ?>
+                                    ">
+                                <?php endif; ?>
+
+                                <!-- Logo -->
+                                <img src="<?= htmlspecialchars($organization['logo_directory']) ?>" alt="Organization Logo" width="100" class="rounded-circle me-3">
+                                
+                                <!-- Organization Name and Status -->
                                 <div class="flex-grow-1 organization" data-organization-id="<?= htmlspecialchars($organization['id']) ?>">
                                     <h5 class="mb-1"><?= htmlspecialchars($organization['name']) ?> 
                                         <span class="badge bg-primary-subtle border border-primary-subtle text-primary-emphasis rounded-pill" style="font-size: 0.50em;">Primary</span>
@@ -149,6 +153,7 @@
                                     </p>
                                     <small class="text-muted">Updated October 01, 2024</small>
                                 </div>
+
                                 <!-- Dropdown button and menu -->
                                 <button class="btn btn-outline-secondary btn-sm" data-bs-toggle="dropdown">
                                     <i class="bi bi-three-dots"></i>
@@ -177,13 +182,22 @@
                 <?php foreach ($organizations as $organization): ?>
                     <?php if (htmlspecialchars($organization['isPrimary']) != 1): ?>
                         <div class="card shadow-sm mb-4 mt-4">
-                            <div class="card-body d-flex align-items-center">
+                            <div class="card-body d-flex align-items-center
+                                <?php if (htmlspecialchars($organization['isActive']) != 1): ?>
+                                    card-bg">
+                                <?php else: ?>
+                                    ">
+                                <?php endif; ?>
+
+                                <!-- Logo -->
                                 <img src="<?= htmlspecialchars($organization['logo_directory']) ?>" alt="Organization Logo" width="100" 
                                     <?php if (htmlspecialchars($organization['isActive']) != 1): ?>
                                         class="rounded-circle me-3 saturate-low">
                                     <?php else: ?>
                                         class="rounded-circle me-3">
                                     <?php endif; ?>
+
+                                <!-- Organization Name and Status -->
                                 <div class="flex-grow-1 organization" data-organization-id="<?= htmlspecialchars($organization['id']) ?>">
                                     <h5 class="mb-1"><?= htmlspecialchars($organization['name']) ?>
                                         <?php if (htmlspecialchars($organization['isActive']) != 1): ?>
@@ -196,6 +210,7 @@
                                     </p>
                                     <small class="text-muted">Updated October 01, 2024</small>
                                 </div>
+
                                 <!-- Dropdown button and menu -->
                                 <button class="btn btn-outline-secondary btn-sm" data-bs-toggle="dropdown">
                                     <i class="bi bi-three-dots"></i>
