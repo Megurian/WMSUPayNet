@@ -18,16 +18,19 @@
             <a href="#hero">About</a>
             <a href="#services">Services</a>
             <a href="#testimonial">Testimonials</a>
+
             <a href="login.php">Login</a>
             <a href="#store" class="start-project-btn">Avail our System</a>
         </div>
     </nav>
+
 
     <div class="progress-container">
         <div class="progress-bar" id="progress-bar"></div>
     </div>
 
     <main class="hero" id="hero">
+
         <div class="hero-text">
             <h1>PayNet: An Integrated Web Platform for Payment Processing and Record Management</h1>
             <p>Our System solves problems by providing better and efficient payment and management system lessening the workload for student organization. </p>
@@ -118,11 +121,10 @@
 
 </section>
 
-
-
     <footer class="footer">
         <div class="footer-content">
             <div class="footer-info">
+
                 <h3>PayNet</h3>
                 <div class="location-text">
                     <i class="fas fa-map-marker-alt"></i>
@@ -195,6 +197,3 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 });
-
-
-</script>

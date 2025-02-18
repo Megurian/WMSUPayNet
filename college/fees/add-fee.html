@@ -1,0 +1,134 @@
+<!-- Modal -->
+<div class="modal fade" id="modal-add-fee" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel"> Fee Details </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div> 
+        <form action="" method="post" id="form-add-fee" enctype="multipart/form-data">
+            <div class="modal-body">
+
+               
+                    <div class="row mb-3">
+                        <div class="form-group col-md-6">
+                            <label for="feeName">Name of Fee</label>
+                            <input type="text" class="form-control" id="feeName" placeholder="Fee Name">
+                        </div>
+
+
+                        <div class="form-group col-md-3">
+                            <label for="amount">Amount</label>
+                            <input type="number" class="form-control" id="amount" placeholder="Amount">
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="course">Course</label>
+                            <select class="form-select" id="">
+                                <option value="">Select Course</option>
+                                <option value="course1">Course 1</option>
+                                <option value="course2">Course 2</option>
+                            </select>
+                        </div>
+                     </div>
+               
+                <div class="row mb-3">
+                    
+                    <div class="form-group col-md-3">
+                        <label for="semester">Semester</label>
+                        <select class="form-control" id="semester">
+                            <option value="">Select Semester</option>
+                            <option value="semester1">Semester 1</option>
+                            <option value="semester2">Semester 2</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="yearLevel">Year Level</label>
+                        <select class="form-select" id="yearLevel">
+                            <option value="">Select Year Level</option>
+                            <option value="year1">Year 1</option>
+                            <option value="year2">Year 2</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="dueDate">Due Date</label>
+                        <div class="input-group">
+                            <input type="date" class="form-control" id="dueDateStart">
+                            <div class="input-group-append">
+                                <span class="input-group-text mx-2">to</span>
+                            </div>
+                            <input type="date" class="form-control" id="dueDateEnd">
+                        </div>
+                    </div>
+                </div>
+                <div class="row ">
+                    
+
+                    <div class="form-group col-md-3 ">
+                        <label for="applyBy">Apply By</label>
+                        <select class="form-select" id="applyBy">
+                            <option value=""></option>
+                            <option value="semester1">Semester </option>
+                            <option value="semester2">School Year</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-3 border  p-2">
+                        <label class="border-bottom border-dark" for="criteria">Applicable Criteria</label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="criteriaAll" value="all">
+                            <label class="form-check-label" for="criteriaAll">All</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="criteriaGraduating" value="graduating">
+                            <label class="form-check-label" for="criteriaGraduating">Graduating Students</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="criteriaNonGraduating" value="nongraduating">
+                            <label class="form-check-label" for="criteriaNonGraduating">Non-Graduating</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="criteriaIrregular" value="irregular">
+                            <label class="form-check-label" for="criteriaIrregular">Irregular Students</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="criteriaMuslims" value="muslims">
+                            <label class="form-check-label" for="criteriaMuslims">Muslims</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-md-3 m-auto border  p-3">
+                        <div class="form-check">
+                            <input class="form-check-input " type="checkbox" id="required" value="required">
+                            <label class="form-check-label" for="required">Required</label>
+                        </div>
+                    </div>
+    
+                    
+                    <div class="form-group col-md-6">
+                        <label for="collector">Name of Collector</label>
+                        <input type="text" class="form-control" id="collector" placeholder="Name of Collector">
+                    </div>
+                </div>
+        
+          
+                     
+                 
+                 
+     
+
+         </div>
+        <div class="modal-footer">
+            <!-- <div class="form-group d-flex align-items-center ">
+                <label for="insert">Insert:</label>
+                <div class="input-group ">
+                    <input type="number" class="form-control" id="insert" value="2" min="2">
+                </div>
+            </div> -->
+            <div class="buttons">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn bgreen" >Save</button>
+            </div>
+        </div>
+    </form>
+</div>
+</div>
+</div>

@@ -1,0 +1,163 @@
+<!-- Modal -->
+<div class="modal fade" id="modal-view-userReport" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel"> User Report </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div> 
+            <div class="modal-body">
+               <div class="row">
+                <div class="d-flex align-items-center">
+                    <h4>Issue with Payment Processing</h4>
+                    <div class="form-group col-md-2 mx-1">
+                        <select class="form-select" id="status">
+                            <option value="Pending">Status</option>
+                            <option value="Pending">Pending</option>
+                            <option value="Resolved">Resolved</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-2 mx-1">
+                        <select class="form-select" id="status">
+                            <option value="Pending">Export</option>
+                            <option value="Pending">CSV</option>
+                            <option value="Resolved">Docx</option>
+                        </select>
+                    </div>
+                </div>   
+
+                   <div class="col-md-6">
+                        <div class="form-group col-md-12 mt-2">
+                            <label for=""> <h6>Description</h6></label>
+                            <textarea class="form-control" id="userReport" rows="3" value="" readonly> I was trying to pay my tuition fees, but the system kept giving me an error message. I've tried several times...</textarea>
+                        </div>
+
+                        <div class="row mt-3">
+                            <div class="form-group col-md-6 ">
+                                <label for=""> Name</label>
+                                <input class="form-control" type="text" value="Clark F. Falcatan" readonly>
+                            </div>
+
+                            <div class="form-group col-md-6 ">
+                                <label for=""> Student ID</label>
+                                <input class="form-control" type="text" value="20220033" readonly>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-md-12 mt-3">
+                            <label for="attachments">Attachments:</label>
+                            <div class="d-flex">
+                                <img src="../../images/preview.jpg" width="60" height="60" class="mx-2 border" alt="Attachment 1">
+                                <img src="../../images/preview.jpg" width="60" height="60" class="mr-2 border" alt="Attachment 2">
+                            </div>
+                        </div>
+
+                        <div class="form-group col-md-12 mt-3 border p-2">
+                            <label for="adminNotes">Admin Notes:</label>
+                            <div class="input-group">
+                                    <span class="input-group-text rounded-circle mx-1"><i class="fa fa-user"></i></span>
+                                
+                                <input class="form-control" type="text" name="" id="" >
+                            </div>
+                        </div>
+                   </div>
+
+                   <div class="col-md-6 mt-5 ">
+                        <div class="card">
+                            <div class="card-body">
+                                <h6 class="mb-3"> Details</h6>
+                                <div class="col-md-12 mb-5">
+                                    <div class="input-group align-items-center">
+                                        <label for="created ">Created</label>
+                                        <input type="text" class="form-control mx-3 roundedmx-3 rounded" id="created" value="October 07, 2024, 10:57 AM" readonly>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 mb-5">
+                                    <div class="input-group align-items-center">
+                                        <label for="updated">Updated</label>
+                                        <input type="text" class="form-control mx-3 rounded" id="updated" value="October 07, 2024, 10:57 AM" readonly>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 mb-5">
+                                    <div class="input-group align-items-center">
+                                        <label for="resolved">Resolved</label>
+                                        <input type="text" class="form-control mx-3 rounded" id="resolved" readonly>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                   </div>
+               </div>
+
+            </div>
+
+
+
+
+        <div class="modal-footer">
+            <div class="buttons">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn bgreen" >Save</button>
+            </div>
+        </div>
+</div>
+</div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="modal-view-attachments" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel"> Attachments </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div> 
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-3 mb-3">
+                        <div class="card">
+                            <img src="../../images/preview.jpg" class="card-img-top" alt="Attachment 1">
+                            <div class="card-body">
+                                <h5 class="card-title">Screenshot78ry.jpg</h5>
+                                <p class="card-text">07 October 2024, 10:57 AM</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <div class="card">
+                            <img src="../../images/preview.jpg" class="card-img-top" alt="Attachment 2">
+                            <div class="card-body">
+                                <h5 class="card-title">Screenshot78ry.jpg</h5>
+                                <p class="card-text">07 October 2024, 10:57 AM</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <div class="card">
+                            <img src="../../images/preview.jpg" class="card-img-top" alt="Attachment 3">
+                            <div class="card-body">
+                                <h5 class="card-title">Screenshot78ry.jpg</h5>
+                                <p class="card-text">07 October 2024, 10:57 AM</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <div class="card">
+                            <img src="../../images/preview.jpg" class="card-img-top" alt="Attachment 4">
+                            <div class="card-body">
+                                <h5 class="card-title">Screenshot78ry.jpg</h5>
+                                <p class="card-text">07 October 2024, 10:57 AM</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+
+
+        
+</div>
+</div>
+</div>
