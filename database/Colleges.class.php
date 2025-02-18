@@ -5,11 +5,12 @@ class Colleges extends Database {
     private $table = "colleges";
 
     // Add a new college
-    public function addCollege($name, $logo_directory, $description) {
-        $sql = "INSERT INTO $this->table (college, logo_directory, description) VALUES (:name, :directory, :description)";
+    public function addCollege($college_code, $name, $logo_directory, $description) {
+        $sql = "INSERT INTO $this->table (college_code, college, logo_directory, description) VALUES (:college_code, :name, :directory, :description)";
         $stmt = $this->pdo->prepare($sql);
         try {
             $stmt->execute([
+                ':college_code' => $college_code,
                 ':name' => $name,
                 ':directory' => $logo_directory,
                 ':description' => $description,
@@ -63,6 +64,18 @@ class Colleges extends Database {
             throw new Exception("College not found");
         }
         return $result;
+    }
+
+    public function checkCollege($id) {
+        $sql = "SELECT COUNT(*) as count FROM $this->table WHERE id = :id LIMIT 1";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([':id' => $id]);
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        if ($result['count'] > 0) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
 

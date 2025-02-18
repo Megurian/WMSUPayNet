@@ -18,110 +18,68 @@
 }
 ?>
 <?php
-      require_once '../student/includes/head.php';
-      require_once '../student/includes/topnav.php';
- ?>
- <style>
-  .card {
-    flex: 1;
-    background-color: #093909;
-    color: #ffffff;
-    padding: 20px;
-    border-radius: 8px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 150px;
-    }
+require_once '../student/includes/head.php';
+require_once '../student/includes/topnav.php';
+?>
 
-    .card-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    }
+<style>
+.custom-bg-green {
+  background-color: #093909 !important;
+}
+.custom-text-green {
+  color: #093909 !important;
+}
+.custom-border-green {
+  border-color: #093909 !important;
+}
+.page-content {
+  min-height: calc(100vh - 180px);
+  display: flex;
+  align-items: center;
+  margin-top: 50px;
+}
+</style>
 
-    .card-title {
-    font-size: 36px;
-    font-weight: bold;
-    text-align: left;
-    }
+<div class="page-content">
+<div class="container mt-5 pt-5">
+  <div class="row justify-content-center">
+      <div class="col-md-4 mb-4">
+          <div class="card custom-bg-green text-white h-100 shadow" style="min-height: 140px;">
+              <div class="card-body">
+                  <div class="d-flex justify-content-between align-items-center">
+                      <h3 class="card-title h4 mb-0" style="font-size: 2rem; font-weight: bold;">Organization</h3>
+                      <h2 class="h1 mb-0">4</h2>
+                  </div>
+                  <div class="d-flex justify-content-between align-items-center mt-4">
+                      <span class="small">This week</span>
+                      <a href="./org.php" class="text-white text-decoration-none fw-bold small">view</a>
+                  </div>
+              </div>
+          </div>
+      </div>
+      
+      <div class="col-md-4 mb-4">
+          <div class="card border custom-border-green h-100 shadow" style="min-height: 140px;">
+              <div class="card-body">
+                  <div class="d-flex justify-content-between align-items-center">
+                      <h3 class="card-title h4 mb-0 custom-text-green" style="font-size: 2rem; font-weight: bold;">Payment Records</h3>
+                      <h2 class="h1 mb-0 custom-text-green">0</h2>
+                  </div>
+                  <div class="d-flex justify-content-between align-items-center mt-4">
+                      <span class="text-muted small">This week</span>
+                      <a href="./record.php" class="custom-text-green text-decoration-none fw-bold small">view</a>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+</div>
 
-    .card-count {
-
-    font-size: 40px;
-    font-weight: bold;
-    text-align: right;
-    }
-
-    .card-footer {
-    font-size: 14px;
-    text-align: left;
-    margin-top: 10px;
-    }
-
-    .card-footer a {
-    color: #ffffff;
-    text-decoration: none;
-    float: right;
-    font-weight: bold;
-    }
-
-    .card-footer-left {
-    font-size: 14px;
-    text-align: left;
-    margin-top: 10px;
-    }
-
-    .card-footer-left a {
-    color: #093909;
-    text-decoration: none;
-    float: right;
-    font-weight: bold;
-    }
- </style>
-
-<body>
-    <div class="container-fluid mt-6 d-flex align-items-center justify-content-center" style="min-height: 100vh;">
-        <div class="row"> <!-- Start of the row for cards -->
-            <!-- Card 1 -->
-            <div class="col-md-6 mb-4"> 
-                <div class="card text-center shadow" style="background-color:#093909;">
-                    <div class="card-header">
-                        <div class="d-flex align-items-center" >
-                            <h6 class="card-title text-white" style="font-size: 2rem; font-weight: bold;">Organizations</h6>
-                            <h1 class="card-count ms-auto" style="font-size: 2rem; color: white;">4</h1>
-                        </div>
-                    </div>
-                    <div class="card-footer text-muted">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <span class="status semester" style="font-size: 1rem; color: white;"> This Semester</span>
-                            <a href="#" class="btn btn-link" style="font-size: 1rem; text-decoration: none; color: white;">view</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Card 2 -->
-            <div class="col-md-6 mb-4"> 
-                <div class="card text-center shadow" style="background-color:#093909">
-                    <div class="card-header">
-                        <div class="d-flex align-items-center" >
-                            <h6 class="card-title text-white" style="font-size: 2rem; font-weight: bold;">Organizations</h6>
-                            <h1 class="card-count ms-auto" style="font-size: 2rem; color: white;">4</h1>
-                        </div>
-                    </div>
-                    <div class="card-footer text-muted">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <span class="status semester" style="font-size: 1rem; color: white;"> This Semester</span>
-                            <a href="#" class="btn btn-link" style="font-size: 1rem; text-decoration: none; color: white;">view</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-        </div> <!-- End of the row for cards -->
-    </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<div class="position-fixed bottom-0 end-0 p-3">
+<button class="btn custom-bg-green text-white rounded-circle shadow-lg" style="width: 45px; height: 45px;">
+  <i class="fas fa-question-circle"></i>
+</button>
+</div>
 </body>
 </html>

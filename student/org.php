@@ -64,7 +64,7 @@ require_once '../student/includes/topnav.php';
                     <div class="card-footer text-muted">
                         <div class="d-flex justify-content-between align-items-center">
                             <span class="status success" style="font-size: 0.9rem; color: #093909;">Success</span>
-                            <a href="#" class="btn btn-link" style="font-size: 0.9rem; text-decoration: none; color: #093909;">view</a>
+                            <a href="phics.php" class="btn btn-link" style="font-size: 0.9rem; text-decoration: none; color: #093909;">view</a>
                         </div>
                     </div>
                 </div>

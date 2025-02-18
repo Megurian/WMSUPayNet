@@ -14,43 +14,31 @@ class Admins extends Database {
     public $organization_id = '';
 
     // Add a new college admin
-    public function addCollegeAdmin($first_name, $middle_name, $last_name, $suffix_id, $email, $college_id, $organization_id) {
-        $sql = "INSERT INTO $this->table (first_name, middle_name, last_name, suffix_id, email, college_id, organization_id) 
-                VALUES (:first_name, :middle_name, :last_name, :suffix_id, :email, :college_id, :organization_id)";
-        $stmt = $this->pdo->prepare($sql);
+    public function addCollegeAdmin($first_name, $middle_name, $last_name, $suffix_id, $college_id, $organization_id) {
+
+        
         try {
+            $sql = "INSERT INTO $this->table (first_name, middle_name, last_name, suffix_id, college_id, organization_id) 
+                                      VALUES (:first_name, :middle_name, :last_name, :suffix_id, :college_id, :organization_id)";
+            $this->pdo->beginTransaction(); // Begin a transaction
+
+            $stmt = $this->pdo->prepare($sql);
+
             $stmt->execute([
                 ':first_name' => $first_name,
                 ':middle_name' => $middle_name,
                 ':last_name' => $last_name,
                 ':suffix_id' => $suffix_id,
-                ':email' => $email,
                 ':college_id' => $college_id,
                 ':organization_id' => $organization_id
             ]);
 
-            return $this->pdo->lastInsertId(); // Return last inserted if the insert was successful
+            $admin_id = $this->pdo->lastInsertId(); // Get the last inserted admin id
+
+            $this->pdo->commit(); // Commit the transaction
+            return $admin_id; // Return admin_id if the insert was successful
         } catch (PDOException $e) {
             return false; // Return false if there was an error
-        }
-    }
-
-    public function checkDuplicateEmail($email){
-        $sql = "SELECT COUNT(*) as count FROM $this->table WHERE email = :email";
-        $stmt = $this->pdo->prepare($sql);
-        try {
-            $stmt->execute([
-                ':email' => $email
-            ]);
-            $result = $stmt->fetch(PDO::FETCH_ASSOC);
-            if($result['count'] > 0) {
-                return true;
-            } else {
-                return false;
-            }
-        } catch (PDOException $e) {
-            error_log("Database error: " . $e->getMessage()); // Log the error for debugging
-            return false;
         }
     }
 
@@ -63,6 +51,23 @@ class Admins extends Database {
                 ':college_id' => $college_id
             ]);
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch(PDOException $e) {
+            error_log("Database error: " . $e->getMessage()); // Log the error message
+            return false;
+        }
+    }
+
+    function fetchAdminEmail($account_id){
+        $sql = "SELECT a.email 
+                FROM accounts a
+                INNER JOIN admins ad ON a.id = ad.account_id
+                WHERE ad.account_id = :account_id;";
+        $stmt = $this->pdo->prepare($sql);
+        try {
+            $stmt->execute([
+                ':account_id' => $account_id
+            ]);
+            return $stmt->fetch(PDO::FETCH_ASSOC);
         } catch(PDOException $e) {
             error_log("Database error: " . $e->getMessage()); // Log the error message
             return false;

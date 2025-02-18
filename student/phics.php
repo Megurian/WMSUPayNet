@@ -2,46 +2,55 @@
     require_once '../student/includes/head.php';
     require_once '../student/includes/topnav.php';
 ?>
+<style>
+    .page-content {
+        min-height: calc(100vh - 20px); /* Adjust based on your topnav height */
+    }
+</style>
 <body>
-    <div class="body">
+    <div class="container-fluid">
         
-        <div class="fee-dashboard">
-            <div class="container" style="border: 1px solid #d9d9d9; box-shadow: 0 1px 3px rgba(0,0,0,0.1); border-radius: 4px;">
-                <div class="fee-card">
-                    <div class="fee-card-header">
-                        <div class="back-titles">
-                            <a href="./org.php" class="back-bttn">
-                                <i class="fa-solid fa-arrow-left"></i>
-                            </a>
-                            <h2 style="font-weight: bold;">PHICS</h2>
+        <div class="page-content d-flex align-items-center">
+            <div class="row justify-content-center w-100">
+                <div class="col-md-8">
+                    <div class="card shadow-sm">
+                        <div class="card-header bg-white d-flex justify-content-between align-items-center py-3">
+                            <div class="d-flex align-items-center">
+                                <a href="./org.php" class="btn btn-link text-dark p-0 me-3">
+                                    <i class="fa-solid fa-arrow-left" style="font-size: 25px;"></i>
+                                </a>
+                                <h2 class="mb-0 fw-bold">PHICS</h2>
+                            </div>
+                            <span>Due:</span>
                         </div>
-                    <span class="due-text">Due:</span>
-                </div>
-            <div class="fee-card-body">
-                <table class="table table-striped">
-                    <thead style="background-color: #093909; color: white;">
-                        <tr>
-                            <th class="text-center" scope="col" style="background-color: #093909; color: white;">#</th>
-                            <th class="text-center" scope="col" style="background-color: #093909; color: white;">Fee</th>
-                            <th class="text-center" scope="col" style="background-color: #093909; color: white;">Status</th>
-                            <th class="text-center" scope="col" style="background-color: #093909; color: white;">Amount</th>
-                        </tr>
-                    </thead>
-                        <tbody>
-                            <tr>
-                                <td class="text-center">1</td>
-                                <td class="text-center">Membership Fee</td>
-                                <td class="text-center">Unpaid</td>
-                                <td class="text-center amount">70.00</td>
-                            </tr>
-                            <tr>
-                                <td class="text-center">2</td>
-                                <td class="text-center">Miscellanious</td>
-                                <td class="text-center">Unpaid</td>
-                                <td class="text-center amount">150.00</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-striped table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-center text-white" style="background-color: #093909;">#</th>
+                                            <th class="text-center text-white" style="background-color: #093909;">Fee</th>
+                                            <th class="text-center text-white" style="background-color: #093909;">Status</th>
+                                            <th class="text-center text-white" style="background-color: #093909;">Amount</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="text-center">1</td>
+                                            <td class="text-center">Membership Fee</td>
+                                            <td class="text-center">Unpaid</td>
+                                            <td class="text-center">70.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center">2</td>
+                                            <td class="text-center">Miscellanious</td>
+                                            <td class="text-center">Unpaid</td>
+                                            <td class="text-center">150.00</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

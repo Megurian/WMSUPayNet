@@ -1,8 +1,8 @@
 <?php
 require_once '../../database/autoload_classes.php';
 require_once '../../tools/functions.php';
-$collegeId = isset($_GET['college_id']) ? intval(clean_input($_GET['college_id'])) : 0;
 
+$collegeId = isset($_GET['college_id']) ? intval(clean_input($_GET['college_id'])) : 0;
 $suffixesObj = new Suffixes();
 
 ?>
@@ -42,8 +42,8 @@ $suffixesObj = new Suffixes();
                                 <div class="col-md-9 mb-3">
                                     <div class="form-group">
                                         <label for="collegeCode">College Code:</label>
-                                        <input type="text" class="form-control" id="collegeCode" name="collegeCode" placeholder="College Code" >
-                                        <small class="text-muted">College code will be permanent and cannot be edited or changed.</small>
+                                        <input type="text" class="form-control" id="collegeCode" name="collegeCode" placeholder="College Code" readonly>
+                                        <small class="text-muted">College code is permanent and cannot be modified.</small>
                                     </div>
                                 </div>
                             </div>
@@ -85,6 +85,53 @@ $suffixesObj = new Suffixes();
             reader.readAsDataURL(file); // Read the file as a Data URL
         }
     });
+
+    //Real=time validation college name format and generate college code
+    document.getElementById("collegeName").addEventListener("input", function(event) {
+        const collegeName = document.getElementById("collegeName");
+        const ignoreWords = ["of", "and", "the", "at", "in", "on", "to", "a", "an", "for", "by", "with", "from"];
+
+        // split the college name into words
+        const words = collegeName.value.split(' ');
+
+        // Format each word
+        const formattedWords = words.map(word => {
+            word = word.trim(); // Remove any extra spaces
+            if (word && !ignoreWords.includes(word.toLowerCase())) { // Ignore "of", "and", and "the"
+                return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase(); // Capitalize the first letter and lowercase the rest
+            } else {
+                return word.toLowerCase(); // Keep the word as is
+            }
+        });
+        collegeName.value = formattedWords.join(' ');
+
+
+        const collegeCode = document.getElementById("collegeCode");
+        const collegeCodeValue = collegeName.value.split(' ')
+            .filter(word => !ignoreWords.includes(word.toLowerCase()))
+            .map(word => word[0].toUpperCase())
+            .join('');
+        collegeCode.value = collegeCodeValue;
+    });
+
+    //Remove extra spaces in college name and generate college code again
+    document.getElementById("collegeName").addEventListener("blur", function(event) {
+        const collegeName = document.getElementById("collegeName");
+        const ignoreWords = ["of", "and", "the", "at", "in", "on", "to", "a", "an", "for", "by", "with", "from"];
+
+        collegeName.value = removeExtraSpaces(collegeName.value);
+
+        const collegeCode = document.getElementById("collegeCode");
+        const collegeCodeValue = collegeName.value.split(' ')
+            .filter(word => !ignoreWords.includes(word.toLowerCase()))
+            .map(word => word[0].toUpperCase())
+            .join('');
+        collegeCode.value = collegeCodeValue;
+    });
+
+    function removeExtraSpaces(string) {
+        return string.trim().replace(/\s+/g, ' ');
+    }
 </script>
 
 <!-- Modal -->
@@ -164,3 +211,80 @@ $suffixesObj = new Suffixes();
         </div>
     </div>
 </div>
+
+<script>
+    document.getElementById("password").addEventListener("input", function(event) {
+        const password = document.getElementById("password");
+        const errors = validatePassword({ password: password.value });
+
+        if (errors.length > 0) {
+            password.classList.add("is-invalid");
+            password.nextElementSibling.innerHTML = errors[0];
+        } else {
+            password.classList.remove("is-invalid");
+            password.classList.add("is-valid");
+            password.nextElementSibling.innerHTML = "";
+        }
+    });
+
+    document.getElementById("confirm-password").addEventListener("input", function(event) {
+        const password = document.getElementById("password");
+        const confirm_password = document.getElementById("confirm-password");
+        const errors = confirmPassword({ password: password.value, confirm_password: confirm_password.value });
+
+        if (errors.length > 0) {
+            confirm_password.classList.add("is-invalid");
+            confirm_password.nextElementSibling.innerHTML = errors[0];
+        } else {
+            confirm_password.classList.remove("is-invalid");
+            confirm_password.classList.add("is-valid");
+            confirm_password.nextElementSibling.innerHTML = "";
+        }
+    });
+
+    function validatePassword(data) {
+        let errors = [];
+        
+        // Check if password is empty
+        if (!data.password) {
+            errors.push('Password is required to add admin');
+        }
+        // Check password length
+        else if (data.password.length < 8) {
+            errors.push('Enter atleast 8 characters password');
+        }
+        // Check password complexity using regex
+        else if (
+            !/[0-9]/.test(data.password) ||
+            !/[A-Z]/.test(data.password) ||
+            !/[a-z]/.test(data.password) ||
+            !/[^a-zA-Z0-9]/.test(data.password)
+        ) {
+            errors.push('Password must contain at least 1 number, 1 uppercase, 1 lowercase, 1 special');
+        }
+        // Check if password contains personal information
+        else if (
+            data.password.includes(data.first_name) ||
+            data.password.includes(data.last_name) ||
+            data.password.includes(data.email)
+        ) {
+            errors.push('Weak password, please try a different password.');
+        }
+
+        return errors;
+    }
+
+    function confirmPassword(data) {
+        let errors = [];
+         
+        if (!data.confirm_password) {
+            errors.push('Please confirm your password.');
+        }
+        // Check if passwords match
+        else if (data.confirm_password !== data.password) {
+            errors.push('Password does not match!');
+        }
+
+        return errors;
+    }
+</script>

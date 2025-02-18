@@ -2,73 +2,65 @@
       require_once '../student/includes/head.php';
       require_once '../student/includes/topnav.php';
  ?>
-    <style>
-        .modal-content {
-            margin: 150px auto;
-            padding: 20px;
-            border-radius: 10px;
-            width: 70%;
-            max-width: 380px;
-            position: relative;
-            max-height: 80vh;
-            overflow-y: auto;
-            border: 1px solid #093909;
-        }
-
-        .modal-header {
-            padding-bottom: 10px;
-            text-align: center;
-        }
-
-        .modal-title {
-            color: #093909;
-            margin-bottom: 20px;
-        }
-    </style>
-
+<style>
+    .bg-custom-red {
+        background-color: #CC0001 !important;
+    }
+    .text-custom-red {
+        color: #CC0001 !important;
+    }
+    .page-content {
+        min-height: calc(100vh - 20px); /* Adjust based on your topnav height */
+    }
+</style>
 <body>
-    <div class="body">
-        
-        <div class="fee-dashboard">
-            <div class="fee-container" style="border: 1px solid #d9d9d9; box-shadow: 0 1px 3px rgba(0,0,0,0.1); border-radius: 4px;">
-            <div class="fee-card">
-            <div class="fee-card-header">
-                <div class="back-titles">
-                    <a href="./org.php" class="back-bttn">
-                        <i class="fa-solid fa-arrow-left"></i>
-                    </a>
-                    <h2 style="font-weight: bold;">Venom Publication</h2>
-                </div>
-            <span class="due-text">Due:</span>
-            </div>
-            <div class="fee-card-body">
-                <table class="due-table table table-striped">
-                    <thead>
-                        <tr>
-                            <th class="text-center" style="background-color: #CC0001; color: white;">Mark</th>
-                            <th class="text-center" style="background-color: #CC0001; color: white;">Fee</th>
-                            <th class="text-center" style="background-color: #CC0001; color: white;">Status</th>
-                            <th class="text-center" style="background-color: #CC0001; color: white;">Amount</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="text-center"><i class="fas fa-exclamation-triangle warning-icon" style="color: #CC0001;"></i></td>
-                            <td class="text-center">Venom</td>
-                            <td class="text-center">Unpaid</td>
-                            <td class="text-center" class="amount">70.00</td>
-                        </tr>
-                        <tr>
-                            <td class="text-center"><i class="fas fa-exclamation-triangle warning-icon" style="color: #CC0001;"></i></td>
-                            <td class="text-center">Palaro</td>
-                            <td class="text-center">Unpaid</td>
-                            <td class="text-center"class="amount">150.00</td>
-                        </tr>
-                    </tbody>
-                </table><br>
-                        <div class="due-button d-flex justify-content-between align-items-center">
-                            <p class="text-danger">Overdue Payment Notice: <br> Your payment is overdue. Please submit a promissory note to prevent temporary account suspension.</p>
-                            <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#promissoryModal">Proceed</button>
+    <div class="container-fluid">
+        <div class="page-content d-flex align-items-center">
+            <div class="row justify-content-center w-100">
+                <div class="col-md-8">
+                    <div class="card shadow-sm">
+                        <div class="card-header bg-white d-flex justify-content-between align-items-center py-3">
+                            <div class="d-flex align-items-center">
+                                <a href="./org.php" class="btn btn-link text-dark p-0 me-3">
+                                    <i class="fa-solid fa-arrow-left" style="font-size: 25px;"></i>
+                                </a>
+                                <h2 class="mb-0 fw-bold">Venom Publication</h2>
+                            </div>
+                            <span>Due:</span>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-striped table-hover mb-4">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-center bg-custom-red text-white">Mark</th>
+                                            <th class="text-center bg-custom-red text-white">Fee</th>
+                                            <th class="text-center bg-custom-red text-white">Status</th>
+                                            <th class="text-center bg-custom-red text-white">Amount</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="text-center"><i class="fas fa-exclamation-triangle text-custom-red"></i></td>
+                                            <td class="text-center">Venom</td>
+                                            <td class="text-center">Unpaid</td>
+                                            <td class="text-center">70.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center"><i class="fas fa-exclamation-triangle text-custom-red"></i></td>
+                                            <td class="text-center">Palaro</td>
+                                            <td class="text-center">Unpaid</td>
+                                            <td class="text-center">150.00</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <div class="d-flex justify-content-between align-items-start">
+                                    <div class="alert alert-danger mb-0 p-3">
+                                        <p class="mb-0">Overdue Payment Notice: <br> Your payment is overdue. Please submit a promissory note to prevent temporary account suspension.</p>
+                                    </div>
+                                    <button class="btn bg-custom-red text-white ms-3" data-bs-toggle="modal" data-bs-target="#promissoryModal" style="margin-top: 20px;">Proceed</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -80,21 +72,25 @@
     <div class="modal fade" id="promissoryModal" tabindex="-1" aria-labelledby="promissoryModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="promissoryModalLabel">Promissory Note</h5>
+                <div class="modal-header border-bottom">
+                    <h5 class="modal-title fw-bold" id="promissoryModalLabel">Promissory Note</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <textarea class="form-control" placeholder="Type an explanation...." required></textarea>
-                    <div class="file-input-container">
-                        <label>Attachments:</label>
-                        <input type="file" accept=".jpg, .jpeg, .png, .pdf">
-                        <i class="fas fa-paperclip"></i>
+                    <div class="mb-3">
+                        <textarea class="form-control" rows="4" placeholder="Type an explanation...." required></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Attachments:</label>
+                        <div class="input-group">
+                            <input type="file" class="form-control" accept=".jpg, .jpeg, .png, .pdf">
+                            <span class="input-group-text"><i class="fas fa-paperclip"></i></span>
+                        </div>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="closeModal()">Close</button>
-                    <button type="button" class="btn btn-primary" onclick="submitPromissoryNote()" style="background-color: #093909;">Submit</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn bg-custom-red text-white">Submit</button>
                 </div>
             </div>
         </div>
