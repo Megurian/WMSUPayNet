@@ -150,7 +150,7 @@ class Accounts extends Database {
     }
 
     function fetchUser($email, $username){
-        $sql = "SELECT username, role, college_id FROM $this->table WHERE ";
+        $sql = "SELECT username, email, role, college_id FROM $this->table WHERE ";
 
         if(!is_null($email)) {
             $sql .= "email = :email LIMIT 1;";

@@ -80,4 +80,4 @@ class Colleges extends Database {
 }
 
 /* $Obj = new Colleges();
-$Obj->deleteCollege(9); */
+print_r($Obj->getCollegeById(16));  */
