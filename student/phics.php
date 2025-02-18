@@ -19,7 +19,7 @@
                                 <a href="./org.php" class="btn btn-link text-dark p-0 me-3">
                                     <i class="fa-solid fa-arrow-left" style="font-size: 25px;"></i>
                                 </a>
-                                <h2 class="mb-0 fw-bold">CCS-CSC</h2>
+                                <h2 class="mb-0 fw-bold">PHICS</h2>
                             </div>
                             <span>Due:</span>
                         </div>
@@ -37,13 +37,13 @@
                                     <tbody>
                                         <tr>
                                             <td class="text-center">1</td>
-                                            <td class="text-center">CSC</td>
+                                            <td class="text-center">Membership Fee</td>
                                             <td class="text-center">Unpaid</td>
-                                            <td class="text-center">200.00</td>
+                                            <td class="text-center">70.00</td>
                                         </tr>
                                         <tr>
                                             <td class="text-center">2</td>
-                                            <td class="text-center">Palaro</td>
+                                            <td class="text-center">Miscellanious</td>
                                             <td class="text-center">Unpaid</td>
                                             <td class="text-center">150.00</td>
                                         </tr>
@@ -58,4 +58,3 @@
     </div>
 </body>
 </html>
-
