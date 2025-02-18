@@ -1,215 +1,294 @@
+// Function to save the current page
+function saveCurrentPage(pageId) {
+    localStorage.setItem('lastVisitedPage', pageId);
+}
+
+// Function to load the last visited page
+function loadLastVisitedPage() {
+    const lastPage = localStorage.getItem('lastVisitedPage') || 'dashboard-link';
+    document.querySelector(`.sidebar-item a#${lastPage}`).click();
+}
+
+// Add click event listeners to all sidebar links
+document.querySelectorAll('.sidebar-item a.nav-link').forEach(link => {
+    link.addEventListener('click', function() {
+        saveCurrentPage(this.id);
+    });
+});
+
+// Load the last visited page when the window loads
+window.addEventListener('load', loadLastVisitedPage);
+
+//Navigate Sidebar using AJAX
 document.querySelectorAll('.sidebar-item a.nav-link').forEach(link => {
     link.addEventListener('click', function(e) {
-        e.preventDefault(); 
+        e.preventDefault();
 
-        document.querySelectorAll('.sidebar-item a.nav-link').forEach(link => link.classList.remove('link-active'));
-
+        document.querySelectorAll('.sidebar-item a.nav-link').forEach(link => 
+            link.classList.remove('link-active'));
         this.classList.add('link-active');
 
         if (this.id === 'dashboard-link') {
-            fetch('overview.php')
-                .then(response => response.text())
-                .then(html => {
-                    document.querySelector('.content-page').innerHTML = html;
-                    document.querySelector('.topnav-title').textContent = 'Dashboard';
-                    loadPie()
-                })
-                
+            dashboard();
         } else if (this.id === 'organizations-link') {
-            fetch('organization/organizations.php')
-                .then(response => response.text())
-                .then(html => {
-                    document.querySelector('.content-page').innerHTML = html;
-                    document.querySelector('.topnav-title').textContent = 'Organizations';
-                    document.getElementById('add-organization').addEventListener('click', function(e) {
-                        e.preventDefault();
-                        fetch('organization/add-organization.php')
-                        .then(response => response.text())
-                        .then(html => {
-                            $('.modal-container').html(html);
-                            $('#modal-add-organization').modal('show');
-                            addOrg();
-                        });
-                    });
-
-                    document.querySelectorAll('.organization').forEach(function(organization) {
-                        organization.addEventListener('click', function() {
-                            // Get the organization ID from the data attribute
-                            const organizationId = this.dataset.organizationId;
-
-                            e.preventDefault();
-                            fetch(`organization/org-overview.php?organization_id=${organizationId}`)
-                            .then(response => response.text())
-                            .then(html => {
-                                document.querySelector('.content-page').innerHTML = html;
-
-                                document.getElementById('create-admin').addEventListener('click', function(e) {
-                                    e.preventDefault();
-                                    createAdmin();
-                                });
-
-                                document.getElementById('upload').addEventListener('click', function(e) {
-                                    e.preventDefault();
-                                    upload();
-                                });
-                            })
-                        });
-                    });
-                })
-
+            organizations();
         } else if (this.id === 'student-link') {
-            fetch('student/nav.php')
-                .then(response => response.text())
-                .then(html => {
-                    document.querySelector('.content-page').innerHTML = html;
-                    document.querySelector('.topnav-title').textContent = 'Student Management';
-
-                    document.querySelectorAll('.nav-item a.navi-link').forEach(link => {
-                        link.addEventListener('click', function(e) {
-                            e.preventDefault(); 
-                    
-                            document.querySelectorAll('.nav-item a.navi-link').forEach(link => link.classList.remove('link-active'));
-                            this.classList.add('link-active');
-
-                            if (this.id === 'student-list-link') {
-                                fetch('student/student.php')
-                                    .then(response => response.text())
-                                    .then(html => {
-                                        document.querySelector('.table-content').innerHTML = html;
-                                       
-                                        var table = $('#table-all').DataTable({
-                                            dom: 'rtp',
-                                            pageLength: 10,
-                                            ordering: false,
-                                        });
-                                        
-                                        document.getElementById('add-student').addEventListener('click', function(e) {
-                                            e.preventDefault();
-                                            fetch('student/add-student.php')
-                                            .then(response => response.text())
-                                            .then(html => {
-                                                $('.modal-container').html(html);
-                                                $('#modal-add-student').modal('show');
-                                                addStudent();
-                                            })
-                                        });
-                                    })
-
-                            } else if (this.id === 'course-link') {
-                                fetch('student/course.php')
-                                    .then(response => response.text())
-                                    .then(html => {
-                                        document.querySelector('.table-content').innerHTML = html;
-                                        sort()
-                                    })
-                            }
-                        });
-                    })
-                    document.querySelector('.nav-item a#student-list-link').click();
-                })
-                
+            studentManagement();
         } else if (this.id === 'fees-link') {
-            fetch('fees/nav.php')
-                .then(response => response.text())
-                .then(html => {
-                    document.querySelector('.content-page').innerHTML = html;
-                    document.querySelector('.topnav-title').textContent = 'Fee Management';
-
-                    document.querySelectorAll('.nav-item a.navi-link').forEach(link => {
-                        link.addEventListener('click', function(e) {
-                            e.preventDefault(); 
-                    
-                            document.querySelectorAll('.nav-item a.navi-link').forEach(link => link.classList.remove('link-active'));
-                            this.classList.add('link-active');
-
-                            if (this.id === 'organization-list-link') {
-                                fetch('fees/fees.php')
-                                    .then(response => response.text())
-                                    .then(html => {
-                                        document.querySelector('.table-content').innerHTML = html;
-                                       
-                                        var table = $('#table-all').DataTable({
-                                            dom: 'rtp',
-                                            pageLength: 10,
-                                            ordering: false,
-                                        });
-                                    })
-
-                            } else if (this.id === 'college-link') {
-                                fetch('fees/college_fees.php')
-                                    .then(response => response.text())
-                                    .then(html => {
-                                        document.querySelector('.table-content').innerHTML = html;
-                                       
-                                        var table = $('#table-all').DataTable({
-                                            dom: 'rtp',
-                                            pageLength: 10,
-                                            ordering: false,
-                                        });
-
-                                        document.getElementById('add-fee').addEventListener('click', function(e) {
-                                            e.preventDefault();
-                                            addFee();
-                                        });
-                                    })
-                            }
-                        });
-                    })
-                    
-                    document.querySelector('.nav-item a#organization-list-link').click();
-                })
-                
+            fees();
         } else if (this.id === 'logs-link') {
-            fetch('logs/logs.php')
-                .then(response => response.text())
-                .then(html => {
-                    document.querySelector('.content-page').innerHTML = html;
-                    document.querySelector('.topnav-title').textContent = 'Activity Logs';  
-                })
-                
+            logs();
         } else if (this.id === 'report-link') {
-            fetch('reports/report.php')
-                .then(response => response.text())
-                .then(html => {
-                    document.querySelector('.content-page').innerHTML = html;
-                    document.querySelector('.topnav-title').textContent = 'Report';
-                    
-                    document.getElementById('report-form').addEventListener('click', function(e) {
-                        e.preventDefault();
-                        generateReport();
-                    });
-
-                    document.getElementById('download-report').addEventListener('click', function(e) {
-                        e.preventDefault();
-                        downloadReport()
-                    });
-
-                    document.getElementById('view-report').addEventListener('click', function(e) {
-                        e.preventDefault();
-                        fetch('reports/view-report.php')
-                        .then(response => response.text())
-                        .then(html => {
-                            document.querySelector('.content-page').innerHTML = html;
-                            document.querySelector('.topnav-title').textContent = 'Report';
-                            loadChart()
-                            viewDetails()
-
-                            document.getElementById('download-report').addEventListener('click', function(e) {
-                                e.preventDefault();
-                                downloadReport()
-                            });
-                        })
-                    });
-                }) 
+            report();
         } else {
-            e.preventDefault(); 
+            e.preventDefault();
         }
     });
 });
 
-window.addEventListener('load', () => {
-    document.querySelector('.sidebar-item a#dashboard-link').click();
-});
+
+// Separate the navigation functions
+//Dashboard Page AJAX
+function dashboard() {
+    fetch('overview.php')
+        .then(response => response.text())
+        .then(html => {
+            document.querySelector('.content-page').innerHTML = html;
+            document.querySelector('.topnav-title').textContent = 'Dashboard';
+            loadPie();
+        });
+}
+
+//Organization Page AJAX
+function organizations() {
+    fetch('organization/organizations.php')
+        .then(response => response.text())
+        .then(html => {
+            document.querySelector('.content-page').innerHTML = html;
+            document.querySelector('.topnav-title').textContent = 'Organizations';
+            document.getElementById('add-organization').addEventListener('click', function(e) {
+                e.preventDefault();
+                addOrg();
+            });
+
+            document.querySelectorAll('.organization').forEach(function(organization) {
+                organization.addEventListener('click', function() {
+                    // Get the organization ID from the data attribute
+                    const organizationId = this.dataset.organizationId;
+
+                    e.preventDefault();
+                    fetch(`organization/org-overview.php?organization_id=${organizationId}`)
+                        .then(response => response.text())
+                        .then(html => {
+                            document.querySelector('.content-page').innerHTML = html;
+
+                            document.getElementById('create-admin').addEventListener('click', function(e) {
+                                e.preventDefault();
+                                createAdmin();
+                            });
+
+                            document.getElementById('upload').addEventListener('click', function(e) {
+                                e.preventDefault();
+                                upload();
+                            });
+                        })
+                });
+            });
+        })
+}
+
+//Student Page AJAX
+function studentManagement() {
+    fetch('student/nav.php')
+        .then(response => response.text())
+        .then(html => {
+            document.querySelector('.content-page').innerHTML = html;
+            document.querySelector('.topnav-title').textContent = 'Student Management';
+            document.querySelectorAll('.nav-item a.navi-link').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault(); 
+            
+                    document.querySelectorAll('.nav-item a.navi-link').forEach(link => link.classList.remove('link-active'));
+                    this.classList.add('link-active');
+
+                    if (this.id === 'student-list-link') {
+                        fetch('student/student.php')
+                            .then(response => response.text())
+                            .then(html => {
+                                document.querySelector('.table-content').innerHTML = html;
+                               
+                                var table = $('#table-all').DataTable({
+                                    dom: 'rtp',
+                                    pageLength: 10,
+                                    ordering: false,
+                                });
+                                
+                                document.getElementById('add-student').addEventListener('click', function(e) {
+                                    e.preventDefault();
+                                    fetch('student/add-student.php')
+                                        .then(response => response.text())
+                                        .then(html => {
+                                            $('.modal-container').html(html);
+                                            $('#modal-add-student').modal('show');
+                                            addStudent();
+                                        })
+                                });
+                            })
+
+                    } else if (this.id === 'course-link') {
+                        fetch('student/course.php')
+                            .then(response => response.text())
+                            .then(html => {
+                                document.querySelector('.table-content').innerHTML = html;
+                                sort()
+                            })
+                    }
+                });
+            })
+            document.querySelector('.nav-item a#student-list-link').click();
+        })
+}
+
+//Fees Page AJAX
+function fees() {
+    fetch('fees/nav.php')
+        .then(response => response.text())
+        .then(html => {
+            document.querySelector('.content-page').innerHTML = html;
+            document.querySelector('.topnav-title').textContent = 'Fee Management';
+
+            document.querySelectorAll('.nav-item a.navi-link').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault(); 
+            
+                    document.querySelectorAll('.nav-item a.navi-link').forEach(link => link.classList.remove('link-active'));
+                    this.classList.add('link-active');
+
+                    if (this.id === 'organization-list-link') {
+                        fetch('fees/fees.php')
+                            .then(response => response.text())
+                            .then(html => {
+                                document.querySelector('.table-content').innerHTML = html;
+                                
+                                var table = $('#table-all').DataTable({
+                                    dom: 'rtp',
+                                    pageLength: 10,
+                                    ordering: false,
+                                });
+                            })
+
+                    } else if (this.id === 'college-link') {
+                        fetch('fees/college_fees.php')
+                            .then(response => response.text())
+                            .then(html => {
+                                document.querySelector('.table-content').innerHTML = html;
+                                
+                                var table = $('#table-all').DataTable({
+                                    dom: 'rtp',
+                                    pageLength: 10,
+                                    ordering: false,
+                                });
+
+                                document.getElementById('add-fee').addEventListener('click', function(e) {
+                                    e.preventDefault();
+                                    addFee();
+                                });
+                            })
+                    }
+                });
+            })
+            
+            document.querySelector('.nav-item a#organization-list-link').click();
+        })
+}
+
+//Logs Page AJAX
+function logs() {
+    fetch('logs/logs.php')
+        .then(response => response.text())
+        .then(html => {
+            document.querySelector('.content-page').innerHTML = html;
+            document.querySelector('.topnav-title').textContent = 'Activity Logs';  
+        })
+}
+
+//Reports Page AJAX
+function report() {
+    fetch('reports/report.php')
+        .then(response => response.text())
+        .then(html => {
+            document.querySelector('.content-page').innerHTML = html;
+            document.querySelector('.topnav-title').textContent = 'Report';
+            
+            document.getElementById('report-form').addEventListener('click', function(e) {
+                e.preventDefault();
+                generateReport();
+            });
+
+            document.getElementById('download-report').addEventListener('click', function(e) {
+                e.preventDefault();
+                downloadReport()
+            });
+
+            document.getElementById('view-report').addEventListener('click', function(e) {
+                e.preventDefault();
+                fetch('reports/view-report.php')
+                    .then(response => response.text())
+                    .then(html => {
+                        document.querySelector('.content-page').innerHTML = html;
+                        document.querySelector('.topnav-title').textContent = 'Report';
+                        loadChart()
+                        viewDetails()
+
+                        document.getElementById('download-report').addEventListener('click', function(e) {
+                            e.preventDefault();
+                            downloadReport()
+                        });
+                    })
+            });
+        }) 
+}
+
+
+
+/* LOGIC FUNCTIONS ONLY */
+function addOrg() {
+    fetch('organization/add-organization.php')
+        .then(response => response.text())
+        .then(html => {
+            $('.modal-container').html(html);
+            $('#modal-add-organization').modal('show');
+            $('#form-add-organization').submit(function(e) {
+                e.preventDefault();
+        
+                // Create FormData object to handle form data and file upload
+                const formData = new FormData(this);
+                
+                $.ajax({
+                    url: 'logic/addOrg.php',
+                    type: 'post',
+                    data: formData,
+                    processData: false, // Prevent jQuery from automatically transforming data into a query string
+                    contentType: false, // Prevent jQuery from setting content type
+                    success: function(response) {
+                        const res = JSON.parse(response);
+            
+                        if (res.status === 'error') {
+                            alert(res.message);
+                        } else {
+                            alert(res.message);
+                            $('#form-add-organization')[0].reset(); // Reset form fields
+                            $('#modal-add-organization').modal('hide'); // Close modal
+                            organizations();
+                        }
+                    },
+                    error: function() {
+                        alert('An error occurred while processing the request.');
+                    }
+                });
+            });
+        })
+}
 
 function addStudent() {
     $('#form-add-student').submit(function(e) {
@@ -233,37 +312,6 @@ function addStudent() {
                     alert(res.message);
                     $('#form-add-student')[0].reset(); // Reset form fields
                     $('#modal-add-student').modal('hide'); // Close modal
-                }
-            },
-            error: function() {
-                alert('An error occurred while processing the request.');
-            }
-        });
-    });
-}
-
-function addOrg() {
-    $('#form-add-organization').submit(function(e) {
-        e.preventDefault();
-
-        // Create FormData object to handle form data and file upload
-        const formData = new FormData(this);
-        
-        $.ajax({
-            url: 'logic/addOrg.php',
-            type: 'post',
-            data: formData,
-            processData: false, // Prevent jQuery from automatically transforming data into a query string
-            contentType: false, // Prevent jQuery from setting content type
-            success: function(response) {
-                const res = JSON.parse(response);
-    
-                if (res.status === 'error') {
-                    alert(res.message);
-                } else {
-                    alert(res.message);
-                    $('#form-add-organization')[0].reset(); // Reset form fields
-                    $('#modal-add-organization').modal('hide'); // Close modal
                 }
             },
             error: function() {
@@ -333,6 +381,19 @@ function upload(){
     });
 }
 
+function downloadReport() {
+    fetch('reports/generate_report.html')
+        .then(response => response.text())
+        .then(html => {
+        
+            $('.modal-container').html(html);
+            $('#modal-download-report').modal('show');
+        });
+}
+
+
+
+/* DISPLAY FUNCTIONS ONLY */
 function viewFees(){
     document.getElementById('org-overview-link').addEventListener('click', function(e) {
         e.preventDefault();
@@ -420,15 +481,5 @@ function loadPie(){
           }
       }
   });
-}
-
-function downloadReport() {
-  fetch('reports/generate_report.html')
-    .then(response => response.text())
-    .then(html => {
-  
-      $('.modal-container').html(html);
-      $('#modal-download-report').modal('show');
-    });
 }
 
