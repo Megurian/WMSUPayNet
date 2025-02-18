@@ -80,7 +80,6 @@ function organizations() {
                     // Get the organization ID from the data attribute
                     const organizationId = this.dataset.organizationId;
 
-                    e.preventDefault();
                     fetch(`organization/org-overview.php?organization_id=${organizationId}`)
                         .then(response => response.text())
                         .then(html => {
@@ -96,6 +95,23 @@ function organizations() {
                                 upload();
                             });
                         })
+                });
+            });
+
+            // Handle edit and delete button clicks dynamically for organizations
+            document.querySelectorAll('.dropdown-menu').forEach(function(dropdown) {
+                dropdown.addEventListener('click', function(e) {
+                    let orgId = this.dataset.organizationId;
+
+                    if (e.target.classList.contains('edit-org')) {
+                        e.preventDefault();
+                        editOrg(orgId);
+                    }
+
+                    if (e.target.classList.contains('delete-org')) {
+                        e.preventDefault();
+                        alert("Delete Button working");
+                    }
                 });
             });
         })
@@ -283,6 +299,45 @@ function addOrg() {
                             alert(res.message);
                             $('#form-add-organization')[0].reset(); // Reset form fields
                             $('#modal-add-organization').modal('hide'); // Close modal
+                            organizations();
+                        }
+                    },
+                    error: function() {
+                        alert('An error occurred while processing the request.');
+                    }
+                });
+            });
+        })
+}
+
+function editOrg(organization_id) {
+    fetch(`organization/edit-organization.php?org-id=${organization_id}`)
+       .then(response => response.text())
+       .then(html => {
+            $('.modal-container').html(html);
+            $('#modal-edit-organization').modal('show');
+            $('#form-edit-organization').submit(function(e) {
+                e.preventDefault();
+        
+                // Create FormData object to handle form data and file upload
+                const formData = new FormData(this);
+                formData.append("organization_id", organization_id); // Append extra data
+                
+                $.ajax({
+                    url: 'logic/editOrg.php',
+                    type: 'post',
+                    data: formData,
+                    processData: false, // Prevent jQuery from automatically transforming data into a query string
+                    contentType: false, // Prevent jQuery from setting content type
+                    success: function(response) {
+                        const res = JSON.parse(response);
+            
+                        if (res.status === 'error') {
+                            alert(res.message);
+                        } else {
+                            alert(res.message);
+                            $('#form-edit-organization')[0].reset(); // Reset form fields
+                            $('#modal-edit-organization').modal('hide'); // Close modal
                             organizations();
                         }
                     },
