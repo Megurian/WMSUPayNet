@@ -5,6 +5,8 @@
     $organizationObj = new Organizations();
 
     $organizationId = isset($_GET['organization_id']) ? intval($_GET['organization_id']) : 0;
+
+    $organizationInfo = $organizationObj->getAllOrganizationInfoById($organizationId)
 ?>
 
 <div class="container-fluid">
@@ -14,14 +16,12 @@
             <div class="d-flex align-items-center">
 
                 <i class="fas fa-arrow-left back-button mx-4" onclick="goBack()"></i> 
-                <?php foreach ($organizationObj->getAllOrganizationInfoById($organizationId) as $organization): ?>
-                    <img src="<?= htmlspecialchars($organization['logo_directory']) ?>" alt="Logo" width="40" height="40"  class="rounded-circle me-3">
+                    <img src="<?= htmlspecialchars($organizationInfo['logo_directory']) ?>" alt="Logo" width="40" height="40"  class="rounded-circle me-3">
 
                     <div class="d-flex flex-column mx-2 mt-3">
-                        <h5 class="club-title"><?= htmlspecialchars($organization['name']) ?></h5>
+                        <h5 class="club-title"><?= htmlspecialchars($organizationInfo['name']) ?></h5>
                         <h6><span style="color: #004d00;">College of Computing Studies</span></h6>
                     </div>
-                <?php endforeach; ?>
 
             </div>
         </div>
