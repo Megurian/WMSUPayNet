@@ -32,7 +32,7 @@ $suffixesObj = new Suffixes();
             </div> 
             <form id="form-edit-college" enctype="multipart/form-data">
                 <input type="hidden" name="collegeId" value="<?= $collegeId ?>">
-                <input type="hidden" name="logoUpdated" id="logoUpdated" value="0">
+                <input type="hidden" name="logoUpdated" id="logoUpdated" value="false">
                 <div class="modal-body">
                     <div class="card-body">
                         <div class="row mb-3">
@@ -87,25 +87,8 @@ $suffixesObj = new Suffixes();
     </div>
 </div>
 
+<script src="../../js/UX.js"></script>
 <script>
-    //Script to preview uploaded logo
-    document.getElementById("logo-input").addEventListener("change", function(event) {
-
-        document.getElementById("logoUpdated").value = 1;
-
-        const file = event.target.files[0]; // Get the selected file
-        if (file) {
-            const reader = new FileReader(); // Create a FileReader object
-            reader.onload = function(e) {
-                const preview = document.getElementById("logo-preview");
-                preview.src = e.target.result; // Set the image source
-                preview.style.display = "block"; // Show the image preview
-                document.querySelector(".plus-icon").style.display = "none"; // Hide the plus icon
-            };
-            reader.readAsDataURL(file); // Read the file as a Data URL
-        }
-    });
-
     //format college name
     document.getElementById("collegeName").addEventListener("input", function(event) {
         const collegeName = document.getElementById("collegeName");

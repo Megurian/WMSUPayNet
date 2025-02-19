@@ -1,30 +1,44 @@
 <?php
-require_once '../../database/autoload_classes.php';
-require_once '../../tools/functions.php';
+    require_once '../../database/autoload_classes.php';
+    require_once '../../tools/functions.php';
+    
     session_start();
+    $organizationObj = new Organizations();
+
+    $organization_id = isset($_GET['org-id']) ? intval(clean_input($_GET['org-id'])) : 0;
+
+    $organizationInfo = $organizationObj->getAllOrganizationInfoById($organization_id);
 ?>
 
+<style>
+    #logo-preview {
+        display: <?= $organizationInfo["logo_directory"] ? 'block' : 'none' ?>;
+    }
+    .plus-icon {
+        display: <?= $organizationInfo["logo_directory"] ? 'none' : 'block' ?>;
+    }
+</style>
+
 <!-- Modal -->
-<div class="modal fade" id="modal-add-organization" tabindex="-1" aria-labelledby="modal-add-organizationLabel" aria-hidden="true">
+<div class="modal fade" id="modal-edit-organization" tabindex="-1" aria-labelledby="modal-edit-organizationLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="modal-add-organizationLabel"> Organization Details</h5>
+                <h5 class="modal-title" id="modal-edit-organizationLabel"> Edit Organization Details</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form  id="form-add-organization" enctype="multipart/form-data">
+            <form  id="form-edit-organization" enctype="multipart/form-data">
+                <input type="hidden" name="logoUpdated" id="logoUpdated" value="false">
                 <div class="modal-body">
                     <div class="card-body">
                         <div class="row mb-3">
-
-                            <input type="hidden" name="college_id" value="<?= htmlspecialchars($_SESSION['account']['college_id']); ?>">
 
                             <div class="col-md-5">
                                 <div class="form-group">
                                     <label for="logo">Upload Logo</label>
                                     <div class="logo-container mt-2" id="upload">
-                                        <input type="file" name="logo" id="logo-input" accept="image/*">
-                                        <img id="logo-preview" src="#" alt="Logo Preview" style="display: none;" >
+                                        <input type="file" name="logo" id="logo-input" accept="image/*" value="<?= htmlspecialchars($organizationInfo["logo_directory"]) ?>">
+                                        <img id="logo-preview" src="<?= htmlspecialchars($organizationInfo["logo_directory"]) ?>" alt="Logo Preview">
                                         <i class="fas fa-plus plus-icon"></i>
                                     </div>
                                 </div>
@@ -34,15 +48,15 @@ require_once '../../tools/functions.php';
                                 <div class="col-md-9 mb-3">
                                     <div class="form-group">
                                         <label for="organizationName">Organization Name:</label>
-                                        <input type="text" class="form-control" id="organizationName" name="organizationName" placeholder="Enter Organization Name">
+                                        <input type="text" class="form-control" id="organizationName" name="organizationName" value="<?= htmlspecialchars($organizationInfo["name"]) ?>" placeholder="Enter Organization Name">
                                     </div>
                                 </div>
 
                                 <div class="col-md-9 mb-3">
                                     <div class="form-group">
                                         <label for="organizationCode">Organization Code:</label>
-                                        <input type="text" class="form-control" id="organizationCode" name="organizationCode" placeholder="Organization Code" readonly>
-                                        <small class="text-muted">Organization code is auto-generated and cannot be modified.</small>
+                                        <input type="text" class="form-control" id="organizationCode" name="organizationCode" value="<?= htmlspecialchars($organizationInfo["org_code"]) ?>" placeholder="Organization Code" readonly>
+                                        <small class="text-muted">This organization code is system-generated and unchangeable.</small>
                                     </div>
                                 </div>
                             </div>
@@ -51,7 +65,9 @@ require_once '../../tools/functions.php';
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="description">Description</label>
-                                        <textarea type="text " rows="4" maxlength="255" class="form-control" id="description" name="description" placeholder="Description"></textarea>
+                                        <textarea type="text " rows="4" maxlength="255" class="form-control" id="description" name="description" placeholder="Description">
+                                            <?= htmlspecialchars($organizationInfo["description"]) ?>
+                                        </textarea>
                                     </div>
                                 </div>
                             </div>
@@ -61,8 +77,7 @@ require_once '../../tools/functions.php';
                 </div>
                 <div class="modal-footer">
                     <div class="buttons">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn bgreen">Save</button>
+                        <button type="submit" class="btn bgreen">Update</button>
                     </div>
                 </div>
             </form>
@@ -91,30 +106,6 @@ require_once '../../tools/functions.php';
             }
         });
         organizationName.value = formattedWords.join(' ');
-
-        var organizationCode = document.getElementById("organizationCode");
-
-        var significantWords = words.filter(word => 
-            !ignoreWords.includes(word.toLowerCase().trim())
-        );
-
-        // If exactly two significant words
-        if (significantWords.length >= 3) {
-            var organizationCodeValue = '';
-            significantWords.forEach(word => {
-                word = word.trim();
-                if (word) {
-                    organizationCodeValue += word.charAt(0).toUpperCase();
-                }
-            });
-        } else {
-            var firstWord = significantWords[0];
-            var secondWord = significantWords[1];
-            organizationCodeValue = firstWord.charAt(0) + secondWord.substring(0, 4);
-        }
-
-        //Return the College Code Value
-        organizationCode.value = organizationCodeValue;
     });
 
     //Remove extra spaces in college name and generate college code again
@@ -122,31 +113,6 @@ require_once '../../tools/functions.php';
         var organizationName = document.getElementById("organizationName");
 
         organizationName.value = removeExtraSpaces(organizationName.value);
-        var words = organizationName.value.split(' ');
-
-        var organizationCode = document.getElementById("organizationCode");
-
-        var significantWords = words.filter(word => 
-            !ignoreWords.includes(word.toLowerCase().trim())
-        );
-
-        // If exactly two significant words
-        if (significantWords.length >= 3) {
-            var organizationCodeValue = '';
-            significantWords.forEach(word => {
-                word = word.trim();
-                if (word) {
-                    organizationCodeValue += word.charAt(0).toUpperCase();
-                }
-            });
-        } else {
-            var firstWord = significantWords[0];
-            var secondWord = significantWords[1];
-            organizationCodeValue = firstWord.charAt(0) + secondWord.substring(0, 4);
-        }
-
-        //Return the College Code Value
-        organizationCode.value = organizationCodeValue;
     });
 
     function removeExtraSpaces(string) {

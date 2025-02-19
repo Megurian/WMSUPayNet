@@ -1,16 +1,25 @@
-<div class="sidebar">
+<?php
+require_once '../tools/functions.php';
+require_once '../database/autoload_classes.php';
+
+$collegeObj = new Colleges();
+
+$accountInfo = $_SESSION['account'];
+$collegeInfo = $collegeObj->getCollegeById($_SESSION['account']['college_id']);
+
+?>
+<div class="sidebar ">
 
 
         <div class="sidebar-heading d-flex align-items-center justify-content-between">
-            <img src="../images/ccs_logo.png" alt="CCS PayNet Logo" width="45">
-            <h4 class="ps-1"><span class="green"> CCS </span> PayNet</h4>
+            <img src="<?= $collegeInfo['logo_directory'] ?>" alt="CCS PayNet Logo" width="45" class="rounded-circle">
+            <h4 class="ps-1"><span class="green"> <?= $collegeInfo['college_code'] ?> </span> PayNet</h4>
         </div>
 
-        <div class="sidebar-org border-bottom border-top" id="genderClub">
-            <img class="img-fluid" src="../../images/ccs_logo.png" alt="" width="50" height="50">
+        <div class="sidebar-org border-bottom border-top">
             <div class="org flex-column p-2">
-            <h6> College of Computing Studies</h6>
-            <small class="text-muted">email@gmail.com</small>
+                <h6> <?= $collegeInfo['college'] ?> </h6>
+            <small class="text-muted"> <?= $accountInfo['email'] ?> </small>
             </div>
         </div>
 
@@ -25,14 +34,14 @@
         <div class="sidebar-item">
             <a href="organizations" id="organizations-link" class="nav-link">
                 <i class="fa-solid fa-tent-arrow-left-right"></i>
-                Organization
+                Organizations
             </a>
         </div>
 
         <div class="sidebar-item" >
             <a href="" id="student-link" class="nav-link">
                 <i class="fa-solid fa-list"></i>
-                Student
+                Students
             </a>
         </div>
 

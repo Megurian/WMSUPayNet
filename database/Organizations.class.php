@@ -5,18 +5,48 @@ class Organizations extends Database {
     private $table = "organizations";
 
     // Add a new organization
-    public function addOrganization($college_id, $name, $logo_directory, $description) {
-        $sql = "INSERT INTO $this->table (college_id, name, logo_directory, description) VALUES (:college_id, :name, :directory, :description)";
-        $stmt = $this->pdo->prepare($sql);
+    public function addOrganization($college_id, $code, $name, $logo_directory, $description) {
+        $sql = "INSERT INTO $this->table (college_id, org_code, name, logo_directory, description) VALUES (:college_id, :code, :name, :directory, :description)";
         try {
+            $this->pdo->beginTransaction();
+
+            $stmt = $this->pdo->prepare($sql);
+
             $stmt->execute([
                 ':college_id' => $college_id,
+                ':code' => $code,
                 ':name' => $name,
                 ':directory' => $logo_directory,
                 ':description' => $description
             ]);
+
+            $this->pdo->commit(); // Commit the transaction if successful
             return true; // Return true if the insert was successful
         } catch (PDOException $e) {
+            $this->pdo->rollBack(); // Rollback in case of error
+            error_log("Database error: " . $e->getMessage());
+            return false; // Return false if there was an error
+        }
+    }
+
+    public function editOrganization($id, $name, $logo_directory, $description) {
+        $sql = "UPDATE $this->table SET name = :name, logo_directory = :directory, description = :description WHERE id = :id";
+        try {
+            $this->pdo->beginTransaction();
+
+            $stmt = $this->pdo->prepare($sql);
+
+            $stmt->execute([
+                ':id' => $id,
+                ':name' => $name,
+                ':directory' => $logo_directory,
+                ':description' => $description
+            ]);
+
+            $this->pdo->commit(); // Commit the transaction if successful
+            return true; // Return true if the insert was successful
+        } catch (PDOException $e) {
+            $this->pdo->rollBack(); // Rollback in case of error
             error_log("Database error: " . $e->getMessage());
             return false; // Return false if there was an error
         }
@@ -37,15 +67,15 @@ class Organizations extends Database {
         }
     }
 
-    // get all organization by organization id
+    // get all organization info by organization id
     public function getAllOrganizationInfoById($id) {
-        $sql = "SELECT * FROM $this->table WHERE id = :id";
+        $sql = "SELECT * FROM $this->table WHERE id = :id LIMIT 1";
         $stmt = $this->pdo->prepare($sql);
         try {
             $stmt->execute([
                 ':id' => $id
             ]);
-            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $stmt->fetch(PDO::FETCH_ASSOC);
         } catch(PDOException $e) {
             error_log("Database error: " . $e->getMessage()); // Log the error message
             return false;
@@ -153,7 +183,19 @@ class Organizations extends Database {
             return "Unable to delete organization.";
         }
     }
+
+    public function checkDuplicateOrganizationCode($code) {
+        $sql = "SELECT COUNT(*) as count FROM $this->table WHERE org_code = :code";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([':code' => $code]);
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        if ($result['count'] > 0) {
+            return $result['count'];
+        } else {
+            return false;
+        }
+    }
 }
 
-//$obj = new Organizations();
-//echo $obj->confirmOrganizationName(2);
+/* $obj = new Organizations();
+echo $obj->checkDuplicateOrganizationCode("VP"); */

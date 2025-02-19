@@ -5,8 +5,12 @@ function saveCurrentPage(pageId) {
 
 // Function to load the last visited page
 function loadLastVisitedPage() {
-    const lastPage = localStorage.getItem('lastVisitedPage') || 'dashboard-link';
-    document.querySelector(`.sidebar-item a#${lastPage}`).click();
+    if (localStorage.getItem('lastVisitedPage')) {
+        const lastPage = localStorage.getItem('lastVisitedPage');
+        document.querySelector(`.sidebar-item a#${lastPage}`).click();
+    } else {
+        document.querySelector('.sidebar-item a#dashboard-link').click();
+    }
 }
 
 // Add click event listeners to all sidebar links

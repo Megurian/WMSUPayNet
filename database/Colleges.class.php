@@ -77,7 +77,19 @@ class Colleges extends Database {
             return false;
         }
     }
+
+    public function checkDuplicateCollegeCode($code) {
+        $sql = "SELECT COUNT(*) as count FROM $this->table WHERE college_code = :code";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([':code' => $code]);
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        if ($result['count'] > 0) {
+            return $result['count'];
+        } else {
+            return false;
+        }
+    }
 }
 
 /* $Obj = new Colleges();
-$Obj->deleteCollege(9); */
+print_r($Obj->checkDuplicateCollegeCode("CCS"));  */
